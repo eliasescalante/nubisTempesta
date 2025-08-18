@@ -26,3 +26,8 @@ func activate() -> void:
 	set_process_unhandled_input(true)
 	set_process_input(true)
 	set_physics_process(true)
+
+
+func _on_credits_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://src/scenes/levels/creditos.tscn")
+	pass # Replace with function body.
