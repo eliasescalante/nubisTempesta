@@ -386,66 +386,77 @@ shape = SubResource("RectangleShape2D_yfpvf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapsLayers/plataformas/plafatormas"]
 position = Vector2(576.5, -286.25)
 shape = SubResource("RectangleShape2D_3ihjg")
+one_way_collision = true
 
 [node name="plafatormas2" type="StaticBody2D" parent="TileMapsLayers/plataformas"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapsLayers/plataformas/plafatormas2"]
 position = Vector2(1025, -795)
 shape = SubResource("RectangleShape2D_3ihjg")
+one_way_collision = true
 
 [node name="plafatormas3" type="StaticBody2D" parent="TileMapsLayers/plataformas"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapsLayers/plataformas/plafatormas3"]
 position = Vector2(1601, -162)
 shape = SubResource("RectangleShape2D_3ihjg")
+one_way_collision = true
 
 [node name="plafatormas4" type="StaticBody2D" parent="TileMapsLayers/plataformas"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapsLayers/plataformas/plafatormas4"]
 position = Vector2(1155, 100)
 shape = SubResource("RectangleShape2D_3ihjg")
+one_way_collision = true
 
 [node name="plafatormas5" type="StaticBody2D" parent="TileMapsLayers/plataformas"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapsLayers/plataformas/plafatormas5"]
 position = Vector2(2303, -419)
 shape = SubResource("RectangleShape2D_3ihjg")
+one_way_collision = true
 
 [node name="plafatormas6" type="StaticBody2D" parent="TileMapsLayers/plataformas"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapsLayers/plataformas/plafatormas6"]
 position = Vector2(2949, -667)
 shape = SubResource("RectangleShape2D_3ihjg")
+one_way_collision = true
 
 [node name="plafatormas7" type="StaticBody2D" parent="TileMapsLayers/plataformas"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapsLayers/plataformas/plafatormas7"]
 position = Vector2(2947, 36)
 shape = SubResource("RectangleShape2D_3ihjg")
+one_way_collision = true
 
 [node name="plafatormas8" type="StaticBody2D" parent="TileMapsLayers/plataformas"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapsLayers/plataformas/plafatormas8"]
 position = Vector2(3654, -414)
 shape = SubResource("RectangleShape2D_3ihjg")
+one_way_collision = true
 
 [node name="plafatormas9" type="StaticBody2D" parent="TileMapsLayers/plataformas"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapsLayers/plataformas/plafatormas9"]
 position = Vector2(4410, -792)
 shape = SubResource("RectangleShape2D_3ihjg")
+one_way_collision = true
 
 [node name="plafatormas10" type="StaticBody2D" parent="TileMapsLayers/plataformas"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapsLayers/plataformas/plafatormas10"]
 position = Vector2(4354, 36)
 shape = SubResource("RectangleShape2D_3ihjg")
+one_way_collision = true
 
 [node name="plafatormas11" type="StaticBody2D" parent="TileMapsLayers/plataformas"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapsLayers/plataformas/plafatormas11"]
 position = Vector2(4993, -353)
 shape = SubResource("RectangleShape2D_3ihjg")
+one_way_collision = true
 
 [node name="plataformas moviles" type="Node2D" parent="TileMapsLayers"]
 
