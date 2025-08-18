@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://can0fwdwg8kau"]
+[gd_scene load_steps=2 format=3 uid="uid://can0fwdwg8kau"]
+
+[ext_resource type="Texture2D" uid="uid://dpmunafsws7ba" path="res://_assets/art/backgrounds/fondo-02.png" id="1_x80am"]
 
 [node name="Creditos" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(605, 377.5)
+scale = Vector2(1.21094, 0.776367)
+texture = ExtResource("1_x80am")
