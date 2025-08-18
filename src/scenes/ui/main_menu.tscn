@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddd61d533835"]
+[gd_scene load_steps=9 format=3 uid="uid://ddd61d533835"]
 
 [ext_resource type="Script" uid="uid://bddfx6yhe5edt" path="res://src/scripts/ui/main_menu.gd" id="1_loxbe"]
-[ext_resource type="Texture2D" uid="uid://c21s30bq7cqnb" path="res://_assets/img/Image20250805201329.jpg" id="1_rwhmm"]
+[ext_resource type="Texture2D" uid="uid://ckuxeaavv0it1" path="res://_assets/sprites/intro.png" id="2_loxbe"]
 
 [sub_resource type="SystemFont" id="SystemFont_rwhmm"]
 font_names = PackedStringArray("Century Gothic")
@@ -20,6 +20,12 @@ font_names = PackedStringArray("Century Gothic")
 font_weight = 300
 subpixel_positioning = 0
 oversampling = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttmq8"]
+bg_color = Color(0.0214344, 0.0214347, 0.0214345, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5lm1"]
+bg_color = Color(0.00820201, 0.00820204, 0.00820193, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5lm1"]
 font = SubResource("SystemFont_rwhmm")
@@ -43,7 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_rwhmm")
+texture = ExtResource("2_loxbe")
 expand_mode = 2
 stretch_mode = 6
 
@@ -78,6 +84,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = SubResource("SystemFont_ttmq8")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ttmq8")
 text = "START"
 
 [node name="QuitButton" type="Button" parent="TextureRect/MarginContainer/VBoxContainer"]
@@ -86,6 +93,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = SubResource("SystemFont_ttmq8")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_f5lm1")
 text = "QUIT"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer"]
