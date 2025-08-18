@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name Player
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -900.0
 const DASH_SPEED = 600.0
 const DASH_DURATION = 0.2
 
