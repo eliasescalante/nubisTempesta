@@ -1,10 +1,24 @@
-[gd_scene load_steps=15 format=3 uid="uid://cmeplvg6yvaib"]
+[gd_scene load_steps=20 format=3 uid="uid://cmeplvg6yvaib"]
 
 [ext_resource type="Script" uid="uid://ci06txf31dnw8" path="res://src/scripts/entities/player.gd" id="1_rds41"]
 [ext_resource type="Texture2D" uid="uid://53p7me3ro4cc" path="res://_assets/art/sprites/nubis-sprite-camina.png" id="2_0mv3c"]
+[ext_resource type="Texture2D" uid="uid://bgvlonvh41123" path="res://_assets/art/sprites/nubis-dash-b01.png" id="2_lvvd8"]
+[ext_resource type="Texture2D" uid="uid://bb1nwf46t514l" path="res://_assets/art/sprites/nubis-doblejump-b01.png" id="3_7ucdj"]
 [ext_resource type="Texture2D" uid="uid://vgdlcmpd24qh" path="res://_assets/art/sprites/nubis-sprite-parada.png" id="3_ij1qy"]
 [ext_resource type="Texture2D" uid="uid://1gwwyn7mqegd" path="res://_assets/art/sprites/nubis-spritesheet-walking.png" id="4_0mv3c"]
 [ext_resource type="Texture2D" uid="uid://s20fyhc2s3lk" path="res://_assets/art/sprites/nubis-sprite-salta.png" id="4_ij1qy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd88a"]
+atlas = ExtResource("2_lvvd8")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wihep"]
+atlas = ExtResource("3_7ucdj")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8i6c"]
+atlas = ExtResource("4_ij1qy")
+region = Rect2(0, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ddkw8"]
 atlas = ExtResource("4_ij1qy")
@@ -38,10 +52,21 @@ region = Rect2(1280, 0, 256, 256)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_0mv3c")
+"texture": SubResource("AtlasTexture_xd88a")
 }],
 "loop": true,
 "name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_wihep")
+}, {
+"duration": 20.0,
+"texture": SubResource("AtlasTexture_m8i6c")
+}],
+"loop": true,
+"name": &"doblejump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -103,7 +128,9 @@ script = ExtResource("1_rds41")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1hd0g")
-animation = &"idle"
+animation = &"doblejump"
+frame = 1
+frame_progress = 0.52393
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 28)
