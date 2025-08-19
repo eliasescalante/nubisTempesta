@@ -9,3 +9,4 @@ extends Node
 func _ready() -> void:
 	LevelManager.main_scene = _2d_scene
 	LevelManager.levels = levels_available
+	ManagerAudio.play_intro()
