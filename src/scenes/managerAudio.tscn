@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 [gd_scene load_steps=4 format=3 uid="uid://bjkakcwr0ww4j"]
 
 [ext_resource type="Script" uid="uid://bjd4lbnke23o1" path="res://src/scripts/manager_audio.gd" id="1_ng7tg"]
 [ext_resource type="AudioStream" uid="uid://clu6vt6kwupmq" path="res://_assets/musica/Introduccion.wav" id="1_p78av"]
 [ext_resource type="AudioStream" uid="uid://uohjjt7lves7" path="res://_assets/musica/Nivel_1.wav" id="2_ng7tg"]
+=======
+[gd_scene load_steps=3 format=3 uid="uid://bjkakcwr0ww4j"]
+
+[ext_resource type="AudioStream" uid="uid://cpw8hn4yasa6h" path="res://_assets/musica/INTRO_1.mp3" id="1_p78av"]
+[ext_resource type="AudioStream" uid="uid://dqeq43qdgskqj" path="res://_assets/musica/IN_GAME_1.mp3" id="2_ng7tg"]
+>>>>>>> 7f4a3b39349d31745dc37758fadcd1da2be8f605
 
 [node name="ManagerAudio" type="Node2D"]
 script = ExtResource("1_ng7tg")
@@ -11,9 +18,20 @@ script = ExtResource("1_ng7tg")
 
 [node name="Theme" type="Node" parent="."]
 
+<<<<<<< HEAD
 [node name="Introduccion" type="AudioStreamPlayer" parent="Theme"]
 stream = ExtResource("1_p78av")
 
 [node name="Nivel_1" type="AudioStreamPlayer" parent="Theme"]
 stream = ExtResource("2_ng7tg")
 volume_db = 0.677
+=======
+[node name="Intro1" type="AudioStreamPlayer" parent="Theme"]
+stream = ExtResource("1_p78av")
+volume_db = -20.842
+
+[node name="InGame1" type="AudioStreamPlayer" parent="Theme"]
+stream = ExtResource("2_ng7tg")
+volume_db = -18.814
+parameters/looping = true
+>>>>>>> 7f4a3b39349d31745dc37758fadcd1da2be8f605
