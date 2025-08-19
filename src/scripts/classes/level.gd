@@ -9,7 +9,4 @@ var level_data : LevelData
 
 func _ready() -> void:
 	level_data = LevelManager.get_level_by_id(level_id)
-	var musica = ManagerAudio.get_node("Theme/InGame1")
-#	if musica.stream is AudioStream:
-#		musica.stream.loop = true   # asegura que se repita
-	musica.play()
+	AudioManager.get_node("ost/Nivel1").play()

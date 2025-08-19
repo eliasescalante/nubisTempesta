@@ -5,7 +5,7 @@ class_name MainMenu
 
 func _on_play_button_pressed() -> void:
 	LevelManager.load_level(1)
-	ManagerAudio.get_node("Theme/Intro1").stop()
+	AudioManager.get_node("ost/Introduccion").stop()
 	deactivate()
 
 
