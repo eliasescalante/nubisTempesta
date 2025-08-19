@@ -11,6 +11,7 @@ script = ExtResource("1_bdysg")
 
 [node name="Introduccion" type="AudioStreamPlayer" parent="ost"]
 stream = ExtResource("2_rsaqi")
+volume_db = -4.303
 
 [node name="Nivel1" type="AudioStreamPlayer" parent="ost"]
 stream = ExtResource("3_l7gqj")
