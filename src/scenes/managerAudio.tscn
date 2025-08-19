@@ -1,7 +1,19 @@
-[gd_scene format=3 uid="uid://bjkakcwr0ww4j"]
+[gd_scene load_steps=3 format=3 uid="uid://bjkakcwr0ww4j"]
+
+[ext_resource type="AudioStream" uid="uid://cpw8hn4yasa6h" path="res://_assets/musica/INTRO_1.mp3" id="1_p78av"]
+[ext_resource type="AudioStream" uid="uid://dqeq43qdgskqj" path="res://_assets/musica/IN_GAME_1.mp3" id="2_ng7tg"]
 
 [node name="ManagerAudio" type="Node2D"]
 
 [node name="SFX" type="Node" parent="."]
 
 [node name="Theme" type="Node" parent="."]
+
+[node name="Intro1" type="AudioStreamPlayer" parent="Theme"]
+stream = ExtResource("1_p78av")
+volume_db = -20.842
+
+[node name="InGame1" type="AudioStreamPlayer" parent="Theme"]
+stream = ExtResource("2_ng7tg")
+volume_db = -18.814
+parameters/looping = true
