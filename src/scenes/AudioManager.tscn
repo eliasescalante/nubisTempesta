@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bukbpm4tfyxr1"]
 
 [ext_resource type="Script" uid="uid://bjd4lbnke23o1" path="res://src/scripts/manager_audio.gd" id="1_bdysg"]
-[ext_resource type="AudioStream" uid="uid://clu6vt6kwupmq" path="res://_assets/musica/Introduccion.wav" id="2_rsaqi"]
-[ext_resource type="AudioStream" uid="uid://uohjjt7lves7" path="res://_assets/musica/Nivel_1.wav" id="3_l7gqj"]
+[ext_resource type="AudioStream" uid="uid://dp1tdnxa7vw3u" path="res://_assets/musica/INTRO.ogg" id="2_bdysg"]
+[ext_resource type="AudioStream" uid="uid://boirgsafswkkp" path="res://_assets/musica/NIVEL_1.ogg" id="3_rsaqi"]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_bdysg")
@@ -10,8 +10,8 @@ script = ExtResource("1_bdysg")
 [node name="ost" type="Node2D" parent="."]
 
 [node name="Introduccion" type="AudioStreamPlayer" parent="ost"]
-stream = ExtResource("2_rsaqi")
+stream = ExtResource("2_bdysg")
 volume_db = -4.303
 
 [node name="Nivel1" type="AudioStreamPlayer" parent="ost"]
-stream = ExtResource("3_l7gqj")
+stream = ExtResource("3_rsaqi")
