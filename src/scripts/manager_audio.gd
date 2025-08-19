@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var introduccion: AudioStreamPlayer = $ost/Introduccion
-@onready var nivel_1: AudioStreamPlayer = $ost/Nivel_1
+@onready var nivel_1: AudioStreamPlayer = $ost/Nivel1
 
 
 func play_intro():
