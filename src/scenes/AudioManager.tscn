@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bukbpm4tfyxr1"]
 
 [ext_resource type="Script" uid="uid://bjd4lbnke23o1" path="res://src/scripts/manager_audio.gd" id="1_bdysg"]
-[ext_resource type="AudioStream" uid="uid://dp1tdnxa7vw3u" path="res://_assets/musica/INTRO.ogg" id="2_bdysg"]
-[ext_resource type="AudioStream" uid="uid://boirgsafswkkp" path="res://_assets/musica/NIVEL_1.ogg" id="3_rsaqi"]
+[ext_resource type="AudioStream" uid="uid://nlkxmnf8lav4" path="res://_assets/musica/INTRO.ogg" id="2_bdysg"]
+[ext_resource type="AudioStream" uid="uid://dc7mcclv43obu" path="res://_assets/musica/NIVEL_1.ogg" id="3_rsaqi"]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_bdysg")
