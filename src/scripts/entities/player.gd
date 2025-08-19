@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		elif can_double_jump:
 			velocity.y = JUMP_VELOCITY
 			can_double_jump = false
-			play_anim("jump")
+			play_anim("doblejump")
 	
 	if not is_dashing:
 		if direction != 0:
