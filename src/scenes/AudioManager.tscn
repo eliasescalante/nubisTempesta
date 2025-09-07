@@ -11,9 +11,10 @@ script = ExtResource("1_bdysg")
 
 [node name="Introduccion" type="AudioStreamPlayer" parent="ost"]
 stream = ExtResource("2_bdysg")
-volume_db = -4.303
+volume_db = -16.691
 parameters/looping = true
 
 [node name="Nivel1" type="AudioStreamPlayer" parent="ost"]
 stream = ExtResource("3_rsaqi")
+volume_db = -2.811
 parameters/looping = true
