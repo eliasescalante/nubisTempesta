@@ -14,7 +14,8 @@ Es un juego que es una precuela de la historieta,
 en donde encarnamos a Nubis en sus comienzos, desde su existencia como un ser más en el planeta X (poner nombre) 
 mientras subsiste en el día a día, hasta su iniciación como Agente SubCaos a medida que descubre el trasfondo de la Omnired.
 
-## Capturas:
-	![Captura de pantalla del juego](ruta/a/tu/imagen1.png)
-	![GIF demostrando movimiento y salto](ruta/a/tu/animacion.gif)
+### Capturas:
+![Captura de pantalla del juego](https://github.com/eliasescalante/nubisTempesta/blob/graficos/_assets/capture/CAP_2.png).
+![GIF demostrando movimiento y salto](https://github.com/eliasescalante/nubisTempesta/blob/graficos/_assets/capture/cap_1.png).
 ---
+
