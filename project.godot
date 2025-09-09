@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 LevelManager="*res://src/scripts/managers/level_manager.gd"
 AudioManager="*res://src/scenes/AudioManager.tscn"
 
+[global_group]
+
+player=""
+
 [input]
 
 dash={
