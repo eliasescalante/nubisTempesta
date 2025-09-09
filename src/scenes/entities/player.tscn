@@ -138,3 +138,4 @@ shape = SubResource("RectangleShape2D_qh5pu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
+zoom = Vector2(0.8, 0.8)

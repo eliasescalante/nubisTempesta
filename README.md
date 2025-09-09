@@ -18,4 +18,3 @@ mientras subsiste en el día a día, hasta su iniciación como Agente SubCaos a 
 ![Captura de pantalla del juego](https://github.com/eliasescalante/nubisTempesta/blob/graficos/_assets/capture/CAP_2.png).
 ![GIF demostrando movimiento y salto](https://github.com/eliasescalante/nubisTempesta/blob/graficos/_assets/capture/cap_1.png).
 ---
-
