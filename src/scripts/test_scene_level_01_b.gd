@@ -11,8 +11,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
-func _on_portal_body_entered(body: Node2D) -> void:
+func _on_portal_1_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		get_tree().change_scene_to_file("res://src/scenes/levels/loader.tscn")
+		get_tree().change_scene_to_file("res://src/scenes/levels/loader_1.tscn")
 	pass # Replace with function body.

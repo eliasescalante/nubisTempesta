@@ -4851,8 +4851,8 @@ texture = ExtResource("1_hrkog")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_m11n0")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wxkk"]
-size = Vector2(393, 876)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m11n0"]
+size = Vector2(429.5, 723)
 
 [node name="TestSceneLevel01B" type="Node2D"]
 script = ExtResource("1_iealy")
@@ -4936,12 +4936,15 @@ position = Vector2(-1837, -2579)
 [node name="Player" parent="." instance=ExtResource("3_gjtms")]
 position = Vector2(1048, -6580)
 
-[node name="Portal" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
-position = Vector2(3157, -6502)
-shape = SubResource("RectangleShape2D_8wxkk")
-
 [node name="HudNivel" parent="." instance=ExtResource("7_6d8fe")]
 
-[connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
+[node name="Portal1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal1"]
+position = Vector2(3131, -6500)
+shape = SubResource("RectangleShape2D_m11n0")
+
+[node name="Marker2D" type="Marker2D" parent="Portal1"]
+position = Vector2(2630, -6427)
+
+[connection signal="body_entered" from="Portal1" to="." method="_on_portal_1_body_entered"]
