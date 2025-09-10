@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cmeplvg6yvaib" path="res://src/scenes/entities/player.tscn" id="3_gjtms"]
 [ext_resource type="PackedScene" uid="uid://q3sb0n0gwdsu" path="res://src/scenes/ui/hud_nivel.tscn" id="7_6d8fe"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tsdjn"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m11n0"]
 texture = ExtResource("1_hrkog")
 0:0/0 = 0
 1:0/0 = 0
@@ -4849,7 +4849,7 @@ texture = ExtResource("1_hrkog")
 
 [sub_resource type="TileSet" id="TileSet_iealy"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_tsdjn")
+sources/0 = SubResource("TileSetAtlasSource_m11n0")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wxkk"]
 size = Vector2(393, 876)
