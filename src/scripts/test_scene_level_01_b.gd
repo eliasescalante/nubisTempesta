@@ -9,6 +9,8 @@ func _ready() -> void:
 	if GameState.portal == 1:
 		player.global_position = spawn_point.global_position
 		GameState.portal = 0
+		print("valor de portal ahora")
+		print(GameState.portal)
 	pass # Replace with function body.
 
 
@@ -19,5 +21,9 @@ func _process(delta: float) -> void:
 func _on_portal_1_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		GameState.portal = 2
-		get_tree().change_scene_to_file("res://src/scenes/levels/loader_1.tscn")
+		print(GameState.portal)
+		call_deferred("_change_to_loader")
 	pass # Replace with function body.
+
+func _change_to_loader():
+	get_tree().change_scene_to_file("res://src/scenes/levels/loader_1.tscn")
