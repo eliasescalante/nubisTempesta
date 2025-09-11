@@ -9,4 +9,4 @@ func _ready() -> void:
 
 func _on_animacion_terminada(anim_name: String) -> void:
 	if anim_name == "transicion":
-		get_tree().change_scene_to_file("res://src/scenes/levels/test_scene_level_01.tscn.tscn")
+		get_tree().change_scene_to_file("res://src/scenes/levels/test_scene_level_01.tscn")
