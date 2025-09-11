@@ -1,7 +1,6 @@
 extends Node2D
 
 @onready var animacion = $AnimationPlayer
-@onready var titulo_label = $Label  # <- ajustado al nombre real
 
 func _ready() -> void:
 	animacion.play("transicion")
@@ -9,4 +8,4 @@ func _ready() -> void:
 
 func _on_animacion_terminada(anim_name: String) -> void:
 	if anim_name == "transicion":
-		get_tree().change_scene_to_file("res://src/scenes/levels/level_1_seccion_b.tscn")
+		get_tree().change_scene_to_file("res://src/scenes/levels/level_1_seccion_c.tscn")

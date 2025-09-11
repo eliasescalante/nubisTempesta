@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd0okmd634wir"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ywe83"]
+font_size = 50
+
+[node name="Level1SeccionC" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1192.0
+offset_bottom = 691.0
+color = Color(0.0475577, 0.0475576, 0.0475576, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 298.0
+offset_top = 289.0
+offset_right = 852.0
+offset_bottom = 358.0
+text = "nivel 3 en construccion"
+label_settings = SubResource("LabelSettings_ywe83")
