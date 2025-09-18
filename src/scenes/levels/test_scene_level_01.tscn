@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://clx0rliac47qw"]
+[gd_scene load_steps=11 format=4 uid="uid://clx0rliac47qw"]
 
 [ext_resource type="Texture2D" uid="uid://5utjvy6fpocs" path="res://_assets/art/tileset/tiles-plataformas-256-01.png" id="1_hrkog"]
 [ext_resource type="Script" uid="uid://de366u52gwitk" path="res://src/scripts/test_scene_level_01_b.gd" id="1_iealy"]
@@ -4854,6 +4854,9 @@ sources/0 = SubResource("TileSetAtlasSource_m11n0")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m11n0"]
 size = Vector2(429.5, 723)
 
+[sub_resource type="LabelSettings" id="LabelSettings_m11n0"]
+font_size = 200
+
 [node name="TestSceneLevel01B" type="Node2D"]
 script = ExtResource("1_iealy")
 
@@ -4934,17 +4937,25 @@ position = Vector2(-1798, -836)
 position = Vector2(-1837, -2579)
 
 [node name="Player" parent="." instance=ExtResource("3_gjtms")]
-position = Vector2(1048, -6580)
+position = Vector2(1667, -6486)
 
 [node name="HudNivel" parent="." instance=ExtResource("7_6d8fe")]
 
 [node name="Portal1" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal1"]
-position = Vector2(3131, -6500)
+position = Vector2(2237, -6446)
 shape = SubResource("RectangleShape2D_m11n0")
 
 [node name="Marker2D" type="Marker2D" parent="Portal1"]
-position = Vector2(2630, -6427)
+position = Vector2(1702, -6414)
+
+[node name="SECCION" type="Label" parent="."]
+offset_left = -502.0
+offset_top = -7939.0
+offset_right = 628.0
+offset_bottom = -7666.0
+text = "OUTSIDE - 1"
+label_settings = SubResource("LabelSettings_m11n0")
 
 [connection signal="body_entered" from="Portal1" to="." method="_on_portal_1_body_entered"]

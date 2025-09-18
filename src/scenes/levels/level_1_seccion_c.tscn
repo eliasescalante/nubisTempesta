@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://bd0okmd634wir"]
+[gd_scene load_steps=8 format=4 uid="uid://bd0okmd634wir"]
 
 [ext_resource type="Texture2D" uid="uid://5utjvy6fpocs" path="res://_assets/art/tileset/tiles-plataformas-256-01.png" id="1_fkr3i"]
 [ext_resource type="Script" uid="uid://bcwy0no4eavui" path="res://src/scripts/level_1_seccion_c.gd" id="1_ich5w"]
@@ -4848,14 +4848,20 @@ texture = ExtResource("1_fkr3i")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_t4jo0")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ich5w"]
+size = Vector2(429.5, 723)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ich5w"]
+font_size = 300
+
 [node name="Level1SeccionC" type="Node2D"]
 script = ExtResource("1_ich5w")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_left = -4402.0
-offset_top = -9011.0
+offset_top = -9476.0
 offset_right = 5019.0
-offset_bottom = 3489.0
+offset_bottom = 3024.0
 color = Color(0.0475577, 0.0475576, 0.0475576, 1)
 
 [node name="Nivel" type="TileMapLayer" parent="."]
@@ -4864,3 +4870,51 @@ tile_map_data = PackedByteArray("AAABACwAAABBABMAAAACACwAAABCABMAAAACAC0AAABCABQ
 tile_set = SubResource("TileSet_ich5w")
 
 [node name="Player" parent="." instance=ExtResource("2_t4jo0")]
+position = Vector2(-2113, -5056)
+
+[node name="Portal2_3" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal2_3"]
+position = Vector2(2237, -6446)
+shape = SubResource("RectangleShape2D_ich5w")
+
+[node name="Marker2D" type="Marker2D" parent="Portal2_3"]
+position = Vector2(1702, -6414)
+
+[node name="Portalb_2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portalb_2"]
+position = Vector2(-2746, -5095)
+shape = SubResource("RectangleShape2D_ich5w")
+
+[node name="Marker2D" type="Marker2D" parent="Portalb_2"]
+position = Vector2(-2225, -5063)
+
+[node name="Portalc_2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portalc_2"]
+position = Vector2(-2851, -1189)
+shape = SubResource("RectangleShape2D_ich5w")
+
+[node name="Marker2D" type="Marker2D" parent="Portalc_2"]
+position = Vector2(-2120, -1157)
+
+[node name="Portal2_4" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal2_4"]
+position = Vector2(2849, 374)
+shape = SubResource("RectangleShape2D_ich5w")
+
+[node name="Marker2D" type="Marker2D" parent="Portal2_4"]
+position = Vector2(2082, 427)
+
+[node name="SECCION" type="Label" parent="."]
+offset_left = -820.0
+offset_top = -8708.0
+offset_right = 876.0
+offset_bottom = -8299.0
+text = "OUTSIDE - 2"
+label_settings = SubResource("LabelSettings_ich5w")
+
+[connection signal="body_entered" from="Portal2_3" to="." method="_on_portal_2_3_body_entered"]
+[connection signal="body_entered" from="Portalb_2" to="." method="_on_portalb_2_body_entered"]

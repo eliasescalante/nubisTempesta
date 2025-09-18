@@ -67,7 +67,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"doblejump",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -120,21 +120,21 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qh5pu"]
-size = Vector2(74, 196)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ucdj"]
+radius = 22.0
+height = 203.5
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_rds41")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1hd0g")
-animation = &"doblejump"
-frame = 1
-frame_progress = 0.52393
+animation = &"idle"
+frame_progress = 0.8293748
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 28)
-shape = SubResource("RectangleShape2D_qh5pu")
+position = Vector2(-4, 26)
+shape = SubResource("CapsuleShape2D_7ucdj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false

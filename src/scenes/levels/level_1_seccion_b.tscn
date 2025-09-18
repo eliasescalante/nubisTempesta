@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://c15pc0op7r80c"]
+[gd_scene load_steps=9 format=4 uid="uid://c15pc0op7r80c"]
 
 [ext_resource type="Script" uid="uid://lhuymv3iuahi" path="res://src/scripts/level_1_seccion_b.gd" id="1_rgbcl"]
 [ext_resource type="Texture2D" uid="uid://5utjvy6fpocs" path="res://_assets/art/tileset/tiles-plataformas-256-01.png" id="1_xg4q2"]
@@ -4854,6 +4854,9 @@ size = Vector2(282, 476)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2j7jn"]
 size = Vector2(317, 548)
 
+[sub_resource type="LabelSettings" id="LabelSettings_rgbcl"]
+font_size = 200
+
 [node name="Level1SeccionB" type="Node2D"]
 script = ExtResource("1_rgbcl")
 
@@ -4875,21 +4878,29 @@ position = Vector2(1314, 415)
 [node name="Portal1a2" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal1a2"]
-position = Vector2(140, 397)
+position = Vector2(650, 451)
 shape = SubResource("RectangleShape2D_rgbcl")
 
 [node name="Marker2D" type="Marker2D" parent="Portal1a2"]
-position = Vector2(466, 519)
+position = Vector2(1164, 528)
 
 [node name="Portal2a3" type="Area2D" parent="."]
 position = Vector2(-9, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal2a3"]
-position = Vector2(6040, 441)
+position = Vector2(5942, 441)
 shape = SubResource("RectangleShape2D_2j7jn")
 
 [node name="Marker2D" type="Marker2D" parent="Portal2a3"]
-position = Vector2(5731, 537)
+position = Vector2(4692, 537)
+
+[node name="SECCION" type="Label" parent="."]
+offset_left = 2758.0
+offset_top = -1764.0
+offset_right = 3577.0
+offset_bottom = -1491.0
+text = "THE BAR"
+label_settings = SubResource("LabelSettings_rgbcl")
 
 [connection signal="body_entered" from="Portal1a2" to="." method="_on_portal_1a_2_body_entered"]
 [connection signal="body_entered" from="Portal2a3" to="." method="_on_portal_2a_3_body_entered"]
