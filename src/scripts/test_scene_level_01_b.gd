@@ -4,6 +4,13 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	AudioManager.play_nivel_1()
+	var player = $Player
+	var spawn_point = $Portal1/Marker2D
+	if GameState.portal == 1:
+		player.global_position = spawn_point.global_position
+		GameState.portal = 0
+		print("valor de portal ahora")
+		print(GameState.portal)
 	pass # Replace with function body.
 
 
@@ -13,5 +20,10 @@ func _process(delta: float) -> void:
 
 func _on_portal_1_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		get_tree().change_scene_to_file("res://src/scenes/levels/loader_1.tscn")
+		GameState.portal = 2
+		print(GameState.portal)
+		call_deferred("_change_to_loader")
 	pass # Replace with function body.
+
+func _change_to_loader():
+	get_tree().change_scene_to_file("res://src/scenes/levels/loader_1.tscn")

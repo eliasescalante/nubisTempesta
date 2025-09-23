@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-LevelManager="*res://src/scripts/managers/level_manager.gd"
 AudioManager="*res://src/scenes/AudioManager.tscn"
 GameState="*res://src/scripts/GameState.gd"
 
