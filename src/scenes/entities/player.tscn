@@ -74,14 +74,6 @@ animations = [{
 "texture": ExtResource("3_ij1qy")
 }],
 "loop": true,
-"name": &"hit",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_ij1qy")
-}],
-"loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -120,21 +112,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ucdj"]
-radius = 22.0
-height = 203.5
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ucdj"]
+size = Vector2(56, 204)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_rds41")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1hd0g")
-animation = &"idle"
-frame_progress = 0.8293748
+animation = &"moving"
+frame_progress = 0.07189157
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 26)
-shape = SubResource("CapsuleShape2D_7ucdj")
+position = Vector2(-4, 27)
+shape = SubResource("RectangleShape2D_7ucdj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false

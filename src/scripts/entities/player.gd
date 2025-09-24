@@ -53,10 +53,10 @@ func _physics_process(delta: float) -> void:
 	if direction != 0:
 		animated_sprite_2d.flip_h = direction < 0
 	
-	
+	move_and_slide()
 	update_animation(on_floor, direction)
 	
-	move_and_slide()
+	
 
 
 func start_dash(direction : float) -> void:
@@ -79,8 +79,14 @@ func update_animation(on_floor : bool, direction : float) -> void:
 	if is_dashing:
 		play_anim("dash")
 	elif not on_floor:
-		play_anim("jump")
-	elif abs(velocity.x) > 10:
+		if velocity.y < -50:
+			if not can_double_jump:  # ya gastaste el doble salto
+				play_anim("doblejump")
+			else:
+				play_anim("jump")
+		else:
+			play_anim("jump")
+	elif on_floor and abs(velocity.x) > 10:
 		play_anim("moving")
 	else:
 		play_anim("idle")

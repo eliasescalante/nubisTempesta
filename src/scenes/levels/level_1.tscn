@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=4 uid="uid://clx0rliac47qw"]
 
-[ext_resource type="Texture2D" uid="uid://5utjvy6fpocs" path="res://_assets/art/tileset/tiles-plataformas-256-01.png" id="1_hrkog"]
-[ext_resource type="Script" uid="uid://de366u52gwitk" path="res://src/scripts/test_scene_level_01_b.gd" id="1_iealy"]
-[ext_resource type="PackedScene" uid="uid://u0o8vfl820el" path="res://src/scenes/entities/plataformas.tscn" id="2_gjtms"]
-[ext_resource type="PackedScene" uid="uid://b75mm2eok2poj" path="res://src/scenes/entities/static_plataform.tscn" id="2_tsdjn"]
-[ext_resource type="PackedScene" uid="uid://cmeplvg6yvaib" path="res://src/scenes/entities/player.tscn" id="3_gjtms"]
-[ext_resource type="PackedScene" uid="uid://q3sb0n0gwdsu" path="res://src/scenes/ui/hud_nivel.tscn" id="7_6d8fe"]
+[ext_resource type="Script" uid="uid://de366u52gwitk" path="res://src/scripts/level_1.gd" id="1_nw74m"]
+[ext_resource type="Texture2D" uid="uid://5utjvy6fpocs" path="res://_assets/art/tileset/tiles-plataformas-256-01.png" id="2_mrfrg"]
+[ext_resource type="PackedScene" uid="uid://b75mm2eok2poj" path="res://src/scenes/entities/static_plataform.tscn" id="3_cpsdu"]
+[ext_resource type="PackedScene" uid="uid://u0o8vfl820el" path="res://src/scenes/entities/plataformas.tscn" id="4_w1xa4"]
+[ext_resource type="PackedScene" uid="uid://cmeplvg6yvaib" path="res://src/scenes/entities/player.tscn" id="5_wxrok"]
+[ext_resource type="PackedScene" uid="uid://q3sb0n0gwdsu" path="res://src/scenes/ui/hud_nivel.tscn" id="6_m1y7t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m11n0"]
-texture = ExtResource("1_hrkog")
+texture = ExtResource("2_mrfrg")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -4857,8 +4857,8 @@ size = Vector2(429.5, 723)
 [sub_resource type="LabelSettings" id="LabelSettings_m11n0"]
 font_size = 200
 
-[node name="TestSceneLevel01B" type="Node2D"]
-script = ExtResource("1_iealy")
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_nw74m")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -3404.0
@@ -4874,72 +4874,72 @@ tile_set = SubResource("TileSet_iealy")
 
 [node name="staticPlataforms" type="Node2D" parent="."]
 
-[node name="StaticPlataform" parent="staticPlataforms" instance=ExtResource("2_tsdjn")]
+[node name="StaticPlataform" parent="staticPlataforms" instance=ExtResource("3_cpsdu")]
 
-[node name="StaticPlataform10" parent="staticPlataforms" instance=ExtResource("2_tsdjn")]
+[node name="StaticPlataform10" parent="staticPlataforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(-1824, -4493)
 
-[node name="StaticPlataform11" parent="staticPlataforms" instance=ExtResource("2_tsdjn")]
+[node name="StaticPlataform11" parent="staticPlataforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(-1133, -5137)
 
-[node name="StaticPlataform12" parent="staticPlataforms" instance=ExtResource("2_tsdjn")]
+[node name="StaticPlataform12" parent="staticPlataforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(-466, -5697)
 
-[node name="StaticPlataform13" parent="staticPlataforms" instance=ExtResource("2_tsdjn")]
+[node name="StaticPlataform13" parent="staticPlataforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(297, -6055)
 
-[node name="StaticPlataform14" parent="staticPlataforms" instance=ExtResource("2_tsdjn")]
+[node name="StaticPlataform14" parent="staticPlataforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(1024, -6198)
 
-[node name="StaticPlataform2" parent="staticPlataforms" instance=ExtResource("2_tsdjn")]
+[node name="StaticPlataform2" parent="staticPlataforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(851, -355)
 
-[node name="StaticPlataform4" parent="staticPlataforms" instance=ExtResource("2_tsdjn")]
+[node name="StaticPlataform4" parent="staticPlataforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(162, -1724)
 
-[node name="StaticPlataform5" parent="staticPlataforms" instance=ExtResource("2_tsdjn")]
+[node name="StaticPlataform5" parent="staticPlataforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(-478, -2138)
 
-[node name="StaticPlataform3" parent="staticPlataforms" instance=ExtResource("2_tsdjn")]
+[node name="StaticPlataform3" parent="staticPlataforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(807, -1206)
 
-[node name="StaticPlataform6" parent="staticPlataforms" instance=ExtResource("2_tsdjn")]
+[node name="StaticPlataform6" parent="staticPlataforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(597, -3671)
 
-[node name="StaticPlataform7" parent="staticPlataforms" instance=ExtResource("2_tsdjn")]
+[node name="StaticPlataform7" parent="staticPlataforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(1239, -4418)
 
-[node name="StaticPlataform8" parent="staticPlataforms" instance=ExtResource("2_tsdjn")]
+[node name="StaticPlataform8" parent="staticPlataforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(112, -5165)
 
-[node name="StaticPlataform9" parent="staticPlataforms" instance=ExtResource("2_tsdjn")]
+[node name="StaticPlataform9" parent="staticPlataforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(1043, -5663)
 
 [node name="plataforms" type="Node2D" parent="."]
 position = Vector2(1857, -7)
 
-[node name="Plataformas" parent="plataforms" instance=ExtResource("2_gjtms")]
+[node name="Plataformas" parent="plataforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-1332, 244)
 
-[node name="Plataformas6" parent="plataforms" instance=ExtResource("2_gjtms")]
+[node name="Plataformas6" parent="plataforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-1719, -4271)
 
-[node name="Plataformas4" parent="plataforms" instance=ExtResource("2_gjtms")]
+[node name="Plataformas4" parent="plataforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-2670, -3597)
 
-[node name="Plataformas5" parent="plataforms" instance=ExtResource("2_gjtms")]
+[node name="Plataformas5" parent="plataforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-2853, -4240)
 
-[node name="Plataformas2" parent="plataforms" instance=ExtResource("2_gjtms")]
+[node name="Plataformas2" parent="plataforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-1798, -836)
 
-[node name="Plataformas3" parent="plataforms" instance=ExtResource("2_gjtms")]
+[node name="Plataformas3" parent="plataforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-1837, -2579)
 
-[node name="Player" parent="." instance=ExtResource("3_gjtms")]
+[node name="Player" parent="." instance=ExtResource("5_wxrok")]
 position = Vector2(1667, -6486)
 
-[node name="HudNivel" parent="." instance=ExtResource("7_6d8fe")]
+[node name="HudNivel" parent="." instance=ExtResource("6_m1y7t")]
 
 [node name="Portal1" type="Area2D" parent="."]
 
@@ -4955,7 +4955,7 @@ offset_left = -502.0
 offset_top = -7939.0
 offset_right = 628.0
 offset_bottom = -7666.0
-text = "OUTSIDE - 1"
+text = "NIVEL 1"
 label_settings = SubResource("LabelSettings_m11n0")
 
 [connection signal="body_entered" from="Portal1" to="." method="_on_portal_1_body_entered"]

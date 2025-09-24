@@ -21,9 +21,10 @@ func _process(delta: float) -> void:
 func _on_portal_1_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		GameState.portal = 2
+		GameState.loader = 1
+		GameState.text_loader = "THE BAR..."
 		print(GameState.portal)
 		call_deferred("_change_to_loader")
-	pass # Replace with function body.
 
 func _change_to_loader():
-	get_tree().change_scene_to_file("res://src/scenes/levels/loader_1.tscn")
+	get_tree().change_scene_to_file("res://src/scenes/levels/loader.tscn")
