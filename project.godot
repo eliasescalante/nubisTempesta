@@ -24,6 +24,7 @@ GameState="*res://src/scripts/GameState.gd"
 
 player=""
 portals=""
+items=""
 
 [input]
 

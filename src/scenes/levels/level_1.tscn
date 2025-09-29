@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://clx0rliac47qw"]
+[gd_scene load_steps=12 format=4 uid="uid://clx0rliac47qw"]
 
 [ext_resource type="Script" uid="uid://de366u52gwitk" path="res://src/scripts/level_1.gd" id="1_nw74m"]
 [ext_resource type="Texture2D" uid="uid://5utjvy6fpocs" path="res://_assets/art/tileset/tiles-plataformas-256-01.png" id="2_mrfrg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://u0o8vfl820el" path="res://src/scenes/entities/plataformas.tscn" id="4_w1xa4"]
 [ext_resource type="PackedScene" uid="uid://cmeplvg6yvaib" path="res://src/scenes/entities/player.tscn" id="5_wxrok"]
 [ext_resource type="PackedScene" uid="uid://q3sb0n0gwdsu" path="res://src/scenes/ui/hud_nivel.tscn" id="6_m1y7t"]
+[ext_resource type="PackedScene" uid="uid://csx2ddbcr3pxe" path="res://src/scenes/entities/item.tscn" id="7_mrfrg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m11n0"]
 texture = ExtResource("2_mrfrg")
@@ -4937,9 +4938,9 @@ position = Vector2(-1798, -836)
 position = Vector2(-1837, -2579)
 
 [node name="Player" parent="." instance=ExtResource("5_wxrok")]
-position = Vector2(1667, -6486)
+position = Vector2(-1358, 397)
 
-[node name="HudNivel" parent="." instance=ExtResource("6_m1y7t")]
+[node name="hud" parent="." instance=ExtResource("6_m1y7t")]
 
 [node name="Portal1" type="Area2D" parent="."]
 
@@ -4949,6 +4950,9 @@ shape = SubResource("RectangleShape2D_m11n0")
 
 [node name="Marker2D" type="Marker2D" parent="Portal1"]
 position = Vector2(1702, -6414)
+
+[node name="Item" parent="." instance=ExtResource("7_mrfrg")]
+position = Vector2(-1246, 589)
 
 [node name="SECCION" type="Label" parent="."]
 offset_left = -502.0

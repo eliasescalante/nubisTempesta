@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://q3sb0n0gwdsu"]
+[gd_scene load_steps=2 format=3 uid="uid://q3sb0n0gwdsu"]
 
 [ext_resource type="Script" uid="uid://ca64kl6y55xos" path="res://src/scripts/ui/hud_nivel.gd" id="1_u684c"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_u684c"]
-font_color = Color(1, 0.0509804, 1, 1)
 
 [node name="HudNivel" type="CanvasLayer"]
 script = ExtResource("1_u684c")
@@ -16,6 +13,8 @@ offset_bottom = 591.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -31,5 +30,3 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
-text = "HOLIS SOLO PARA VER QUE EL HUD FUNCIONA Y SE CARGA"
-label_settings = SubResource("LabelSettings_u684c")
