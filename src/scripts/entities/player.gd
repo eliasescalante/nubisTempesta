@@ -1,44 +1,65 @@
 extends CharacterBody2D
 class_name Player
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -900.0
+# --- Constantes base ---
+const SPEED_BASE = 300.0
+const JUMP_VELOCITY_BASE = -900.0
 const DASH_SPEED = 600.0
 const DASH_DURATION = 0.2
 
+# --- Estados ---
 var is_dashing := false
 var dash_timer := 0.0
 var can_double_jump := true
 
 # --- Variables PLD ---
-@export var pld: int = 337  # PLD inicial
+@export var pld: int = 337
 @export var pld_por_salto: int = 5
 @export var pld_por_doble_salto: int = 7
 @export var pld_por_dash: int = 10
 @export var pld_por_tiempo_quieto: int = 1
-@export var tiempo_quieto: float = 1.0  # cada cuántos segundos gasta PLD estando quieto
+@export var tiempo_quieto: float = 1.0
 
 var tiempo_sin_mover: float = 0.0
 
+# --- Referencias ---
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var hud = get_tree().get_current_scene().get_node("hud")  # Ajusta si es necesario
+@onready var hud = get_tree().get_current_scene().get_node("HudNivel")  # Ajusta si es necesario
+
+# --- Señal para HUD (opcional, si quieres dinámico sin depender de la variable hud) ---
+signal pld_cambiado(nuevo_pld)
 
 # --- Función para gastar PLD ---
 func gastar_pld(cantidad: int):
 	if pld <= 0:
 		return
 	pld = max(pld - cantidad, 0)
-	hud.actualizar_puntos(pld)
-	print(pld)
+	if hud:
+		hud.actualizar_puntos(pld)
+	emit_signal("pld_cambiado", pld)
+	print("PLD restante:", pld)
 
 # --- Ready ---
 func _ready() -> void:
 	play_anim("idle")
 
-# --- Physics ---
+# --- Multiplicador de velocidad / salto según PLD ---
+func get_pld_multiplier() -> float:
+	if pld >= 337 / 2:
+		return 1.0
+	else:
+		# Lineal: PLD=0 → velocidad 50%
+		return 0.5 + 0.5 * (pld / (337 / 2))
+
+# --- Physics Process ---
 func _physics_process(delta: float) -> void:
 	var on_floor := is_on_floor()
 	var direction := Input.get_axis("ui_left", "ui_right")
+	
+	# --- Calculamos multiplicador ---
+	var multiplier = get_pld_multiplier()
+	var SPEED = SPEED_BASE * multiplier
+	var JUMP_VELOCITY = JUMP_VELOCITY_BASE * multiplier
 	
 	# --- Dash ---
 	if Input.is_action_just_pressed("dash") and not is_dashing:
@@ -50,9 +71,9 @@ func _physics_process(delta: float) -> void:
 		dash_timer -= delta
 		if dash_timer <= 0:
 			is_dashing = false
-	
+
 	# --- Gravedad ---
-	if not is_on_floor() and not is_dashing:
+	if not on_floor and not is_dashing:
 		velocity += get_gravity() * delta
 
 	# --- Salto / Doble salto ---
@@ -69,14 +90,14 @@ func _physics_process(delta: float) -> void:
 				can_double_jump = false
 				play_anim("doblejump")
 				gastar_pld(pld_por_doble_salto)
-	
+
 	# --- Movimiento horizontal ---
 	if not is_dashing:
 		if direction != 0:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-	
+
 	if direction != 0:
 		animated_sprite_2d.flip_h = direction < 0
 
