@@ -1,32 +1,60 @@
-[gd_scene load_steps=2 format=3 uid="uid://q3sb0n0gwdsu"]
+[gd_scene load_steps=4 format=3 uid="uid://q3sb0n0gwdsu"]
 
 [ext_resource type="Script" uid="uid://ca64kl6y55xos" path="res://src/scripts/ui/hud_nivel.gd" id="1_u684c"]
+[ext_resource type="Texture2D" uid="uid://djhma6kw32f6f" path="res://_assets/hud/hud_placeholder.png" id="2_bu8jm"]
+[ext_resource type="FontFile" uid="uid://ctq6t2qobn1k5" path="res://_assets/fonts/sf_cartoonist_hand/SF_Cartoonist_Hand_Bold.ttf" id="3_akq8j"]
 
 [node name="HudNivel" type="CanvasLayer"]
 script = ExtResource("1_u684c")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2"]
+layout_mode = 2
+texture = ExtResource("2_bu8jm")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_left = 8.0
 offset_top = 549.0
 offset_right = 45.0
 offset_bottom = 591.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="zona" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_akq8j")
+text = "Nivel 1"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect4" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
+horizontal_alignment = 1
