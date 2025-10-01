@@ -45,7 +45,10 @@ func _ready() -> void:
 
 # --- Multiplicador de velocidad / salto según PLD ---
 func get_pld_multiplier() -> float:
+	
+	# para esta etapa inicial de desarrollo lo dejamos sin efecto.
 	return 1.0
+	# ------------------------
 	if pld >= 337 / 2:
 		return 1.0
 	else:
