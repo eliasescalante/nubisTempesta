@@ -4,7 +4,7 @@ class_name MovingPlatform
 # Velocidad de movimiento (pixeles/seg)
 @export var speed := 200.0
 # Distancia máxima desde la posición inicial antes de cambiar dirección
-@export var distance := 400.0
+@export var distance := 512.0
 
 var direction := 1  # 1 = derecha, -1 = izquierda
 var start_position := Vector2.ZERO

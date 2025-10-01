@@ -3,7 +3,7 @@ class_name Player
 
 # --- Constantes base ---
 const SPEED_BASE = 300.0
-const JUMP_VELOCITY_BASE = -900.0
+const JUMP_VELOCITY_BASE = -1024.0
 const DASH_SPEED = 600.0
 const DASH_DURATION = 0.2
 
@@ -45,6 +45,7 @@ func _ready() -> void:
 
 # --- Multiplicador de velocidad / salto según PLD ---
 func get_pld_multiplier() -> float:
+	return 1.0
 	if pld >= 337 / 2:
 		return 1.0
 	else:
