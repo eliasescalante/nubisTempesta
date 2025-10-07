@@ -145,8 +145,17 @@ shape = SubResource("RectangleShape2D_m11n0")
 [node name="Marker2D" type="Marker2D" parent="Portal1"]
 position = Vector2(2083, -2159)
 
+[node name="Item2" parent="." instance=ExtResource("7_mrfrg")]
+position = Vector2(-640, 640)
+
 [node name="Item" parent="." instance=ExtResource("7_mrfrg")]
-position = Vector2(-512, 640)
+position = Vector2(-1280, 640)
+
+[node name="Item3" parent="." instance=ExtResource("7_mrfrg")]
+position = Vector2(-1344, 192)
+
+[node name="Item4" parent="." instance=ExtResource("7_mrfrg")]
+position = Vector2(-960, 192)
 
 [node name="SECCION" type="Label" parent="."]
 offset_left = -502.0

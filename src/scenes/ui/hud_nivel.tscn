@@ -1,8 +1,76 @@
-[gd_scene load_steps=4 format=3 uid="uid://q3sb0n0gwdsu"]
+[gd_scene load_steps=17 format=3 uid="uid://q3sb0n0gwdsu"]
 
 [ext_resource type="Script" uid="uid://ca64kl6y55xos" path="res://src/scripts/ui/hud_nivel.gd" id="1_u684c"]
 [ext_resource type="Texture2D" uid="uid://djhma6kw32f6f" path="res://_assets/hud/hud_placeholder.png" id="2_bu8jm"]
 [ext_resource type="FontFile" uid="uid://ctq6t2qobn1k5" path="res://_assets/fonts/sf_cartoonist_hand/SF_Cartoonist_Hand_Bold.ttf" id="3_akq8j"]
+[ext_resource type="FontFile" uid="uid://b17yuhydnkdrk" path="res://_assets/fonts/sf_cartoonist_hand/SF_Cartoonist_Hand_Italic.ttf" id="4_akq8j"]
+[ext_resource type="Texture2D" uid="uid://bsavn7isdvr1e" path="res://_assets/hud/icon_dobleJump.png" id="5_oubkn"]
+[ext_resource type="Texture2D" uid="uid://b1xgt8y44py5b" path="res://_assets/hud/icon_dash.png" id="6_ox6fc"]
+[ext_resource type="Texture2D" uid="uid://bnybymy6sgw8h" path="res://_assets/hud/pldIcon_animation.png" id="7_15er3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlogt"]
+atlas = ExtResource("7_15er3")
+region = Rect2(672, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6sgl"]
+atlas = ExtResource("7_15er3")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6p5j8"]
+atlas = ExtResource("7_15er3")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuvjw"]
+atlas = ExtResource("7_15er3")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugbuy"]
+atlas = ExtResource("7_15er3")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tyqh"]
+atlas = ExtResource("7_15er3")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sckn7"]
+atlas = ExtResource("7_15er3")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk8vn"]
+atlas = ExtResource("7_15er3")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oiev5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlogt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6sgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6p5j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuvjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugbuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tyqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sckn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rk8vn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="HudNivel" type="CanvasLayer"]
 script = ExtResource("1_u684c")
@@ -16,45 +84,117 @@ layout_mode = 2
 texture = ExtResource("2_bu8jm")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_left = 8.0
-offset_top = 549.0
-offset_right = 45.0
-offset_bottom = 591.0
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-alignment = 2
-
-[node name="zona" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_akq8j")
-text = "Nivel 1"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="location_HBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(320, 60)
 layout_mode = 2
 size_flags_horizontal = 0
+alignment = 2
+
+[node name="level_label" type="Label" parent="MarginContainer/VBoxContainer/location_HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect4" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer"]
-layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_akq8j")
+theme_override_font_sizes/font_size = 16
+text = "NIVEL 1 - ZONA A"
 horizontal_alignment = 1
+
+[node name="zone_label" type="Label" parent="MarginContainer/VBoxContainer/location_HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_akq8j")
+text = "BAJOS SOÑADORES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="statusBar_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 0
+
+[node name="moves_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/statusBar_HBoxContainer"]
+custom_minimum_size = Vector2(512, 108)
+layout_mode = 2
+size_flags_horizontal = 0
+alignment = 2
+
+[node name="dobleJump_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/statusBar_HBoxContainer/moves_HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("5_oubkn")
+
+[node name="dash_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/statusBar_HBoxContainer/moves_HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("6_ox6fc")
+
+[node name="pldIcon_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/statusBar_HBoxContainer"]
+custom_minimum_size = Vector2(128, 108)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="pldIcon_AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/statusBar_HBoxContainer/pldIcon_HBoxContainer"]
+unique_name_in_owner = true
+position = Vector2(64, 54)
+sprite_frames = SubResource("SpriteFrames_oiev5")
+frame = 2
+frame_progress = 0.65459114
+
+[node name="pldPoints_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/statusBar_HBoxContainer"]
+custom_minimum_size = Vector2(188, 0)
+layout_mode = 2
+
+[node name="pldPoints_label" type="Label" parent="MarginContainer/VBoxContainer/statusBar_HBoxContainer/pldPoints_HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_akq8j")
+theme_override_font_sizes/font_size = 22
+text = "000000000000"
+
+[node name="objects_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/statusBar_HBoxContainer"]
+custom_minimum_size = Vector2(324, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 56
+alignment = 1
+
+[node name="objectUsed_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/statusBar_HBoxContainer/objects_HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="objectQuest_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/statusBar_HBoxContainer/objects_HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="objectPass_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/statusBar_HBoxContainer/objects_HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
