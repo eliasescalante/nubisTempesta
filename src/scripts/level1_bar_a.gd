@@ -1,6 +1,11 @@
 extends Node2D
 
+@onready var hud = get_tree().get_current_scene().get_node("HudNivel")
+@export var zona : String = "NIVEL 1 - ZONA A"
+@export var nivel : String = "EL BAR "
+
 func _ready() -> void:
+	
 	var player = $Player
 	if GameState.portal == 2:
 		var spawn_point = $Portal_1/Marker2D
@@ -14,6 +19,9 @@ func _ready() -> void:
 		GameState.portal = 0
 		print("valor de portal ahora")
 		print(GameState.portal)
+	
+	if hud:
+		hud.actualizar_nivel_y_zona(zona, nivel )
 
 func _process(delta: float) -> void:
 	pass

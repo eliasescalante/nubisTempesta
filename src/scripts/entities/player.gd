@@ -24,9 +24,8 @@ var tiempo_sin_mover: float = 0.0
 
 # --- Referencias ---
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var hud = get_tree().get_current_scene().get_node("HudNivel")  # Ajusta si es necesario
+@onready var hud = get_tree().get_current_scene().get_node("HudNivel")
 
-# --- Señal para HUD (opcional, si quieres dinámico sin depender de la variable hud) ---
 signal pld_cambiado(nuevo_pld)
 
 # --- Función para gastar PLD ---
@@ -147,3 +146,10 @@ func update_animation(on_floor : bool, direction : float) -> void:
 		play_anim("moving")
 	else:
 		play_anim("idle")
+
+func sumar_pld(cantidad: int):
+	pld += cantidad
+	if hud:
+		hud.actualizar_puntos(pld)
+	emit_signal("pld_cambiado", pld)
+	print("PLD actual tras sumar:", pld)

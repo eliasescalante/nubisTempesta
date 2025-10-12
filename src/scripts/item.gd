@@ -8,7 +8,7 @@ func _ready():
 
 func _on_area_2d_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
-		var hud = get_tree().get_current_scene().get_node("hud")
+		var hud = get_tree().get_current_scene().get_node("HudNivel")
 		if hud and item_texture:
 			hud.agregar_item(item_texture.texture)
 		queue_free()

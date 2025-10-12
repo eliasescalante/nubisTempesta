@@ -1,20 +1,23 @@
 extends Node2D
 
+@onready var hud = get_tree().get_current_scene().get_node("HudNivel")
+@export var zona : String = "NIVEL 1 - ZONA A"
+@export var nivel : String = "BAJOS SOÑADORES"
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	AudioManager.play_nivel_1()
 	var player = $Player
 	var spawn_point = $Portal1/Marker2D
+	
 	if GameState.portal == 1:
 		player.global_position = spawn_point.global_position
 		GameState.portal = 0
 		print("valor de portal ahora")
 		print(GameState.portal)
-	pass # Replace with function body.
+		
+	if hud:
+		hud.actualizar_nivel_y_zona(zona, nivel )
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 

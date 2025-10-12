@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3b1kfryytjab"]
+[gd_scene load_steps=4 format=3 uid="uid://c3b1kfryytjab"]
 
+[ext_resource type="Script" uid="uid://soljjaaeo7jp" path="res://src/scripts/entities/item_used.gd" id="1_25dq4"]
 [ext_resource type="Texture2D" uid="uid://c46o3ooyukr00" path="res://_assets/sprites/item_04_chupachups.png" id="1_m71a4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_25dq4"]
 size = Vector2(96, 87)
 
-[node name="ItemChupachups" type="Node2D"]
+[node name="Item" type="Node2D" groups=["items"]]
+script = ExtResource("1_25dq4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.5, -4.5)
@@ -17,3 +19,5 @@ texture = ExtResource("1_m71a4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_25dq4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
