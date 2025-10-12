@@ -133,7 +133,7 @@ distance = 768.0
 position = Vector2(-1473, -2425)
 
 [node name="Player" parent="." instance=ExtResource("5_wxrok")]
-position = Vector2(-1960, 544)
+position = Vector2(-2974, 593)
 
 [node name="Portal1" type="Area2D" parent="."]
 

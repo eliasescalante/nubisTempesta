@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://c4y46vy4vyhft"]
+[gd_scene load_steps=10 format=4 uid="uid://c4y46vy4vyhft"]
 
 [ext_resource type="Script" uid="uid://dguicjyqja4an" path="res://src/scripts/level_1_the_bar_2.gd" id="1_fsk7p"]
 [ext_resource type="Texture2D" uid="uid://5utjvy6fpocs" path="res://_assets/art/tileset/tiles-plataformas-256-01.png" id="1_li2to"]
 [ext_resource type="PackedScene" uid="uid://cmeplvg6yvaib" path="res://src/scenes/entities/player.tscn" id="2_2bq7y"]
+[ext_resource type="PackedScene" uid="uid://q3sb0n0gwdsu" path="res://src/scenes/ui/hud_nivel.tscn" id="4_0vqsv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fsk7p"]
 texture = ExtResource("1_li2to")
@@ -4900,6 +4901,8 @@ shape = SubResource("RectangleShape2D_fsk7p")
 
 [node name="Marker2D" type="Marker2D" parent="Portalc"]
 position = Vector2(2324, 100)
+
+[node name="HudNivel" parent="." instance=ExtResource("4_0vqsv")]
 
 [connection signal="body_entered" from="Portal2_3" to="." method="_on_portal_2_3_body_entered"]
 [connection signal="body_entered" from="Portalc" to="." method="_on_portalc_body_entered"]
