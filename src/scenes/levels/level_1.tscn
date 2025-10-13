@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=4 uid="uid://clx0rliac47qw"]
+[gd_scene load_steps=14 format=4 uid="uid://clx0rliac47qw"]
 
 [ext_resource type="Script" uid="uid://de366u52gwitk" path="res://src/scripts/level_1.gd" id="1_nw74m"]
 [ext_resource type="Texture2D" uid="uid://5utjvy6fpocs" path="res://_assets/art/tileset/tiles-plataformas-256-01.png" id="2_mrfrg"]
 [ext_resource type="PackedScene" uid="uid://b75mm2eok2poj" path="res://src/scenes/entities/static_plataform.tscn" id="3_cpsdu"]
 [ext_resource type="PackedScene" uid="uid://u0o8vfl820el" path="res://src/scenes/entities/plataformas.tscn" id="4_w1xa4"]
+[ext_resource type="PackedScene" uid="uid://ufvy0dcwnqjf" path="res://src/scenes/entities/npc_estorbo.tscn" id="5_w1xa4"]
 [ext_resource type="PackedScene" uid="uid://cmeplvg6yvaib" path="res://src/scenes/entities/player.tscn" id="5_wxrok"]
 [ext_resource type="PackedScene" uid="uid://q3sb0n0gwdsu" path="res://src/scenes/ui/hud_nivel.tscn" id="6_m1y7t"]
 [ext_resource type="PackedScene" uid="uid://csx2ddbcr3pxe" path="res://src/scenes/entities/item_honguito.tscn" id="7_mrfrg"]
@@ -132,6 +133,26 @@ distance = 768.0
 [node name="Plataformas3" parent="plataforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-1473, -2425)
 
+[node name="NPCs" type="Node" parent="."]
+
+[node name="npc_estorbo_01" parent="NPCs" instance=ExtResource("5_w1xa4")]
+position = Vector2(1856, -2176)
+
+[node name="npc_estorbo_02" parent="NPCs" instance=ExtResource("5_w1xa4")]
+position = Vector2(2368, -640)
+
+[node name="npc_estorbo_03" parent="NPCs" instance=ExtResource("5_w1xa4")]
+position = Vector2(2112, 640)
+
+[node name="npc_estorbo_04" parent="NPCs" instance=ExtResource("5_w1xa4")]
+position = Vector2(-640, -640)
+
+[node name="npc_estorbo_05" parent="NPCs" instance=ExtResource("5_w1xa4")]
+position = Vector2(-1344, -3456)
+
+[node name="npc_estorbo_06" parent="NPCs" instance=ExtResource("5_w1xa4")]
+position = Vector2(-1152, 128)
+
 [node name="Player" parent="." instance=ExtResource("5_wxrok")]
 position = Vector2(-2974, 593)
 
@@ -142,22 +163,48 @@ position = Vector2(3264, -2240)
 shape = SubResource("RectangleShape2D_m11n0")
 
 [node name="Marker2D" type="Marker2D" parent="Portal1"]
-position = Vector2(2083, -2159)
+position = Vector2(2944, -2176)
 
-[node name="Item2" parent="." instance=ExtResource("7_mrfrg")]
+[node name="Collectables" type="Node" parent="."]
+
+[node name="Item2" parent="Collectables" instance=ExtResource("7_mrfrg")]
 position = Vector2(-640, 640)
 
-[node name="Item" parent="." instance=ExtResource("7_mrfrg")]
+[node name="Item10" parent="Collectables" instance=ExtResource("7_mrfrg")]
+position = Vector2(2816, -3712)
+
+[node name="Item" parent="Collectables" instance=ExtResource("7_mrfrg")]
 position = Vector2(-1280, 640)
 
-[node name="Item3" parent="." instance=ExtResource("7_mrfrg")]
+[node name="Item3" parent="Collectables" instance=ExtResource("7_mrfrg")]
 position = Vector2(-1344, 192)
 
-[node name="Item4" parent="." instance=ExtResource("7_mrfrg")]
+[node name="Item4" parent="Collectables" instance=ExtResource("7_mrfrg")]
 position = Vector2(-960, 192)
 
-[node name="Item5" parent="." instance=ExtResource("8_cpsdu")]
-position = Vector2(-1496, 642)
+[node name="Item5" parent="Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(-128, -640)
+
+[node name="Item6" parent="Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(384, -1408)
+
+[node name="Item7" parent="Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(-384, -2240)
+
+[node name="Item8" parent="Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(-960, -2688)
+
+[node name="Item11" parent="Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(-1152, -6016)
+
+[node name="Item12" parent="Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(-896, -6016)
+
+[node name="Item13" parent="Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(-1024, -6272)
+
+[node name="Item9" parent="Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(1408, -5248)
 
 [node name="SECCION" type="Label" parent="."]
 offset_left = -448.0

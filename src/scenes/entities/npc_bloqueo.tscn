@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://quducok480tl"]
+
+[ext_resource type="Texture2D" uid="uid://cvib7p81t01vq" path="res://_assets/sprites/npc-historia-01.png" id="1_qntfx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khwfg"]
+atlas = ExtResource("1_qntfx")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uuuxu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khwfg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uuuxu")
