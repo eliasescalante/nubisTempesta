@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://wstroalu326b"]
+
+[ext_resource type="Script" uid="uid://p60gwl41xbwq" path="res://src/scripts/entities/npc_decorado_blanco.gd" id="1_om6lo"]
+[ext_resource type="Texture2D" uid="uid://doas4hmj8q721" path="res://_assets/sprites/npc-estorbo-negro-spritesheet.png" id="2_om6lo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lewqn"]
+atlas = ExtResource("2_om6lo")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1v6ww"]
+atlas = ExtResource("2_om6lo")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f0bcc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lewqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1v6ww")
+}],
+"loop": true,
+"name": &"especie_1",
+"speed": 4.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_om6lo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_f0bcc")
+animation = &"especie_1"
