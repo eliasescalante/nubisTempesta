@@ -6,8 +6,8 @@ extends Node2D
 
 func _ready() -> void:
 	AudioManager.play_nivel_1()
-	var player = $Player
-	var spawn_point = $Portal1/Marker2D
+	var player = %Player
+	var spawn_point = %Portal1/Marker2D
 	
 	if GameState.portal == 1:
 		player.global_position = spawn_point.global_position

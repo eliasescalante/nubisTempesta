@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=4 uid="uid://clx0rliac47qw"]
+[gd_scene load_steps=22 format=4 uid="uid://clx0rliac47qw"]
 
 [ext_resource type="Script" uid="uid://de366u52gwitk" path="res://src/scripts/level_1.gd" id="1_nw74m"]
-[ext_resource type="Texture2D" uid="uid://5utjvy6fpocs" path="res://_assets/art/tileset/tiles-plataformas-256-01.png" id="2_mrfrg"]
+[ext_resource type="Texture2D" uid="uid://b3dxygg06h711" path="res://_assets/art/tileset/exterior_blanco_tileset_01.png" id="2_0jaot"]
+[ext_resource type="Texture2D" uid="uid://5utjvy6fpocs" path="res://_assets/art/tileset/exterior_tileset_01.png" id="2_mrfrg"]
 [ext_resource type="PackedScene" uid="uid://b47xyn41cyk2p" path="res://src/scenes/entities/npc_decorado_blanco.tscn" id="2_wxrok"]
 [ext_resource type="PackedScene" uid="uid://b75mm2eok2poj" path="res://src/scenes/entities/static_plataform.tscn" id="3_cpsdu"]
 [ext_resource type="PackedScene" uid="uid://u0o8vfl820el" path="res://src/scenes/entities/plataformas.tscn" id="4_w1xa4"]
@@ -11,6 +12,33 @@
 [ext_resource type="PackedScene" uid="uid://csx2ddbcr3pxe" path="res://src/scenes/entities/item_honguito.tscn" id="7_mrfrg"]
 [ext_resource type="PackedScene" uid="uid://c3b1kfryytjab" path="res://src/scenes/entities/item_chupachups.tscn" id="8_cpsdu"]
 [ext_resource type="PackedScene" uid="uid://wstroalu326b" path="res://src/scenes/entities/npc_decorado_negro.tscn" id="10_m1y7t"]
+[ext_resource type="Texture2D" uid="uid://dc8e6v3c2c08v" path="res://_assets/art/tileset/exterior_negro_tileset_01.png" id="11_cufsb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0jaot"]
+texture = ExtResource("2_0jaot")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_0jaot"]
+tile_size = Vector2i(256, 256)
+sources/0 = SubResource("TileSetAtlasSource_0jaot")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mrfrg"]
 texture = ExtResource("2_mrfrg")
@@ -60,8 +88,8 @@ sources/0 = SubResource("TileSetAtlasSource_mrfrg")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m11n0"]
 size = Vector2(128, 512)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m1y7t"]
-texture = ExtResource("2_mrfrg")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cufsb"]
+texture = ExtResource("11_cufsb")
 texture_region_size = Vector2i(256, 256)
 0:1/0 = 0
 1:1/0 = 0
@@ -84,7 +112,7 @@ texture_region_size = Vector2i(256, 256)
 
 [sub_resource type="TileSet" id="TileSet_p4co6"]
 tile_size = Vector2i(256, 256)
-sources/1 = SubResource("TileSetAtlasSource_m1y7t")
+sources/1 = SubResource("TileSetAtlasSource_cufsb")
 
 [sub_resource type="LabelSettings" id="LabelSettings_m11n0"]
 font_size = 200
@@ -97,10 +125,13 @@ offset_left = -4608.0
 offset_top = -8704.0
 offset_right = 4864.0
 offset_bottom = 2048.0
-color = Color(0.75, 0.75, 0.75, 1)
 
 [node name="Parallax2D_fondo" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.9, 1)
+scroll_scale = Vector2(0.9, 0.9)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Parallax2D_fondo"]
+tile_map_data = PackedByteArray("AAD3/wAAAAABAAIAAAD3/wEAAAAAAAIAAAD3/wIAAAABAAIAAAD3/wMAAAAAAAIAAAD3/wQAAAABAAIAAAD3/wUAAAAAAAIAAAD3/wYAAAABAAIAAAD3/wcAAAAAAAIAAAD3//j/AAABAAIAAAD3//n/AAAAAAIAAAD3//r/AAABAAIAAAD3//v/AAAAAAIAAAD3//z/AAABAAIAAAD3//3/AAAAAAIAAAD3//7/AAABAAIAAAD3////AAAAAAIAAAD2//j/AAAFAAEAAAD1//j/AAAEAAEAAAD4//j/AAACAAEAAAD5//j/AAADAAEAAAD8//7/AAADAAEAAAD7//7/AAACAAEAAAD6//7/AAABAAEAAAD4//7/AAACAAEAAAD5//7/AAAFAAEAAAD2//7/AAAFAAEAAAD1//7/AAAEAAEAAAD5/wMAAAAEAAEAAAD6/wMAAAAFAAEAAAD7/wMAAAACAAEAAAD8/wMAAAAFAAEAAAD9/wMAAAABAAEAAAD+/wMAAAABAAEAAAD//wMAAAACAAEAAAAAAAMAAAADAAEAAAA=")
+tile_set = SubResource("TileSet_0jaot")
 
 [node name="npc_decorado_1" parent="Parallax2D_fondo" instance=ExtResource("2_wxrok")]
 position = Vector2(-896, -640)
@@ -205,9 +236,11 @@ position = Vector2(-1152, 128)
 position = Vector2(-448, 640)
 
 [node name="Player" parent="Parallax2D_medio" instance=ExtResource("5_wxrok")]
+unique_name_in_owner = true
 position = Vector2(-2974, 593)
 
 [node name="Portal1" type="Area2D" parent="Parallax2D_medio"]
+unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D_medio/Portal1"]
 position = Vector2(3264, -2240)
@@ -225,7 +258,7 @@ position = Vector2(-640, 640)
 position = Vector2(2816, -3712)
 
 [node name="Item" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
-position = Vector2(-1280, 640)
+position = Vector2(-1920, 640)
 
 [node name="Item3" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
 position = Vector2(-1344, 192)
@@ -262,12 +295,14 @@ z_index = 200
 scroll_scale = Vector2(1.1, 1.1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Parallax2D_frente"]
-modulate = Color(0.5, 0.5, 0.5, 1)
-tile_map_data = PackedByteArray("AAD8/wMAAQAEAAEAAAD9/wMAAQADAAEAAAD9/wAAAQAEAAEAAAD+/wAAAQAFAAEAAAD//wAAAQACAAEAAAAAAAAAAQADAAEAAAA=")
+tile_map_data = PackedByteArray("AAD8/wMAAQACAAEAAAD9/wMAAQADAAEAAAD9/wAAAQAEAAEAAAD+/wAAAQAFAAEAAAD//wAAAQACAAEAAAAAAAAAAQADAAEAAAD7//z/AQAAAAIAAAD7//3/AQABAAIAAAD7//7/AQAAAAIAAAD7////AQABAAIAAAD7/wAAAQAAAAIAAAD7/wEAAQABAAIAAAD7/wIAAQAAAAIAAAD7/wMAAQABAAIAAAD7/wQAAQAAAAIAAAD7/wUAAQABAAIAAAD7/wYAAQAAAAIAAAD7/wcAAQABAAIAAAD7//v/AQAAAAEAAAD8//v/AQADAAEAAAD6//v/AQAEAAEAAAD6/wMAAQAFAAEAAAD5/wMAAQAEAAEAAAA=")
 tile_set = SubResource("TileSet_p4co6")
 
 [node name="npc_decorado_01" parent="Parallax2D_frente" instance=ExtResource("10_m1y7t")]
 position = Vector2(-832, 640)
+
+[node name="npc_decorado_04" parent="Parallax2D_frente" instance=ExtResource("10_m1y7t")]
+position = Vector2(-1408, 640)
 
 [node name="npc_decorado_02" parent="Parallax2D_frente" instance=ExtResource("10_m1y7t")]
 position = Vector2(-448, -128)

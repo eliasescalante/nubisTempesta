@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c21s30bq7cqnb"
-path="res://.godot/imported/Image20250805201329.jpg-63cc152692505ff5e79e790fb4e8de11.ctex"
+uid="uid://dw1dxfy5liyoq"
+path="res://.godot/imported/nubis_game_tileset_02.png-f6b588b1e895b7aa3659f377f36ee5c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/img/Image20250805201329.jpg"
-dest_files=["res://.godot/imported/Image20250805201329.jpg-63cc152692505ff5e79e790fb4e8de11.ctex"]
+source_file="res://_assets/tiles/nubis_game_tileset_02.png"
+dest_files=["res://.godot/imported/nubis_game_tileset_02.png-f6b588b1e895b7aa3659f377f36ee5c7.ctex"]
 
 [params]
 

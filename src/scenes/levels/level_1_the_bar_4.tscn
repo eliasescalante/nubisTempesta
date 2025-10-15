@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=4 uid="uid://bc6xuh8fgbu0g"]
 
-[ext_resource type="Script" uid="uid://ddtfprnqmyrkx" path="res://src/scripts/level_1_the_bar_4.gd" id="1_66j3b"]
-[ext_resource type="Texture2D" uid="uid://5utjvy6fpocs" path="res://_assets/art/tileset/tiles-plataformas-256-01.png" id="1_vx0qu"]
+[ext_resource type="Script" path="res://src/scripts/level_1_the_bar_4.gd" id="1_66j3b"]
+[ext_resource type="Texture2D" uid="uid://5utjvy6fpocs" path="res://_assets/art/tileset/exterior_tileset_01.png" id="1_vx0qu"]
 [ext_resource type="PackedScene" uid="uid://cmeplvg6yvaib" path="res://src/scenes/entities/player.tscn" id="3_hfp61"]
 [ext_resource type="PackedScene" uid="uid://q3sb0n0gwdsu" path="res://src/scenes/ui/hud_nivel.tscn" id="4_6yah3"]
 

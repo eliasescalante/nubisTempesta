@@ -6,15 +6,15 @@ extends Node2D
 
 func _ready() -> void:
 	
-	var player = $Player
+	var player = %Player
 	if GameState.portal == 2:
-		var spawn_point = $Portal_1/Marker2D
+		var spawn_point = %Portal_1/Marker2D
 		player.global_position = spawn_point.global_position
 		GameState.portal = 0
 		print("valor de portal ahora")
 		print(GameState.portal)
 	elif GameState.portal == 3:
-		var spawn_point = $Portal2a3/Marker2D
+		var spawn_point = %Portal2a3/Marker2D
 		player.global_position = spawn_point.global_position
 		GameState.portal = 0
 		print("valor de portal ahora")

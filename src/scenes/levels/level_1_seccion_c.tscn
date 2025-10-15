@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=4 uid="uid://dluwwchgehi2m"]
+[gd_scene load_steps=8 format=4 uid="uid://bd0okmd634wir"]
 
-[ext_resource type="Texture2D" uid="uid://5utjvy6fpocs" path="res://_assets/art/tileset/tiles-plataformas-256-01.png" id="1_fkr3i"]
+[ext_resource type="Texture2D" uid="uid://5utjvy6fpocs" path="res://_assets/art/tileset/exterior_tileset_01.png" id="1_fkr3i"]
 [ext_resource type="Script" uid="uid://b2gdohb8mp1ps" path="res://src/scripts/level_1_seccion_c.gd" id="1_ich5w"]
 [ext_resource type="PackedScene" uid="uid://cmeplvg6yvaib" path="res://src/scenes/entities/player.tscn" id="3_qvrhy"]
 [ext_resource type="PackedScene" uid="uid://q3sb0n0gwdsu" path="res://src/scenes/ui/hud_nivel.tscn" id="4_qvrhy"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5utjvy6fpocs"
-path="res://.godot/imported/tiles-plataformas-256-01.png-fe720158e6d7c1df6e8a4bae35bc432f.ctex"
+uid="uid://b3dxygg06h711"
+path="res://.godot/imported/exterior_blanco_tileset_01.png-fc43a63fdfac95170259d25e5b08166a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/art/tileset/tiles-plataformas-256-01.png"
-dest_files=["res://.godot/imported/tiles-plataformas-256-01.png-fe720158e6d7c1df6e8a4bae35bc432f.ctex"]
+source_file="res://_assets/art/tileset/exterior_blanco_tileset_01.png"
+dest_files=["res://.godot/imported/exterior_blanco_tileset_01.png-fc43a63fdfac95170259d25e5b08166a.ctex"]
 
 [params]
 
