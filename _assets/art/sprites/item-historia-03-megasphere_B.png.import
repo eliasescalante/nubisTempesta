@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhb73jo37w4ih"
-path="res://.godot/imported/nubis-sprite-256-test-01.png-6e7af79e0e51f1bb50f1b391d71d5c9d.ctex"
+uid="uid://c6qihejspbtgk"
+path="res://.godot/imported/item-historia-03-megasphere_B.png-48323afd2cb7b4c37225adeb021c95e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/sprites/nubis-sprite-256-test-01.png"
-dest_files=["res://.godot/imported/nubis-sprite-256-test-01.png-6e7af79e0e51f1bb50f1b391d71d5c9d.ctex"]
+source_file="res://_assets/art/sprites/item-historia-03-megasphere_B.png"
+dest_files=["res://.godot/imported/item-historia-03-megasphere_B.png-48323afd2cb7b4c37225adeb021c95e2.ctex"]
 
 [params]
 

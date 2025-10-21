@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byf62rvs3call"
-path="res://.godot/imported/spritesheet-backgrounds-default.png-da5f1f43d5141eedcbe9eaed3b7ae1d1.ctex"
+uid="uid://clywas7l0t3ro"
+path="res://.godot/imported/npc-estorbo-blanco-spritesheet.png-beeacf10aa936985aa27a942741e81ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/sprites/spritesheet-backgrounds-default.png"
-dest_files=["res://.godot/imported/spritesheet-backgrounds-default.png-da5f1f43d5141eedcbe9eaed3b7ae1d1.ctex"]
+source_file="res://_assets/art/sprites/npc-estorbo-blanco-spritesheet.png"
+dest_files=["res://.godot/imported/npc-estorbo-blanco-spritesheet.png-beeacf10aa936985aa27a942741e81ba.ctex"]
 
 [params]
 

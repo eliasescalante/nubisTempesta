@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2hpccx7rlp8b"
-path="res://.godot/imported/npc-estorbo-01.png-16907b3381aba2946fc044fb10ce9794.ctex"
+uid="uid://bf78xh4w4ptor"
+path="res://.godot/imported/item_historia_01_pip-boy.png-ed03ad6066ca937bf26af2a349ec4f4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/sprites/npc-estorbo-01.png"
-dest_files=["res://.godot/imported/npc-estorbo-01.png-16907b3381aba2946fc044fb10ce9794.ctex"]
+source_file="res://_assets/art/sprites/item_historia_01_pip-boy.png"
+dest_files=["res://.godot/imported/item_historia_01_pip-boy.png-ed03ad6066ca937bf26af2a349ec4f4d.ctex"]
 
 [params]
 

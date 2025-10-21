@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctttmhdk5ucfk"
-path="res://.godot/imported/spritesheet-characters-default.png-1d77dc510faf8e3998beb2402afec62b.ctex"
+uid="uid://b8hjwn2rgjpm1"
+path="res://.godot/imported/npc-relleno-01.png-8c85267453a20f84aa43547018838890.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/sprites/spritesheet-characters-default.png"
-dest_files=["res://.godot/imported/spritesheet-characters-default.png-1d77dc510faf8e3998beb2402afec62b.ctex"]
+source_file="res://_assets/art/sprites/npc-relleno-01.png"
+dest_files=["res://.godot/imported/npc-relleno-01.png-8c85267453a20f84aa43547018838890.ctex"]
 
 [params]
 

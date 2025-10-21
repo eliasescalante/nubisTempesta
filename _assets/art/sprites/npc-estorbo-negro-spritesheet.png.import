@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyy2vse46n0yj"
-path="res://.godot/imported/item_05_plasmido.png-02cef941aa08b93d3a3381c307cfb3ad.ctex"
+uid="uid://doas4hmj8q721"
+path="res://.godot/imported/npc-estorbo-negro-spritesheet.png-9141333bf16bbf62c5ef59073a2dc1e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/sprites/item_05_plasmido.png"
-dest_files=["res://.godot/imported/item_05_plasmido.png-02cef941aa08b93d3a3381c307cfb3ad.ctex"]
+source_file="res://_assets/art/sprites/npc-estorbo-negro-spritesheet.png"
+dest_files=["res://.godot/imported/npc-estorbo-negro-spritesheet.png-9141333bf16bbf62c5ef59073a2dc1e9.ctex"]
 
 [params]
 

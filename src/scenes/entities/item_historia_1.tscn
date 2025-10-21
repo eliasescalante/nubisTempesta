@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://v7bh8ke0wsue"]
 
-[ext_resource type="Texture2D" uid="uid://bf78xh4w4ptor" path="res://_assets/sprites/item_historia_01_pip-boy.png" id="1_0ppvf"]
+[ext_resource type="Texture2D" uid="uid://bf78xh4w4ptor" path="res://_assets/art/sprites/item_historia_01_pip-boy.png" id="1_0ppvf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_60dac"]
 size = Vector2(96, 87)

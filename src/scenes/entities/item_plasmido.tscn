@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dq12qtw4y20dm"]
 
-[ext_resource type="Texture2D" uid="uid://cyy2vse46n0yj" path="res://_assets/sprites/item_05_plasmido.png" id="1_8l02q"]
+[ext_resource type="Texture2D" uid="uid://cyy2vse46n0yj" path="res://_assets/art/sprites/item_05_plasmido.png" id="1_8l02q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2kaqw"]
 size = Vector2(96, 87)

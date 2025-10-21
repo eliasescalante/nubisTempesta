@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8hjwn2rgjpm1"
-path="res://.godot/imported/npc-relleno-01.png-20e98bfdf636dc26f440d47b7a1c2c22.ctex"
+uid="uid://cdcuwoqoolrfk"
+path="res://.godot/imported/item_03_morphball.png-7c19cbaa5e322fb462961eb41ea99e74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/sprites/npc-relleno-01.png"
-dest_files=["res://.godot/imported/npc-relleno-01.png-20e98bfdf636dc26f440d47b7a1c2c22.ctex"]
+source_file="res://_assets/art/sprites/item_03_morphball.png"
+dest_files=["res://.godot/imported/item_03_morphball.png-7c19cbaa5e322fb462961eb41ea99e74.ctex"]
 
 [params]
 

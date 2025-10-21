@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://csx2ddbcr3pxe"]
 
-[ext_resource type="Script" uid="uid://soljjaaeo7jp" path="res://src/scripts/entities/item_used.gd" id="1_65xvy"]
-[ext_resource type="Texture2D" uid="uid://bf7vl3mxbgp82" path="res://_assets/sprites/item_01_honguito.png" id="2_41rxs"]
+[ext_resource type="Script" path="res://src/scripts/entities/item_used.gd" id="1_65xvy"]
+[ext_resource type="Texture2D" uid="uid://bf7vl3mxbgp82" path="res://_assets/art/sprites/item_01_honguito.png" id="2_41rxs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvly1"]
 size = Vector2(65.875, 71.375)

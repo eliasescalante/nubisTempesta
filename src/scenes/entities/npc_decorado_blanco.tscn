@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b47xyn41cyk2p"]
 
 [ext_resource type="Script" uid="uid://p60gwl41xbwq" path="res://src/scripts/entities/npc_decorado_blanco.gd" id="1_axf7o"]
-[ext_resource type="Texture2D" uid="uid://clywas7l0t3ro" path="res://_assets/sprites/npc-estorbo-blanco-spritesheet.png" id="1_hyg8y"]
+[ext_resource type="Texture2D" uid="uid://clywas7l0t3ro" path="res://_assets/art/sprites/npc-estorbo-blanco-spritesheet.png" id="1_hyg8y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_psk6e"]
 atlas = ExtResource("1_hyg8y")

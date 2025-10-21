@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doas4hmj8q721"
-path="res://.godot/imported/npc-estorbo-negro-spritesheet.png-43307a03f0e8c7236a3e649aa7053016.ctex"
+uid="uid://dvu264o50kelf"
+path="res://.godot/imported/item_02_soul.png-545f49bd67b95de647c3c63c59a08470.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/sprites/npc-estorbo-negro-spritesheet.png"
-dest_files=["res://.godot/imported/npc-estorbo-negro-spritesheet.png-43307a03f0e8c7236a3e649aa7053016.ctex"]
+source_file="res://_assets/art/sprites/item_02_soul.png"
+dest_files=["res://.godot/imported/item_02_soul.png-545f49bd67b95de647c3c63c59a08470.ctex"]
 
 [params]
 

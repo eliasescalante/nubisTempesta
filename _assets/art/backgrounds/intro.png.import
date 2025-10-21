@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf7vl3mxbgp82"
-path="res://.godot/imported/item_01_honguito.png-2e564065f626076ab27433ea1d838c6a.ctex"
+uid="uid://ckuxeaavv0it1"
+path="res://.godot/imported/intro.png-a0c2d5003fd6fb5836b01770f6626ea4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/sprites/item_01_honguito.png"
-dest_files=["res://.godot/imported/item_01_honguito.png-2e564065f626076ab27433ea1d838c6a.ctex"]
+source_file="res://_assets/art/backgrounds/intro.png"
+dest_files=["res://.godot/imported/intro.png-a0c2d5003fd6fb5836b01770f6626ea4.ctex"]
 
 [params]
 
