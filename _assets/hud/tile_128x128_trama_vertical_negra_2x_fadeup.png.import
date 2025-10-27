@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnybymy6sgw8h"
-path="res://.godot/imported/pldIcon_animation.png-1ed16e525da3a08e7a8c3138f7b79f2c.ctex"
+uid="uid://kqpqmv1aov15"
+path="res://.godot/imported/tile_128x128_trama_vertical_negra_2x_fadeup.png-4d57e1f7cdf665b89b1f5d31d8dc83e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/hud/pldIcon_animation.png"
-dest_files=["res://.godot/imported/pldIcon_animation.png-1ed16e525da3a08e7a8c3138f7b79f2c.ctex"]
+source_file="res://_assets/hud/tile_128x128_trama_vertical_negra_2x_fadeup.png"
+dest_files=["res://.godot/imported/tile_128x128_trama_vertical_negra_2x_fadeup.png-4d57e1f7cdf665b89b1f5d31d8dc83e8.ctex"]
 
 [params]
 
