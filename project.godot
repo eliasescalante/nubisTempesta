@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 AudioManager="*res://src/scenes/AudioManager.tscn"
 GameState="*res://src/scripts/GameState.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 player=""
