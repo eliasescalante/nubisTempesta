@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://cmeplvg6yvaib"]
+[gd_scene load_steps=22 format=3 uid="uid://cmeplvg6yvaib"]
 
 [ext_resource type="Script" uid="uid://ci06txf31dnw8" path="res://src/scripts/entities/player.gd" id="1_rds41"]
+[ext_resource type="PackedScene" uid="uid://b780qmfqgvwqn" path="res://src/scenes/entities/dialogo.tscn" id="2_pmhx6"]
 [ext_resource type="Texture2D" uid="uid://cvstqmt4y10ei" path="res://_assets/art/sprites/nubis-spritesheet.png" id="2_rds41"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pmhx6"]
@@ -159,17 +160,21 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ucdj"]
-size = Vector2(64, 200)
+size = Vector2(64, 192)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_rds41")
+
+[node name="dialogo" parent="." instance=ExtResource("2_pmhx6")]
+unique_name_in_owner = true
+position = Vector2(16, -72)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1hd0g")
 animation = &"caminar"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 28)
+position = Vector2(0, 32)
 shape = SubResource("RectangleShape2D_7ucdj")
 
 [node name="Camera2D" type="Camera2D" parent="."]

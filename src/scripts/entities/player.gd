@@ -35,6 +35,8 @@ var tiempo_sin_mover: float = 0.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hud = get_tree().get_current_scene().get_node("HudNivel")
 
+@onready var dialogo: Node2D = %dialogo
+
 signal pld_cambiado(nuevo_pld)
 
 # --- Función para gastar PLD ---
@@ -49,6 +51,7 @@ func gastar_pld(cantidad: int):
 
 # --- Ready ---
 func _ready() -> void:
+	dialogo.visible = false
 	play_anim("idle")
 
 # --- Multiplicador de velocidad / salto según PLD ---
@@ -146,7 +149,8 @@ func _physics_process(delta: float) -> void:
 				is_dead = false
 			if is_talking == true:
 				print('dejar de hablar')
-				is_talking = false	
+				dialogo.visible = false
+				is_talking = false
 	else:
 		tiempo_sin_mover = 0
 
@@ -156,6 +160,8 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("hablar") and on_floor:
 		print('hablar')
+		dialogo.visible = true
+		play_dialog("Hola")
 		is_talking = true
 		
 	move_and_slide()
@@ -175,6 +181,10 @@ func start_dash(direction : float) -> void:
 func play_anim(name : String) -> void:
 	if animated_sprite_2d.animation != name:
 		animated_sprite_2d.play(name)
+
+func play_dialog(texto : String) -> void:
+	# aca poner alguna comprobacion de string
+	dialogo.update_text(texto)
 
 func update_animation(on_floor : bool, direction : float) -> void:
 	
