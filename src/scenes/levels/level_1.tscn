@@ -254,6 +254,12 @@ position = Vector2(2944, -2176)
 [node name="Item2" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
 position = Vector2(-640, 640)
 
+[node name="Item21" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
+position = Vector2(-2636, -1406)
+
+[node name="Item22" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
+position = Vector2(-2664, -2223)
+
 [node name="Item15" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
 position = Vector2(128, 640)
 
@@ -265,6 +271,9 @@ position = Vector2(1600, 640)
 
 [node name="Item19" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
 position = Vector2(1472, 640)
+
+[node name="Item23" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
+position = Vector2(1700, -761)
 
 [node name="Item17" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
 position = Vector2(2880, 640)

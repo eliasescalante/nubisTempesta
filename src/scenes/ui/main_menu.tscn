@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddd61d533835"]
+[gd_scene load_steps=13 format=3 uid="uid://ddd61d533835"]
 
 [ext_resource type="Script" uid="uid://bddfx6yhe5edt" path="res://src/scripts/ui/main_menu.gd" id="1_loxbe"]
 [ext_resource type="Texture2D" uid="uid://ckuxeaavv0it1" path="res://_assets/art/backgrounds/intro.png" id="2_loxbe"]
@@ -22,10 +22,66 @@ subpixel_positioning = 0
 oversampling = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttmq8"]
-bg_color = Color(0.0214344, 0.0214347, 0.0214345, 1)
+bg_color = Color(0.14406255, 0.14406255, 0.14406249, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6trx7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5lm1"]
-bg_color = Color(0.00820201, 0.00820204, 0.00820193, 1)
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yl70w"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_loxbe"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2oeq"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.22352941, 0.22352941, 0.22352941, 0.6)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5lm1"]
 font = SubResource("SystemFont_rwhmm")
@@ -89,6 +145,7 @@ size_flags_horizontal = 0
 theme_override_fonts/font = SubResource("SystemFont_ttmq8")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_ttmq8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6trx7")
 text = "START"
 
 [node name="QuitButton" type="Button" parent="TextureRect/MarginContainer/VBoxContainer"]
@@ -98,6 +155,7 @@ size_flags_horizontal = 0
 theme_override_fonts/font = SubResource("SystemFont_ttmq8")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_f5lm1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yl70w")
 text = "QUIT"
 
 [node name="CreditsButton" type="Button" parent="TextureRect/MarginContainer/VBoxContainer"]
@@ -106,7 +164,8 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = SubResource("SystemFont_ttmq8")
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_ttmq8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_loxbe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x2oeq")
 text = "CREDITOS"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer"]

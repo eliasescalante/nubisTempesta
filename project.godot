@@ -24,6 +24,12 @@ GameState="*res://src/scripts/GameState.gd"
 
 window/stretch/mode="canvas_items"
 
+[file_customization]
+
+folder_colors={
+"res://_assets/": "red"
+}
+
 [global_group]
 
 player=""

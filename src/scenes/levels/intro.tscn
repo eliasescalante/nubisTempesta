@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://1n2re7fafjm1"]
+
+[ext_resource type="Script" uid="uid://bftvyjgs634b4" path="res://src/scripts/intro.gd" id="1_883uu"]
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_883uu"]
+
+[node name="Intro" type="VideoStreamPlayer"]
+stream = SubResource("VideoStreamTheora_883uu")
+autoplay = true
+script = ExtResource("1_883uu")
