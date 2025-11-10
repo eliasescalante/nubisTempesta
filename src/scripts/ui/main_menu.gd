@@ -5,7 +5,7 @@ class_name MainMenu
 
 func _on_play_button_pressed() -> void:
 	#LevelManager.load_level(3)
-	get_tree().change_scene_to_file("res://src/scenes/levels/level_1.tscn")
+	get_tree().change_scene_to_file("res://src/scenes/levels/intro.tscn")
 	AudioManager.get_node("ost/Introduccion").stop()
 	deactivate()
 
