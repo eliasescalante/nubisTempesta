@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://1n2re7fafjm1"]
 
-[ext_resource type="VideoStream" uid="uid://dcgp5f0mu4c7u" path="res://_assets/art/video_intro_B01 (1).ogv" id="1_40lvj"]
+[ext_resource type="VideoStream" uid="uid://bprcnsop8uqvy" path="res://_assets/art/video_intro_B02.ogv" id="1_40lvj"]
 [ext_resource type="Script" uid="uid://bftvyjgs634b4" path="res://src/scripts/intro.gd" id="1_883uu"]
 
 [node name="Intro" type="VideoStreamPlayer"]
 stream = ExtResource("1_40lvj")
-volume_db = -6.0599995
+volume_db = -6.059999
 autoplay = true
 script = ExtResource("1_883uu")
 
