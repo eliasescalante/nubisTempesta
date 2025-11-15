@@ -21,15 +21,16 @@ var velocity_falling := 0.0
 @export var pld_por_salto: int = 5
 @export var pld_por_doble_salto: int = 7
 @export var pld_por_dash: int = 10
-
-var pld_por_caida: int = 0
-var pld_por_caida_factor: float = 75.0
-
+@export var pld_por_caida: int = 0
+@export var pld_por_caida_factor: float = 75.0
 @export var pld_por_morir: int = 140
-
 @export var pld_por_tiempo_quieto: int = 1
 @export var tiempo_quieto: float = 2.0
-var tiempo_sin_mover: float = 0.0
+@export var tiempo_sin_mover: float = 0.0
+
+#---- Variables para los dialogos------
+
+
 
 # --- Referencias ---
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -68,6 +69,13 @@ func get_pld_multiplier() -> float:
 
 # --- Physics Process ---
 func _physics_process(delta: float) -> void:
+	
+	# 🛑 Bloqueo total durante diálogo
+	if is_talking:
+		play_anim("idle") # <-- idle, no caminar
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
 	
 	var on_floor := is_on_floor()
 	var direction := Input.get_axis("ui_left", "ui_right")

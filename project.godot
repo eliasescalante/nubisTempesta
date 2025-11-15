@@ -35,6 +35,7 @@ folder_colors={
 player=""
 portals=""
 items=""
+npc_estorbo=""
 
 [input]
 

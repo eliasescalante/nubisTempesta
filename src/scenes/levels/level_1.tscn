@@ -212,32 +212,14 @@ distance = 768.0
 [node name="Plataformas3" parent="Parallax2D_medio/plataforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-1473, -2425)
 
-[node name="NPCs" type="Node" parent="Parallax2D_medio"]
+[node name="NPCs" type="Node2D" parent="Parallax2D_medio"]
 
-[node name="npc_estorbo_01" parent="Parallax2D_medio/NPCs" instance=ExtResource("5_w1xa4")]
-position = Vector2(1856, -2176)
-
-[node name="npc_estorbo_02" parent="Parallax2D_medio/NPCs" instance=ExtResource("5_w1xa4")]
-position = Vector2(2368, -640)
-
-[node name="npc_estorbo_03" parent="Parallax2D_medio/NPCs" instance=ExtResource("5_w1xa4")]
-position = Vector2(2112, 640)
-
-[node name="npc_estorbo_04" parent="Parallax2D_medio/NPCs" instance=ExtResource("5_w1xa4")]
-position = Vector2(-640, -640)
-
-[node name="npc_estorbo_05" parent="Parallax2D_medio/NPCs" instance=ExtResource("5_w1xa4")]
-position = Vector2(-1344, -3456)
-
-[node name="npc_estorbo_06" parent="Parallax2D_medio/NPCs" instance=ExtResource("5_w1xa4")]
-position = Vector2(-1152, 128)
-
-[node name="npc_estorbo_07" parent="Parallax2D_medio/NPCs" instance=ExtResource("5_w1xa4")]
-position = Vector2(-448, 640)
+[node name="Node2D" parent="Parallax2D_medio/NPCs" instance=ExtResource("5_w1xa4")]
+position = Vector2(2780, -2176)
 
 [node name="Player" parent="Parallax2D_medio" instance=ExtResource("5_wxrok")]
 unique_name_in_owner = true
-position = Vector2(-3008, 640)
+position = Vector2(1915, -2194)
 
 [node name="Portal1" type="Area2D" parent="Parallax2D_medio"]
 unique_name_in_owner = true
