@@ -1,8 +1,7 @@
-[gd_scene load_steps=8]
-
+[gd_scene load_steps=8 format=4]
 
 [ext_resource type="Texture2D" uid="uid://5utjvy6fpocs" path="res://_assets/art/tileset/exterior_tileset_01.png" id="1_fkr3i"]
-[ext_resource type="Script" uid="uid://bcwy0no4eavui" path="res://src/scripts/level1_b.gd" id="1_ich5w"]
+[ext_resource type="Script" uid="uid://bcwy0no4eavui" path="res://src/scripts/level_1_seccion_b.gd" id="1_ich5w"]
 [ext_resource type="PackedScene" uid="uid://cmeplvg6yvaib" path="res://src/scenes/entities/player.tscn" id="2_t4jo0"]
 [ext_resource type="PackedScene" uid="uid://q3sb0n0gwdsu" path="res://src/scenes/ui/hud_nivel.tscn" id="4_2j7jn"]
 
