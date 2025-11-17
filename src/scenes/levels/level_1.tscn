@@ -215,11 +215,11 @@ position = Vector2(-1473, -2425)
 [node name="NPCs" type="Node2D" parent="Parallax2D_medio"]
 
 [node name="Node2D" parent="Parallax2D_medio/NPCs" instance=ExtResource("5_w1xa4")]
-position = Vector2(2780, -2176)
+position = Vector2(2048, -2176)
 
 [node name="Player" parent="Parallax2D_medio" instance=ExtResource("5_wxrok")]
 unique_name_in_owner = true
-position = Vector2(1915, -2194)
+position = Vector2(1344, -2176)
 
 [node name="Portal1" type="Area2D" parent="Parallax2D_medio"]
 unique_name_in_owner = true
