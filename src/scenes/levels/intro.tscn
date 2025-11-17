@@ -1,21 +1,64 @@
-[gd_scene load_steps=3 format=3 uid="uid://1n2re7fafjm1"]
+[gd_scene load_steps=6 format=3 uid="uid://1n2re7fafjm1"]
 
 [ext_resource type="VideoStream" uid="uid://bprcnsop8uqvy" path="res://_assets/art/video_intro_B02.ogv" id="1_40lvj"]
 [ext_resource type="Script" uid="uid://bftvyjgs634b4" path="res://src/scripts/intro.gd" id="1_883uu"]
+[ext_resource type="FontFile" uid="uid://ch4wswcikrxeo" path="res://_assets/fonts/sf_cartoonist_hand/SF_Cartoonist_Hand_SC_Bold.ttf" id="3_bb47d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3iq27"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7gj3n"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+anti_aliasing = false
 
 [node name="Intro" type="VideoStreamPlayer"]
+offset_right = 1280.0
+offset_bottom = 720.0
+scale = Vector2(0.9, 0.9)
+size_flags_horizontal = 2
+size_flags_vertical = 2
 stream = ExtResource("1_40lvj")
-volume_db = -6.059999
+volume_db = -6.0599985
 autoplay = true
 script = ExtResource("1_883uu")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 930.0
-offset_top = 546.0
-offset_right = 1084.0
-offset_bottom = 587.0
-text = "SKIP"
+offset_left = 1117.7778
+offset_top = 651.1111
+offset_right = 1260.0
+offset_bottom = 699.1111
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("3_bb47d")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_3iq27")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7gj3n")
+text = "SALTAR VIDEO"
 
 [connection signal="finished" from="." to="." method="_on_finished"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
