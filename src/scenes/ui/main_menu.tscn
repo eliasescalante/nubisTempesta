@@ -62,10 +62,10 @@ script = ExtResource("1_loxbe")
 unique_name_in_owner = true
 
 [node name="TextureRect" type="ColorRect" parent="ARTE"]
-offset_left = -146.0
-offset_top = -114.0
-offset_right = 1287.0
-offset_bottom = 790.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 1280.0
+offset_bottom = 768.0
 color = Color(0.1, 0.1, 0.1, 1)
 
 [node name="PLANO_07" type="Parallax2D" parent="ARTE"]
@@ -134,7 +134,7 @@ unique_name_in_owner = true
 visible = false
 texture = ExtResource("11_s2t38")
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="TITULO" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 318.0
 offset_top = 44.0
@@ -143,7 +143,7 @@ offset_bottom = 324.0
 texture = ExtResource("11_tgi66")
 stretch_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="REFERENCIA LAYOUT" type="TextureRect" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.47058824)
 layout_mode = 0

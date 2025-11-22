@@ -1,5 +1,11 @@
 extends Node2D
 
+"""
+Este nodo realiza el movimiento de camara para el efecto parallax.
+
+Sigue el mouse pero si pasan 0.5 seg se activa un automático.
+"""
+
 var init_x
 var init_y
 var new_x
