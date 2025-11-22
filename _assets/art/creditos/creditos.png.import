@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckuxeaavv0it1"
-path="res://.godot/imported/intro.png-a0c2d5003fd6fb5836b01770f6626ea4.ctex"
+uid="uid://bcvnycbaber5m"
+path="res://.godot/imported/creditos.png-1186e5274773f57dc565287f78596351.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/art/backgrounds/intro.png"
-dest_files=["res://.godot/imported/intro.png-a0c2d5003fd6fb5836b01770f6626ea4.ctex"]
+source_file="res://_assets/art/creditos/creditos.png"
+dest_files=["res://.godot/imported/creditos.png-1186e5274773f57dc565287f78596351.ctex"]
 
 [params]
 

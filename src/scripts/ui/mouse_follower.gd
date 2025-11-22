@@ -36,8 +36,8 @@ var auto_move_delay = .5
 var auto_move_count = 0
 
 # Distancia de movimiento
-var dx = 8
-var dy = 4.5
+var dx = 4
+var dy = 2.25
 
 # No se usa, pero lo vamos a dejar por las dudas que haga falta.
 var current_pos
