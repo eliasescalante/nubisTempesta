@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ddd61d533835"]
+[gd_scene load_steps=15 format=3 uid="uid://ddd61d533835"]
 
 [ext_resource type="Script" uid="uid://bddfx6yhe5edt" path="res://src/scripts/ui/main_menu.gd" id="1_loxbe"]
 [ext_resource type="Texture2D" uid="uid://ce5bm1v14bw4u" path="res://_assets/placeholders/main_screen_placeholder.png" id="2_dd50b"]
@@ -12,42 +12,8 @@
 [ext_resource type="Script" uid="uid://bkujlu2it2iu7" path="res://src/scripts/ui/mouse_follower.gd" id="10_bpdy7"]
 [ext_resource type="Texture2D" uid="uid://bcl3w5ue30jad" path="res://_assets/art/sprites/item-06-godot.png" id="11_s2t38"]
 [ext_resource type="Texture2D" uid="uid://cg2jt04aod3qr" path="res://_assets/art/main/main_titulo.png" id="11_tgi66"]
-[ext_resource type="FontFile" uid="uid://ch4wswcikrxeo" path="res://_assets/fonts/sf_cartoonist_hand/SF_Cartoonist_Hand_SC_Bold.ttf" id="13_kw0eb"]
+[ext_resource type="Theme" uid="uid://biqioweq5s1re" path="res://_resources/buttons_styles_main.tres" id="13_044b3"]
 [ext_resource type="Texture2D" uid="uid://oah1wloa86mf" path="res://_assets/art/main/main_creditos_regular.png" id="14_pkenp"]
-[ext_resource type="Texture2D" uid="uid://cgi3nd34sdx12" path="res://_assets/art/main/main_creditos_hover.png" id="15_fshqk"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kw0eb"]
-bg_color = Color(0.8992584, 0.8992584, 0.8992584, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.1, 0.1, 0.1, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_color = Color(0.19215687, 0.19215687, 0.19215687, 1)
-shadow_size = 1
-shadow_offset = Vector2(4, 4)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6trx7"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.225, 0.225, 0.225, 0.6)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-corner_detail = 5
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_151jt"]
-texture = ExtResource("14_pkenp")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ater4"]
-texture = ExtResource("15_fshqk")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -159,11 +125,7 @@ offset_top = 392.0
 offset_right = 786.0
 offset_bottom = 448.0
 size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_fonts/font = ExtResource("13_kw0eb")
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_kw0eb")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6trx7")
+theme = ExtResource("13_044b3")
 text = "INICIAR"
 
 [node name="QuitButton" type="Button" parent="."]
@@ -174,26 +136,22 @@ offset_top = 392.0
 offset_right = 245.0
 offset_bottom = 448.0
 size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_fonts/font = ExtResource("13_kw0eb")
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_kw0eb")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6trx7")
+theme = ExtResource("13_044b3")
 text = "SALIR"
 
 [node name="CreditsButton" type="Button" parent="."]
 custom_minimum_size = Vector2(160, 48)
 layout_mode = 0
-offset_left = 773.0
-offset_top = 541.0
-offset_right = 1133.0
-offset_bottom = 629.0
+offset_left = 630.0
+offset_top = 540.0
+offset_right = 1142.0
+offset_bottom = 636.0
 size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
-theme_override_fonts/font = ExtResource("13_kw0eb")
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxTexture_151jt")
-theme_override_styles/hover = SubResource("StyleBoxTexture_ater4")
+theme = ExtResource("13_044b3")
+theme_override_font_sizes/font_size = 20
+text = " CRÉDITOS "
+icon = ExtResource("14_pkenp")
+icon_alignment = 2
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
