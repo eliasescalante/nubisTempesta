@@ -31,3 +31,4 @@ theme = ExtResource("3_5un5w")
 text = "NUBIS.AR"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
