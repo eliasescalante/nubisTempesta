@@ -27,7 +27,8 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
-"res://_assets/": "red"
+"res://_assets/": "red",
+"res://_assets/placeholders/": "yellow"
 }
 
 [global_group]

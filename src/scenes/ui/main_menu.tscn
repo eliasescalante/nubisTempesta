@@ -1,32 +1,35 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddd61d533835"]
+[gd_scene load_steps=20 format=3 uid="uid://ddd61d533835"]
 
 [ext_resource type="Script" uid="uid://bddfx6yhe5edt" path="res://src/scripts/ui/main_menu.gd" id="1_loxbe"]
-[ext_resource type="Texture2D" uid="uid://ckuxeaavv0it1" path="res://_assets/art/backgrounds/intro.png" id="2_loxbe"]
+[ext_resource type="Texture2D" uid="uid://ce5bm1v14bw4u" path="res://_assets/placeholders/main_screen_placeholder.png" id="2_dd50b"]
+[ext_resource type="Texture2D" uid="uid://6wremrph0qy7" path="res://_assets/art/main/main_plano_07_nubes.png" id="3_bpdy7"]
+[ext_resource type="Texture2D" uid="uid://84q4k3jsvnx8" path="res://_assets/art/main/main_plano_06_nubes.png" id="4_s2t38"]
+[ext_resource type="Texture2D" uid="uid://c2hvel3y4qaq5" path="res://_assets/art/main/main_plano_05_nubes.png" id="5_tgi66"]
+[ext_resource type="Texture2D" uid="uid://gvhvcy71mdce" path="res://_assets/art/main/main_plano_04_islas.png" id="6_kw0eb"]
+[ext_resource type="Texture2D" uid="uid://cxse0o06rjtx7" path="res://_assets/art/main/main_plano_03_pilares_fondo.png" id="7_044b3"]
+[ext_resource type="Texture2D" uid="uid://8xww1yixtk6s" path="res://_assets/art/main/main_plano_02_pilares.png" id="8_pkenp"]
+[ext_resource type="Texture2D" uid="uid://bregk4t7a1gsf" path="res://_assets/art/main/main_plano_01_nubis.png" id="9_fshqk"]
+[ext_resource type="Script" uid="uid://bkujlu2it2iu7" path="res://src/scripts/ui/mouse_follower.gd" id="10_bpdy7"]
+[ext_resource type="Texture2D" uid="uid://bcl3w5ue30jad" path="res://_assets/art/sprites/item-06-godot.png" id="11_s2t38"]
+[ext_resource type="Texture2D" uid="uid://cg2jt04aod3qr" path="res://_assets/art/main/main_titulo.png" id="11_tgi66"]
+[ext_resource type="FontFile" uid="uid://ch4wswcikrxeo" path="res://_assets/fonts/sf_cartoonist_hand/SF_Cartoonist_Hand_SC_Bold.ttf" id="13_kw0eb"]
+[ext_resource type="Texture2D" uid="uid://oah1wloa86mf" path="res://_assets/art/main/main_creditos_regular.png" id="14_pkenp"]
+[ext_resource type="Texture2D" uid="uid://cgi3nd34sdx12" path="res://_assets/art/main/main_creditos_hover.png" id="15_fshqk"]
 
-[sub_resource type="SystemFont" id="SystemFont_rwhmm"]
-font_names = PackedStringArray("Century Gothic")
-font_weight = 800
-subpixel_positioning = 0
-oversampling = 3.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_loxbe"]
-font = SubResource("SystemFont_rwhmm")
-font_size = 50
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="SystemFont" id="SystemFont_ttmq8"]
-font_names = PackedStringArray("Century Gothic")
-font_weight = 300
-subpixel_positioning = 0
-oversampling = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttmq8"]
-bg_color = Color(0.14406255, 0.14406255, 0.14406249, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kw0eb"]
+bg_color = Color(0.8992584, 0.8992584, 0.8992584, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.1, 0.1, 0.1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0.19215687, 0.19215687, 0.19215687, 1)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6trx7"]
 content_margin_left = 4.0
@@ -40,54 +43,11 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5lm1"]
-bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_151jt"]
+texture = ExtResource("14_pkenp")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yl70w"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.225, 0.225, 0.225, 0.6)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_loxbe"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2oeq"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.22352941, 0.22352941, 0.22352941, 0.6)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-corner_detail = 5
-
-[sub_resource type="LabelSettings" id="LabelSettings_f5lm1"]
-font = SubResource("SystemFont_rwhmm")
-font_size = 30
-outline_size = 8
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ater4"]
+texture = ExtResource("15_fshqk")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -98,87 +58,143 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_loxbe")
 
+[node name="ARTE" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="TextureRect" type="ColorRect" parent="ARTE"]
+offset_left = -146.0
+offset_top = -114.0
+offset_right = 1287.0
+offset_bottom = 790.0
+color = Color(0.1, 0.1, 0.1, 1)
+
+[node name="PLANO_07" type="Parallax2D" parent="ARTE"]
+scroll_scale = Vector2(0.95, 0.95)
+
+[node name="img" type="Sprite2D" parent="ARTE/PLANO_07"]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_bpdy7")
+
+[node name="PLANO_06" type="Parallax2D" parent="ARTE"]
+scroll_scale = Vector2(0.96, 0.96)
+
+[node name="img" type="Sprite2D" parent="ARTE/PLANO_06"]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_s2t38")
+
+[node name="PLANO_05" type="Parallax2D" parent="ARTE"]
+scroll_scale = Vector2(0.98, 0.98)
+
+[node name="img" type="Sprite2D" parent="ARTE/PLANO_05"]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_tgi66")
+
+[node name="PLANO_04" type="Parallax2D" parent="ARTE"]
+scroll_scale = Vector2(0.99, 0.99)
+
+[node name="img" type="Sprite2D" parent="ARTE/PLANO_04"]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_kw0eb")
+
+[node name="PLANO_03" type="Parallax2D" parent="ARTE"]
+scroll_scale = Vector2(1.03, 1.03)
+
+[node name="img" type="Sprite2D" parent="ARTE/PLANO_03"]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_044b3")
+
+[node name="PLANO_02" type="Parallax2D" parent="ARTE"]
+scroll_scale = Vector2(1.05, 1.05)
+
+[node name="img" type="Sprite2D" parent="ARTE/PLANO_02"]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_pkenp")
+
+[node name="PLANO_01" type="Parallax2D" parent="ARTE"]
+
+[node name="img" type="Sprite2D" parent="ARTE/PLANO_01"]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("9_fshqk")
+
+[node name="mouse_follower" type="Node2D" parent="ARTE"]
+unique_name_in_owner = true
+script = ExtResource("10_bpdy7")
+
+[node name="Camera2D" type="Camera2D" parent="ARTE/mouse_follower"]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ARTE/mouse_follower"]
+visible = false
+texture = ExtResource("11_s2t38")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 44.0
+offset_right = 830.0
+offset_bottom = 324.0
+texture = ExtResource("11_tgi66")
+stretch_mode = 2
+
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.47058824)
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_dd50b")
+
+[node name="PlayButton" type="Button" parent="."]
+custom_minimum_size = Vector2(160, 48)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_loxbe")
-expand_mode = 2
-stretch_mode = 6
-
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = 13.0
-offset_right = -5.0
-offset_bottom = 13.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/separation = 32
-
-[node name="Label" type="Label" parent="TextureRect/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "DIPLOMATURA 
-EN DESARROLLO DE VIDEOJUEGOS"
-label_settings = SubResource("LabelSettings_loxbe")
-horizontal_alignment = 1
-
-[node name="PlayButton" type="Button" parent="TextureRect/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(256, 0)
-layout_mode = 2
+offset_left = 626.0
+offset_top = 392.0
+offset_right = 786.0
+offset_bottom = 448.0
 size_flags_horizontal = 0
-theme_override_fonts/font = SubResource("SystemFont_ttmq8")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_ttmq8")
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_fonts/font = ExtResource("13_kw0eb")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_kw0eb")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6trx7")
-text = "START"
+text = "INICIAR"
 
-[node name="QuitButton" type="Button" parent="TextureRect/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(256, 0)
-layout_mode = 2
+[node name="QuitButton" type="Button" parent="."]
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 0
+offset_left = 85.0
+offset_top = 392.0
+offset_right = 245.0
+offset_bottom = 448.0
 size_flags_horizontal = 0
-theme_override_fonts/font = SubResource("SystemFont_ttmq8")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_f5lm1")
-theme_override_styles/hover = SubResource("StyleBoxFlat_yl70w")
-text = "QUIT"
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_fonts/font = ExtResource("13_kw0eb")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_kw0eb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6trx7")
+text = "SALIR"
 
-[node name="CreditsButton" type="Button" parent="TextureRect/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(256, 0)
-layout_mode = 2
+[node name="CreditsButton" type="Button" parent="."]
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 0
+offset_left = 773.0
+offset_top = 541.0
+offset_right = 1133.0
+offset_bottom = 629.0
 size_flags_horizontal = 0
-theme_override_fonts/font = SubResource("SystemFont_ttmq8")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_loxbe")
-theme_override_styles/hover = SubResource("StyleBoxFlat_x2oeq")
-text = "CREDITOS"
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_fonts/font = ExtResource("13_kw0eb")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_151jt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ater4")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Label" type="Label" parent="TextureRect/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-text = "UNQui"
-label_settings = SubResource("LabelSettings_f5lm1")
-
-[connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
