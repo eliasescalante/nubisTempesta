@@ -11,7 +11,7 @@ scale = Vector2(0.9, 0.9)
 size_flags_horizontal = 2
 size_flags_vertical = 2
 stream = ExtResource("1_40lvj")
-volume_db = -6.059998
+volume_db = -6.0599976
 autoplay = true
 script = ExtResource("1_883uu")
 

@@ -125,7 +125,7 @@ offset_left = -1672.0
 offset_top = -3496.0
 offset_right = 9592.0
 offset_bottom = 5976.0
-color = Color(0, 0, 0, 1)
+color = Color(0.1, 0.1, 0.1, 1)
 
 [node name="Parallax2D_fondo" type="Parallax2D" parent="."]
 z_index = 100

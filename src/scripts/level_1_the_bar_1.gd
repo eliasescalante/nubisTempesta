@@ -1,8 +1,8 @@
 extends Node2D
 
 @onready var hud = get_tree().get_current_scene().get_node("HudNivel")
-@export var zona : String = "NIVEL 1 - ZONA A"
-@export var nivel : String = "EL BAR "
+@export var zona : String = "NIVEL 1 - ZONA B"
+@export var nivel : String = "BAR 'BARRACUDA'"
 
 func _ready() -> void:
 	
@@ -30,14 +30,19 @@ func _on_portal_1a_2_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		GameState.portal = 1
 		GameState.loader = 2
-		GameState.text_loader = "OUTSIDE..."
+		GameState.text_loader = "NIVEL 1 - ZONA A"
+		GameState.text_loader_subtitulo = "BAJOS PILARES"
+		GameState.image_loader_mini = "nivel_1_zona_a"
 		print(GameState.portal)
 		get_tree().change_scene_to_file("res://src/scenes/levels/loader.tscn")
 
 func _on_portal_2a_3_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		# AQUÍ HAY QUE PONER EL FINAL DEL DEMO
 		GameState.portal = 3
 		GameState.loader = 3
-		GameState.text_loader = "OUTSIDE..."
+		GameState.text_loader = "NIVEL 1 - ZONA C"
+		GameState.text_loader_subtitulo = "TERRAZAS ALZADAS"
+		GameState.image_loader_mini = "nivel_1_zona_c"
 		print(GameState.portal)
 		get_tree().change_scene_to_file("res://src/scenes/levels/loader.tscn")

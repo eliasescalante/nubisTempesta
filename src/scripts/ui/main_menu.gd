@@ -5,8 +5,18 @@ class_name MainMenu
 
 func _on_play_button_pressed() -> void:
 	#LevelManager.load_level(3)
-	get_tree().change_scene_to_file("res://src/scenes/levels/intro.tscn")
+	#get_tree().change_scene_to_file("res://src/scenes/levels/intro.tscn")
+	
+	
 	AudioManager.get_node("ost/Introduccion").stop()
+	
+	GameState.portal = 0
+	GameState.loader = 0
+	GameState.text_loader = "NIVEL 1"
+	GameState.text_loader_subtitulo = "EL 'PLD' DE CADA DÍA"
+	GameState.image_loader_mini = "nivel_1"
+	get_tree().change_scene_to_file("res://src/scenes/levels/loader.tscn")
+	
 	deactivate()
 
 

@@ -231,6 +231,16 @@ shape = SubResource("RectangleShape2D_m11n0")
 [node name="Marker2D" type="Marker2D" parent="Parallax2D_medio/Portal1"]
 position = Vector2(2944, -2176)
 
+[node name="Portal0" type="Area2D" parent="Parallax2D_medio"]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D_medio/Portal0"]
+position = Vector2(1408, -2240)
+shape = SubResource("RectangleShape2D_m11n0")
+
+[node name="Marker2D" type="Marker2D" parent="Parallax2D_medio/Portal0"]
+position = Vector2(2944, -2176)
+
 [node name="Collectables" type="Node" parent="Parallax2D_medio"]
 
 [node name="Item2" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
