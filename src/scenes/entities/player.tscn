@@ -1,8 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://cmeplvg6yvaib"]
+[gd_scene load_steps=25 format=3 uid="uid://cmeplvg6yvaib"]
 
 [ext_resource type="Script" uid="uid://ci06txf31dnw8" path="res://src/scripts/entities/player.gd" id="1_rds41"]
 [ext_resource type="PackedScene" uid="uid://b780qmfqgvwqn" path="res://src/scenes/entities/dialogo.tscn" id="2_pmhx6"]
 [ext_resource type="Texture2D" uid="uid://cvstqmt4y10ei" path="res://_assets/art/sprites/nubis-spritesheet.png" id="2_rds41"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeyik"]
+atlas = ExtResource("2_rds41")
+region = Rect2(0, 2048, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pmhx6"]
 atlas = ExtResource("2_rds41")
@@ -35,6 +39,14 @@ region = Rect2(1280, 512, 256, 256)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qh5pu"]
 atlas = ExtResource("2_rds41")
 region = Rect2(0, 1280, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ea8wq"]
+atlas = ExtResource("2_rds41")
+region = Rect2(0, 2304, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyckb"]
+atlas = ExtResource("2_rds41")
+region = Rect2(0, 1792, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ddkw8"]
 atlas = ExtResource("2_rds41")
@@ -72,6 +84,14 @@ region = Rect2(0, 1792, 256, 256)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_oeyik")
+}],
+"loop": true,
+"name": &"aterrizar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pmhx6")
 }],
 "loop": true,
@@ -107,6 +127,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"dash",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_ea8wq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyckb")
+}],
+"loop": false,
+"name": &"decaer",
 "speed": 4.0
 }, {
 "frames": [{
@@ -171,7 +202,7 @@ position = Vector2(16, -72)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1hd0g")
-animation = &"caminar"
+animation = &"decaer"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 32)
