@@ -7,6 +7,8 @@ const JUMP_VELOCITY_BASE = -1000.0
 const DASH_SPEED = 600.0
 const DASH_DURATION = 0.2
 const MORTAL_VELOCITY_FALL = 1600.0
+const TIME_TO_REGENERATE = 2.0
+const PLD_GAME_OVER = -30
 
 # --- Estados ---
 var is_dashing := false
@@ -14,10 +16,11 @@ var dash_timer := 0.0
 var can_double_jump := true
 var is_talking := false
 var is_dead := false
+var is_game_over := false
 var velocity_falling := 0.0
 
 # --- Variables PLD ---
-@export var pld: int = 337
+@export var pld: int = 30
 @export var pld_por_salto: int = 5
 @export var pld_por_doble_salto: int = 7
 @export var pld_por_dash: int = 10
@@ -27,6 +30,8 @@ var velocity_falling := 0.0
 @export var pld_por_tiempo_quieto: int = 1
 @export var tiempo_quieto: float = 2.0
 @export var tiempo_sin_mover: float = 0.0
+
+@export var tiempo_muerta: float = 0.0
 
 #---- Variables para los dialogos------
 
@@ -42,14 +47,20 @@ signal pld_cambiado(nuevo_pld)
 
 # --- Función para gastar PLD ---
 func gastar_pld(cantidad: int):
-	if pld <= 0:
-		return
-	pld = max(pld - cantidad, 0)
+
+	pld = max(pld - cantidad, PLD_GAME_OVER)
+	
 	if hud:
 		hud.actualizar_puntos(pld)
 	emit_signal("pld_cambiado", pld)
 	print("PLD restante:", pld)
-
+	
+	if pld <= PLD_GAME_OVER:
+		is_dead = true
+		is_game_over = true
+		print ("Emitir señal 'game_over'")
+		emit_signal("game_over")
+		#return
 # --- Ready ---
 func _ready() -> void:
 	dialogo.visible = false
@@ -70,6 +81,17 @@ func get_pld_multiplier() -> float:
 # --- Physics Process ---
 func _physics_process(delta: float) -> void:
 	
+	if is_game_over == true:
+		return
+	
+	if is_dead == true and is_game_over == false :
+		tiempo_muerta += delta
+		if tiempo_muerta > TIME_TO_REGENERATE:
+			tiempo_muerta = 0.0
+			is_dead = false
+			regenerar()
+		return
+		
 	# 🛑 Bloqueo total durante diálogo
 	if is_talking:
 		play_anim("idle") # <-- idle, no caminar
@@ -88,7 +110,7 @@ func _physics_process(delta: float) -> void:
 	# --- Dash ---
 	# El dash reduce a la mitad la velocidad de caida
 	if Input.is_action_just_pressed("dash") and not is_dashing:
-		if pld >= pld_por_dash:
+		if pld - pld_por_dash >= PLD_GAME_OVER:
 			velocity_falling = velocity_falling / 2
 			start_dash(direction)
 			gastar_pld(pld_por_dash)
@@ -100,7 +122,7 @@ func _physics_process(delta: float) -> void:
 
 	# --- Gravedad ---
 	# velocity_falling va registrando la velocidad de caida
-	# para calcular la penalidad en PLD por aterrizar.
+	# para calcular la penalidad en PLD al aterrizar.
 	if not on_floor and not is_dashing:
 		velocity += get_gravity() * delta
 		if velocity.y > velocity_falling:
@@ -110,7 +132,7 @@ func _physics_process(delta: float) -> void:
 	if velocity_falling > 0.0 and on_floor:
 		print("Aterrizar")
 		print("velociad de caida",str(velocity_falling))
-		# Determinar si se muere o no
+		# Determinar si se MUERE o no
 		if velocity_falling >= MORTAL_VELOCITY_FALL:
 			print('morir')
 			is_dead = true
@@ -124,13 +146,13 @@ func _physics_process(delta: float) -> void:
 	# --- Salto / Doble salto ---
 	if Input.is_action_just_pressed("ui_accept"):
 		if on_floor:
-			if pld >= pld_por_salto:
+			if pld - pld_por_salto >= PLD_GAME_OVER:
 				velocity.y = JUMP_VELOCITY
 				can_double_jump = true
 				play_anim("jump")
 				gastar_pld(pld_por_salto)
 		elif can_double_jump:
-			if pld >= pld_por_doble_salto:
+			if pld -pld_por_doble_salto >= PLD_GAME_OVER:
 				velocity.y = JUMP_VELOCITY
 				can_double_jump = false
 				play_anim("doblejump")
@@ -152,6 +174,10 @@ func _physics_process(delta: float) -> void:
 		if tiempo_sin_mover >= tiempo_quieto:
 			gastar_pld(pld_por_tiempo_quieto)
 			tiempo_sin_mover = 0
+			
+			#=======================================
+			# DEV: Esto hay que quitarlo de acá
+			# porque es de prueba.
 			if is_dead == true:
 				print('dejar de hacerse la muerta')
 				is_dead = false
@@ -159,6 +185,7 @@ func _physics_process(delta: float) -> void:
 				print('dejar de hablar')
 				dialogo.visible = false
 				is_talking = false
+			#=======================================	
 	else:
 		tiempo_sin_mover = 0
 
@@ -223,3 +250,6 @@ func sumar_pld(cantidad: int):
 		hud.actualizar_puntos(pld)
 	emit_signal("pld_cambiado", pld)
 	print("PLD actual tras sumar:", pld)
+
+func regenerar():
+	print("Regenerar a Nubis")
