@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cmeplvg6yvaib"]
+[gd_scene load_steps=34 format=3 uid="uid://cmeplvg6yvaib"]
 
 [ext_resource type="Script" uid="uid://ci06txf31dnw8" path="res://src/scripts/entities/player.gd" id="1_rds41"]
 [ext_resource type="PackedScene" uid="uid://b780qmfqgvwqn" path="res://src/scenes/entities/dialogo.tscn" id="2_pmhx6"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dox56u5dubrt4" path="res://_assets/sfx/player/synth_dying.ogg" id="9_ddkw8"]
 [ext_resource type="AudioStream" uid="uid://cbixidf4aw7c2" path="res://_assets/sfx/player/explosion_falling.ogg" id="10_ddkw8"]
 [ext_resource type="AudioStream" uid="uid://dootk4c0iqgbv" path="res://_assets/sfx/player/synth_gameover.ogg" id="11_ddkw8"]
+[ext_resource type="AudioStream" uid="uid://ci3b8e3km7xvm" path="res://_assets/sfx/player/heartbeat-89bpm-34936_simple.ogg" id="12_xd88a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oeyik"]
 atlas = ExtResource("2_rds41")
@@ -245,3 +246,6 @@ stream = ExtResource("10_ddkw8")
 
 [node name="sfx_gameover" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("11_ddkw8")
+
+[node name="sfx_idle" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("12_xd88a")

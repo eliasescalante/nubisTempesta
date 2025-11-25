@@ -46,6 +46,7 @@ var velocity_falling := 0.0
 @onready var sfx_dying: AudioStreamPlayer = $sfx/sfx_dying
 @onready var sfx_falling: AudioStreamPlayer = $sfx/sfx_falling
 @onready var sfx_gameover: AudioStreamPlayer = $sfx/sfx_gameover
+@onready var sfx_idle: AudioStreamPlayer = $sfx/sfx_idle
 
 #---- Variables para los dialogos------
 
@@ -221,7 +222,9 @@ func _physics_process(delta: float) -> void:
 			gastar_pld(pld_por_tiempo_quieto)
 			tiempo_sin_mover = 0
 			is_landing = false
-			# sfx_idle
+			if not sfx_idle.playing:
+				# Esta muy sutil. Se podria hacer que suba el voluman a medidas que se acerca a un estado de GAME OVER
+				sfx_idle.play()
 	else:
 		tiempo_sin_mover = 0
 		
