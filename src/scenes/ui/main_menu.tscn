@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ddd61d533835"]
+[gd_scene load_steps=16 format=3 uid="uid://ddd61d533835"]
 
 [ext_resource type="Script" uid="uid://bddfx6yhe5edt" path="res://src/scripts/ui/main_menu.gd" id="1_loxbe"]
 [ext_resource type="Texture2D" uid="uid://ce5bm1v14bw4u" path="res://_assets/placeholders/main_screen_placeholder.png" id="2_dd50b"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cg2jt04aod3qr" path="res://_assets/art/main/main_titulo.png" id="11_tgi66"]
 [ext_resource type="Theme" uid="uid://biqioweq5s1re" path="res://_resources/buttons_styles_main.tres" id="13_044b3"]
 [ext_resource type="Texture2D" uid="uid://oah1wloa86mf" path="res://_assets/art/main/main_creditos_regular.png" id="14_pkenp"]
+[ext_resource type="PackedScene" uid="uid://c0qonmpwpmm0v" path="res://src/scenes/entities/cortina.tscn" id="15_pkenp"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -152,6 +153,8 @@ theme_override_font_sizes/font_size = 20
 text = " CRÉDITOS "
 icon = ExtResource("14_pkenp")
 icon_alignment = 2
+
+[node name="cortina" parent="." instance=ExtResource("15_pkenp")]
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
