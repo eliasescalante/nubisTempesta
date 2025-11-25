@@ -8,7 +8,7 @@ const DASH_SPEED = 600.0
 const DASH_DURATION = 0.2
 const MORTAL_VELOCITY_FALL = 1600.0
 const TIME_TO_REGENERATE = 2.0
-const PLD_GAME_OVER = -30
+const PLD_GAME_OVER = -332
 
 # --- Estados ---
 var is_dashing := false
@@ -16,11 +16,13 @@ var dash_timer := 0.0
 var can_double_jump := true
 var is_talking := false
 var is_dead := false
+var is_landing := false
+var is_dying := false
 var is_game_over := false
 var velocity_falling := 0.0
 
 # --- Variables PLD ---
-@export var pld: int = 30
+@export var pld: int = 296
 @export var pld_por_salto: int = 5
 @export var pld_por_doble_salto: int = 7
 @export var pld_por_dash: int = 10
@@ -30,7 +32,8 @@ var velocity_falling := 0.0
 @export var pld_por_tiempo_quieto: int = 1
 @export var tiempo_quieto: float = 2.0
 @export var tiempo_sin_mover: float = 0.0
-
+@export var tiempo_aterrizar: float = 0.0
+@export var limite_tiempo_aterrizar: float = 0.125
 @export var tiempo_muerta: float = 0.0
 
 #---- Variables para los dialogos------
@@ -56,7 +59,13 @@ func gastar_pld(cantidad: int):
 	print("PLD restante:", pld)
 	
 	if pld <= PLD_GAME_OVER:
-		is_dead = true
+		# Esto es para diferencias entre morir por caida abrupta o por agotamiento.
+		if cantidad != pld_por_morir:
+			is_landing = false
+			is_dying = true
+		else:
+			is_landing = false
+			is_dead = true
 		is_game_over = true
 		print ("Emitir señal 'game_over'")
 		emit_signal("game_over")
@@ -82,9 +91,13 @@ func get_pld_multiplier() -> float:
 func _physics_process(delta: float) -> void:
 	
 	if is_game_over == true:
+		update_animation(true, 0.0)
 		return
 	
-	if is_dead == true and is_game_over == false :
+	if (is_dead or is_dying) and not is_game_over:
+		# Murio o esta muriendo y no es game over, entonces
+		# regenerar
+		update_animation(true, 0.0)
 		tiempo_muerta += delta
 		if tiempo_muerta > TIME_TO_REGENERATE:
 			tiempo_muerta = 0.0
@@ -99,6 +112,14 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 	
+	if is_landing:
+		tiempo_aterrizar += delta
+		if tiempo_aterrizar >= limite_tiempo_aterrizar:
+			tiempo_aterrizar = 0
+			is_landing = false
+		else:
+			return
+			
 	var on_floor := is_on_floor()
 	var direction := Input.get_axis("ui_left", "ui_right")
 	
@@ -130,17 +151,19 @@ func _physics_process(delta: float) -> void:
 
 	# --- Aterrizar
 	if velocity_falling > 0.0 and on_floor:
-		print("Aterrizar")
 		print("velociad de caida",str(velocity_falling))
 		# Determinar si se MUERE o no
 		if velocity_falling >= MORTAL_VELOCITY_FALL:
 			print('morir')
+			is_landing = false
 			is_dead = true
 			gastar_pld(pld_por_morir)
 		else:
+			print("Aterrizar")
 			pld_por_caida = int ( velocity_falling / pld_por_caida_factor )
 			print('pld_por_caida', str(pld_por_caida))
 			gastar_pld(pld_por_caida)
+			is_landing = true
 		velocity_falling = 0.0
 
 	# --- Salto / Doble salto ---
@@ -172,9 +195,10 @@ func _physics_process(delta: float) -> void:
 	if direction == 0 and on_floor:
 		tiempo_sin_mover += delta
 		if tiempo_sin_mover >= tiempo_quieto:
+			print("Tiempo sin mover gasta PLD")
 			gastar_pld(pld_por_tiempo_quieto)
 			tiempo_sin_mover = 0
-			
+			is_landing = false
 			#=======================================
 			# DEV: Esto hay que quitarlo de acá
 			# porque es de prueba.
@@ -188,16 +212,18 @@ func _physics_process(delta: float) -> void:
 			#=======================================	
 	else:
 		tiempo_sin_mover = 0
-
+		
+	# ====================================================
+	# TEST fotogramas anim morir y hablar QUITAR
 	if Input.is_action_just_pressed("morir") and on_floor:
 		print('morir')
 		is_dead = true
-
 	if Input.is_action_just_pressed("hablar") and on_floor:
 		print('hablar')
 		dialogo.visible = true
 		play_dialog("Hola")
 		is_talking = true
+	# ======================================================
 		
 	move_and_slide()
 	update_animation(on_floor, direction)
@@ -226,9 +252,16 @@ func update_animation(on_floor : bool, direction : float) -> void:
 	if is_dead:
 		play_anim("morir")
 		return
+	if is_dying:
+		play_anim("decaer")
+		return
+	if is_landing:
+		play_anim("aterrizar")
+		return
 	if is_talking:
 		play_anim("hablar")
 		return
+
 	if is_dashing:
 		play_anim("dash")
 	elif not on_floor:
