@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var animacion = $AnimationPlayer
+
+@onready var animacion = $cortina/AnimationPlayer
 @onready var titulo_label = $titulo_label
 @onready var subtitulo_label: Label = $subtitulo_label
 @onready var picture_texture_rect: TextureRect = $picture_texture_rect

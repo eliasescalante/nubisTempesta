@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var animacion = $cortina/AnimationPlayer
+
 @onready var collectables = $Parallax2D_medio/Collectables
 @onready var hud = get_tree().get_current_scene().get_node("HudNivel")
 @export var zona : String = "NIVEL 1 - ZONA A"
@@ -30,6 +32,15 @@ func _ready() -> void:
 	if hud:
 		hud.actualizar_nivel_y_zona(zona, nivel )
 
+	print("Animacion cortina entrada")
+	animacion.play("entrada")
+	animacion.animation_finished.connect(_on_animacion_terminada)
+
+func _on_animacion_terminada(anim_name: String) -> void:
+	# habilitar movimiento jugador
+	print("Animacion cortina "+anim_name+" finalizada")
+	pass
+	
 func _process(delta: float) -> void:
 	pass
 

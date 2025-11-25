@@ -1,46 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://boyi6jckuqu36"]
+[gd_scene load_steps=6 format=3 uid="uid://boyi6jckuqu36"]
 
 [ext_resource type="Script" uid="uid://cii7qljc7j67n" path="res://src/scripts/loader.gd" id="1_6vihk"]
 [ext_resource type="Theme" uid="uid://cm58nbjhmrepa" path="res://_resources/loader_labels.tres" id="2_y5dqd"]
 [ext_resource type="LabelSettings" uid="uid://c3ii4nq31bsmj" path="res://_resources/loader_label_titulo.tres" id="3_n0v62"]
 [ext_resource type="LabelSettings" uid="uid://bxvj6edf1wd6s" path="res://_resources/loader_label_subtitulo.tres" id="4_wqi4w"]
-
-[sub_resource type="Animation" id="Animation_blhrf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("curtains:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.8992584, 0.8992584, 0.8992584, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_n6t3w"]
-resource_name = "transicion"
-length = 3.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("curtains:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.033333335, 0.33333334, 1, 2.5333333, 3.1666667, 3.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.1, 0.1, 0.1, 1), Color(0.1, 0.1, 0.1, 1), Color(0.1, 0.1, 0.1, 0), Color(0.1, 0.1, 0.1, 0), Color(0.1, 0.1, 0.1, 1), Color(0.100000024, 0.100000024, 0.100000024, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_o6su4"]
-_data = {
-&"RESET": SubResource("Animation_blhrf"),
-&"transicion": SubResource("Animation_n6t3w")
-}
+[ext_resource type="PackedScene" uid="uid://c0qonmpwpmm0v" path="res://src/scenes/entities/cortina.tscn" id="5_n0v62"]
 
 [node name="Loader" type="Node2D"]
 script = ExtResource("1_6vihk")
@@ -80,14 +44,4 @@ text = "subtítulo"
 label_settings = ExtResource("4_wqi4w")
 horizontal_alignment = 1
 
-[node name="curtains" type="ColorRect" parent="."]
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 1216.0
-offset_bottom = 704.0
-color = Color(0.8992584, 0.8992584, 0.8992584, 1)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_o6su4")
-}
+[node name="cortina" parent="." instance=ExtResource("5_n0v62")]

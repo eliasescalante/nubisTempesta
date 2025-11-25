@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://clx0rliac47qw"]
+[gd_scene load_steps=23 format=4 uid="uid://clx0rliac47qw"]
 
 [ext_resource type="Script" uid="uid://de366u52gwitk" path="res://src/scripts/level_1.gd" id="1_nw74m"]
 [ext_resource type="Texture2D" uid="uid://b3dxygg06h711" path="res://_assets/art/tileset/exterior_blanco_tileset_01.png" id="2_0jaot"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c3b1kfryytjab" path="res://src/scenes/entities/item_chupachups.tscn" id="8_cpsdu"]
 [ext_resource type="PackedScene" uid="uid://wstroalu326b" path="res://src/scenes/entities/npc_decorado_negro.tscn" id="10_m1y7t"]
 [ext_resource type="Texture2D" uid="uid://dc8e6v3c2c08v" path="res://_assets/art/tileset/exterior_negro_tileset_01.png" id="11_cufsb"]
+[ext_resource type="PackedScene" uid="uid://c0qonmpwpmm0v" path="res://src/scenes/entities/cortina.tscn" id="14_cufsb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0jaot"]
 texture = ExtResource("2_0jaot")
@@ -303,6 +304,7 @@ position = Vector2(-1024, -6272)
 position = Vector2(1408, -5248)
 
 [node name="Portal0" type="Area2D" parent="Parallax2D_medio"]
+unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D_medio/Portal0"]
 position = Vector2(1472, -2208)
@@ -341,5 +343,8 @@ text = "NIVEL 1"
 label_settings = SubResource("LabelSettings_m11n0")
 
 [node name="HudNivel" parent="." instance=ExtResource("6_m1y7t")]
+
+[node name="cortina" parent="." instance=ExtResource("14_cufsb")]
+layer = 2
 
 [connection signal="body_entered" from="Parallax2D_medio/Portal1" to="." method="_on_portal_1_body_entered"]
