@@ -1,8 +1,16 @@
-[gd_scene load_steps=25 format=3 uid="uid://cmeplvg6yvaib"]
+[gd_scene load_steps=33 format=3 uid="uid://cmeplvg6yvaib"]
 
 [ext_resource type="Script" uid="uid://ci06txf31dnw8" path="res://src/scripts/entities/player.gd" id="1_rds41"]
 [ext_resource type="PackedScene" uid="uid://b780qmfqgvwqn" path="res://src/scenes/entities/dialogo.tscn" id="2_pmhx6"]
 [ext_resource type="Texture2D" uid="uid://cvstqmt4y10ei" path="res://_assets/art/sprites/nubis-spritesheet.png" id="2_rds41"]
+[ext_resource type="AudioStream" uid="uid://5oda6640qegt" path="res://_assets/sfx/player/click_jump.ogg" id="4_0mv3c"]
+[ext_resource type="AudioStream" uid="uid://cdxmmpr2yccmr" path="res://_assets/sfx/player/click_walking.ogg" id="5_7ucdj"]
+[ext_resource type="AudioStream" uid="uid://dscx7e46kn6b1" path="res://_assets/sfx/player/hitHurt_landing.ogg" id="6_d2anq"]
+[ext_resource type="AudioStream" uid="uid://bkex2im5anoa6" path="res://_assets/sfx/player/click_tomar_objeto.ogg" id="6_qh5pu"]
+[ext_resource type="AudioStream" uid="uid://cy78sy88dagup" path="res://_assets/sfx/player/click_dash.ogg" id="7_1hd0g"]
+[ext_resource type="AudioStream" uid="uid://dox56u5dubrt4" path="res://_assets/sfx/player/synth_dying.ogg" id="9_ddkw8"]
+[ext_resource type="AudioStream" uid="uid://cbixidf4aw7c2" path="res://_assets/sfx/player/explosion_falling.ogg" id="10_ddkw8"]
+[ext_resource type="AudioStream" uid="uid://dootk4c0iqgbv" path="res://_assets/sfx/player/synth_gameover.ogg" id="11_ddkw8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oeyik"]
 atlas = ExtResource("2_rds41")
@@ -202,7 +210,7 @@ position = Vector2(16, -72)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1hd0g")
-animation = &"decaer"
+animation = &"aterrizar"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 32)
@@ -211,3 +219,29 @@ shape = SubResource("RectangleShape2D_7ucdj")
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
 zoom = Vector2(0.8, 0.8)
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="sfx_dash" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("7_1hd0g")
+
+[node name="sfx_jump" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("4_0mv3c")
+
+[node name="sfx_tomar_objeto" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("6_qh5pu")
+
+[node name="sfx_walking" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("5_7ucdj")
+
+[node name="sfx_landing" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("6_d2anq")
+
+[node name="sfx_dying" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("9_ddkw8")
+
+[node name="sfx_falling" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("10_ddkw8")
+
+[node name="sfx_gameover" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("11_ddkw8")

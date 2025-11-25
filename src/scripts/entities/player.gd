@@ -36,6 +36,17 @@ var velocity_falling := 0.0
 @export var limite_tiempo_aterrizar: float = 0.125
 @export var tiempo_muerta: float = 0.0
 
+# --- SFX ---
+
+@onready var sfx_dash: AudioStreamPlayer = $sfx/sfx_dash
+@onready var sfx_jump: AudioStreamPlayer = $sfx/sfx_jump
+@onready var sfx_tomar_objeto: AudioStreamPlayer = $sfx/sfx_tomar_objeto
+@onready var sfx_walking: AudioStreamPlayer = $sfx/sfx_walking
+@onready var sfx_landing: AudioStreamPlayer = $sfx/sfx_landing
+@onready var sfx_dying: AudioStreamPlayer = $sfx/sfx_dying
+@onready var sfx_falling: AudioStreamPlayer = $sfx/sfx_falling
+@onready var sfx_gameover: AudioStreamPlayer = $sfx/sfx_gameover
+
 #---- Variables para los dialogos------
 
 
@@ -67,6 +78,7 @@ func gastar_pld(cantidad: int):
 			is_landing = false
 			is_dead = true
 		is_game_over = true
+		sfx_gameover.play()
 		print ("Emitir señal 'game_over'")
 		emit_signal("game_over")
 		#return
@@ -134,6 +146,7 @@ func _physics_process(delta: float) -> void:
 		if pld - pld_por_dash >= PLD_GAME_OVER:
 			velocity_falling = velocity_falling / 2
 			start_dash(direction)
+			sfx_dash.play()
 			gastar_pld(pld_por_dash)
 	
 	if is_dashing:
@@ -149,6 +162,11 @@ func _physics_process(delta: float) -> void:
 		if velocity.y > velocity_falling:
 			velocity_falling = velocity.y
 
+	# --- Cayendo
+	if velocity_falling > 0.0 and not on_floor:
+		pass
+		if not sfx_falling.playing:
+			sfx_falling.play()
 	# --- Aterrizar
 	if velocity_falling > 0.0 and on_floor:
 		print("velociad de caida",str(velocity_falling))
@@ -157,12 +175,14 @@ func _physics_process(delta: float) -> void:
 			print('morir')
 			is_landing = false
 			is_dead = true
+			sfx_dying.play()
 			gastar_pld(pld_por_morir)
 		else:
 			print("Aterrizar")
 			pld_por_caida = int ( velocity_falling / pld_por_caida_factor )
 			print('pld_por_caida', str(pld_por_caida))
 			gastar_pld(pld_por_caida)
+			sfx_landing.play()
 			is_landing = true
 		velocity_falling = 0.0
 
@@ -173,12 +193,14 @@ func _physics_process(delta: float) -> void:
 				velocity.y = JUMP_VELOCITY
 				can_double_jump = true
 				play_anim("jump")
+				sfx_jump.play()
 				gastar_pld(pld_por_salto)
 		elif can_double_jump:
 			if pld -pld_por_doble_salto >= PLD_GAME_OVER:
 				velocity.y = JUMP_VELOCITY
 				can_double_jump = false
 				play_anim("doblejump")
+				sfx_jump.play()
 				gastar_pld(pld_por_doble_salto)
 
 	# --- Movimiento horizontal ---
@@ -199,31 +221,9 @@ func _physics_process(delta: float) -> void:
 			gastar_pld(pld_por_tiempo_quieto)
 			tiempo_sin_mover = 0
 			is_landing = false
-			#=======================================
-			# DEV: Esto hay que quitarlo de acá
-			# porque es de prueba.
-			if is_dead == true:
-				print('dejar de hacerse la muerta')
-				is_dead = false
-			if is_talking == true:
-				print('dejar de hablar')
-				dialogo.visible = false
-				is_talking = false
-			#=======================================	
+			# sfx_idle
 	else:
 		tiempo_sin_mover = 0
-		
-	# ====================================================
-	# TEST fotogramas anim morir y hablar QUITAR
-	if Input.is_action_just_pressed("morir") and on_floor:
-		print('morir')
-		is_dead = true
-	if Input.is_action_just_pressed("hablar") and on_floor:
-		print('hablar')
-		dialogo.visible = true
-		play_dialog("Hola")
-		is_talking = true
-	# ======================================================
 		
 	move_and_slide()
 	update_animation(on_floor, direction)
@@ -279,6 +279,7 @@ func update_animation(on_floor : bool, direction : float) -> void:
 
 func sumar_pld(cantidad: int):
 	pld += cantidad
+	sfx_tomar_objeto.play()
 	if hud:
 		hud.actualizar_puntos(pld)
 	emit_signal("pld_cambiado", pld)
