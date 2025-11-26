@@ -57,8 +57,18 @@ func _on_portal_1_body_entered(body: Node2D) -> void:
 func _change_to_loader():
 	get_tree().change_scene_to_file("res://src/scenes/levels/loader.tscn")
 
-func _on_item_collected(item_scene_path: String, pos: Vector2) -> void:
+func _on_item_collected(item_scene_path: String, pos: Vector2, item_type: String, item_specimen: String) -> void:
+	
 	print("🌀 Item recogido. Se respawneará en:", pos)
+	print(" item type & specimen",item_type, item_specimen)
+	
+	if item_type == "bonus":
+		Sfx.sfx_play('item_bonus')
+	elif item_type == "mision":
+		Sfx.sfx_play('item_mision')
+	else:
+		Sfx.sfx_play('item_puntos')
+		
 	await get_tree().create_timer(respawn_time).timeout
 	
 	# Instanciar de nuevo el ítem desde su escena original
