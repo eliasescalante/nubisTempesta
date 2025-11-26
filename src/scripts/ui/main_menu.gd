@@ -37,7 +37,15 @@ func _on_play_button_pressed() -> void:
 	cortina.visible = true
 	animacion.play("salida")
 	ir_a = "juego"
-	
+
+# DEV -------->
+func _on_play_button_pressed_2() -> void:
+	#LevelManager.load_level(3)
+	print("VAMOS DERECHO AL NIVEL")
+	get_tree().change_scene_to_file("res://src/scenes/levels/level_1.tscn")
+
+# <------	
+
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 

@@ -129,6 +129,18 @@ size_flags_horizontal = 0
 theme = ExtResource("13_044b3")
 text = "INICIAR"
 
+[node name="PlayButton2" type="Button" parent="."]
+modulate = Color(1, 0, 1, 1)
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 1
+offset_left = 832.0
+offset_top = 384.0
+offset_right = 992.0
+offset_bottom = 440.0
+size_flags_horizontal = 0
+theme = ExtResource("13_044b3")
+text = "INICIAR TEST"
+
 [node name="QuitButton" type="Button" parent="."]
 custom_minimum_size = Vector2(160, 48)
 layout_mode = 0
@@ -155,7 +167,9 @@ icon = ExtResource("14_pkenp")
 icon_alignment = 2
 
 [node name="cortina" parent="." instance=ExtResource("15_pkenp")]
+visible = false
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="PlayButton2" to="." method="_on_play_button_pressed_2"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
