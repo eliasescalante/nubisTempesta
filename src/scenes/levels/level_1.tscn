@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://ufvy0dcwnqjf" path="res://src/scenes/entities/npc_estorbo.tscn" id="5_w1xa4"]
 [ext_resource type="PackedScene" uid="uid://cmeplvg6yvaib" path="res://src/scenes/entities/player.tscn" id="5_wxrok"]
 [ext_resource type="PackedScene" uid="uid://q3sb0n0gwdsu" path="res://src/scenes/ui/hud_nivel.tscn" id="6_m1y7t"]
-[ext_resource type="PackedScene" uid="uid://csx2ddbcr3pxe" path="res://src/scenes/entities/item_honguito.tscn" id="7_mrfrg"]
-[ext_resource type="PackedScene" uid="uid://c3b1kfryytjab" path="res://src/scenes/entities/item_chupachups.tscn" id="8_cpsdu"]
+[ext_resource type="PackedScene" uid="uid://4yahvdhbdbtb" path="res://src/scenes/entities/item_honguito.tscn" id="7_mrfrg"]
+[ext_resource type="PackedScene" path="res://src/scenes/entities/item_chupachups.tscn" id="8_cpsdu"]
 [ext_resource type="PackedScene" uid="uid://wstroalu326b" path="res://src/scenes/entities/npc_decorado_negro.tscn" id="10_m1y7t"]
 [ext_resource type="Texture2D" uid="uid://dc8e6v3c2c08v" path="res://_assets/art/tileset/exterior_negro_tileset_01.png" id="11_cufsb"]
 [ext_resource type="PackedScene" uid="uid://c0qonmpwpmm0v" path="res://src/scenes/entities/cortina.tscn" id="14_cufsb"]
@@ -286,7 +286,15 @@ position = Vector2(-128, -640)
 position = Vector2(384, -1408)
 
 [node name="Item7" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
-position = Vector2(-384, -2240)
+position = Vector2(1728, -2176)
+
+[node name="Item24" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(1664, -2688)
+item_type = "bonus"
+
+[node name="Item25" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(2560, -2688)
+item_type = "mision"
 
 [node name="Item8" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
 position = Vector2(-960, -2688)
