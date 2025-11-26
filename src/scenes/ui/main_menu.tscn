@@ -133,13 +133,13 @@ text = "INICIAR"
 modulate = Color(1, 0, 1, 1)
 custom_minimum_size = Vector2(160, 48)
 layout_mode = 1
-offset_left = 832.0
-offset_top = 384.0
-offset_right = 992.0
-offset_bottom = 440.0
+offset_left = 704.0
+offset_top = 320.0
+offset_right = 1036.0
+offset_bottom = 376.0
 size_flags_horizontal = 0
 theme = ExtResource("13_044b3")
-text = "INICIAR TEST"
+text = "DEV INICIAR LEVEL_1"
 
 [node name="QuitButton" type="Button" parent="."]
 custom_minimum_size = Vector2(160, 48)
