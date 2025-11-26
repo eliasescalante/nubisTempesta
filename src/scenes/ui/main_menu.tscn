@@ -167,7 +167,6 @@ icon = ExtResource("14_pkenp")
 icon_alignment = 2
 
 [node name="cortina" parent="." instance=ExtResource("15_pkenp")]
-visible = false
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="PlayButton2" to="." method="_on_play_button_pressed_2"]
