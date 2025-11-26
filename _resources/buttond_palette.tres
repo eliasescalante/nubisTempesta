@@ -1,0 +1,4 @@
+[gd_resource type="ColorPalette" format=3 uid="uid://c0gpjpg85sugm"]
+
+[resource]
+colors = PackedColorArray(0.1, 0.1, 0.1, 1, 0.8992584, 0.8992584, 0.8992584, 1, 0.49, 0.2499, 0.2499, 1)

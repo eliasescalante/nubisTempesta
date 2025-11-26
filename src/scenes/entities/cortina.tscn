@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0qonmpwpmm0v"]
+
+[sub_resource type="Animation" id="Animation_blhrf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("curtains:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.1, 0.1, 0.1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xcb1h"]
+resource_name = "entrada"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("curtains:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.1, 0.1, 0.1, 1), Color(0.1, 0.1, 0.1, 1), Color(0.1, 0.1, 0.1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cvfqn"]
+resource_name = "salida"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("curtains:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.1, 0.1, 0.1, 0), Color(0.1, 0.1, 0.1, 1), Color(0.100000024, 0.100000024, 0.100000024, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_n6t3w"]
+resource_name = "transicion"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("curtains:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 2.5, 3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.1, 0.1, 0.1, 1), Color(0.1, 0.1, 0.1, 1), Color(0.1, 0.1, 0.1, 0), Color(0.1, 0.1, 0.1, 0), Color(0.1, 0.1, 0.1, 1), Color(0.100000024, 0.100000024, 0.100000024, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o6su4"]
+_data = {
+&"RESET": SubResource("Animation_blhrf"),
+&"entrada": SubResource("Animation_xcb1h"),
+&"salida": SubResource("Animation_cvfqn"),
+&"transicion": SubResource("Animation_n6t3w")
+}
+
+[node name="cortina" type="CanvasLayer"]
+
+[node name="curtains" type="ColorRect" parent="."]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 1216.0
+offset_bottom = 704.0
+color = Color(0.1, 0.1, 0.1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o6su4")
+}
