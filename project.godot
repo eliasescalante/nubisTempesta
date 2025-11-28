@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 AudioManager="*res://src/scenes/AudioManager.tscn"
 GameState="*res://src/scripts/GameState.gd"
+Sfx="*res://src/scenes/sfx.tscn"
 
 [display]
 
@@ -28,7 +29,8 @@ window/stretch/mode="canvas_items"
 
 folder_colors={
 "res://_assets/": "red",
-"res://_assets/placeholders/": "yellow"
+"res://_assets/placeholders/": "yellow",
+"res://_assets/sfx/": "purple"
 }
 
 [global_group]
