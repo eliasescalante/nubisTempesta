@@ -1,5 +1,7 @@
 extends Area2D
 
+# NPC_DIAGLO_TRIGGER
+
 @onready var npc = get_parent()
 @onready var npc_dialogo = npc.get_node("dialogo")
 @onready var player : Player = null
@@ -14,9 +16,9 @@ func _on_body_entered(body):
 		return
 
 	if body.is_in_group("player"):
+		print("Datos NPC ",npc.name," ",GameState.get_npc_data(npc.name))
 		player = body
 		start_dialog()
-
 
 func start_dialog():
 	dialog_started = true
@@ -40,7 +42,7 @@ func start_dialog():
 	npc_dialogo.update_text("mmm chupachups y pasar")
 
 	await get_tree().create_timer(1.5).timeout
-
+	GameState.update_npc_state(npc.name, 'quest', true)
 	end_dialog()
 
 
@@ -51,5 +53,6 @@ func end_dialog():
 
 	player.is_talking = false
 	npc.set_process(true)
-
-	queue_free()
+	
+	dialog_started = false
+	#queue_free()
