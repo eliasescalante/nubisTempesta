@@ -123,9 +123,13 @@ position = Vector2(-1473, -2425)
 speed = 500.0
 
 [node name="NPCs" type="Node2D" parent="Parallax2D_medio"]
+unique_name_in_owner = true
 
-[node name="Node2D" parent="Parallax2D_medio/NPCs" instance=ExtResource("5_w1xa4")]
+[node name="npc_estorbo_1" parent="Parallax2D_medio/NPCs" instance=ExtResource("5_w1xa4")]
 position = Vector2(2048, -2176)
+
+[node name="npc_estorbo_2" parent="Parallax2D_medio/NPCs" instance=ExtResource("5_w1xa4")]
+position = Vector2(1920, -640)
 
 [node name="Player" parent="Parallax2D_medio" instance=ExtResource("5_wxrok")]
 unique_name_in_owner = true
