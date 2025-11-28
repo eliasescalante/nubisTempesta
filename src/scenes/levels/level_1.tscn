@@ -37,6 +37,7 @@ scroll_scale = Vector2(0.9, 0.9)
 tile_map_data = PackedByteArray("AAD3/wAAAAABAAIAAAD3/wEAAAAAAAIAAAD3/wIAAAABAAIAAAD3/wMAAAAAAAIAAAD3/wQAAAABAAIAAAD3/wUAAAAAAAIAAAD3/wYAAAABAAIAAAD3/wcAAAAAAAIAAAD3//j/AAABAAIAAAD3//n/AAAAAAIAAAD3//r/AAABAAIAAAD3//v/AAAAAAIAAAD3//z/AAABAAIAAAD3//3/AAAAAAIAAAD3//7/AAABAAIAAAD3////AAAAAAIAAAD2//j/AAAFAAEAAAD1//j/AAAEAAEAAAD4//j/AAACAAEAAAD5//j/AAADAAEAAAD8//7/AAADAAEAAAD7//7/AAACAAEAAAD6//7/AAABAAEAAAD4//7/AAACAAEAAAD5//7/AAAFAAEAAAD2//7/AAAFAAEAAAD1//7/AAAEAAEAAAD5/wMAAAAEAAEAAAD6/wMAAAAFAAEAAAD7/wMAAAACAAEAAAD8/wMAAAAFAAEAAAD9/wMAAAABAAEAAAD+/wMAAAABAAEAAAD//wMAAAACAAEAAAAAAAMAAAADAAEAAAA=")
 tile_set = ExtResource("2_cufsb")
 occlusion_enabled = false
+collision_enabled = false
 
 [node name="npc_decorado_1" parent="Parallax2D_fondo" instance=ExtResource("2_wxrok")]
 position = Vector2(-896, -640)
@@ -88,7 +89,7 @@ position = Vector2(384, -1152)
 position = Vector2(128, -3712)
 
 [node name="StaticPlataform7" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
-position = Vector2(640, -4480)
+position = Vector2(128, -4480)
 
 [node name="StaticPlataform9" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(1408, -5504)
@@ -99,11 +100,12 @@ position = Vector2(1857, -7)
 
 [node name="Plataformas" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-1473, -57)
-speed = 300.0
+speed = 400.0
 distance = 1024.0
 
 [node name="Plataformas6" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-961, -4217)
+speed = 600.0
 distance = 2048.0
 
 [node name="Plataformas4" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
@@ -118,6 +120,7 @@ distance = 768.0
 
 [node name="Plataformas3" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-1473, -2425)
+speed = 500.0
 
 [node name="NPCs" type="Node2D" parent="Parallax2D_medio"]
 
