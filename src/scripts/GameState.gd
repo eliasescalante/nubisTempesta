@@ -11,66 +11,69 @@ var image_loader_mini # para cargar la imagen mini
 # PERSISTENCIA PARA NPCS
 
 # Diccionario para almacenar el estado de todos los NPCs
+# npcs_data[<npc_node_id>]
 var npcs_data := {}
-# Diccionario para tracking de NPCs ya registrados por escena
-var _registered_scenes := {}
 
-func register_npcs(npc_parent_node: Node, scene_name: String) -> void:
+# crea un ID basado en "levelName_npcNodeName"
+# Esto es importante. Antes se intento con npc_node.get_instance_id() pero el
+# numero de ID que generaba cambiar cuando se recargaba la escena pasando de una zona a otra.
+func get_npc_id (npc_node: Node) -> String:
+	return get_current_level_name()+"_"+npc_node.name
+	
+# para saber en que nivel estamos 
+# IMPORTANTE: que los nodos raiz de cada nivel tenga name unico y esté en el grupo 'levels'
+func get_current_level_name () -> String:
+	var level = get_tree().get_first_node_in_group("levels") 
+	return level.name
+
+func register_npc(npc_node: Node) -> void:
 	# Si ya registramos NPCs de esta escena, no sobrescribir
-	if _registered_scenes.has(scene_name):
-		print("NPCs de la escena '%s' ya fueron registrados anteriormente" % scene_name)
-		return
+	var npc_id = get_npc_id(npc_node)
 	
-	# Marcar esta escena como registrada
-	_registered_scenes[scene_name] = true
+	if npcs_data.has(npc_id):
+		print("NPC ID %s de la escena ya fue registrado previamente" % npc_id)
 	
-	# Recorrer todos los hijos del nodo NPCs
-	for npc in npc_parent_node.get_children():
-		if npc is CharacterBody2D:
-			var npc_name = npc.name
-			
-			# Solo inicializar si el NPC no existe en los datos
-			if not npcs_data.has(npc_name):
-				npcs_data[npc_name] = {
-					'quest': false,
-					'tipo': npc.TYPE,
-					'target_desired': npc.target_desired,
-					'estado': 'idle'  # o el estado inicial que uses
-				}
+	npcs_data[npc_id] = {
+		'quest': false,
+		'type': npc_node.TYPE,
+		'target_desired': npc_node.target_desired,
+		'state': 'NpcInit'
+	}
 
-				print("NPC registrado: ", npc_name)
-			else:
-				print("NPC ya existe, manteniendo estado: ", npc_name)
+	print("NPC registrado: ", npc_id)
 
 # Función para actualizar el estado de un NPC específico
-func update_npc_state(npc_name: String, property: String, value) -> void:
-	if npcs_data.has(npc_name):
-		if npcs_data[npc_name].has(property):
-			npcs_data[npc_name][property] = value
-			print("Actualizado NPC %s: %s = %s" % [npc_name, property, str(value)])
+func update_npc_data(npc_node: Node, property: String, value) -> void:
+	if npcs_data.has(str(npc_node.get_instance_id())):
+		var npc_id = get_npc_id(npc_node)
+		if npcs_data[npc_id].has(property):
+			npcs_data[npc_id][property] = value
+			print("Actualizado NPC %s: %s = %s" % [npc_id, property, str(value)])
 		else:
-			push_warning("Propiedad '%s' no existe para NPC %s" % [property, npc_name])
+			push_warning("Propiedad '%s' no existe para NPC %s" % [property, npc_id])
 	else:
-		push_warning("NPC %s no encontrado en GameState" % npc_name)
+		push_warning("NPC %s no encontrado en GameState" % get_npc_id(npc_node) )
 
 # Función para obtener datos de un NPC
-func get_npc_data(npc_name: String) -> Dictionary:
-	return npcs_data.get(npc_name, {})
+func get_npc_data(npc_node: Node) -> Dictionary:
+	var npc_id = get_npc_id(npc_node)
+	return npcs_data.get(npc_id, {})
 
-# Función para resetear todos los datos (útil para nuevo juego)
+# Función para resetear todos los datos para iniciar nuevo juego en la misma sesión
 func reset_npcs_data() -> void:
 	npcs_data.clear()
-	_registered_scenes.clear()
 	print("Datos de NPCs reseteados")
 
 # Función para verificar si un NPC tiene quest
-func has_quest(npc_name: String) -> bool:
-	if npcs_data.has(npc_name):
-		return npcs_data[npc_name].get('quest', false)
+func npc_has_quest(npc_node: Node) -> bool:
+	var npc_id = get_npc_id(npc_node)
+	if npcs_data.has(npc_id):
+		return npcs_data[npc_id].get('quest', false)
 	return false
 
 # Función para obtener el estado actual de un NPC
-func get_npc_state(npc_name: String) -> String:
-	if npcs_data.has(npc_name):
-		return npcs_data[npc_name].get('estado', '')
-	return ""
+func get_npc_state(npc_node: Node) -> String:
+	var npc_id = get_npc_id(npc_node)
+	if npcs_data.has(npc_id):
+		return npcs_data[npc_id].get('state', '')
+	return "null"
