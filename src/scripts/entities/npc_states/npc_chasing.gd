@@ -14,6 +14,7 @@ func enter():
 	# al estado de blockeo (por ahora)
 	npc.player_lost.connect(_on_player_lost)
 	# Buscamos al player por grupo
+	GameState.update_npc_data( npc, 'state', 'NpcChasing' )
 	player = get_tree().get_first_node_in_group("player")
 
 # Al salir, desconectamos la señal
@@ -27,7 +28,7 @@ func physics_update(_delta: float):
 	
 	# Diferencia entre 2 puntos en el plano. ESTO CAMBIARLO SOLO por COORD X
 	var direction = player.global_position - npc.global_position
-	
+	direction.y = 0
 	npc.velocity = direction.normalized() * move_speed
 
 

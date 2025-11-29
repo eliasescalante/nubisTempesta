@@ -14,6 +14,7 @@ func randomizar_movement():
 func enter():
 	print("NpcBlocking enter")
 	npc.player_detected.connect(_on_player_detected)
+	GameState.update_npc_data( npc, 'state', 'NpcBlocking' )
 	randomizar_movement()
 
 func exit():
