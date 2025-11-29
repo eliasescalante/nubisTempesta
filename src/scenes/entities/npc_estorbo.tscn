@@ -119,7 +119,7 @@ position = Vector2(64, -64)
 
 [node name="StateMachineNPC" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_vajym")
-initial_state = NodePath("NpcBlocking")
+initial_state = NodePath("NpcInit")
 
 [node name="NpcBlocking" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("npc")]
 script = ExtResource("6_vy3q0")
