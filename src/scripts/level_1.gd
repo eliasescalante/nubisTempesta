@@ -11,17 +11,12 @@ extends Node2D
 @onready var spawn_point_0: Marker2D = %Portal0/Marker2D
 @onready var spawn_point_1: Marker2D = %Portal1/Marker2D
 
-# Referenciamos el nodo de los NPCs
-@onready var npcs_node = %NPCs
-
 
 func _ready() -> void:
 	AudioManager.play_nivel_1()
 	var player = %Player
 	var spawn_point = spawn_point_0
-	# Registrar NPCs en GameState
-	GameState.register_npcs(npcs_node, "level_1")
-
+	
 	# Conectar señales de todos los ítems iniciales
 	for item in collectables.get_children():
 		if item.has_signal("item_collected"):
