@@ -2,15 +2,35 @@ extends CharacterBody2D
 
 ### NPC-ESTORBO ###
 
-## ESTADOS Y COMPORTAMIENTOS ##
-#
-# CHECK: comprueba si tiene o no la quest pendiente en el GAME_STATE
-# DESACTIVADO: deja de tener interacción física de colisión con el jugador.
-# QUEST_PENDIENTE: es el estado inicial normal. Bloquea el paso y no se puede emover. Solo está activa el "Área de Colisión Cuerpo a Cuerpo".
-# QUEST_ACTIVA: espera que el jugador se acerque al "Área de Colisión de Chase" para comprobar si tiene "En uso el Objeto de Deseo".
-# MODO_CHASE: el jugador está en el "Área de Colisión de Chase" y tiene "En uso el Objeto de Deseo".
-# MODO_RETORNO: el jugador ha salido del "Área de Colisión de Chase" y el NPC está regresando a su posición en el "Punto de Control"
-# MODO_CAPTURA: el NPC ha colisionado con el jugador. Penalidad y vuelve el estado QUEST_PENDIENTE.
+#-------------------------------------------------------------------------------
+
+### ESTADOS Y COMPORTAMIENTOS ##
+
+## INIT: comprueba el estado y la quest en el GameState.
+# Verifica en el GameState el diccionario de estado de los NPC
+# los datos correspondientes a este NPC.
+
+# DESACTIVATED: deja de tener interacción y física de colisión con el Player.
+
+# BLOCKING: es el estado 'normal' cuando se carga el nivel por primera vez.
+
+# TALKING: mientras el NPC mantiene una secuencia de diálogo con el Player.
+
+# QUEST_WAITING: Espera a que el Player ingrese al Area2D de Chase
+# Verifica si el Player está usando el 'target_desired'
+
+# QUEST_COMPLETED: Se establece cuando el Player ha pasado por el Punto de Control.
+
+# CHASING: el Player ingresó al "Área de Colisión de Chase" y tiene en uso el target_desired.
+
+# RETURNING: el jugador ha salido del "Área de Colisión de Chase"
+# Vuelve al Punto de Control mientras verifica si el Player vuelve a ingresar
+# al área de Chase
+
+# CAPTURING: el NPC colisiona con el Player con el Area de Cuerpo.
+# Penalidad y vuelve el estado QUEST_WAITING.
+
+#-------------------------------------------------------------------------------
 
 # Señales que el NPC emite para que los estados escuchen
 signal player_detected
