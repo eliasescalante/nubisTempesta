@@ -12,10 +12,14 @@ extends CharacterBody2D
 # MODO_RETORNO: el jugador ha salido del "Área de Colisión de Chase" y el NPC está regresando a su posición en el "Punto de Control"
 # MODO_CAPTURA: el NPC ha colisionado con el jugador. Penalidad y vuelve el estado QUEST_PENDIENTE.
 
-
+# Señales que el NPC emite para que los estados escuchen
+signal player_detected
+signal player_lost
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var dialogo = $dialogo
+@onready var state_machine_npc: Node = $StateMachineNPC
+
 
 const TYPE = 'estorbo'
 
@@ -30,7 +34,36 @@ func _ready() -> void:
 	animated_sprite_2d.play('idle')
 
 
+func _physics_process(_delta: float) -> void:
+	
+	move_and_slide()
+	
+	if velocity.length() > 0:
+		animated_sprite_2d.play("idle")
+	
+	if velocity.x > 0:
+		animated_sprite_2d.flip_h = false
+	else:
+		animated_sprite_2d.flip_h = true
+
 func _process(delta):
 	if blocked:
 		return
 	# si luego querés darle IA o movimiento, va acá
+
+# ----------------------------------------------------------------------------
+# Callback del Area2D en escena que detecta al player.
+func _on_chase_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		emit_signal("player_detected")
+
+# Callback del Area2D en escena que detecta al player.
+func _on_chase_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		emit_signal("player_lost")
+
+# NPC no decide la transicion.
+# solo emite eventos del mundo.
+
+# Lo estados se suscribir a esas señaes cuando entran
+# Y se desuscriben al salir.
