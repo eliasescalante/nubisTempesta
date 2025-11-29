@@ -39,6 +39,7 @@ player=""
 portals=""
 items=""
 npc_estorbo=""
+levels=""
 
 [input]
 
