@@ -1,11 +1,11 @@
 extends Area2D
-
+"""
 # NPC_DIAGLO_TRIGGER
 
 @onready var npc = get_parent()
 @onready var npc_dialogo = npc.get_node("dialogo")
 @onready var player : Player = null
-
+@onready var scene_name = GameState.get_current_scene_name()
 var dialog_started := false
 
 func _ready():
@@ -16,7 +16,7 @@ func _on_body_entered(body):
 		return
 
 	if body.is_in_group("player"):
-		print("Datos NPC ",npc.name," ",GameState.get_npc_data(npc.name))
+		print("Datos NPC ",npc.name," ",GameState.get_npc_data(scene_name, npc.name))
 		player = body
 		start_dialog()
 
@@ -56,3 +56,4 @@ func end_dialog():
 	
 	dialog_started = false
 	#queue_free()
+"""
