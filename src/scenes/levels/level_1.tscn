@@ -21,7 +21,7 @@ size = Vector2(192, 320)
 [sub_resource type="LabelSettings" id="LabelSettings_m11n0"]
 font_size = 200
 
-[node name="Level1" type="Node2D"]
+[node name="Level_1" type="Node2D" groups=["levels"]]
 script = ExtResource("1_nw74m")
 
 [node name="ColorRect" type="ColorRect" parent="."]

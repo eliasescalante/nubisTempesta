@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ufvy0dcwnqjf" path="res://src/scenes/entities/npc_estorbo.tscn" id="3_xcls0"]
 [ext_resource type="PackedScene" uid="uid://q3sb0n0gwdsu" path="res://src/scenes/ui/hud_nivel.tscn" id="4_a6m8b"]
 [ext_resource type="PackedScene" uid="uid://quducok480tl" path="res://src/scenes/entities/npc_bloqueo.tscn" id="4_nmova"]
-[ext_resource type="PackedScene" path="res://src/scenes/entities/item_honguito.tscn" id="5_qlb2b"]
+[ext_resource type="PackedScene" uid="uid://4yahvdhbdbtb" path="res://src/scenes/entities/item_honguito.tscn" id="5_qlb2b"]
 [ext_resource type="PackedScene" path="res://src/scenes/entities/item_chupachups.tscn" id="6_3stsn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_55oyy"]
@@ -117,7 +117,7 @@ sources/0 = SubResource("TileSetAtlasSource_ct177")
 [sub_resource type="LabelSettings" id="LabelSettings_rgbcl"]
 font_size = 200
 
-[node name="Level1_bar_a" type="Node2D"]
+[node name="Level_1_bar_1" type="Node2D" groups=["levels"]]
 script = ExtResource("1_rgbcl")
 
 [node name="Background" type="ColorRect" parent="."]
