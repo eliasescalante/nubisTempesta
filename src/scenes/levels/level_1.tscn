@@ -78,7 +78,7 @@ position = Vector2(1408, -4992)
 position = Vector2(896, -384)
 
 [node name="StaticPlataform4" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
-position = Vector2(384, -1920)
+position = Vector2(896, -1920)
 
 [node name="StaticPlataform5" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(-384, -1920)
@@ -212,7 +212,7 @@ position = Vector2(1516, -3200)
 item_type = "bonus"
 
 [node name="Item25" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
-position = Vector2(1600, -2688)
+position = Vector2(1984, -2176)
 
 [node name="Item8" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
 position = Vector2(-960, -2688)
