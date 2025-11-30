@@ -41,6 +41,7 @@ signal dialog_player_lost
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var dialogo = $dialogo
 @onready var state_machine_npc: Node = $StateMachineNPC
+@onready var ray_cast_2d: RayCast2D = %RayCast2D
 
 # El tipo de NPC: 'estorbo', 'bloqueo', 'historia'
 @export var type:String = 'estorbo'
@@ -80,11 +81,17 @@ func _physics_process(_delta: float) -> void:
 	else:
 		animated_sprite_2d.play("idle")
 
+	var ray_cast_pos_x = abs(ray_cast_2d.get_position().x)
+	var ray_cast_pos_y = ray_cast_2d.get_position().y
+	
 	if velocity.x > 0:
 		animated_sprite_2d.flip_h = false
+		ray_cast_pos_x = ray_cast_pos_x
 	else:
 		animated_sprite_2d.flip_h = true
-
+		ray_cast_pos_x = -ray_cast_pos_x
+	ray_cast_2d.set_position(Vector2(ray_cast_pos_x,ray_cast_pos_y))
+	
 func _process(delta):
 	if blocked:
 		return

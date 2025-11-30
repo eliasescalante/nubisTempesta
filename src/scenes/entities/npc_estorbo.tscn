@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ufvy0dcwnqjf"]
+[gd_scene load_steps=23 format=3 uid="uid://ufvy0dcwnqjf"]
 
 [ext_resource type="Script" uid="uid://c286qvkygjwu2" path="res://src/scripts/entities/npc_estorbo.gd" id="1_2vnfn"]
 [ext_resource type="Texture2D" uid="uid://bjdeetn7a1o46" path="res://_assets/art/sprites/npc-estorbo-spritesheet.png" id="2_f0bcc"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cd77letq66pu8" path="res://src/scripts/entities/npc_states/npc_desactivated.gd" id="9_bwsfm"]
 [ext_resource type="Script" uid="uid://cdw61tx5byriu" path="res://src/scripts/entities/npc_states/npc_talking.gd" id="10_80j61"]
 [ext_resource type="Script" uid="uid://b0m2eyjhuwfqr" path="res://src/scripts/entities/npc_states/npc_quest_waiting.gd" id="10_fvhpi"]
+[ext_resource type="Script" uid="uid://c51cca6grsewu" path="res://src/scripts/entities/npc_states/npc_returning.gd" id="11_fvhpi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2rp2"]
 size = Vector2(768, 896)
@@ -151,6 +152,15 @@ metadata/_custom_type_script = "uid://cdw61tx5byriu"
 script = ExtResource("10_fvhpi")
 npc = NodePath("../..")
 metadata/_custom_type_script = "uid://b0m2eyjhuwfqr"
+
+[node name="NpcReturning" type="Node" parent="StateMachineNPC"]
+script = ExtResource("11_fvhpi")
+metadata/_custom_type_script = "uid://c51cca6grsewu"
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(64, 80)
+target_position = Vector2(0, 64)
 
 [connection signal="body_entered" from="ChaseArea2D" to="." method="_on_chase_area_2d_body_entered"]
 [connection signal="body_exited" from="ChaseArea2D" to="." method="_on_chase_area_2d_body_exited"]
