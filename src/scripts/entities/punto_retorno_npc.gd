@@ -16,4 +16,5 @@ signal player_detected
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		print("El Player entro en Punto de Retorno")
 		emit_signal("player_detected")

@@ -10,7 +10,7 @@ var object_used_specimen
 
 var player: CharacterBody2D
 var return_point: Node
-var has_returned: bool = false
+var dont_move: bool = false
 
 func enter():
 	print("NpcReturning enter")
@@ -18,9 +18,12 @@ func enter():
 	hud = get_tree().get_root().find_child("HudNivel", true, false)
 	target_desired = GameState.get_npc_property( npc, 'target_desired')
 	return_point = npc.return_point
-	has_returned = false
+	
+	dont_move = false
 	
 	npc.chase_player_detected.connect(_on_chase_player_detected)
+	return_point.player_detected.connect(_on_return_point_player_detected)
+	# Falta agregar el evento de cuando el NPC CAPTURA al PLAYER
 	
 	GameState.update_npc_property( npc, 'state', 'NpcReturning' )
 	
@@ -28,10 +31,11 @@ func enter():
 func exit():
 	print("NpcReturning exit")
 	npc.chase_player_detected.disconnect(_on_chase_player_detected)
+	return_point.player_detected.disconnect(_on_return_point_player_detected)
 	
 func physics_update(_delta: float):
 	
-	if has_returned:
+	if dont_move:
 		return
 		
 	var direction
@@ -48,7 +52,7 @@ func physics_update(_delta: float):
 		# Detenemos el movimiento del NPC
 		direction = Vector2.ZERO
 		npc.velocity = direction
-		has_returned = true
+		dont_move = true
 		# Y cambiamos de estado.
 		Transitioned.emit(self, "NpcQuestWaiting")
 		
@@ -60,3 +64,10 @@ func _on_chase_player_detected():
 		print("Tienes el OBJETO DE DESEO")
 		print("Transicion a NpcChasing")
 		Transitioned.emit(self, "NpcChasing")
+
+func _on_return_point_player_detected():
+	print("NpcReturning _on_return_point_player_detected")
+	# Acá nos avisa el return_point que el Player ha pasado
+	# Con lo que desactivamos todo
+	dont_move = true
+	Transitioned.emit(self, "NpcDesactivated")
