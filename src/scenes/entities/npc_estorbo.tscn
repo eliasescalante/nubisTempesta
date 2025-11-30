@@ -153,8 +153,9 @@ script = ExtResource("10_fvhpi")
 npc = NodePath("../..")
 metadata/_custom_type_script = "uid://b0m2eyjhuwfqr"
 
-[node name="NpcReturning" type="Node" parent="StateMachineNPC"]
+[node name="NpcReturning" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("npc")]
 script = ExtResource("11_fvhpi")
+npc = NodePath("../..")
 metadata/_custom_type_script = "uid://c51cca6grsewu"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
