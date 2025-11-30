@@ -2,35 +2,33 @@ extends StateNPCs
 class_name NpcBlocking
 
 @export var npc: CharacterBody2D
-@export var move_speed: float = 100.0
 
+#-------------------------------------------------------------------------------
+# NOTA En esta versión del juego 
+# los NPC-Estorbo están quietos
+# pero a futuro se podrían mover un poco como patrullando.
+@export var move_speed: float = 0.0
 var move_direction := Vector2.ZERO
 var change_direction: float = 0.0
+#-------------------------------------------------------------------------------
 
-func randomizar_movement():
-	move_direction = Vector2(randf_range(-1,1), 0.0).normalized()
-	change_direction = randf_range(1,3)
-	
 func enter():
 	print("NpcBlocking enter")
-	npc.player_detected.connect(_on_player_detected)
-	GameState.update_npc_data( npc, 'state', 'NpcBlocking' )
-	randomizar_movement()
+	npc.dialog_player_detected.connect(_on_dialog_player_detected)
+	GameState.update_npc_property( npc, 'state', 'NpcBlocking' )
 
 func exit():
 	print("NpcBlocking exit")
-	npc.player_detected.disconnect(_on_player_detected)
+	npc.dialog_player_detected.disconnect(_on_dialog_player_detected)
 
 func update(delta: float ):
-	if change_direction >0:
-		change_direction -= delta	
+	pass
 
 func physics_update(_delta: float):
-	if npc:
-		npc.velocity = move_direction * move_speed
+	pass
 
-func _on_player_detected():
-	print("NpcBlocking _on_player_detected")
+func _on_dialog_player_detected():
+	print("NpcBlocking _on_dialog_player_detected")
 	#print("Transicion a NpcChasing")
 	#Transitioned.emit(self, "NpcChasing")
-	Transitioned.emit(self, "NpcDesactivated")
+	Transitioned.emit(self, "NpcTalking")

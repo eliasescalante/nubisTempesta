@@ -6,8 +6,8 @@ class_name NpcDesactivated
 func enter():
 	print("STATE NpcDesactivated ENTER")
 	print("npc.name ", npc.name)
-	GameState.update_npc_data( npc, 'state', 'NpcDesactivated' )
-	GameState.update_npc_data( npc, 'quest', true )
+	GameState.update_npc_property( npc, 'state', 'NpcDesactivated' )
+	GameState.update_npc_property( npc, 'quest', true )
 	npc.set_process_mode(PROCESS_MODE_DISABLED)
 	
 func exit():

@@ -33,21 +33,34 @@ extends CharacterBody2D
 #-------------------------------------------------------------------------------
 
 # Señales que el NPC emite para que los estados escuchen
-signal player_detected
-signal player_lost
+signal chase_player_detected
+signal chase_player_lost
+signal dialog_player_detected
+signal dialog_player_lost
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var dialogo = $dialogo
 @onready var state_machine_npc: Node = $StateMachineNPC
 
+# El tipo de NPC: 'estorbo', 'bloqueo', 'historia'
+@export var type:String = 'estorbo'
 
-const TYPE = 'estorbo'
+# El avance del diálogo entre el NPC y el Player
+# 0 - no han hablado todavía
+# 1 - han hablado una vez
+# el resto de los número pueden varias según sea necesario en el guión. Esto
+# permite introducir variedad en diferentes encuentros y estados (situaciones)
+@export var dialog_number:int = 0
 
-# Esta variable cambia según el TYPE de NPC. En el caso de los NPC-Estorbo es un objeto collectable.
+# Esta variable cambia según el TYPE de NPC.
+# En el caso de los NPC-Estorbo es la especie de un objeto collectable.
+# En el caso de los NPC-Bloque es un valor numérico de puntos PLD
+# En el caso de los NPC-Historia es el nombre de un objeto collectable único.
 @export var target_desired:String = "chupachups"
 
 
-var blocked := false
+var blocked := false # Esto creo que hay que sacarlo.
+var is_talking : = false
 
 func _ready() -> void:
 	dialogo.visible = false
@@ -59,8 +72,12 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 	if velocity.length() > 0:
+		animated_sprite_2d.play("caminar")
+	elif is_talking:
+		animated_sprite_2d.play("hablar")
+	else:
 		animated_sprite_2d.play("idle")
-	
+
 	if velocity.x > 0:
 		animated_sprite_2d.flip_h = false
 	else:
@@ -70,20 +87,33 @@ func _process(delta):
 	if blocked:
 		return
 	# si luego querés darle IA o movimiento, va acá
-
+	# 2025-11-29 La IA va en la estate machine.
+	
 # ----------------------------------------------------------------------------
-# Callback del Area2D en escena que detecta al player.
+
+# Callbacks de las difentes Area2D en escena que detectan al player.
+
+# CHASE AREA
 func _on_chase_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		emit_signal("player_detected")
+		emit_signal("chase_player_detected")
 
-# Callback del Area2D en escena que detecta al player.
 func _on_chase_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		emit_signal("player_lost")
+		emit_signal("chase_player_lost")
+
+# DIALOG AREA
+func _on_dialog_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		emit_signal("dialog_player_detected")
+
+func _on_dialog_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		emit_signal("dialog_player_lost")
+	
 
 # NPC no decide la transicion.
 # solo emite eventos del mundo.
 
-# Lo estados se suscribir a esas señaes cuando entran
+# Lo estados se suscriben a estas señaes cuando entran
 # Y se desuscriben al salir.

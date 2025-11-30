@@ -34,16 +34,17 @@ func register_npc(npc_node: Node) -> void:
 		print("NPC ID %s de la escena ya fue registrado previamente" % npc_id)
 	
 	npcs_data[npc_id] = {
-		'quest': false,
-		'type': npc_node.TYPE,
-		'target_desired': npc_node.target_desired,
-		'state': 'NpcInit'
+		'quest': false, # false: quest pendiente | true: quest complete
+		'type': npc_node.type, # estorbo | bloque | mision
+		'target_desired': npc_node.target_desired, # lo que el NPC desea. Depende del type.
+		'dialog_number': npc_node.dialog_number, # cuenta el avance en el dialogo entre el NPC y PLAYER
+		'state': 'NpcInit' # Estado para la StateMachine
 	}
 
 	print("NPC registrado: ", npc_id)
 
 # Función para actualizar el estado de un NPC específico
-func update_npc_data(npc_node: Node, property: String, value) -> void:
+func update_npc_property(npc_node: Node, property: String, value) -> void:
 	if npcs_data.has(str(npc_node.get_instance_id())):
 		var npc_id = get_npc_id(npc_node)
 		if npcs_data[npc_id].has(property):
@@ -54,6 +55,10 @@ func update_npc_data(npc_node: Node, property: String, value) -> void:
 	else:
 		push_warning("NPC %s no encontrado en GameState" % get_npc_id(npc_node) )
 
+func get_npc_property(npc_node: Node, property: String) -> Variant:
+	var npc_id = get_npc_id(npc_node)
+	return npcs_data[npc_id].get(property, null)
+	
 # Función para obtener datos de un NPC
 func get_npc_data(npc_node: Node) -> Dictionary:
 	var npc_id = get_npc_id(npc_node)
