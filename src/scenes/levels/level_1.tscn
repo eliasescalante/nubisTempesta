@@ -179,6 +179,9 @@ position = Vector2(1700, -761)
 [node name="Item26" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
 position = Vector2(1044, -1401)
 
+[node name="Item27" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
+position = Vector2(2176, -2496)
+
 [node name="Item17" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
 position = Vector2(2880, 640)
 
