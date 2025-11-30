@@ -58,6 +58,8 @@ signal dialog_player_lost
 # En el caso de los NPC-Historia es el nombre de un objeto collectable único.
 @export var target_desired:String = "chupachups"
 
+# Vincula el nodo 'Punto_retorno_npc_X' con el NPC
+@export var return_point:Node2D
 
 var blocked := false # Esto creo que hay que sacarlo.
 var is_talking : = false
