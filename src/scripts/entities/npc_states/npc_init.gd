@@ -15,12 +15,17 @@ func enter():
 		print("El NPC no existe, lo registramos e iniciamos el siguiente estado")
 		GameState.register_npc(npc)
 		Transitioned.emit(self, "NpcBlocking")
-	else:
-		print("El NPC tenía un estado previo. Lo establecemos.")
-		if state != "NpcQuestWaiting" or state != "NpcBlocking":
-			print("Aunque no era uno de los esperados. Establecemos por defecto 'NpcBlocking'")
-			state = "NpcBlocking"
-		Transitioned.emit(self, state)
+		return
+
+	if GameState.npc_has_quest(npc) or true:
+		print("El NPC tiene la quest completa. Desactivar")
+		Transitioned.emit(self, "NpcDesactivated")
+		return
+		
+	if state != "NpcQuestWaiting" or state != "NpcBlocking":
+		print("Aunque no era uno de los esperados. Establecemos por defecto 'NpcBlocking'")
+		state = "NpcBlocking"
+	Transitioned.emit(self, state)
 
 func exit():
 	pass
