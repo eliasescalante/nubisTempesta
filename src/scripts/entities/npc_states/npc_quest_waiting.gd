@@ -32,7 +32,9 @@ func physics_update(_delta: float):
 
 func _on_dialog_player_detected():
 	print("NpcQuestWaiting _on_dialog_player_detected")
-	Transitioned.emit(self, "NpcTalking")
+	object_used_specimen = hud.object_used_specimen
+	if object_used_specimen != target_desired:
+		Transitioned.emit(self, "NpcTalking")
 
 func _on_chase_player_detected():
 	print("NpcQuestWaiting _on_chase_player_detected")
