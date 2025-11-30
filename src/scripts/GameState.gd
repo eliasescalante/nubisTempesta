@@ -82,3 +82,15 @@ func get_npc_state(npc_node: Node) -> String:
 	if npcs_data.has(npc_id):
 		return npcs_data[npc_id].get('state', '')
 	return "null"
+
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+var respawn_point: Vector2
+
+func set_respawn_point(player_respawn_point: Node) -> void:
+	print("Registra punto de regeneración ", player_respawn_point)
+	respawn_point = player_respawn_point.get_global_position()
+
+func get_respawn_point(player_position: Node) -> Vector2:
+	print("Ultimo punto de regeneración ",respawn_point)
+	return respawn_point
