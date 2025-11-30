@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ufvy0dcwnqjf"]
+[gd_scene load_steps=21 format=3 uid="uid://ufvy0dcwnqjf"]
 
 [ext_resource type="Script" uid="uid://c286qvkygjwu2" path="res://src/scripts/entities/npc_estorbo.gd" id="1_2vnfn"]
 [ext_resource type="Texture2D" uid="uid://bjdeetn7a1o46" path="res://_assets/art/sprites/npc-estorbo-spritesheet.png" id="2_f0bcc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bllbaxxcip63g" path="res://src/scripts/entities/npc_states/npc_blocking.gd" id="6_vy3q0"]
 [ext_resource type="Script" uid="uid://da0kexnc4cfy" path="res://src/scripts/entities/npc_states/npc_init.gd" id="7_j1pj2"]
 [ext_resource type="Script" uid="uid://b1ahgh74nauc1" path="res://src/scripts/entities/npc_states/npc_chasing.gd" id="8_klm5t"]
+[ext_resource type="Script" uid="uid://cd77letq66pu8" path="res://src/scripts/entities/npc_states/npc_desactivated.gd" id="9_bwsfm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2rp2"]
 size = Vector2(768, 896)
@@ -102,7 +103,7 @@ sprite_frames = SubResource("SpriteFrames_f0bcc")
 animation = &"caminar"
 frame_progress = 0.019727837
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BodyCollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 32)
 shape = SubResource("RectangleShape2D_fvhpi")
 
@@ -135,6 +136,11 @@ metadata/_custom_type_script = "uid://da0kexnc4cfy"
 script = ExtResource("8_klm5t")
 npc = NodePath("../..")
 metadata/_custom_type_script = "uid://b1ahgh74nauc1"
+
+[node name="NpcDesactivated" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("npc")]
+script = ExtResource("9_bwsfm")
+npc = NodePath("../..")
+metadata/_custom_type_script = "uid://cd77letq66pu8"
 
 [connection signal="body_entered" from="ChaseArea2D" to="." method="_on_chase_area_2d_body_entered"]
 [connection signal="body_exited" from="ChaseArea2D" to="." method="_on_chase_area_2d_body_exited"]
