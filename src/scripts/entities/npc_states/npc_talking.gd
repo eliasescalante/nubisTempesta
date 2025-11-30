@@ -43,7 +43,7 @@ func physics_update(_delta: float):
 
 func _on_dialog_player_lost():
 	print("NpcTalking _on_dialog_player_lost")
-	Transitioned.emit(self, "NpcBlocking")
+	Transitioned.emit(self, "NpcQuestWaiting")
 
 # ------------------------------------------------------------------------------
 # AQUI SE TIENE QUE OPTIMIZAR LA SECUENCIA DE DIALOGOS USANDO UN ARRAY Y LISTA
@@ -71,7 +71,9 @@ func start_dialog():
 		npc.is_talking = true
 		await get_tree().create_timer(1.5).timeout
 		
+		# ESTO HAY QUE MOVERLO AL NpcQuestCompleted
 		GameState.update_npc_property(npc, 'quest', true)
+		
 		dialog_number = 1
 		
 	else:
@@ -97,4 +99,4 @@ func end_dialog():
 	dialog_started = false
 	#queue_free() # Esto lo quejamos sin efecto para repetir los dialogos.
 	
-	Transitioned.emit(self, "NpcBlocking") # Esto deberia ser NpcQuestWaiting
+	Transitioned.emit(self, "NpcQuestWaiting") # Esto deberia ser NpcQuestWaiting

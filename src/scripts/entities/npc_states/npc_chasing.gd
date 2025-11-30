@@ -35,5 +35,6 @@ func physics_update(_delta: float):
 # Callback cuando el npc detecta que el player se fue
 func _on_chase_player_lost():
 	print("NpcChasing _on_chase_player_lost")
-	print("Transicion a NpcBlocking")
-	Transitioned.emit(self, "NpcBlocking")
+	#NOTA: aca tenemos que cambiar para NpcReturning
+	print("Transicion a NpcQuestWaiting")
+	Transitioned.emit(self, "NpcQuestWaiting")
