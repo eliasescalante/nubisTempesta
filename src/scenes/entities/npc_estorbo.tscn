@@ -1,9 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://ufvy0dcwnqjf"]
+[gd_scene load_steps=21 format=3 uid="uid://ufvy0dcwnqjf"]
 
 [ext_resource type="Script" uid="uid://c286qvkygjwu2" path="res://src/scripts/entities/npc_estorbo.gd" id="1_2vnfn"]
 [ext_resource type="Texture2D" uid="uid://bjdeetn7a1o46" path="res://_assets/art/sprites/npc-estorbo-spritesheet.png" id="2_f0bcc"]
 [ext_resource type="PackedScene" uid="uid://b780qmfqgvwqn" path="res://src/scenes/entities/dialogo.tscn" id="3_f0bcc"]
-[ext_resource type="Script" uid="uid://ctk0nqfk2jnxx" path="res://src/scripts/npc_dialog_trigger.gd" id="4_r2rp2"]
 [ext_resource type="Script" uid="uid://vjkti5djw36g" path="res://src/scripts/state_machine/state_machine_npc.gd" id="5_vajym"]
 [ext_resource type="Script" uid="uid://bllbaxxcip63g" path="res://src/scripts/entities/npc_states/npc_blocking.gd" id="6_vy3q0"]
 [ext_resource type="Script" uid="uid://da0kexnc4cfy" path="res://src/scripts/entities/npc_states/npc_init.gd" id="7_j1pj2"]
@@ -109,7 +108,6 @@ position = Vector2(0, 32)
 shape = SubResource("RectangleShape2D_fvhpi")
 
 [node name="DialogArea2D" type="Area2D" parent="."]
-script = ExtResource("4_r2rp2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogArea2D"]
 position = Vector2(0, 64)
