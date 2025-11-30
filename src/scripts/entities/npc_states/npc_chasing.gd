@@ -7,6 +7,10 @@ class_name NpcChasing
 var player: CharacterBody2D
 var ray_cast_2d: RayCast2D
 
+var hud
+var target_desired
+var object_used_specimen
+
 # Al entrar, nos suscribimos a la señal de "player_lost"
 # del npc y capturamos el nodo principal del player
 func enter():
@@ -18,7 +22,10 @@ func enter():
 	GameState.update_npc_property( npc, 'state', 'NpcChasing' )
 	player = get_tree().get_first_node_in_group("player")
 	ray_cast_2d = npc.ray_cast_2d
-
+	
+	hud = get_tree().get_root().find_child("HudNivel", true, false)
+	target_desired = GameState.get_npc_property( npc, 'target_desired')
+	
 # Al salir, desconectamos la señal
 func exit():
 	print("NpcChasing exit")
@@ -27,7 +34,11 @@ func exit():
 func physics_update(_delta: float):
 	if not player:
 		return
-		
+	
+	object_used_specimen = hud.object_used_specimen
+	if object_used_specimen != target_desired:
+		Transitioned.emit(self, "NpcReturning")
+	
 	var direction
 	if ray_cast_2d.is_colliding():
 		# Diferencia entre 2 puntos en el plano. ESTO CAMBIARLO SOLO por COORD X
@@ -42,5 +53,5 @@ func physics_update(_delta: float):
 func _on_chase_player_lost():
 	print("NpcChasing _on_chase_player_lost")
 	#NOTA: aca tenemos que cambiar para NpcReturning
-	print("Transicion a NpcQuestWaiting")
-	Transitioned.emit(self, "NpcQuestWaiting")
+	print("Transicion a NpcReturning")
+	Transitioned.emit(self, "NpcReturning")
