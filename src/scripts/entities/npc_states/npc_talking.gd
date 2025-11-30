@@ -61,12 +61,14 @@ func start_dialog():
 		player.play_dialog("Necesito pasar...")
 		player.dialogo.visible = true
 		npc_dialogo.visible = false  # NPC callado
+		npc.is_talking = false
 		await get_tree().create_timer(1.5).timeout
 
 		# 🔵 ETAPA 2 → NPC HABLA
 		player.dialogo.visible = false   # player callado
 		npc_dialogo.update_text("mmmm, quiero un "+target_desired+"...")
 		npc_dialogo.visible = true
+		npc.is_talking = true
 		await get_tree().create_timer(1.5).timeout
 		
 		GameState.update_npc_property(npc, 'quest', true)
@@ -77,6 +79,7 @@ func start_dialog():
 		player.dialogo.visible = false   # player callado
 		npc_dialogo.update_text(""+target_desired+" he dicho...")
 		npc_dialogo.visible = true
+		npc.is_talking = true
 		await get_tree().create_timer(1.5).timeout
 		dialog_number = 2
 	GameState.update_npc_property(npc, 'dialog_number', dialog_number)
@@ -86,7 +89,8 @@ func end_dialog():
 	# Ocultar ambos
 	player.dialogo.visible = false
 	npc_dialogo.visible = false
-
+	npc.is_talking = false
+	
 	player.is_talking = false
 	npc.set_process(true)
 	
