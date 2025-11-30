@@ -115,7 +115,7 @@ shape = SubResource("RectangleShape2D_f0bcc")
 debug_color = Color(0.78039217, 0.40784314, 0.44705883, 0.06666667)
 
 [node name="dialogo" parent="." instance=ExtResource("3_f0bcc")]
-position = Vector2(64, -64)
+position = Vector2(30, -64)
 
 [node name="StateMachineNPC" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_vajym")
