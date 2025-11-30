@@ -102,8 +102,7 @@ debug_color = Color(0.8157433, 0.25845847, 0.76289934, 0.105882354)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f0bcc")
-animation = &"caminar"
-frame_progress = 0.019727837
+animation = &"idle"
 
 [node name="BodyCollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 32)

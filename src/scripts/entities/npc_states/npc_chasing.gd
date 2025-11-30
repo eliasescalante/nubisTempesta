@@ -11,13 +11,18 @@ var hud
 var target_desired
 var object_used_specimen
 
+var return_point: Node
+var dont_move: bool = false
+
 # Al entrar, nos suscribimos a la señal de "player_lost"
 # del npc y capturamos el nodo principal del player
 func enter():
 	print("NpcChasing enter")
 	# Conectamos la seña de perdida para poder volver
 	# al estado de blockeo (por ahora)
+	return_point = npc.return_point
 	npc.chase_player_lost.connect(_on_chase_player_lost)
+	return_point.player_detected.connect(_on_return_point_player_detected)
 	# Buscamos al player por grupo
 	GameState.update_npc_property( npc, 'state', 'NpcChasing' )
 	player = get_tree().get_first_node_in_group("player")
@@ -26,12 +31,18 @@ func enter():
 	hud = get_tree().get_root().find_child("HudNivel", true, false)
 	target_desired = GameState.get_npc_property( npc, 'target_desired')
 	
+	dont_move = false
+	
 # Al salir, desconectamos la señal
 func exit():
 	print("NpcChasing exit")
 	npc.chase_player_lost.disconnect(_on_chase_player_lost)
 	
 func physics_update(_delta: float):
+	
+	if dont_move:
+		return
+	
 	if not player:
 		return
 	
@@ -55,3 +66,10 @@ func _on_chase_player_lost():
 	#NOTA: aca tenemos que cambiar para NpcReturning
 	print("Transicion a NpcReturning")
 	Transitioned.emit(self, "NpcReturning")
+
+func _on_return_point_player_detected():
+	print("NpcChasing _on_return_point_player_detected")
+	# Acá nos avisa el return_point que el Player ha pasado
+	# Con lo que desactivamos todo
+	dont_move = true
+	Transitioned.emit(self, "NpcDesactivated")
