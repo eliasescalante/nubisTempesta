@@ -31,5 +31,6 @@ func physics_update(_delta: float):
 
 func _on_player_detected():
 	print("NpcBlocking _on_player_detected")
-	print("Transicion a NpcChasing")
-	Transitioned.emit(self, "NpcChasing")
+	#print("Transicion a NpcChasing")
+	#Transitioned.emit(self, "NpcChasing")
+	Transitioned.emit(self, "NpcDesactivated")
