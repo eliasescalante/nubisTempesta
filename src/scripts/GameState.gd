@@ -45,8 +45,8 @@ func register_npc(npc_node: Node) -> void:
 
 # Función para actualizar el estado de un NPC específico
 func update_npc_property(npc_node: Node, property: String, value) -> void:
-	if npcs_data.has(str(npc_node.get_instance_id())):
-		var npc_id = get_npc_id(npc_node)
+	var npc_id = get_npc_id(npc_node)
+	if npcs_data.has(npc_id):
 		if npcs_data[npc_id].has(property):
 			npcs_data[npc_id][property] = value
 			print("Actualizado NPC %s: %s = %s" % [npc_id, property, str(value)])
