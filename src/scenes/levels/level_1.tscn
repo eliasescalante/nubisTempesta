@@ -301,6 +301,5 @@ label_settings = SubResource("LabelSettings_m11n0")
 
 [node name="cortina" parent="." instance=ExtResource("14_cufsb")]
 layer = 2
-visible = false
 
 [connection signal="body_entered" from="Parallax2D_medio/Portal1" to="." method="_on_portal_1_body_entered"]

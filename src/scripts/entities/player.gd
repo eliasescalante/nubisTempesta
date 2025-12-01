@@ -59,6 +59,8 @@ var velocity_falling := 0.0
 @onready var dialogo: Node2D = %dialogo
 
 signal pld_cambiado(nuevo_pld)
+signal game_over() # Esto lo deberia determinar la logical del LEVEL. Por ahora lo dejo acá
+signal player_died()
 
 # --- Función para gastar PLD ---
 func gastar_pld(cantidad: int):
@@ -83,6 +85,7 @@ func gastar_pld(cantidad: int):
 		print ("Emitir señal 'game_over'")
 		emit_signal("game_over")
 		#return
+		
 # --- Ready ---
 func _ready() -> void:
 	dialogo.visible = false
@@ -114,7 +117,6 @@ func _physics_process(delta: float) -> void:
 		tiempo_muerta += delta
 		if tiempo_muerta > TIME_TO_REGENERATE:
 			tiempo_muerta = 0.0
-			is_dead = false
 			regenerar()
 		return
 		
@@ -290,3 +292,5 @@ func sumar_pld(cantidad: int):
 
 func regenerar():
 	print("Regenerar a Nubis")
+	is_dead = false
+	emit_signal("player_died")
