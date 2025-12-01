@@ -133,6 +133,7 @@ return_point = NodePath("../punto_retorno_npc_1")
 
 [node name="npc_estorbo_2" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("5_w1xa4")]
 position = Vector2(1920, -640)
+target_desired = "honguito"
 return_point = NodePath("../punto_retorno_npc_2")
 
 [node name="punto_retorno_npc_1" parent="Parallax2D_medio/NPCs" instance=ExtResource("8_f7n67")]
@@ -200,7 +201,7 @@ position = Vector2(1600, 640)
 position = Vector2(1472, 640)
 
 [node name="Item23" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
-position = Vector2(1700, -761)
+position = Vector2(1408, -704)
 
 [node name="Item26" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
 position = Vector2(1044, -1401)
