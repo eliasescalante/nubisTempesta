@@ -36,5 +36,9 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 6
 theme_override_fonts/font = ExtResource("2_q1fkg")
 theme_override_font_sizes/font_size = 18
+text = "hola linea 1
+hola linea 2
+hola línea 3
+hola línea 4"
 label_settings = SubResource("LabelSettings_q1fkg")
 horizontal_alignment = 1

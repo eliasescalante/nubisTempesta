@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://clx0rliac47qw"]
+[gd_scene load_steps=18 format=4 uid="uid://clx0rliac47qw"]
 
 [ext_resource type="Script" uid="uid://de366u52gwitk" path="res://src/scripts/level_1.gd" id="1_nw74m"]
 [ext_resource type="TileSet" uid="uid://84vsloajncpa" path="res://_resources/map_exterior_blanco_tile_set.tres" id="2_cufsb"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://q3sb0n0gwdsu" path="res://src/scenes/ui/hud_nivel.tscn" id="6_m1y7t"]
 [ext_resource type="PackedScene" uid="uid://4yahvdhbdbtb" path="res://src/scenes/entities/item_honguito.tscn" id="7_mrfrg"]
 [ext_resource type="PackedScene" path="res://src/scenes/entities/item_chupachups.tscn" id="8_cpsdu"]
+[ext_resource type="PackedScene" uid="uid://j4wdoon05mmh" path="res://src/scenes/entities/punto_retorno_npc.tscn" id="8_f7n67"]
 [ext_resource type="PackedScene" uid="uid://wstroalu326b" path="res://src/scenes/entities/npc_decorado_negro.tscn" id="10_m1y7t"]
 [ext_resource type="TileSet" uid="uid://cv42yxnip6htf" path="res://_resources/map_exterior_negro_tile_set.tres" id="11_cufsb"]
 [ext_resource type="PackedScene" uid="uid://c0qonmpwpmm0v" path="res://src/scenes/entities/cortina.tscn" id="14_cufsb"]
@@ -21,7 +22,7 @@ size = Vector2(192, 320)
 [sub_resource type="LabelSettings" id="LabelSettings_m11n0"]
 font_size = 200
 
-[node name="Level1" type="Node2D"]
+[node name="Level_1" type="Node2D" groups=["levels"]]
 script = ExtResource("1_nw74m")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -77,7 +78,7 @@ position = Vector2(1408, -4992)
 position = Vector2(896, -384)
 
 [node name="StaticPlataform4" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
-position = Vector2(384, -1920)
+position = Vector2(896, -1920)
 
 [node name="StaticPlataform5" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(-384, -1920)
@@ -123,9 +124,17 @@ position = Vector2(-1473, -2425)
 speed = 500.0
 
 [node name="NPCs" type="Node2D" parent="Parallax2D_medio"]
+unique_name_in_owner = true
 
-[node name="Node2D" parent="Parallax2D_medio/NPCs" instance=ExtResource("5_w1xa4")]
-position = Vector2(2048, -2176)
+[node name="npc_estorbo_1" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("5_w1xa4")]
+position = Vector2(2560, -2176)
+return_point = NodePath("../punto_retorno_npc_1")
+
+[node name="npc_estorbo_2" parent="Parallax2D_medio/NPCs" instance=ExtResource("5_w1xa4")]
+position = Vector2(1920, -640)
+
+[node name="punto_retorno_npc_1" parent="Parallax2D_medio/NPCs" instance=ExtResource("8_f7n67")]
+position = Vector2(2560, -2112)
 
 [node name="Player" parent="Parallax2D_medio" instance=ExtResource("5_wxrok")]
 unique_name_in_owner = true
@@ -167,6 +176,12 @@ position = Vector2(1472, 640)
 [node name="Item23" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
 position = Vector2(1700, -761)
 
+[node name="Item26" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
+position = Vector2(1044, -1401)
+
+[node name="Item27" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
+position = Vector2(2176, -2496)
+
 [node name="Item17" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
 position = Vector2(2880, 640)
 
@@ -194,16 +209,13 @@ position = Vector2(-128, -640)
 [node name="Item6" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
 position = Vector2(384, -1408)
 
-[node name="Item7" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
-position = Vector2(1728, -2176)
-
 [node name="Item24" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
-position = Vector2(1664, -2688)
+modulate = Color(0.7082608, 0.5654652, 0.33670634, 1)
+position = Vector2(1516, -3200)
 item_type = "bonus"
 
 [node name="Item25" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
-position = Vector2(2560, -2688)
-item_type = "mision"
+position = Vector2(1984, -2176)
 
 [node name="Item8" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
 position = Vector2(-960, -2688)
@@ -264,5 +276,6 @@ label_settings = SubResource("LabelSettings_m11n0")
 
 [node name="cortina" parent="." instance=ExtResource("14_cufsb")]
 layer = 2
+visible = false
 
 [connection signal="body_entered" from="Parallax2D_medio/Portal1" to="." method="_on_portal_1_body_entered"]
