@@ -142,6 +142,7 @@ position = Vector2(2560, -2112)
 position = Vector2(1920, -576)
 
 [node name="player_respawn_points" type="Node2D" parent="Parallax2D_medio"]
+unique_name_in_owner = true
 
 [node name="player_respawn_point_1" parent="Parallax2D_medio/player_respawn_points" instance=ExtResource("9_shuiu")]
 position = Vector2(-2304, 640)

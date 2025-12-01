@@ -5,6 +5,8 @@ extends Node2D
 @onready var player = %Player
 @onready var collectables = $Parallax2D_medio/Collectables
 @onready var hud = get_tree().get_current_scene().get_node("HudNivel")
+@onready var player_respawn_points: Node2D = %player_respawn_points
+
 @export var zona : String = "NIVEL 1 - ZONA A"
 @export var nivel : String = "BAJOS PILARES"
 @export var respawn_time: float = 1.0 # segundos para reaparecer
@@ -101,7 +103,7 @@ func respawn_player() -> void :
 func respawn_player_paso_2(anim_name: String) -> void :
 	print("RESPAWN PLAYER - paso 2")
 	cortina.color = Color(0,0,0,1)
-	player.global_position = GameState.get_respawn_point(player)
+	player.global_position = GameState.get_respawn_point(player, player_respawn_points)
 	await get_tree().create_timer(0.3).timeout
 	print("Animacion cortina entrada")
 	animacion.play("entrada")
