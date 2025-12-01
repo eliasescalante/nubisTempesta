@@ -29,6 +29,8 @@ window/stretch/mode="canvas_items"
 
 folder_colors={
 "res://_assets/": "red",
+"res://_assets/art/video/": "green",
+"res://_assets/musica/": "blue",
 "res://_assets/placeholders/": "yellow",
 "res://_assets/sfx/": "purple"
 }
