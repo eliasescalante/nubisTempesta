@@ -53,6 +53,7 @@ func _on_portal_1_body_entered(body: Node2D) -> void:
 		GameState.text_loader_subtitulo = "BAR 'BARRACUDA'"
 		GameState.image_loader_mini = "nivel_1_zona_b"
 		print(GameState.portal)
+		AudioManager.get_node("ost/Nivel1").stop()
 		call_deferred("_change_to_loader")
 
 func _change_to_loader():

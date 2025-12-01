@@ -18,7 +18,7 @@ func _on_animacion_terminada(anim_name: String) -> void:
 		cortina.visible = false
 	if anim_name == "salida":
 		if ir_a == "juego":
-			AudioManager.get_node("ost/Introduccion").stop()
+			AudioManager.get_node("ost/MainTheme").stop()
 			
 			GameState.portal = 0
 			GameState.loader = 0
