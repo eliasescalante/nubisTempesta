@@ -1,5 +1,8 @@
 extends Node
 
+# ------------------------------------------------------------------------------
+
+# DATA PARA EL LOADER ENTRE ESCENAS
 var portal = 0 #1 es al nivel inicial, 2 al nivel 2 y el 3
 var loader = 0 # para cargar la escena a donde ir
 var text_loader #para cargar el TITULO del loader
@@ -82,3 +85,27 @@ func get_npc_state(npc_node: Node) -> String:
 	if npcs_data.has(npc_id):
 		return npcs_data[npc_id].get('state', '')
 	return "null"
+
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+var respawn_point: Vector2
+
+func set_respawn_point(player_respawn_point: Node) -> void:
+	print("Registra punto de regeneración ", player_respawn_point)
+	respawn_point = player_respawn_point.get_global_position()
+
+func get_respawn_point(player: Node, player_respawn_points: Node2D) -> Vector2:
+	print("Ultimo punto de regeneración ",respawn_point)
+	# Si no hay registrado un punto de retorno buscamos el más cercano.
+	if not respawn_point:
+		var lowest_distance = INF
+		var distance_tmp 
+		for respawn_point_child in  player_respawn_points.get_children():
+			print("respawn_point_child ",respawn_point_child)
+			distance_tmp = respawn_point_child.global_position.distance_squared_to(player.global_position)
+			print("distance_tmp ",distance_tmp)
+			if distance_tmp < lowest_distance:
+				print("Este punto es más cercano que el anterior.")
+				lowest_distance = distance_tmp
+				respawn_point = respawn_point_child.get_global_position()
+	return respawn_point

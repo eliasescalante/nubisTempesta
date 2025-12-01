@@ -1,9 +1,12 @@
 extends Node2D
 
 @onready var animacion = $cortina/AnimationPlayer
-
+@onready var cortina = $cortina/curtains
+@onready var player = %Player
 @onready var collectables = $Parallax2D_medio/Collectables
 @onready var hud = get_tree().get_current_scene().get_node("HudNivel")
+@onready var player_respawn_points: Node2D = %player_respawn_points
+
 @export var zona : String = "NIVEL 1 - ZONA A"
 @export var nivel : String = "BAJOS PILARES"
 @export var respawn_time: float = 1.0 # segundos para reaparecer
@@ -11,10 +14,8 @@ extends Node2D
 @onready var spawn_point_0: Marker2D = %Portal0/Marker2D
 @onready var spawn_point_1: Marker2D = %Portal1/Marker2D
 
-
 func _ready() -> void:
 	AudioManager.play_nivel_1()
-	var player = %Player
 	var spawn_point = spawn_point_0
 	
 	# Conectar señales de todos los ítems iniciales
@@ -31,10 +32,12 @@ func _ready() -> void:
 		
 	if hud:
 		hud.actualizar_nivel_y_zona(zona, nivel )
-
+	
 	print("Animacion cortina entrada")
 	animacion.play("entrada")
 	animacion.animation_finished.connect(_on_animacion_terminada)
+	
+	player.player_died.connect(respawn_player)
 
 func _on_animacion_terminada(anim_name: String) -> void:
 	# habilitar movimiento jugador
@@ -84,3 +87,25 @@ func _on_item_collected(item_scene_path: String, pos: Vector2, item_type: String
 		
 		collectables.add_child(new_item)
 		print("🍄 Item respawneado:", item_scene_path)
+
+func respawn_player() -> void :
+	print("RESPAWN PLAYER")
+	
+	# Paso 1: Cerramos cortina
+	print("Animacion cortina salida")
+	animacion.animation_finished.disconnect(_on_animacion_terminada)
+	animacion.animation_finished.connect(respawn_player_paso_2)
+	animacion.play("salida")
+	
+	
+
+	
+func respawn_player_paso_2(anim_name: String) -> void :
+	print("RESPAWN PLAYER - paso 2")
+	cortina.color = Color(0,0,0,1)
+	player.global_position = GameState.get_respawn_point(player, player_respawn_points)
+	await get_tree().create_timer(0.3).timeout
+	print("Animacion cortina entrada")
+	animacion.play("entrada")
+	animacion.animation_finished.disconnect(respawn_player_paso_2)
+	animacion.animation_finished.connect(_on_animacion_terminada)
