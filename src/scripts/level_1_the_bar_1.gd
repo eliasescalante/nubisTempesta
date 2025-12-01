@@ -5,7 +5,7 @@ extends Node2D
 @export var nivel : String = "BAR 'BARRACUDA'"
 
 func _ready() -> void:
-	
+	AudioManager.play_bar()
 	var player = %Player
 	if GameState.portal == 2:
 		var spawn_point = %Portal_1/Marker2D
@@ -34,6 +34,7 @@ func _on_portal_1a_2_body_entered(body: Node2D) -> void:
 		GameState.text_loader_subtitulo = "BAJOS PILARES"
 		GameState.image_loader_mini = "nivel_1_zona_a"
 		print(GameState.portal)
+		AudioManager.get_node("ost/Bar").stop()
 		get_tree().change_scene_to_file("res://src/scenes/levels/loader.tscn")
 
 func _on_portal_2a_3_body_entered(body: Node2D) -> void:
