@@ -29,6 +29,7 @@ func exit():
 	print("NpcQuestWaiting exit")
 	npc.dialog_player_detected.disconnect(_on_dialog_player_detected)
 	npc.chase_player_detected.disconnect(_on_chase_player_detected)
+	return_point.player_detected.disconnect(_on_return_point_player_detected)
 	
 func update(delta: float ):
 	pass

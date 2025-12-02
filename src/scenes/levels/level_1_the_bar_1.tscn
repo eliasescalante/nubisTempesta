@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://wstroalu326b" path="res://src/scenes/entities/npc_decorado_negro.tscn" id="3_u7nq0"]
 [ext_resource type="PackedScene" uid="uid://ufvy0dcwnqjf" path="res://src/scenes/entities/npc_estorbo.tscn" id="3_xcls0"]
 [ext_resource type="PackedScene" uid="uid://q3sb0n0gwdsu" path="res://src/scenes/ui/hud_nivel.tscn" id="4_a6m8b"]
-[ext_resource type="PackedScene" uid="uid://quducok480tl" path="res://src/scenes/entities/npc_bloqueo.tscn" id="4_nmova"]
+[ext_resource type="PackedScene" uid="uid://quducok480tl" path="res://src/scenes/entities/npc_patovica.tscn" id="4_nmova"]
 [ext_resource type="PackedScene" uid="uid://4yahvdhbdbtb" path="res://src/scenes/entities/item_honguito.tscn" id="5_qlb2b"]
 [ext_resource type="PackedScene" path="res://src/scenes/entities/item_chupachups.tscn" id="6_3stsn"]
 [ext_resource type="PackedScene" uid="uid://j4wdoon05mmh" path="res://src/scenes/entities/punto_retorno_npc.tscn" id="7_3lsp1"]

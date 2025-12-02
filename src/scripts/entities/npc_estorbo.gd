@@ -1,6 +1,14 @@
 extends CharacterBody2D
 
-### NPC-ESTORBO ###
+### NPC
+# ESTO SE VA A TRANSFORMA EN GENERICO PARA TODOS LOS NPC
+#
+# Definir el tipo de comportamiento del NPC con la propiedad
+# @export var type:String = 'estorbo'
+# Por ahora tenemos:
+# 'estorbo' : bloquea el paso. Se puede mover utilizando un Objeto "EN USO"
+# 'chisme': no bloquea el paso, pero detiene al Player para un pequeño diálogo.
+# 'patovica': bloquea el paso en un sentido. Dejar pasar si hay cierta cantidad de PLD o Objeto-Pase
 
 #-------------------------------------------------------------------------------
 
