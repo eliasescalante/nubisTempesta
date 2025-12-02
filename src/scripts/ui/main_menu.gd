@@ -42,6 +42,7 @@ func _on_play_button_pressed() -> void:
 func _on_play_button_pressed_2() -> void:
 	#LevelManager.load_level(3)
 	print("VAMOS DERECHO AL NIVEL")
+	AudioManager.get_node("ost/MainTheme").stop()
 	get_tree().change_scene_to_file("res://src/scenes/levels/level_1.tscn")
 
 # <------	
