@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://clx0rliac47qw"]
+[gd_scene load_steps=20 format=4 uid="uid://clx0rliac47qw"]
 
 [ext_resource type="Script" uid="uid://de366u52gwitk" path="res://src/scripts/level_1.gd" id="1_nw74m"]
 [ext_resource type="TileSet" uid="uid://84vsloajncpa" path="res://_resources/map_exterior_blanco_tile_set.tres" id="2_cufsb"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://4yahvdhbdbtb" path="res://src/scenes/entities/item_honguito.tscn" id="7_mrfrg"]
 [ext_resource type="PackedScene" path="res://src/scenes/entities/item_chupachups.tscn" id="8_cpsdu"]
 [ext_resource type="PackedScene" uid="uid://j4wdoon05mmh" path="res://src/scenes/entities/punto_retorno_npc.tscn" id="8_f7n67"]
+[ext_resource type="PackedScene" uid="uid://quducok480tl" path="res://src/scenes/entities/npc_patovica.tscn" id="9_bwbgn"]
 [ext_resource type="PackedScene" uid="uid://b1gvurchiu3h4" path="res://src/scenes/entities/player_respawn_point.tscn" id="9_shuiu"]
 [ext_resource type="PackedScene" uid="uid://wstroalu326b" path="res://src/scenes/entities/npc_decorado_negro.tscn" id="10_m1y7t"]
 [ext_resource type="TileSet" uid="uid://cv42yxnip6htf" path="res://_resources/map_exterior_negro_tile_set.tres" id="11_cufsb"]
@@ -31,9 +32,11 @@ offset_left = -4608.0
 offset_top = -8704.0
 offset_right = 4864.0
 offset_bottom = 2048.0
+metadata/_edit_lock_ = true
 
 [node name="Parallax2D_fondo" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.9, 0.9)
+metadata/_edit_lock_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Parallax2D_fondo"]
 tile_map_data = PackedByteArray("AAD3/wAAAAABAAIAAAD3/wEAAAAAAAIAAAD3/wIAAAABAAIAAAD3/wMAAAAAAAIAAAD3/wQAAAABAAIAAAD3/wUAAAAAAAIAAAD3/wYAAAABAAIAAAD3/wcAAAAAAAIAAAD3//j/AAABAAIAAAD3//n/AAAAAAIAAAD3//r/AAABAAIAAAD3//v/AAAAAAIAAAD3//z/AAABAAIAAAD3//3/AAAAAAIAAAD3//7/AAABAAIAAAD3////AAAAAAIAAAD2//j/AAAFAAEAAAD1//j/AAAEAAEAAAD4//j/AAACAAEAAAD5//j/AAADAAEAAAD8//7/AAADAAEAAAD7//7/AAACAAEAAAD6//7/AAABAAEAAAD4//7/AAACAAEAAAD5//7/AAAFAAEAAAD2//7/AAAFAAEAAAD1//7/AAAEAAEAAAD5/wMAAAAEAAEAAAD6/wMAAAAFAAEAAAD7/wMAAAACAAEAAAD8/wMAAAAFAAEAAAD9/wMAAAABAAEAAAD+/wMAAAABAAEAAAD//wMAAAACAAEAAAAAAAMAAAADAAEAAAA=")
@@ -128,19 +131,19 @@ speed = 500.0
 unique_name_in_owner = true
 
 [node name="npc_estorbo_1" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("5_w1xa4")]
-position = Vector2(2560, -2176)
+position = Vector2(2304, -2176)
 return_point = NodePath("../punto_retorno_npc_1")
 
 [node name="npc_estorbo_4" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("5_w1xa4")]
 modulate = Color(0.8992584, 0.8992584, 0.8992584, 1)
-position = Vector2(1412, -2176)
+position = Vector2(2560, -2688)
 type = "chisme"
 target_desired = ""
 return_point = NodePath("../punto_retorno_npc_1")
 
 [node name="npc_estorbo_3" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("5_w1xa4")]
 modulate = Color(0.8, 0.8, 0.8, 1)
-position = Vector2(2240, -2176)
+position = Vector2(1728, -2688)
 return_point = NodePath("../punto_retorno_npc_1")
 blocked = true
 
@@ -150,13 +153,26 @@ target_desired = "honguito"
 return_point = NodePath("../punto_retorno_npc_2")
 
 [node name="punto_retorno_npc_1" parent="Parallax2D_medio/NPCs" instance=ExtResource("8_f7n67")]
-position = Vector2(2560, -2112)
+position = Vector2(2304, -2112)
 
 [node name="punto_retorno_npc_2" parent="Parallax2D_medio/NPCs" instance=ExtResource("8_f7n67")]
 position = Vector2(1920, -576)
 
+[node name="npc_patovica_1" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("9_bwbgn")]
+position = Vector2(3073, -2176)
+type = "patovica"
+target_desired = "300"
+return_point = NodePath("../punto_control_npc_1")
+
+[node name="punto_control_npc_1" parent="Parallax2D_medio/NPCs" instance=ExtResource("8_f7n67")]
+modulate = Color(0, 0.6437175, 0.27693516, 1)
+position = Vector2(2944, -2176)
+scale = Vector2(2, 2)
+
 [node name="player_respawn_points" type="Node2D" parent="Parallax2D_medio"]
 unique_name_in_owner = true
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="player_respawn_point_1" parent="Parallax2D_medio/player_respawn_points" instance=ExtResource("9_shuiu")]
 position = Vector2(-2304, 640)
@@ -182,6 +198,8 @@ position = Vector2(1664, -2176)
 
 [node name="Portal1" type="Area2D" parent="Parallax2D_medio"]
 unique_name_in_owner = true
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D_medio/Portal1"]
 position = Vector2(3413, -2208)
@@ -274,6 +292,8 @@ position = Vector2(1408, -5248)
 
 [node name="Portal0" type="Area2D" parent="Parallax2D_medio"]
 unique_name_in_owner = true
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D_medio/Portal0"]
 position = Vector2(1664, -2208)
@@ -285,6 +305,9 @@ position = Vector2(1792, -2176)
 [node name="Parallax2D_frente" type="Parallax2D" parent="."]
 z_index = 200
 scroll_scale = Vector2(1.1, 1.1)
+scroll_offset = Vector2(960, -1536)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Parallax2D_frente"]
 tile_map_data = PackedByteArray("AAD8/wMAAQACAAEAAAD9/wMAAQADAAEAAAD9/wAAAQAEAAEAAAD+/wAAAQAFAAEAAAD//wAAAQACAAEAAAAAAAAAAQADAAEAAAD7//z/AQAAAAIAAAD7//3/AQABAAIAAAD7//7/AQAAAAIAAAD7////AQABAAIAAAD7/wAAAQAAAAIAAAD7/wEAAQABAAIAAAD7/wIAAQAAAAIAAAD7/wMAAQABAAIAAAD7/wQAAQAAAAIAAAD7/wUAAQABAAIAAAD7/wYAAQAAAAIAAAD7/wcAAQABAAIAAAD7//v/AQAAAAEAAAD8//v/AQADAAEAAAD6//v/AQAEAAEAAAD6/wMAAQAFAAEAAAD5/wMAAQAEAAEAAAA=")
@@ -311,6 +334,7 @@ offset_right = 682.0
 offset_bottom = -8879.0
 text = "NIVEL 1"
 label_settings = SubResource("LabelSettings_m11n0")
+metadata/_edit_lock_ = true
 
 [node name="HudNivel" parent="." instance=ExtResource("6_m1y7t")]
 
