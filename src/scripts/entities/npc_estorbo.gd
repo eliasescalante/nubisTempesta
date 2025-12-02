@@ -9,6 +9,7 @@ extends CharacterBody2D
 # 'estorbo' : bloquea el paso. Se puede mover utilizando un Objeto "EN USO"
 # 'chisme': no bloquea el paso, pero detiene al Player para un pequeño diálogo.
 # 'patovica': bloquea el paso en un sentido. Dejar pasar si hay cierta cantidad de PLD o Objeto-Pase
+# 'historia'
 
 #-------------------------------------------------------------------------------
 
@@ -76,6 +77,10 @@ signal capture_player_lost
 
 # Por defecto FALSE indica que el NPC no tiene comportamientos.
 @export var blocked:bool = false
+
+# ID para Dialogo - Esto se usa para identificar el guion de dialogos
+# Que le corresponde a este NPC. Ver el global DialogManager.gd
+@export var dialog_id: String = ""
 
 var is_talking : = false
 
