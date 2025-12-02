@@ -44,6 +44,7 @@ signal capture_player_lost
 @onready var dialogo = $dialogo
 @onready var state_machine_npc: Node = $StateMachineNPC
 @onready var ray_cast_2d: RayCast2D = %RayCast2D
+@onready var body_collision_shape_2d: CollisionShape2D = %BodyCollisionShape2D
 
 # El tipo de NPC: 'estorbo', 'bloqueo', 'historia'
 @export var type:String = 'estorbo'
@@ -64,7 +65,9 @@ signal capture_player_lost
 # Vincula el nodo 'Punto_retorno_npc_X' con el NPC
 @export var return_point:Node2D
 
-var blocked := false # Esto creo que hay que sacarlo.
+# Por defecto FALSE indica que el NPC no tiene comportamientos.
+@export var blocked:bool = false
+
 var is_talking : = false
 
 func _ready() -> void:
@@ -73,7 +76,11 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	
+
+	if blocked:
+		animated_sprite_2d.play("idle")
+		return
+
 	move_and_slide()
 	
 	if velocity.length() > 0:
@@ -94,11 +101,6 @@ func _physics_process(_delta: float) -> void:
 		ray_cast_pos_x = -ray_cast_pos_x
 	ray_cast_2d.set_position(Vector2(ray_cast_pos_x,ray_cast_pos_y))
 	
-func _process(delta):
-	if blocked:
-		return
-	# si luego querés darle IA o movimiento, va acá
-	# 2025-11-29 La IA va en la estate machine.
 	
 # ----------------------------------------------------------------------------
 

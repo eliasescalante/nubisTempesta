@@ -116,6 +116,7 @@ sprite_frames = SubResource("SpriteFrames_f0bcc")
 animation = &"idle"
 
 [node name="BodyCollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(0, 32)
 shape = SubResource("RectangleShape2D_fvhpi")
 
