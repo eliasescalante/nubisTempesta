@@ -51,7 +51,7 @@ signal capture_player_lost
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var dialogo = $dialogo
 @onready var state_machine_npc: Node = $StateMachineNPC
-@onready var ray_cast_2d: RayCast2D = %RayCast2D
+@onready var ray_cast_2d: RayCast2D = %floor_RayCast2D
 @onready var body_collision_shape_2d: CollisionShape2D = %BodyCollisionShape2D
 
 # El tipo de NPC: 'estorbo', 'bloqueo', 'historia'
@@ -71,7 +71,8 @@ signal capture_player_lost
 @export var target_desired:String = "chupachups"
 
 # Vincula el nodo 'Punto_retorno_npc_X' con el NPC
-@export var return_point:Node2D
+@export var return_point:Node2D # Deberia renombrarse como PUNTO DE CONTROL para los diferentes NPC
+# Para el tipo 'patovica' sirve para orientar la vista y bloquear en un sentido.
 
 # Por defecto FALSE indica que el NPC no tiene comportamientos.
 @export var blocked:bool = false
@@ -98,9 +99,10 @@ func _physics_process(_delta: float) -> void:
 	else:
 		animated_sprite_2d.play("idle")
 
+	# obtenemos la posicion del floor_RayCast2D para corregir la orientacion
+	# al flipear el player
 	var ray_cast_pos_x = abs(ray_cast_2d.get_position().x)
 	var ray_cast_pos_y = ray_cast_2d.get_position().y
-	
 	if velocity.x > 0:
 		animated_sprite_2d.flip_h = false
 		ray_cast_pos_x = ray_cast_pos_x

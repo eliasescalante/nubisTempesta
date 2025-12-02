@@ -1,7 +1,7 @@
 extends StateNPCs
 class_name NpcDesactivated
 
-@export var npc: CharacterBody2D # Apunta al nodo NpcEstorbo (2 parent levels)
+@onready var npc: CharacterBody2D = $"../.."
 
 var body_desactivated = false
 

@@ -136,49 +136,40 @@ position = Vector2(30, -64)
 script = ExtResource("5_vajym")
 initial_state = NodePath("NpcInit")
 
-[node name="NpcBlocking" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("npc")]
+[node name="NpcBlocking" type="Node" parent="StateMachineNPC"]
 script = ExtResource("6_vy3q0")
-npc = NodePath("../..")
 metadata/_custom_type_script = "uid://bllbaxxcip63g"
 
-[node name="NpcInit" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("npc")]
+[node name="NpcInit" type="Node" parent="StateMachineNPC"]
 script = ExtResource("7_j1pj2")
-npc = NodePath("../..")
 metadata/_custom_type_script = "uid://da0kexnc4cfy"
 
-[node name="NpcChasing" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("npc")]
+[node name="NpcChasing" type="Node" parent="StateMachineNPC"]
 script = ExtResource("8_klm5t")
-npc = NodePath("../..")
 metadata/_custom_type_script = "uid://b1ahgh74nauc1"
 
-[node name="NpcDesactivated" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("npc")]
+[node name="NpcDesactivated" type="Node" parent="StateMachineNPC"]
 script = ExtResource("9_bwsfm")
-npc = NodePath("../..")
 metadata/_custom_type_script = "uid://cd77letq66pu8"
 
-[node name="NpcTalking" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("npc")]
+[node name="NpcTalking" type="Node" parent="StateMachineNPC"]
 script = ExtResource("10_80j61")
-npc = NodePath("../..")
 metadata/_custom_type_script = "uid://cdw61tx5byriu"
 
-[node name="NpcQuestWaiting" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("npc")]
+[node name="NpcQuestWaiting" type="Node" parent="StateMachineNPC"]
 script = ExtResource("10_fvhpi")
-npc = NodePath("../..")
 metadata/_custom_type_script = "uid://b0m2eyjhuwfqr"
 
-[node name="NpcReturning" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("npc")]
+[node name="NpcReturning" type="Node" parent="StateMachineNPC"]
 script = ExtResource("11_fvhpi")
-npc = NodePath("../..")
 metadata/_custom_type_script = "uid://c51cca6grsewu"
 
-[node name="NpcCapturing" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("npc")]
+[node name="NpcCapturing" type="Node" parent="StateMachineNPC"]
 script = ExtResource("12_ojwnn")
-npc = NodePath("../..")
 metadata/_custom_type_script = "uid://cet5cek6kybcc"
 
-[node name="NpcChismeTalking" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("npc")]
+[node name="NpcChismeTalking" type="Node" parent="StateMachineNPC"]
 script = ExtResource("13_q1ujk")
-npc = NodePath("../..")
 metadata/_custom_type_script = "uid://cl4rno0wgbxg4"
 
 [node name="NpcChismeWaiting" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("npc")]
@@ -186,7 +177,7 @@ script = ExtResource("14_da3bb")
 npc = NodePath("../..")
 metadata/_custom_type_script = "uid://dvoqvb77gewil"
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="floor_RayCast2D" type="RayCast2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(64, 80)
 target_position = Vector2(0, 64)

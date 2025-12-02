@@ -1,8 +1,11 @@
 extends StateNPCs
 class_name NpcInit
 
-@export var npc: CharacterBody2D # Apunta al nodo NpcEstorbo (2 parent levels)
+# Apunta al nodo NpcEstorbo (2 parent levels)
+#@export var npc: CharacterBody2D = $"../.."
+@onready var npc: CharacterBody2D = $"../.."
 @onready var state
+
 
 # Ahora el Init determina usando el 'type' de NPC 
 # el comportamiento.
@@ -27,7 +30,11 @@ func enter():
 	if npc.type=='chisme':
 		init_chisme()
 		return
-		
+	
+	if npc.type=='patovica':
+		init_patovica()
+		return
+	
 	init_estorbo()
 
 func exit():
@@ -49,3 +56,7 @@ func init_estorbo():
 func init_chisme():
 	print("Iniciar NPC-CHISME")
 	Transitioned.emit(self, "NpcChismeWaiting")
+
+func init_patovica():
+	print("Iniciar NPC-PATOVICA")
+	Transitioned.emit(self, "NpcPatovicaWaiting")

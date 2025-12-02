@@ -1,7 +1,7 @@
 extends StateNPCs
 class_name NpcReturning
 
-@export var npc: CharacterBody2D
+@onready var npc: CharacterBody2D = $"../.."
 @export var move_speed : float = 300.0
 
 var hud

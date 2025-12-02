@@ -1,7 +1,8 @@
 extends StateNPCs
 class_name NpcChismeTalking
 
-@export var npc: CharacterBody2D
+@onready var npc: CharacterBody2D = $"../.."
+
 var player: CharacterBody2D
 var dialog_number
 var npc_dialogo
