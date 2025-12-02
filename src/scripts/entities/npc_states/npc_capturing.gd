@@ -1,8 +1,7 @@
 extends StateNPCs
 class_name NpcCapturing
 
-
-@export var npc: CharacterBody2D
+@onready var npc: CharacterBody2D = $"../.."
 
 var player: CharacterBody2D
 var hud

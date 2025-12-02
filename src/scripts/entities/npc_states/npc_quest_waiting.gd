@@ -1,7 +1,7 @@
 extends StateNPCs
 class_name NpcQuestWaiting
 
-@export var npc: CharacterBody2D
+@onready var npc: CharacterBody2D = $"../.."
 
 var player: CharacterBody2D
 var hud
@@ -29,6 +29,7 @@ func exit():
 	print("NpcQuestWaiting exit")
 	npc.dialog_player_detected.disconnect(_on_dialog_player_detected)
 	npc.chase_player_detected.disconnect(_on_chase_player_detected)
+	return_point.player_detected.disconnect(_on_return_point_player_detected)
 	
 func update(delta: float ):
 	pass

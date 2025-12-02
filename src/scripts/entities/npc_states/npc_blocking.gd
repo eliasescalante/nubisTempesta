@@ -1,7 +1,7 @@
 extends StateNPCs
 class_name NpcBlocking
 
-@export var npc: CharacterBody2D
+@onready var npc: CharacterBody2D = $"../.."
 
 #-------------------------------------------------------------------------------
 # NOTA En esta versión del juego 

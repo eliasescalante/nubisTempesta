@@ -1,30 +1,20 @@
 extends StateNPCs
-class_name NpcTalking
+class_name NpcChismeTalking
 
 @onready var npc: CharacterBody2D = $"../.."
-
-#-------------------------------------------------------------------------------
-# NOTA En esta versión del juego 
-# cada vez que hay dialogo los personajes están quietos
-# pero a futuro se podrían mover.
-@export var move_speed: float = 0.0
-var move_direction := Vector2.ZERO
-var change_direction: float = 0.0
-#-------------------------------------------------------------------------------
 
 var player: CharacterBody2D
 var dialog_number
 var npc_dialogo
 var dialog_started = false
-var target_desired
+var body_desactivated = false
 
 func enter():
-	print("NpcTalking enter")
+	print("NpcChismeTalking enter")
 	npc.dialog_player_lost.connect(_on_dialog_player_lost)
-	GameState.update_npc_property( npc, 'state', 'NpcTalking' )
+	GameState.update_npc_property( npc, 'state', 'NpcChismeTalking' )
 
 	dialog_number = GameState.get_npc_property( npc, 'dialog_number')
-	target_desired = GameState.get_npc_property( npc, 'target_desired')
 	npc_dialogo = npc.dialogo
 	player = get_tree().get_first_node_in_group("player")
 	
@@ -35,15 +25,18 @@ func exit():
 	npc.dialog_player_lost.disconnect(_on_dialog_player_lost)
 	npc.is_talking = false
 
-func update(delta: float ):
-	pass
+func update(_delta: float):
+	if not body_desactivated:
+		npc.velocity = Vector2.ZERO
+		npc.body_collision_shape_2d.set_deferred('disabled',true)
+		body_desactivated = true
 
 func physics_update(_delta: float):
 	pass
 
 func _on_dialog_player_lost():
-	print("NpcTalking _on_dialog_player_lost")
-	Transitioned.emit(self, "NpcQuestWaiting")
+	print("NpcChismeTalking _on_dialog_player_lost")
+	Transitioned.emit(self, "NpcChismeWaiting")
 
 # ------------------------------------------------------------------------------
 # AQUI SE TIENE QUE OPTIMIZAR LA SECUENCIA DE DIALOGOS USANDO UN ARRAY Y LISTA
@@ -57,33 +50,32 @@ func start_dialog():
 	player.is_talking = true
 
 	if dialog_number == 0:
+		
+		player.dialogo.visible = false   # player callado
+		npc_dialogo.update_text("¡Hola! Los 'honguitos'\n son fantásticos, pero\n mucho mejor son\n los 'chupachups'")
+		npc_dialogo.visible = true
+		npc.is_talking = true
+		await get_tree().create_timer(1.8).timeout
+		
 		# 🔵 ETAPA 1 → PLAYER HABLA
-		player.play_dialog("Necesito pasar...")
+		player.play_dialog("No se quién \nte preguntó, pero\n gracias por el dato")
 		player.dialogo.visible = true
 		npc_dialogo.visible = false  # NPC callado
 		npc.is_talking = false
-		await get_tree().create_timer(1.5).timeout
-
-		# 🔵 ETAPA 2 → NPC HABLA
-		player.dialogo.visible = false   # player callado
-		npc_dialogo.update_text("mmmm, quiero un "+target_desired+"...")
-		npc_dialogo.visible = true
-		npc.is_talking = true
-		await get_tree().create_timer(1.5).timeout
-		
-		# ESTO HAY QUE MOVERLO AL NpcQuestCompleted
-		GameState.update_npc_property(npc, 'quest', true)
+		await get_tree().create_timer(1.3).timeout
 		
 		dialog_number = 1
 		
 	else:
-		# 🔵 ETAPA 3 → NPC HABLA
+
 		player.dialogo.visible = false   # player callado
-		npc_dialogo.update_text(""+target_desired+" he dicho...")
+		npc_dialogo.update_text("Se consiguen \nmás alto \n¡blurp blurp!")
 		npc_dialogo.visible = true
 		npc.is_talking = true
 		await get_tree().create_timer(1.5).timeout
-		dialog_number = 2
+		
+		dialog_number = 0 # con esto lo hacemos ciclico
+		
 	GameState.update_npc_property(npc, 'dialog_number', dialog_number)
 	end_dialog()
 
@@ -99,4 +91,4 @@ func end_dialog():
 	dialog_started = false
 	#queue_free() # Esto lo quejamos sin efecto para repetir los dialogos.
 	
-	Transitioned.emit(self, "NpcQuestWaiting") # Esto deberia ser NpcQuestWaiting
+	Transitioned.emit(self, "NpcChismeWaiting") # Esto deberia ser NpcQuestWaiting

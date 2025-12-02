@@ -18,7 +18,7 @@ extends CanvasLayer
 
 var object_used_specimen # Recibe el dato de la especia de item
 
-var puntos: int = 0
+@onready var puntos: int = GameState.pld
 
 func _ready() -> void:
 	pld_icon_animated_sprite_2d.play("default")
@@ -27,10 +27,12 @@ func _ready() -> void:
 	specimen_pass.text = ""
 	# Este si
 	specimen_used.text = ""
+	puntos_label.text = str(puntos)
 	
 func actualizar_puntos(valor: int):
 	puntos = valor
 	puntos_label.text = str(puntos)
+	GameState.pld = puntos
 
 func agregar_item(item_texture: Texture2D, item_type: String, item_specimen: String):
 	match item_type:

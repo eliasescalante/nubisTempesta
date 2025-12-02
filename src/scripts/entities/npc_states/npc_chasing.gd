@@ -1,7 +1,7 @@
 extends StateNPCs
 class_name NpcChasing
 
-@export var npc: CharacterBody2D
+@onready var npc: CharacterBody2D = $"../.."
 @export var move_speed : float = 200.0
 
 var player: CharacterBody2D

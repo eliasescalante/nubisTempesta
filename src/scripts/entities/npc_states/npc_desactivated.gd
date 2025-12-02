@@ -1,9 +1,9 @@
 extends StateNPCs
 class_name NpcDesactivated
 
-@export var npc: CharacterBody2D # Apunta al nodo NpcEstorbo (2 parent levels)
+@onready var npc: CharacterBody2D = $"../.."
 
-var desactivated = false
+var body_desactivated = false
 
 func enter():
 	print("STATE NpcDesactivated ENTER")
@@ -18,7 +18,7 @@ func physics_update(_delta: float):
 	pass
 	
 func update(_delta: float):
-	if not desactivated:
+	if not body_desactivated:
 		npc.velocity = Vector2.ZERO
 		npc.body_collision_shape_2d.set_deferred('disabled',true)
-		desactivated = true
+		body_desactivated = true

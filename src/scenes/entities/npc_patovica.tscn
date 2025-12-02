@@ -1,0 +1,157 @@
+[gd_scene load_steps=24 format=3 uid="uid://quducok480tl"]
+
+[ext_resource type="Script" uid="uid://c286qvkygjwu2" path="res://src/scripts/entities/npc_estorbo.gd" id="1_c8oul"]
+[ext_resource type="Texture2D" uid="uid://cvib7p81t01vq" path="res://_assets/art/sprites/npc-historia-01.png" id="1_qntfx"]
+[ext_resource type="PackedScene" uid="uid://b780qmfqgvwqn" path="res://src/scenes/entities/dialogo.tscn" id="3_7a7jm"]
+[ext_resource type="Script" uid="uid://vjkti5djw36g" path="res://src/scripts/state_machine/state_machine_npc.gd" id="4_nd3d6"]
+[ext_resource type="Script" uid="uid://bllbaxxcip63g" path="res://src/scripts/entities/npc_states/npc_blocking.gd" id="5_y0kkx"]
+[ext_resource type="Script" uid="uid://da0kexnc4cfy" path="res://src/scripts/entities/npc_states/npc_init.gd" id="6_jxmmk"]
+[ext_resource type="Script" uid="uid://b1ahgh74nauc1" path="res://src/scripts/entities/npc_states/npc_chasing.gd" id="7_d8lsv"]
+[ext_resource type="Script" uid="uid://cd77letq66pu8" path="res://src/scripts/entities/npc_states/npc_desactivated.gd" id="8_w4cr4"]
+[ext_resource type="Script" uid="uid://cdw61tx5byriu" path="res://src/scripts/entities/npc_states/npc_talking.gd" id="9_gy2dl"]
+[ext_resource type="Script" uid="uid://b0m2eyjhuwfqr" path="res://src/scripts/entities/npc_states/npc_quest_waiting.gd" id="10_rfiht"]
+[ext_resource type="Script" uid="uid://c51cca6grsewu" path="res://src/scripts/entities/npc_states/npc_returning.gd" id="11_2e6a2"]
+[ext_resource type="Script" uid="uid://cet5cek6kybcc" path="res://src/scripts/entities/npc_states/npc_capturing.gd" id="12_xfysv"]
+[ext_resource type="Script" uid="uid://cl4rno0wgbxg4" path="res://src/scripts/entities/npc_states/npc_chisme_talking.gd" id="13_i1rvu"]
+[ext_resource type="Script" uid="uid://dvoqvb77gewil" path="res://src/scripts/entities/npc_states/npc_chisme_waiting.gd" id="14_dvvdg"]
+[ext_resource type="Script" uid="uid://b5jgmymky6me7" path="res://src/scripts/entities/npc_states/npc_patovica_waiting.gd" id="15_3sdq1"]
+[ext_resource type="Script" uid="uid://bsy4yyfafv7on" path="res://src/scripts/entities/npc_states/npc_patovica_talking.gd" id="16_6dlne"]
+[ext_resource type="Script" uid="uid://dgahlly7lex1d" path="res://src/scripts/entities/npc_states/npc_patovica_blocking.gd" id="17_6axe7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0p8j"]
+size = Vector2(768, 896)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4vtgk"]
+size = Vector2(128, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khwfg"]
+atlas = ExtResource("1_qntfx")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uuuxu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khwfg")
+}],
+"loop": true,
+"name": &"caminar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khwfg")
+}],
+"loop": true,
+"name": &"hablar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khwfg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gd6o"]
+size = Vector2(96, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_507c3"]
+size = Vector2(192, 128)
+
+[node name="npc_patovica" type="CharacterBody2D"]
+script = ExtResource("1_c8oul")
+
+[node name="ChaseArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea2D"]
+shape = SubResource("RectangleShape2D_i0p8j")
+debug_color = Color(0.8157433, 0.25845847, 0.76289934, 0.105882354)
+
+[node name="CaptureArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CaptureArea2D"]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_4vtgk")
+debug_color = Color(1, 0, 0.016666412, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uuuxu")
+animation = &"caminar"
+
+[node name="floor_RayCast2D" type="RayCast2D" parent="AnimatedSprite2D"]
+unique_name_in_owner = true
+position = Vector2(64, 80)
+target_position = Vector2(0, 64)
+
+[node name="BodyCollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_4gd6o")
+
+[node name="DialogArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogArea2D"]
+position = Vector2(0, 64)
+shape = SubResource("RectangleShape2D_507c3")
+debug_color = Color(0.78039217, 0.40784314, 0.44705883, 0.06666667)
+
+[node name="dialogo" parent="." instance=ExtResource("3_7a7jm")]
+position = Vector2(30, -79)
+
+[node name="StateMachineNPC" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_nd3d6")
+initial_state = NodePath("NpcInit")
+
+[node name="NpcBlocking" type="Node" parent="StateMachineNPC"]
+script = ExtResource("5_y0kkx")
+metadata/_custom_type_script = "uid://bllbaxxcip63g"
+
+[node name="NpcInit" type="Node" parent="StateMachineNPC"]
+script = ExtResource("6_jxmmk")
+metadata/_custom_type_script = "uid://da0kexnc4cfy"
+
+[node name="NpcChasing" type="Node" parent="StateMachineNPC"]
+script = ExtResource("7_d8lsv")
+metadata/_custom_type_script = "uid://b1ahgh74nauc1"
+
+[node name="NpcDesactivated" type="Node" parent="StateMachineNPC"]
+script = ExtResource("8_w4cr4")
+metadata/_custom_type_script = "uid://cd77letq66pu8"
+
+[node name="NpcTalking" type="Node" parent="StateMachineNPC"]
+script = ExtResource("9_gy2dl")
+metadata/_custom_type_script = "uid://cdw61tx5byriu"
+
+[node name="NpcQuestWaiting" type="Node" parent="StateMachineNPC"]
+script = ExtResource("10_rfiht")
+metadata/_custom_type_script = "uid://b0m2eyjhuwfqr"
+
+[node name="NpcReturning" type="Node" parent="StateMachineNPC"]
+script = ExtResource("11_2e6a2")
+metadata/_custom_type_script = "uid://c51cca6grsewu"
+
+[node name="NpcCapturing" type="Node" parent="StateMachineNPC"]
+script = ExtResource("12_xfysv")
+metadata/_custom_type_script = "uid://cet5cek6kybcc"
+
+[node name="NpcChismeTalking" type="Node" parent="StateMachineNPC"]
+script = ExtResource("13_i1rvu")
+metadata/_custom_type_script = "uid://cl4rno0wgbxg4"
+
+[node name="NpcChismeWaiting" type="Node" parent="StateMachineNPC"]
+script = ExtResource("14_dvvdg")
+metadata/_custom_type_script = "uid://dvoqvb77gewil"
+
+[node name="NpcPatovicaWaiting" type="Node" parent="StateMachineNPC"]
+script = ExtResource("15_3sdq1")
+metadata/_custom_type_script = "uid://b5jgmymky6me7"
+
+[node name="NpcPatovicaTalking" type="Node" parent="StateMachineNPC"]
+script = ExtResource("16_6dlne")
+metadata/_custom_type_script = "uid://bsy4yyfafv7on"
+
+[node name="NpcPatovicaBlocking" type="Node" parent="StateMachineNPC"]
+script = ExtResource("17_6axe7")
+metadata/_custom_type_script = "uid://dgahlly7lex1d"
