@@ -26,7 +26,7 @@ func enter():
 		return
 
 	# Aquí se determina segun el npc.type
-	# 'estorbo' | 'chisme' | 'patovica' (bloqueo) | 'mision'
+	# 'estorbo' | 'chisme' | 'patovica' (bloqueo) | 'historia'
 	if npc.type=='chisme':
 		init_chisme()
 		return

@@ -1,19 +1,19 @@
-[gd_scene load_steps=27 format=3 uid="uid://ufvy0dcwnqjf"]
+[gd_scene load_steps=27 format=3 uid="uid://cl7tghv4aae1l"]
 
-[ext_resource type="Script" uid="uid://c286qvkygjwu2" path="res://src/scripts/entities/npc_estorbo.gd" id="1_2vnfn"]
-[ext_resource type="Texture2D" uid="uid://bjdeetn7a1o46" path="res://_assets/art/sprites/npc-estorbo-spritesheet.png" id="2_f0bcc"]
-[ext_resource type="PackedScene" uid="uid://b780qmfqgvwqn" path="res://src/scenes/entities/dialogo.tscn" id="3_f0bcc"]
-[ext_resource type="Script" uid="uid://vjkti5djw36g" path="res://src/scripts/state_machine/state_machine_npc.gd" id="5_vajym"]
-[ext_resource type="Script" uid="uid://bllbaxxcip63g" path="res://src/scripts/entities/npc_states/npc_blocking.gd" id="6_vy3q0"]
-[ext_resource type="Script" uid="uid://da0kexnc4cfy" path="res://src/scripts/entities/npc_states/npc_init.gd" id="7_j1pj2"]
-[ext_resource type="Script" uid="uid://b1ahgh74nauc1" path="res://src/scripts/entities/npc_states/npc_chasing.gd" id="8_klm5t"]
-[ext_resource type="Script" uid="uid://cd77letq66pu8" path="res://src/scripts/entities/npc_states/npc_desactivated.gd" id="9_bwsfm"]
-[ext_resource type="Script" uid="uid://cdw61tx5byriu" path="res://src/scripts/entities/npc_states/npc_talking.gd" id="10_80j61"]
-[ext_resource type="Script" uid="uid://b0m2eyjhuwfqr" path="res://src/scripts/entities/npc_states/npc_quest_waiting.gd" id="10_fvhpi"]
-[ext_resource type="Script" uid="uid://c51cca6grsewu" path="res://src/scripts/entities/npc_states/npc_returning.gd" id="11_fvhpi"]
-[ext_resource type="Script" uid="uid://cet5cek6kybcc" path="res://src/scripts/entities/npc_states/npc_capturing.gd" id="12_ojwnn"]
-[ext_resource type="Script" uid="uid://cl4rno0wgbxg4" path="res://src/scripts/entities/npc_states/npc_chisme_talking.gd" id="13_q1ujk"]
-[ext_resource type="Script" uid="uid://dvoqvb77gewil" path="res://src/scripts/entities/npc_states/npc_chisme_waiting.gd" id="14_da3bb"]
+[ext_resource type="Script" uid="uid://c286qvkygjwu2" path="res://src/scripts/entities/npc_estorbo.gd" id="1_hycv5"]
+[ext_resource type="Texture2D" uid="uid://bjdeetn7a1o46" path="res://_assets/art/sprites/npc-estorbo-spritesheet.png" id="2_hrpiu"]
+[ext_resource type="PackedScene" uid="uid://b780qmfqgvwqn" path="res://src/scenes/entities/dialogo.tscn" id="3_qwqkt"]
+[ext_resource type="Script" uid="uid://vjkti5djw36g" path="res://src/scripts/state_machine/state_machine_npc.gd" id="4_wepst"]
+[ext_resource type="Script" uid="uid://bllbaxxcip63g" path="res://src/scripts/entities/npc_states/npc_blocking.gd" id="5_cdn4f"]
+[ext_resource type="Script" uid="uid://da0kexnc4cfy" path="res://src/scripts/entities/npc_states/npc_init.gd" id="6_5mfyv"]
+[ext_resource type="Script" uid="uid://b1ahgh74nauc1" path="res://src/scripts/entities/npc_states/npc_chasing.gd" id="7_ac2ls"]
+[ext_resource type="Script" uid="uid://cd77letq66pu8" path="res://src/scripts/entities/npc_states/npc_desactivated.gd" id="8_g2cmn"]
+[ext_resource type="Script" uid="uid://cdw61tx5byriu" path="res://src/scripts/entities/npc_states/npc_talking.gd" id="9_pwrmt"]
+[ext_resource type="Script" uid="uid://b0m2eyjhuwfqr" path="res://src/scripts/entities/npc_states/npc_quest_waiting.gd" id="10_nus1d"]
+[ext_resource type="Script" uid="uid://c51cca6grsewu" path="res://src/scripts/entities/npc_states/npc_returning.gd" id="11_cdgk1"]
+[ext_resource type="Script" uid="uid://cet5cek6kybcc" path="res://src/scripts/entities/npc_states/npc_capturing.gd" id="12_ivbcd"]
+[ext_resource type="Script" uid="uid://cl4rno0wgbxg4" path="res://src/scripts/entities/npc_states/npc_chisme_talking.gd" id="13_dcsfp"]
+[ext_resource type="Script" uid="uid://dvoqvb77gewil" path="res://src/scripts/entities/npc_states/npc_chisme_waiting.gd" id="14_ucuyl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2rp2"]
 size = Vector2(768, 896)
@@ -22,31 +22,31 @@ size = Vector2(768, 896)
 size = Vector2(128, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2rp2"]
-atlas = ExtResource("2_f0bcc")
+atlas = ExtResource("2_hrpiu")
 region = Rect2(0, 512, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vajym"]
-atlas = ExtResource("2_f0bcc")
+atlas = ExtResource("2_hrpiu")
 region = Rect2(256, 512, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vy3q0"]
-atlas = ExtResource("2_f0bcc")
+atlas = ExtResource("2_hrpiu")
 region = Rect2(512, 512, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1pj2"]
-atlas = ExtResource("2_f0bcc")
+atlas = ExtResource("2_hrpiu")
 region = Rect2(0, 256, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_klm5t"]
-atlas = ExtResource("2_f0bcc")
+atlas = ExtResource("2_hrpiu")
 region = Rect2(256, 256, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bwsfm"]
-atlas = ExtResource("2_f0bcc")
+atlas = ExtResource("2_hrpiu")
 region = Rect2(0, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_80j61"]
-atlas = ExtResource("2_f0bcc")
+atlas = ExtResource("2_hrpiu")
 region = Rect2(256, 0, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f0bcc"]
@@ -97,8 +97,8 @@ size = Vector2(96, 192)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0bcc"]
 size = Vector2(192, 128)
 
-[node name="npc_estorbo" type="CharacterBody2D" groups=["npc_estorbo"]]
-script = ExtResource("1_2vnfn")
+[node name="npc_historia" type="CharacterBody2D" groups=["npc_estorbo"]]
+script = ExtResource("1_hycv5")
 
 [node name="ChaseArea2D" type="Area2D" parent="."]
 
@@ -129,51 +129,51 @@ position = Vector2(0, 64)
 shape = SubResource("RectangleShape2D_f0bcc")
 debug_color = Color(0.78039217, 0.40784314, 0.44705883, 0.06666667)
 
-[node name="dialogo" parent="." instance=ExtResource("3_f0bcc")]
+[node name="dialogo" parent="." instance=ExtResource("3_qwqkt")]
 position = Vector2(30, -64)
 
 [node name="StateMachineNPC" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("5_vajym")
+script = ExtResource("4_wepst")
 initial_state = NodePath("NpcInit")
 
-[node name="NpcBlocking" type="Node" parent="StateMachineNPC"]
-script = ExtResource("6_vy3q0")
-metadata/_custom_type_script = "uid://bllbaxxcip63g"
-
 [node name="NpcInit" type="Node" parent="StateMachineNPC"]
-script = ExtResource("7_j1pj2")
+script = ExtResource("6_5mfyv")
 metadata/_custom_type_script = "uid://da0kexnc4cfy"
 
+[node name="NpcBlocking" type="Node" parent="StateMachineNPC"]
+script = ExtResource("5_cdn4f")
+metadata/_custom_type_script = "uid://bllbaxxcip63g"
+
 [node name="NpcChasing" type="Node" parent="StateMachineNPC"]
-script = ExtResource("8_klm5t")
+script = ExtResource("7_ac2ls")
 metadata/_custom_type_script = "uid://b1ahgh74nauc1"
 
 [node name="NpcDesactivated" type="Node" parent="StateMachineNPC"]
-script = ExtResource("9_bwsfm")
+script = ExtResource("8_g2cmn")
 metadata/_custom_type_script = "uid://cd77letq66pu8"
 
 [node name="NpcTalking" type="Node" parent="StateMachineNPC"]
-script = ExtResource("10_80j61")
+script = ExtResource("9_pwrmt")
 metadata/_custom_type_script = "uid://cdw61tx5byriu"
 
 [node name="NpcQuestWaiting" type="Node" parent="StateMachineNPC"]
-script = ExtResource("10_fvhpi")
+script = ExtResource("10_nus1d")
 metadata/_custom_type_script = "uid://b0m2eyjhuwfqr"
 
 [node name="NpcReturning" type="Node" parent="StateMachineNPC"]
-script = ExtResource("11_fvhpi")
+script = ExtResource("11_cdgk1")
 metadata/_custom_type_script = "uid://c51cca6grsewu"
 
 [node name="NpcCapturing" type="Node" parent="StateMachineNPC"]
-script = ExtResource("12_ojwnn")
+script = ExtResource("12_ivbcd")
 metadata/_custom_type_script = "uid://cet5cek6kybcc"
 
 [node name="NpcChismeTalking" type="Node" parent="StateMachineNPC"]
-script = ExtResource("13_q1ujk")
+script = ExtResource("13_dcsfp")
 metadata/_custom_type_script = "uid://cl4rno0wgbxg4"
 
 [node name="NpcChismeWaiting" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("npc")]
-script = ExtResource("14_da3bb")
+script = ExtResource("14_ucuyl")
 npc = NodePath("../..")
 metadata/_custom_type_script = "uid://dvoqvb77gewil"
 
