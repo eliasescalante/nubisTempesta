@@ -40,11 +40,18 @@ func _ready() -> void:
 	animacion.animation_finished.connect(_on_animacion_terminada)
 	
 	player.player_died.connect(respawn_player)
+	
 
 func _on_animacion_terminada(anim_name: String) -> void:
 	# habilitar movimiento jugador
 	print("Animacion cortina "+anim_name+" finalizada")
-	pass
+	await get_tree().create_timer(0.7).timeout
+	if GameState.tutorial:
+		# Desactivamos el tutorial para la próxima entrada del nivel
+		GameState.tutorial = false
+		print("INICIAR TUTORIAL")
+		#init_tutorial()
+
 	
 func _process(delta: float) -> void:
 	pass
