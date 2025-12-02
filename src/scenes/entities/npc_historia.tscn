@@ -97,7 +97,7 @@ size = Vector2(96, 192)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0bcc"]
 size = Vector2(192, 128)
 
-[node name="NpcEstorbo" type="CharacterBody2D" groups=["npc_estorbo"]]
+[node name="npc_historia" type="CharacterBody2D" groups=["npc_estorbo"]]
 script = ExtResource("1_hycv5")
 
 [node name="ChaseArea2D" type="Area2D" parent="."]
