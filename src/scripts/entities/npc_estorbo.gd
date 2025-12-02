@@ -37,6 +37,8 @@ signal chase_player_detected
 signal chase_player_lost
 signal dialog_player_detected
 signal dialog_player_lost
+signal capture_player_detected
+signal capture_player_lost
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var dialogo = $dialogo
@@ -120,6 +122,16 @@ func _on_dialog_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		emit_signal("dialog_player_lost")
 	
+# CAPTURE AREA
+func _on_capture_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		emit_signal("capture_player_detected")
+
+func _on_capture_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		emit_signal("capture_player_lost")
+
+
 
 # NPC no decide la transicion.
 # solo emite eventos del mundo.

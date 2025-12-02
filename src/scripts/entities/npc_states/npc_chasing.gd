@@ -23,9 +23,12 @@ func enter():
 	return_point = npc.return_point
 	npc.chase_player_lost.connect(_on_chase_player_lost)
 	return_point.player_detected.connect(_on_return_point_player_detected)
+	npc.capture_player_detected.connect(_on_capture_player_detected)
+	
 	# Buscamos al player por grupo
 	GameState.update_npc_property( npc, 'state', 'NpcChasing' )
 	player = get_tree().get_first_node_in_group("player")
+	
 	ray_cast_2d = npc.ray_cast_2d
 	
 	hud = get_tree().get_root().find_child("HudNivel", true, false)
@@ -37,6 +40,7 @@ func enter():
 func exit():
 	print("NpcChasing exit")
 	npc.chase_player_lost.disconnect(_on_chase_player_lost)
+	npc.capture_player_detected.disconnect(_on_capture_player_detected)
 	
 func physics_update(_delta: float):
 	
@@ -63,7 +67,6 @@ func physics_update(_delta: float):
 # Callback cuando el npc detecta que el player se fue
 func _on_chase_player_lost():
 	print("NpcChasing _on_chase_player_lost")
-	#NOTA: aca tenemos que cambiar para NpcReturning
 	print("Transicion a NpcReturning")
 	Transitioned.emit(self, "NpcReturning")
 
@@ -73,3 +76,9 @@ func _on_return_point_player_detected():
 	# Con lo que desactivamos todo
 	dont_move = true
 	Transitioned.emit(self, "NpcDesactivated")
+
+func _on_capture_player_detected():
+	print("NpcChasing _on_capture_player_detected")
+	print("Transicion a NpcCapturing")
+	dont_move = true
+	Transitioned.emit(self, "NpcCapturing")

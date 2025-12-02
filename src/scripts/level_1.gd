@@ -90,17 +90,15 @@ func _on_item_collected(item_scene_path: String, pos: Vector2, item_type: String
 
 func respawn_player() -> void :
 	print("RESPAWN PLAYER")
-	
 	# Paso 1: Cerramos cortina
 	print("Animacion cortina salida")
 	animacion.animation_finished.disconnect(_on_animacion_terminada)
 	animacion.animation_finished.connect(respawn_player_paso_2)
 	animacion.play("salida")
-	
-	
 
-	
 func respawn_player_paso_2(anim_name: String) -> void :
+	# NOTA TECNICA: no quitar el parámetro anima_name aunque no se use
+	# porque falla el connect
 	print("RESPAWN PLAYER - paso 2")
 	cortina.color = Color(0,0,0,1)
 	player.global_position = GameState.get_respawn_point(player, player_respawn_points)
@@ -109,3 +107,10 @@ func respawn_player_paso_2(anim_name: String) -> void :
 	animacion.play("entrada")
 	animacion.animation_finished.disconnect(respawn_player_paso_2)
 	animacion.animation_finished.connect(_on_animacion_terminada)
+
+func player_captured() -> void:
+	# Los NPC llaman a este método para avisar que han capturado al Player
+	# Se pueden hacer algunas cosas, como vaciar en el HUD el inventario de USED
+	# Mientras le pasamos al Player el estado de capturado para animación.
+	hud.agregar_item(null,"used","")
+	player.captured()
