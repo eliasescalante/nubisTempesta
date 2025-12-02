@@ -23,7 +23,7 @@ var is_captured := false
 var velocity_falling := 0.0
 
 # --- Variables PLD ---
-@export var pld: int = 296
+@export var pld: int = GameState.pld
 @export var pld_por_salto: int = 5
 @export var pld_por_doble_salto: int = 7
 @export var pld_por_dash: int = 10
@@ -91,6 +91,7 @@ func gastar_pld(cantidad: int):
 func _ready() -> void:
 	dialogo.visible = false
 	play_anim("idle")
+	GameState.pld = pld
 
 # --- Multiplicador de velocidad / salto según PLD ---
 func get_pld_multiplier() -> float:
