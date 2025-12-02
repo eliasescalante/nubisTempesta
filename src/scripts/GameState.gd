@@ -38,10 +38,10 @@ func register_npc(npc_node: Node) -> void:
 	
 	npcs_data[npc_id] = {
 		'quest': false, # false: quest pendiente | true: quest complete
-		'type': npc_node.type, # estorbo | bloque | mision
+		'type': npc_node.type, # estorbo | chisme | patovica | mision
 		'target_desired': npc_node.target_desired, # lo que el NPC desea. Depende del type.
 		'dialog_number': npc_node.dialog_number, # cuenta el avance en el dialogo entre el NPC y PLAYER
-		'state': 'NpcInit' # Estado para la StateMachine
+		'state': 'NpcInit' # Estado inicial para la StateMachine
 	}
 
 	print("NPC registrado: ", npc_id)

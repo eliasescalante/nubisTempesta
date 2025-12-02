@@ -131,6 +131,13 @@ unique_name_in_owner = true
 position = Vector2(2560, -2176)
 return_point = NodePath("../punto_retorno_npc_1")
 
+[node name="npc_estorbo_4" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("5_w1xa4")]
+modulate = Color(0.8992584, 0.8992584, 0.8992584, 1)
+position = Vector2(1412, -2176)
+type = "chisme"
+target_desired = ""
+return_point = NodePath("../punto_retorno_npc_1")
+
 [node name="npc_estorbo_3" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("5_w1xa4")]
 modulate = Color(0.8, 0.8, 0.8, 1)
 position = Vector2(2240, -2176)
@@ -171,7 +178,7 @@ position = Vector2(768, -3200)
 
 [node name="Player" parent="Parallax2D_medio" instance=ExtResource("5_wxrok")]
 unique_name_in_owner = true
-position = Vector2(1344, -2176)
+position = Vector2(1664, -2176)
 
 [node name="Portal1" type="Area2D" parent="Parallax2D_medio"]
 unique_name_in_owner = true
@@ -269,11 +276,11 @@ position = Vector2(1408, -5248)
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D_medio/Portal0"]
-position = Vector2(1472, -2208)
+position = Vector2(1664, -2208)
 shape = SubResource("RectangleShape2D_m11n0")
 
 [node name="Marker2D" type="Marker2D" parent="Parallax2D_medio/Portal0"]
-position = Vector2(1664, -2176)
+position = Vector2(1792, -2176)
 
 [node name="Parallax2D_frente" type="Parallax2D" parent="."]
 z_index = 200
