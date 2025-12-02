@@ -131,6 +131,12 @@ unique_name_in_owner = true
 position = Vector2(2560, -2176)
 return_point = NodePath("../punto_retorno_npc_1")
 
+[node name="npc_estorbo_3" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("5_w1xa4")]
+modulate = Color(0.8, 0.8, 0.8, 1)
+position = Vector2(2240, -2176)
+return_point = NodePath("../punto_retorno_npc_1")
+blocked = true
+
 [node name="npc_estorbo_2" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("5_w1xa4")]
 position = Vector2(1920, -640)
 target_desired = "honguito"
