@@ -9,7 +9,9 @@ extends Node2D
 
 @export var zona : String = "NIVEL 1 - ZONA A"
 @export var nivel : String = "BAJOS PILARES"
-@export var respawn_time: float = 1.0 # segundos para reaparecer
+
+# @export var respawn_time: float = 1.0 # segundos para reaparecer
+# esto ahora forma parte del item 
 
 @onready var spawn_point_0: Marker2D = %Portal0/Marker2D
 @onready var spawn_point_1: Marker2D = %Portal1/Marker2D
@@ -61,7 +63,7 @@ func _on_portal_1_body_entered(body: Node2D) -> void:
 func _change_to_loader():
 	get_tree().change_scene_to_file("res://src/scenes/levels/loader.tscn")
 
-func _on_item_collected(item_scene_path: String, pos: Vector2, item_type: String, item_specimen: String) -> void:
+func _on_item_collected(item_scene_path: String, pos: Vector2, item_type: String, item_specimen: String, respawn_time: float) -> void:
 	
 	print("🌀 Item recogido. Se respawneará en:", pos)
 	print(" item type & specimen",item_type, item_specimen)
