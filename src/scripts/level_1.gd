@@ -20,6 +20,10 @@ func _ready() -> void:
 	AudioManager.play_nivel_1()
 	var spawn_point = spawn_point_0
 	
+	print("### TEST DIALOGO ")
+	for d in range(11):
+		print("d ",d," ", DialogManager.get_dialog('tutorial_1'))
+		
 	# Conectar señales de todos los ítems iniciales
 	for item in collectables.get_children():
 		if item.has_signal("item_collected"):
