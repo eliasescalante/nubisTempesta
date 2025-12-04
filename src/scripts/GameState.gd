@@ -1,7 +1,8 @@
 extends Node
 
 # ------------------------------------------------------------------------------
-var tutorial = true
+var tutorial = true # Al comienzo del juego muestra los diálogos de tutorial.
+var tutorial_player_first_move = true
 
 # DATA PARA EL LOADER ENTRE ESCENAS
 var portal = 0 #1 es al nivel inicial, 2 al nivel 2 y el 3

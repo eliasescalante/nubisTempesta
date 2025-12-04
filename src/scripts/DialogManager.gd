@@ -31,10 +31,10 @@ var dialogos_script = {
 		'dialogue_sequences': [ # secuencia de dialogos
 			[
 				{
-					'actor': 'player', # 'npc'
-					'text': 'Este dialogo se repite 3 veces', # si 'type' es 'icon' esto hace referencia a un sprite
-					'duration': 0.5, # Por defecto cada globo dura 2.8 seg.
-					'type': 'icon' # Estilo ícono / Por defecto es 'speak'
+					'actor': 'player',
+					'text': 'Este dialogo se repite 3 veces',
+					'duration': 0.5,
+					'content_type': 'text'
 				}
 			]
 		] # dialog_sequences
@@ -49,26 +49,56 @@ var dialogos_script = {
 					'actor': 'player', # 'npc'
 					'text': 'honguito', # si 'type' es 'icon' esto hace referencia a un sprite
 					'duration': 0.5, # Por defecto cada globo dura 2.8 seg.
-					'type': 'icon' # Estilo ícono / Por defecto es 'speak'
+					'content_type': 'icon', # Estilo ícono / Por defecto es 'speak'
+					'balloon_type': 'thought'
 				},
 				{
 					'actor': 'player',
 					'text': 'Necesito juntar \n 5.000 créditos PLD \n o no podré continuar\n mi "investigación."',
-					'type': 'speak' # Estilo hablado
 				},
 				{
 					'actor': 'player',
 					'text': '¡Vaya, mi PLD \n está disminuyendo rápido!.',
-					'type': 'thought' # Estilo pensamiento
+					'balloon_type': 'thought' # Estilo pensamiento
 				},
 				{
 					'actor': 'player',
 					'text': 'Más de lo habitual.\n Será mejor \nque me apure',
 					'duration': 2.0,
-					'type': 'thought' # Estilo pensamiento
+					'balloon_type': 'thought' # Estilo pensamiento
 				}
 			]
 		]
+	},
+	'npc-estorbo': {
+		'repeat': -1, # -1 infinito
+		'loop': false,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia de dialogo
+				{
+					'actor': 'player',
+					'text': 'Necesito pasar.',
+				},
+				{
+					'actor': 'npc',
+					'text': 'mmm, quiero un \n <%OBJ%> \n me gustan mucho \n mucho..."',
+				},
+				{
+					'actor': 'player',
+					'text': '¡que molesto! \n necesito moverlo. \n Tendré que buscar \n eso que desea.',
+					'duration': 3.3,
+					'balloon_type': 'thought', # Estilo pensamiento
+				}
+			],
+			[
+				{
+					'actor': 'npc',
+					'text': '<%OBJ%>',
+					'content_type': 'icon'
+				},
+			],
+		],
 	}
 }
 
@@ -76,7 +106,7 @@ var dialogos_script = {
 # Para controlar la repetición de los mismos
 var dialogues_performed = {}
 
-func get_dialog(key_entity:String) -> Array:
+func get_dialog_sequence(key_entity:String) -> Array:
 	
 	var current_repeat
 	var current_sequence
@@ -164,7 +194,95 @@ func get_dialog(key_entity:String) -> Array:
 	}
 	return the_sequence
 	
+var is_current_dialog_started: bool = false
+var is_current_dialog_finished: bool = false
 
+"""
+var is_current_part_active: bool = false
+var current_dialog_part_duration: float = 0.0
+var current_dialog_actor: Node
+var current_dialog_type: String
+var current_dialog_text: String
+var current_dialog_replacement: String  # Esto es TEXTO que reemplaza la cadena <%R%>
+"""
+
+func dialog_director (dialog_sequence: Array, actors: Dictionary, replacements: Dictionary) -> void:
+	
+	is_current_dialog_started = false
+	is_current_dialog_finished = false
+
+	# actors debe recibir un diccionario con 2 elementos que apuntan 
+	# a los nodos de las entidades involucradas en la secuencia de diálogo.
+	var player: Node
+	var npc: Node
+	
+	var the_content: String
+	var the_duration: float
+	var the_content_type: String
+	var the_balloon_type: String
+	
+	if actors.has('player'):
+		player = actors['player']
+		player.is_in_dialog = true
+	if actors.has('npc'):
+		npc = actors['npc']
+		npc.is_in_dialog = true
+		
+	is_current_dialog_started = true
+	
+	for dialog_part in dialog_sequence:
+		
+		if player:
+			player.is_talking = false
+			player.mute_dialog()
+		if npc:
+			npc.is_talking = false
+			npc.mute_dialog()
+			
+		the_content = dialog_part['text']
+		
+		if dialog_part.has('duration'):
+			the_duration = dialog_part['duration']
+		else:
+			the_duration = 2.8
+
+		if dialog_part.has('content_type'):
+			the_content_type = dialog_part['content_type']
+		else:
+			the_content_type = 'text'
+		
+		if dialog_part.has('balloon_type'):
+			the_balloon_type = dialog_part['balloon_type']
+		else:
+			the_balloon_type = 'speak'
+		
+		# Reemplazamos marcas especiales por valores dinámicos.
+		if not replacements.is_empty():
+			for key in replacements.keys():
+				var value = str(replacements[key])
+				the_content = the_content.replace(str(key),value)
+				
+		if dialog_part['actor'] == 'player':
+			player.is_talking = true
+			player.play_dialog(the_content, the_content_type, the_balloon_type)
+
+		if dialog_part['actor'] == 'npc':
+			npc.is_talking = true
+			npc.play_dialog(the_content, the_content_type, the_balloon_type)
+		
+		await get_tree().create_timer(the_duration).timeout
+	
+	if player:
+		player.is_talking = false
+		player.is_in_dialog = false
+		player.mute_dialog()
+	if npc:
+		npc.is_talking = false
+		npc.is_in_dialog = false
+		npc.mute_dialog()
+		
+	is_current_dialog_finished = true
+	
 # ------------------------------------------------------------------------------
 """
 ESTA FUNCION DEVUEVE TODO EN SECUENCIA PERO NO ES LO NECESARIO EN ESTE MOMENTO.

@@ -210,7 +210,7 @@ position = Vector2(768, -3200)
 
 [node name="Player" parent="Parallax2D_medio" instance=ExtResource("5_wxrok")]
 unique_name_in_owner = true
-position = Vector2(-3328, 640)
+position = Vector2(1408, -2176)
 
 [node name="Portal1" type="Area2D" parent="Parallax2D_medio"]
 unique_name_in_owner = true

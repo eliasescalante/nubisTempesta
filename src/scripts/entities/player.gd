@@ -15,6 +15,7 @@ var is_dashing := false
 var dash_timer := 0.0
 var can_double_jump := true
 var is_talking := false
+var is_in_dialog := false
 var is_dead := false
 var is_landing := false
 var is_dying := false
@@ -126,12 +127,19 @@ func _physics_process(delta: float) -> void:
 			regenerar()
 		return
 		
-	# 🛑 Bloqueo total durante diálogo
-	if is_talking:
-		play_anim("idle") # <-- idle, no caminar
+	# Hace la animación de hablar solo si está en un diálogo que ha empezado.
+	if is_talking and is_in_dialog:
+		play_anim("hablar") # <-- idle, no caminar
+	
+	# 🛑 Bloqueo total durante diálogo	
+	if is_in_dialog: 
+		# Separar el is_talking del movimiento permite a futuro 
+		# poder hacer hablar a Nubis mientras se mueve
+		# (aunque luego se sobre escriba la animacion con movimiento)
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
+	
 	
 	if is_landing:
 		tiempo_aterrizar += delta
@@ -254,9 +262,16 @@ func play_anim(name : String) -> void:
 	if animated_sprite_2d.animation != name:
 		animated_sprite_2d.play(name)
 
-func play_dialog(texto : String) -> void:
-	# aca poner alguna comprobacion de string
-	dialogo.update_text(texto)
+func play_dialog(content : String, content_type: String, balloon_type: String) -> void:
+	dialogo.visible = true
+	dialogo.update_balloon_type(balloon_type)
+	if content_type=='icon':
+		dialogo.update_icon_sprite(content)
+		return
+	dialogo.update_label(content)
+
+func mute_dialog() ->void:
+	dialogo.visible = false
 
 func update_animation(on_floor : bool, direction : float) -> void:
 	

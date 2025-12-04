@@ -63,7 +63,7 @@ signal capture_player_lost
 # 1 - han hablado una vez
 # el resto de los número pueden varias según sea necesario en el guión. Esto
 # permite introducir variedad en diferentes encuentros y estados (situaciones)
-@export var dialog_number:int = 0
+@export var dialog_number:int = 0 # Esto se puede quitar
 
 # Esta variable cambia según el TYPE de NPC.
 # En el caso de los NPC-Estorbo es la especie de un objeto collectable.
@@ -80,9 +80,13 @@ signal capture_player_lost
 
 # ID para Dialogo - Esto se usa para identificar el guion de dialogos
 # Que le corresponde a este NPC. Ver el global DialogManager.gd
+# Hay que establecerlo en el ESCENARIO
+# En el caso de los NPC-Estorbo y NPC-Patovica puede ser el generico para
+# ese tipo de NPC: 'npc-estorbo' | 'npc-patovica'
 @export var dialog_id: String = ""
 
-var is_talking : = false
+@onready var is_talking : = false # Esto controla la animacion
+@onready var is_in_dialog : = false # Esto control el _physics_process
 
 func _ready() -> void:
 	dialogo.visible = false
@@ -94,16 +98,22 @@ func _physics_process(_delta: float) -> void:
 	if blocked:
 		animated_sprite_2d.play("idle")
 		return
-
-	move_and_slide()
 	
 	if velocity.length() > 0:
 		animated_sprite_2d.play("caminar")
-	elif is_talking:
+	elif is_talking and is_in_dialog:
 		animated_sprite_2d.play("hablar")
 	else:
 		animated_sprite_2d.play("idle")
-
+	
+	# No procesamos movimiento si estamos en diálogo
+	if is_in_dialog:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+	
+	move_and_slide()
+	
 	# obtenemos la posicion del floor_RayCast2D para corregir la orientacion
 	# al flipear el player
 	var ray_cast_pos_x = abs(ray_cast_2d.get_position().x)
@@ -116,6 +126,17 @@ func _physics_process(_delta: float) -> void:
 		ray_cast_pos_x = -ray_cast_pos_x
 	ray_cast_2d.set_position(Vector2(ray_cast_pos_x,ray_cast_pos_y))
 	
+	
+func play_dialog(content : String, content_type: String, balloon_type: String) -> void:
+	dialogo.visible = true
+	dialogo.update_balloon_type(balloon_type)
+	if content_type=='icon':
+		dialogo.update_icon_sprite(content)
+		return
+	dialogo.update_label(content)
+
+func mute_dialog() ->void:
+	dialogo.visible = false
 	
 # ----------------------------------------------------------------------------
 

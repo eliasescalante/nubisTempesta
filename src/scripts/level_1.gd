@@ -16,15 +16,17 @@ extends Node2D
 @onready var spawn_point_0: Marker2D = %Portal0/Marker2D
 @onready var spawn_point_1: Marker2D = %Portal1/Marker2D
 
+@onready var timer_to_tutorial_first_move:float = 3.0
+
 func _ready() -> void:
 	AudioManager.play_nivel_1()
 	var spawn_point = spawn_point_0
-	
-	print("### TEST DIALOGO ")
-	for d in range(11):
-		print("d ",d," ", DialogManager.get_dialog('test_dialog'))
-		print("d ",d," ", DialogManager.get_dialog('tutorial_1'))
-		
+	#
+	#print("### TEST DIALOGO ")
+	#for d in range(11):
+	#	print("d ",d," ", DialogManager.get_dialog_sequence('test_dialog'))
+	#	print("d ",d," ", DialogManager.get_dialog_sequence('tutorial_1'))
+	#	
 	# Conectar señales de todos los ítems iniciales
 	for item in collectables.get_children():
 		if item.has_signal("item_collected"):
@@ -58,9 +60,13 @@ func _on_animacion_terminada(anim_name: String) -> void:
 		#init_tutorial()
 
 	
-func _process(delta: float) -> void:
-	pass
-
+func _process(_delta: float) -> void:
+	GameState.tutorial = false
+	if GameState.tutorial and GameState.tutorial_player_first_move:
+		timer_to_tutorial_first_move -= 1 * _delta
+		if timer_to_tutorial_first_move < 0:
+			GameState.tutorial_player_first_move = false
+			# DialogManager.
 func _on_portal_1_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		GameState.portal = 2
