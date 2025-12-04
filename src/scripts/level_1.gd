@@ -22,6 +22,7 @@ func _ready() -> void:
 	
 	print("### TEST DIALOGO ")
 	for d in range(11):
+		print("d ",d," ", DialogManager.get_dialog('test_dialog'))
 		print("d ",d," ", DialogManager.get_dialog('tutorial_1'))
 		
 	# Conectar señales de todos los ítems iniciales
