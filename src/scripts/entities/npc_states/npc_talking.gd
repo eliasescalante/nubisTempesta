@@ -19,8 +19,13 @@ var dialog_finished = false
 
 func enter():
 	print("NpcTalking enter")
-	npc.dialog_player_lost.connect(_on_dialog_player_lost)
+	
 	GameState.update_npc_property( npc, 'state', 'NpcTalking' )
+
+	# Conectamos con la señales que intervienen en
+	# cambios de estado
+	npc.dialog_player_lost.connect(_on_dialog_player_lost)
+	DialogManager.current_dialog_finished.connect(_on_current_dialog_finished)
 
 	dialog_number = GameState.get_npc_property( npc, 'dialog_number')
 	target_desired = GameState.get_npc_property( npc, 'target_desired')
@@ -29,20 +34,21 @@ func enter():
 	if npc_dialog_id == "":
 		npc_dialog_id = 'npc-estorbo'
 	player = get_tree().get_first_node_in_group("player")
+	
+	# El arranque del diálogo lo delegamos a la funcion update
+	# que comprueba el flag 'dialog_started'
 
 func exit():
 	print("NpcTalking exit")
 	npc.dialog_player_lost.disconnect(_on_dialog_player_lost)
+	DialogManager.current_dialog_finished.disconnect(_on_current_dialog_finished)
 	npc.is_talking = false
 
 func update(_delta: float ):
 	if not dialog_started:
+		print("Iniciar Diálogo...")
 		dialog_started = true
 		start_dialog()
-	else:
-		dialog_finished = DialogManager.is_current_dialog_finished
-		if dialog_finished:
-			end_dialog()
 
 func physics_update(_delta: float):
 	pass
@@ -51,15 +57,21 @@ func _on_dialog_player_lost():
 	print("NpcTalking _on_dialog_player_lost")
 	Transitioned.emit(self, "NpcQuestWaiting")
 
+func _on_current_dialog_finished():
+	print("NpcTalking on_current_dialog_finished")
+	Transitioned.emit(self, "NpcQuestWaiting")
+
 # ------------------------------------------------------------------------------
 # AQUI SE TIENE QUE OPTIMIZAR LA SECUENCIA DE DIALOGOS USANDO UN ARRAY Y LISTA
 # MEJORAR LOS METODOS PARA ALTERNAR LA VISIBILIDAD DE LOS GLOBOS.
 
 func start_dialog():
 	
+	print("Obtenemos la secuencia de diálogo")
 	var the_dialog_sequence = DialogManager.get_dialog_sequence(npc_dialog_id)
-	
+	print("the_dialog_sequence ",the_dialog_sequence)
 	if not the_dialog_sequence.is_empty():
+		print("Invocamos al método DIALOG_DIRECTOR")
 		DialogManager.dialog_director(
 			the_dialog_sequence,
 			{ # 'actors'
@@ -71,6 +83,7 @@ func start_dialog():
 			}
 		)
 	else:
+		print("No hay más secuencias de diálogo disponibles. Finalizar diálogo.")
 		# Si no hay más diálogo vamos al estado de Waiting
 		end_dialog()
 		

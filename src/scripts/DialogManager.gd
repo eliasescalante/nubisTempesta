@@ -138,11 +138,14 @@ func get_dialog_sequence(key_entity:String) -> Array:
 	var the_limit_repeat = the_dialogue_entity['repeat']
 	var the_loop_flag = the_dialogue_entity['loop']
 	var the_mode = the_dialogue_entity['mode']
-	
+	print("the_limit_repeat ",the_limit_repeat)
+	print("the_loop_flag ",the_loop_flag)
+	print("the_mode ",the_mode)
 	
 	#---datos---
 	var the_sequences = the_dialogue_entity['dialogue_sequences']
 	var total_sequences = the_sequences.size()
+	print("total_sequences ",total_sequences)
 	if the_mode == 'random':
 		print("MODO RANDOM")
 		print("Obtener cualquier secuencia al azar. Cantidad de secuencias: ",total_sequences)
@@ -152,9 +155,10 @@ func get_dialog_sequence(key_entity:String) -> Array:
 	
 	var is_repetition = false
 	var the_sequence
+	
 	# Si no llegamos al final de las secuencias
 	if current_sequence < total_sequences:
-		print("Buscamos en la secuencia siguiente actualizada")
+		print("Buscamos la secuencia y movemos el contador para la próxima consulta")
 		the_sequence = the_sequences[current_sequence]
 		current_sequence += 1
 		dialogues_performed[key_entity] = {
@@ -164,28 +168,35 @@ func get_dialog_sequence(key_entity:String) -> Array:
 		}
 		return the_sequence
 	else:
+		print("Se llegó al límite de secuencias.")
+		print("Reiniciamos el contador y marcamos is_repetition como true")
 		current_sequence = 0
 		current_repeat += 1
 		is_repetition = true
 		
 	# Si no podemos repetir llegamos al límite y devolvemos un diccionario vacío
-	if  is_repetition and (the_limit_repeat == 0 or current_repeat==the_limit_repeat) :
-		print("No se puede repetir más. FIN")
+	if  is_repetition and the_limit_repeat == 0:
+		print("La secuencia es única, no se repite. FIN")
 		the_sequence = []
 		saynomore = true
-	# Hay que comprobar si podemos repetir dentro del limite
-	else:
-		if is_repetition and ( current_repeat <= the_limit_repeat or the_limit_repeat == -1 ):
-			print("Se puede repetir")
-			if the_loop_flag:
-				print("Modo LOOP")
-				# Volvemos al inicio
-				current_sequence = 0
-			else:
-				# La última
-				current_sequence = the_sequences.size()-1
-		the_sequence = the_sequences[current_sequence]
-		current_sequence += 1
+	
+	if is_repetition and current_repeat==the_limit_repeat:
+		print("Se alcanzó el límite de repeticiones. FIN")
+		the_sequence = []
+		saynomore = true
+		
+	if not saynomore and is_repetition:
+		print("El modo LOOP")
+		if the_loop_flag:
+			print("Modo LOOP")
+			# Volvemos al inicio
+			current_sequence = 0
+		else:
+			# La última
+			current_sequence = the_sequences.size()-1
+
+	the_sequence = the_sequences[current_sequence]
+	current_sequence += 1
 		
 	dialogues_performed[key_entity] = {
 		'repeat': current_repeat,
@@ -196,6 +207,8 @@ func get_dialog_sequence(key_entity:String) -> Array:
 	
 var is_current_dialog_started: bool = false
 var is_current_dialog_finished: bool = false
+
+signal current_dialog_finished
 
 """
 var is_current_part_active: bool = false
@@ -229,7 +242,7 @@ func dialog_director (dialog_sequence: Array, actors: Dictionary, replacements: 
 		npc.is_in_dialog = true
 		
 	is_current_dialog_started = true
-	
+	print("Iniciamos la secuencia de diálogo...")
 	for dialog_part in dialog_sequence:
 		
 		if player:
@@ -282,8 +295,10 @@ func dialog_director (dialog_sequence: Array, actors: Dictionary, replacements: 
 		npc.mute_dialog()
 		
 	is_current_dialog_finished = true
-	
+	current_dialog_finished.emit()
+
 # ------------------------------------------------------------------------------
+
 """
 ESTA FUNCION DEVUEVE TODO EN SECUENCIA PERO NO ES LO NECESARIO EN ESTE MOMENTO.
 POR AHORA LO QUE SE NECESITA ES PASARLE A DIALOG_DIRECTOR (el orquestador de diálogo)
