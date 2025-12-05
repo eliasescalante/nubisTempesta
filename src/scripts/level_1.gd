@@ -40,14 +40,26 @@ func _ready() -> void:
 	animacion.animation_finished.connect(_on_animacion_terminada)
 	
 	player.player_died.connect(respawn_player)
-
+	player.game_over.connect(game_over)
+	
 func _on_animacion_terminada(anim_name: String) -> void:
 	# habilitar movimiento jugador
 	print("Animacion cortina "+anim_name+" finalizada")
 	pass
 	
 func _process(delta: float) -> void:
-	pass
+	if GameState.game_over:
+		if GameState.timer_game_over > 0:
+			GameState.timer_game_over -= 1*delta
+		else:
+			if not GameState.game_over_scene_launched:
+				GameState.game_over_scene_launched = true
+				GameState.text_loader = "GAME OVER"
+				GameState.text_loader_subtitulo = "Los Perpetuos Deseantes siempre ganan."
+				GameState.image_loader_mini = "game_over"
+				AudioManager.get_node("ost/Nivel1").stop()
+				AudioManager.play_game_over()
+				call_deferred("_change_to_loader")
 
 func _on_portal_1_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -116,3 +128,7 @@ func player_captured() -> void:
 	# Mientras le pasamos al Player el estado de capturado para animación.
 	hud.agregar_item(null,"used","")
 	player.captured()
+
+func game_over() -> void:
+	print("GAME OVER")
+	GameState.game_over = true

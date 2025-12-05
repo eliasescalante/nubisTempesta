@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bukbpm4tfyxr1"]
+[gd_scene load_steps=7 format=3 uid="uid://bukbpm4tfyxr1"]
 
 [ext_resource type="Script" uid="uid://bjd4lbnke23o1" path="res://src/scripts/manager_audio.gd" id="1_bdysg"]
 [ext_resource type="AudioStream" uid="uid://cvvm3yf4gltkl" path="res://_assets/musica/Introduccion.ogg" id="2_rsaqi"]
 [ext_resource type="AudioStream" uid="uid://dc7mcclv43obu" path="res://_assets/musica/NIVEL_1.ogg" id="3_rsaqi"]
 [ext_resource type="AudioStream" uid="uid://un481iyv584w" path="res://_assets/musica/MainTheme.ogg" id="4_l7gqj"]
 [ext_resource type="AudioStream" uid="uid://c1bk062oh1na1" path="res://_assets/musica/Bar.ogg" id="5_l7gqj"]
+[ext_resource type="AudioStream" uid="uid://bjs66so23qakm" path="res://_assets/musica/game_over.ogg" id="6_ageuu"]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_bdysg")
@@ -24,3 +25,6 @@ stream = ExtResource("4_l7gqj")
 
 [node name="Bar" type="AudioStreamPlayer" parent="ost"]
 stream = ExtResource("5_l7gqj")
+
+[node name="GameOver" type="AudioStreamPlayer" parent="ost"]
+stream = ExtResource("6_ageuu")
