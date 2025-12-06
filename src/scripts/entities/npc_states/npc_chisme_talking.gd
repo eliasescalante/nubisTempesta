@@ -55,14 +55,32 @@ func start_dialog():
 		npc_dialogo.update_text("¡Hola! Los 'honguitos'\n son fantásticos, pero\n mucho mejor son\n los 'chupachups'")
 		npc_dialogo.visible = true
 		npc.is_talking = true
-		await get_tree().create_timer(1.8).timeout
+		await get_tree().create_timer(2.2).timeout
 		
 		# 🔵 ETAPA 1 → PLAYER HABLA
-		player.play_dialog("No se quién \nte preguntó, pero\n gracias por el dato")
+		player.play_dialog("No se quién \n te preguntó, pero\n gracias por el dato.")
 		player.dialogo.visible = true
 		npc_dialogo.visible = false  # NPC callado
 		npc.is_talking = false
-		await get_tree().create_timer(1.3).timeout
+		await get_tree().create_timer(2.2).timeout
+
+		player.dialogo.visible = false   # player callado
+		npc_dialogo.update_text("El BAR BARRACUDA \n es excelente \n pero muy exclusivo.")
+		npc_dialogo.visible = true
+		npc.is_talking = true
+		await get_tree().create_timer(2.5).timeout
+		
+		player.play_dialog("¡Lo voy a encontrar! \n Tengo investigaciones \n que continuar.")
+		player.dialogo.visible = true
+		npc_dialogo.visible = false  # NPC callado
+		npc.is_talking = false
+		await get_tree().create_timer(2.2).timeout
+		
+		player.play_dialog("(Lo siento por YEEYOO)")
+		player.dialogo.visible = true
+		npc_dialogo.visible = false  # NPC callado
+		npc.is_talking = false
+		await get_tree().create_timer(1.5).timeout
 		
 		dialog_number = 1
 		
