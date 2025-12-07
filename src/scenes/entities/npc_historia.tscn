@@ -1,25 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://cl7tghv4aae1l"]
+[gd_scene load_steps=19 format=3 uid="uid://cl7tghv4aae1l"]
 
 [ext_resource type="Script" uid="uid://c286qvkygjwu2" path="res://src/scripts/entities/npc_estorbo.gd" id="1_hycv5"]
 [ext_resource type="Texture2D" uid="uid://bjdeetn7a1o46" path="res://_assets/art/sprites/npc-estorbo-spritesheet.png" id="2_hrpiu"]
 [ext_resource type="PackedScene" uid="uid://b780qmfqgvwqn" path="res://src/scenes/entities/dialogo.tscn" id="3_qwqkt"]
 [ext_resource type="Script" uid="uid://vjkti5djw36g" path="res://src/scripts/state_machine/state_machine_npc.gd" id="4_wepst"]
-[ext_resource type="Script" uid="uid://bllbaxxcip63g" path="res://src/scripts/entities/npc_states/npc_blocking.gd" id="5_cdn4f"]
 [ext_resource type="Script" uid="uid://da0kexnc4cfy" path="res://src/scripts/entities/npc_states/npc_init.gd" id="6_5mfyv"]
-[ext_resource type="Script" uid="uid://b1ahgh74nauc1" path="res://src/scripts/entities/npc_states/npc_chasing.gd" id="7_ac2ls"]
+[ext_resource type="Script" uid="uid://bo52smwekckfl" path="res://src/scripts/entities/npc_states/npc_historia_talking.gd" id="7_68fxv"]
+[ext_resource type="Script" uid="uid://blug75ilm3ygt" path="res://src/scripts/entities/npc_states/npc_historia_quest_waiting.gd" id="8_68fxv"]
 [ext_resource type="Script" uid="uid://cd77letq66pu8" path="res://src/scripts/entities/npc_states/npc_desactivated.gd" id="8_g2cmn"]
-[ext_resource type="Script" uid="uid://cdw61tx5byriu" path="res://src/scripts/entities/npc_states/npc_talking.gd" id="9_pwrmt"]
-[ext_resource type="Script" uid="uid://b0m2eyjhuwfqr" path="res://src/scripts/entities/npc_states/npc_quest_waiting.gd" id="10_nus1d"]
-[ext_resource type="Script" uid="uid://c51cca6grsewu" path="res://src/scripts/entities/npc_states/npc_returning.gd" id="11_cdgk1"]
-[ext_resource type="Script" uid="uid://cet5cek6kybcc" path="res://src/scripts/entities/npc_states/npc_capturing.gd" id="12_ivbcd"]
-[ext_resource type="Script" uid="uid://cl4rno0wgbxg4" path="res://src/scripts/entities/npc_states/npc_chisme_talking.gd" id="13_dcsfp"]
-[ext_resource type="Script" uid="uid://dvoqvb77gewil" path="res://src/scripts/entities/npc_states/npc_chisme_waiting.gd" id="14_ucuyl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2rp2"]
-size = Vector2(768, 896)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojwnn"]
-size = Vector2(128, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2rp2"]
 atlas = ExtResource("2_hrpiu")
@@ -99,19 +87,8 @@ size = Vector2(192, 128)
 
 [node name="npc_historia" type="CharacterBody2D" groups=["npc_estorbo"]]
 script = ExtResource("1_hycv5")
-
-[node name="ChaseArea2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea2D"]
-shape = SubResource("RectangleShape2D_r2rp2")
-debug_color = Color(0.8157433, 0.25845847, 0.76289934, 0.105882354)
-
-[node name="CaptureArea2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CaptureArea2D"]
-position = Vector2(0, 32)
-shape = SubResource("RectangleShape2D_ojwnn")
-debug_color = Color(1, 0, 0.016666412, 0.41960785)
+type = "historia"
+dialog_id = "historia-1"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f0bcc")
@@ -140,51 +117,17 @@ initial_state = NodePath("NpcInit")
 script = ExtResource("6_5mfyv")
 metadata/_custom_type_script = "uid://da0kexnc4cfy"
 
-[node name="NpcBlocking" type="Node" parent="StateMachineNPC"]
-script = ExtResource("5_cdn4f")
-metadata/_custom_type_script = "uid://bllbaxxcip63g"
-
-[node name="NpcChasing" type="Node" parent="StateMachineNPC"]
-script = ExtResource("7_ac2ls")
-metadata/_custom_type_script = "uid://b1ahgh74nauc1"
-
 [node name="NpcDesactivated" type="Node" parent="StateMachineNPC"]
 script = ExtResource("8_g2cmn")
 metadata/_custom_type_script = "uid://cd77letq66pu8"
 
-[node name="NpcTalking" type="Node" parent="StateMachineNPC"]
-script = ExtResource("9_pwrmt")
-metadata/_custom_type_script = "uid://cdw61tx5byriu"
+[node name="NpcHistoriaTalking" type="Node" parent="StateMachineNPC"]
+script = ExtResource("7_68fxv")
+metadata/_custom_type_script = "uid://bo52smwekckfl"
 
-[node name="NpcQuestWaiting" type="Node" parent="StateMachineNPC"]
-script = ExtResource("10_nus1d")
-metadata/_custom_type_script = "uid://b0m2eyjhuwfqr"
+[node name="NpcHistoriaQuestWaiting" type="Node" parent="StateMachineNPC"]
+script = ExtResource("8_68fxv")
+metadata/_custom_type_script = "uid://blug75ilm3ygt"
 
-[node name="NpcReturning" type="Node" parent="StateMachineNPC"]
-script = ExtResource("11_cdgk1")
-metadata/_custom_type_script = "uid://c51cca6grsewu"
-
-[node name="NpcCapturing" type="Node" parent="StateMachineNPC"]
-script = ExtResource("12_ivbcd")
-metadata/_custom_type_script = "uid://cet5cek6kybcc"
-
-[node name="NpcChismeTalking" type="Node" parent="StateMachineNPC"]
-script = ExtResource("13_dcsfp")
-metadata/_custom_type_script = "uid://cl4rno0wgbxg4"
-
-[node name="NpcChismeWaiting" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("npc")]
-script = ExtResource("14_ucuyl")
-npc = NodePath("../..")
-metadata/_custom_type_script = "uid://dvoqvb77gewil"
-
-[node name="floor_RayCast2D" type="RayCast2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(64, 80)
-target_position = Vector2(0, 64)
-
-[connection signal="body_entered" from="ChaseArea2D" to="." method="_on_chase_area_2d_body_entered"]
-[connection signal="body_exited" from="ChaseArea2D" to="." method="_on_chase_area_2d_body_exited"]
-[connection signal="body_entered" from="CaptureArea2D" to="." method="_on_capture_area_2d_body_entered"]
-[connection signal="body_exited" from="CaptureArea2D" to="." method="_on_capture_area_2d_body_exited"]
 [connection signal="body_entered" from="DialogArea2D" to="." method="_on_dialog_area_2d_body_entered"]
 [connection signal="body_exited" from="DialogArea2D" to="." method="_on_dialog_area_2d_body_exited"]
