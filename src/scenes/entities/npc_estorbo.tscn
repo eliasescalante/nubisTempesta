@@ -185,10 +185,10 @@ unique_name_in_owner = true
 position = Vector2(64, 80)
 target_position = Vector2(0, 64)
 
-[node name="chase_RayCast2D2" type="RayCast2D" parent="."]
+[node name="chase_RayCast2D" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-128, 0)
-target_position = Vector2(256, 0)
+position = Vector2(-256, 0)
+target_position = Vector2(512, 0)
 
 [connection signal="body_entered" from="ChaseArea2D" to="." method="_on_chase_area_2d_body_entered"]
 [connection signal="body_exited" from="ChaseArea2D" to="." method="_on_chase_area_2d_body_exited"]

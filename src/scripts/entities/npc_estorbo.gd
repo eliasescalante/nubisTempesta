@@ -53,7 +53,7 @@ signal capture_player_lost
 @onready var dialogo = $dialogo
 @onready var state_machine_npc: Node = $StateMachineNPC
 @onready var ray_cast_2d: RayCast2D = %floor_RayCast2D
-@onready var chase_ray_cast_2d_2: RayCast2D = %chase_RayCast2D2
+@onready var chase_ray_cast_2d: RayCast2D = %chase_RayCast2D
 @onready var body_collision_shape_2d: CollisionShape2D = %BodyCollisionShape2D
 
 # El tipo de NPC: 'estorbo', 'bloqueo', 'historia'
