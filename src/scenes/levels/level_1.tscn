@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://clx0rliac47qw"]
+[gd_scene load_steps=21 format=4 uid="uid://clx0rliac47qw"]
 
 [ext_resource type="Script" uid="uid://de366u52gwitk" path="res://src/scripts/level_1.gd" id="1_nw74m"]
 [ext_resource type="TileSet" uid="uid://84vsloajncpa" path="res://_resources/map_exterior_blanco_tile_set.tres" id="2_cufsb"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://j4wdoon05mmh" path="res://src/scenes/entities/punto_retorno_npc.tscn" id="8_f7n67"]
 [ext_resource type="PackedScene" uid="uid://quducok480tl" path="res://src/scenes/entities/npc_patovica.tscn" id="9_bwbgn"]
 [ext_resource type="PackedScene" uid="uid://b1gvurchiu3h4" path="res://src/scenes/entities/player_respawn_point.tscn" id="9_shuiu"]
+[ext_resource type="PackedScene" uid="uid://dtuunre8ai8jr" path="res://src/scenes/entities/npc_chisme.tscn" id="10_lf6bi"]
 [ext_resource type="PackedScene" uid="uid://wstroalu326b" path="res://src/scenes/entities/npc_decorado_negro.tscn" id="10_m1y7t"]
 [ext_resource type="TileSet" uid="uid://cv42yxnip6htf" path="res://_resources/map_exterior_negro_tile_set.tres" id="11_cufsb"]
 [ext_resource type="PackedScene" uid="uid://c0qonmpwpmm0v" path="res://src/scenes/entities/cortina.tscn" id="14_cufsb"]
@@ -136,14 +137,6 @@ unique_name_in_owner = true
 position = Vector2(2432, -2176)
 return_point = NodePath("../punto_retorno_npc_1")
 
-[node name="npc_estorbo_4" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("5_w1xa4")]
-modulate = Color(0.8992584, 0.8992584, 0.8992584, 1)
-position = Vector2(832, -2176)
-type = "chisme"
-target_desired = ""
-return_point = NodePath("../punto_retorno_npc_1")
-dialog_id = "chisme-honguitos"
-
 [node name="npc_estorbo_3" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("5_w1xa4")]
 modulate = Color(0.8, 0.8, 0.8, 1)
 position = Vector2(1728, -2688)
@@ -185,6 +178,9 @@ position = Vector2(-2112, 640)
 type = "chisme"
 target_desired = ""
 return_point = NodePath("../punto_retorno_npc_1")
+
+[node name="npc_chisme_1" parent="Parallax2D_medio/NPCs" instance=ExtResource("10_lf6bi")]
+position = Vector2(832, -2176)
 
 [node name="player_respawn_points" type="Node2D" parent="Parallax2D_medio"]
 unique_name_in_owner = true
