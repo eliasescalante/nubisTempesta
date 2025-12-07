@@ -133,7 +133,7 @@ speed = 500.0
 unique_name_in_owner = true
 
 [node name="npc_estorbo_1" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("5_w1xa4")]
-position = Vector2(2304, -2176)
+position = Vector2(2432, -2176)
 return_point = NodePath("../punto_retorno_npc_1")
 
 [node name="npc_estorbo_4" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("5_w1xa4")]
@@ -156,7 +156,7 @@ target_desired = "honguito"
 return_point = NodePath("../punto_retorno_npc_2")
 
 [node name="punto_retorno_npc_1" parent="Parallax2D_medio/NPCs" instance=ExtResource("8_f7n67")]
-position = Vector2(2304, -2112)
+position = Vector2(2432, -2112)
 
 [node name="punto_retorno_npc_2" parent="Parallax2D_medio/NPCs" instance=ExtResource("8_f7n67")]
 position = Vector2(1920, -576)
@@ -293,7 +293,7 @@ position = Vector2(1516, -3200)
 item_type = "bonus"
 
 [node name="Item25" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
-position = Vector2(1984, -2176)
+position = Vector2(1856, -2624)
 
 [node name="Item8" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
 position = Vector2(-960, -2688)
