@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ufvy0dcwnqjf"]
+[gd_scene load_steps=30 format=3 uid="uid://ufvy0dcwnqjf"]
 
 [ext_resource type="Script" uid="uid://c286qvkygjwu2" path="res://src/scripts/entities/npc_estorbo.gd" id="1_2vnfn"]
 [ext_resource type="Texture2D" uid="uid://bjdeetn7a1o46" path="res://_assets/art/sprites/npc-estorbo-spritesheet.png" id="2_f0bcc"]
@@ -15,8 +15,8 @@
 [ext_resource type="Script" uid="uid://cl4rno0wgbxg4" path="res://src/scripts/entities/npc_states/npc_chisme_talking.gd" id="13_q1ujk"]
 [ext_resource type="Script" uid="uid://dvoqvb77gewil" path="res://src/scripts/entities/npc_states/npc_chisme_waiting.gd" id="14_da3bb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2rp2"]
-size = Vector2(768, 896)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1ujk"]
+size = Vector2(13.445377, 26.890753)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojwnn"]
 size = Vector2(128, 192)
@@ -91,11 +91,48 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="Animation" id="Animation_q1ujk"]
+resource_name = "chasing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(3.9999998, 0.17677675, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.1, 0.1, 0.1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_da3bb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yjy6e"]
+_data = {
+&"RESET": SubResource("Animation_da3bb"),
+&"chasing": SubResource("Animation_q1ujk")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvhpi"]
 size = Vector2(96, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0bcc"]
-size = Vector2(192, 128)
+size = Vector2(256, 8)
 
 [node name="npc_estorbo" type="CharacterBody2D" groups=["npc_estorbo"]]
 script = ExtResource("1_2vnfn")
@@ -103,7 +140,10 @@ script = ExtResource("1_2vnfn")
 [node name="ChaseArea2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea2D"]
-shape = SubResource("RectangleShape2D_r2rp2")
+position = Vector2(-7.6293945e-06, -3.410605e-13)
+rotation = 1.5707964
+scale = Vector2(19.04, 19.04)
+shape = SubResource("RectangleShape2D_q1ujk")
 debug_color = Color(0.8157433, 0.25845847, 0.76289934, 0.105882354)
 
 [node name="CaptureArea2D" type="Area2D" parent="."]
@@ -117,6 +157,12 @@ debug_color = Color(1, 0, 0.016666412, 0.41960785)
 sprite_frames = SubResource("SpriteFrames_f0bcc")
 animation = &"idle"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatedSprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_yjy6e")
+}
+
 [node name="BodyCollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, 32)
@@ -125,7 +171,7 @@ shape = SubResource("RectangleShape2D_fvhpi")
 [node name="DialogArea2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogArea2D"]
-position = Vector2(0, 64)
+position = Vector2(0, 128)
 shape = SubResource("RectangleShape2D_f0bcc")
 debug_color = Color(0.78039217, 0.40784314, 0.44705883, 0.06666667)
 
@@ -181,6 +227,11 @@ metadata/_custom_type_script = "uid://dvoqvb77gewil"
 unique_name_in_owner = true
 position = Vector2(64, 80)
 target_position = Vector2(0, 64)
+
+[node name="chase_RayCast2D" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-256, 0)
+target_position = Vector2(512, 0)
 
 [connection signal="body_entered" from="ChaseArea2D" to="." method="_on_chase_area_2d_body_entered"]
 [connection signal="body_exited" from="ChaseArea2D" to="." method="_on_chase_area_2d_body_exited"]
