@@ -1,7 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://cl7tghv4aae1l"]
+[gd_scene load_steps=13 format=3 uid="uid://cl7tghv4aae1l"]
 
 [ext_resource type="Script" uid="uid://c286qvkygjwu2" path="res://src/scripts/entities/npc_estorbo.gd" id="1_hycv5"]
-[ext_resource type="Texture2D" uid="uid://bjdeetn7a1o46" path="res://_assets/art/sprites/npc-estorbo-spritesheet.png" id="2_hrpiu"]
+[ext_resource type="Texture2D" uid="uid://b8hjwn2rgjpm1" path="res://_assets/art/sprites/npc-relleno-01.png" id="2_68fxv"]
 [ext_resource type="PackedScene" uid="uid://b780qmfqgvwqn" path="res://src/scenes/entities/dialogo.tscn" id="3_qwqkt"]
 [ext_resource type="Script" uid="uid://vjkti5djw36g" path="res://src/scripts/state_machine/state_machine_npc.gd" id="4_wepst"]
 [ext_resource type="Script" uid="uid://da0kexnc4cfy" path="res://src/scripts/entities/npc_states/npc_init.gd" id="6_5mfyv"]
@@ -9,48 +9,15 @@
 [ext_resource type="Script" uid="uid://blug75ilm3ygt" path="res://src/scripts/entities/npc_states/npc_historia_quest_waiting.gd" id="8_68fxv"]
 [ext_resource type="Script" uid="uid://cd77letq66pu8" path="res://src/scripts/entities/npc_states/npc_desactivated.gd" id="8_g2cmn"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r2rp2"]
-atlas = ExtResource("2_hrpiu")
-region = Rect2(0, 512, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vajym"]
-atlas = ExtResource("2_hrpiu")
-region = Rect2(256, 512, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vy3q0"]
-atlas = ExtResource("2_hrpiu")
-region = Rect2(512, 512, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j1pj2"]
-atlas = ExtResource("2_hrpiu")
-region = Rect2(0, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_klm5t"]
-atlas = ExtResource("2_hrpiu")
-region = Rect2(256, 256, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bwsfm"]
-atlas = ExtResource("2_hrpiu")
+[sub_resource type="AtlasTexture" id="AtlasTexture_djj4b"]
+atlas = ExtResource("2_68fxv")
 region = Rect2(0, 0, 256, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_80j61"]
-atlas = ExtResource("2_hrpiu")
-region = Rect2(256, 0, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f0bcc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r2rp2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vajym")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vy3q0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vajym")
+"texture": SubResource("AtlasTexture_djj4b")
 }],
 "loop": true,
 "name": &"caminar",
@@ -58,10 +25,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j1pj2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_klm5t")
+"texture": SubResource("AtlasTexture_djj4b")
 }],
 "loop": true,
 "name": &"hablar",
@@ -69,10 +33,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bwsfm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_80j61")
+"texture": SubResource("AtlasTexture_djj4b")
 }],
 "loop": true,
 "name": &"idle",
@@ -92,7 +53,7 @@ dialog_id = "historia-1"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f0bcc")
-animation = &"idle"
+animation = &"caminar"
 
 [node name="BodyCollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
