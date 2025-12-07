@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1gvurchiu3h4"]
+
+[ext_resource type="Script" uid="uid://dyescd2cc2pta" path="res://src/scripts/entities/player_respawn_point.gd" id="1_gk4mt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1thn"]
+size = Vector2(256, 256)
+
+[node name="player_respawn_point" type="Node2D"]
+script = ExtResource("1_gk4mt")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_d1thn")
+debug_color = Color(0.3733346, 0.61511296, 0, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

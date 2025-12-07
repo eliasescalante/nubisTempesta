@@ -19,10 +19,11 @@ var is_dead := false
 var is_landing := false
 var is_dying := false
 var is_game_over := false
+var is_captured := false
 var velocity_falling := 0.0
 
 # --- Variables PLD ---
-@export var pld: int = 296
+@export var pld: int
 @export var pld_por_salto: int = 5
 @export var pld_por_doble_salto: int = 7
 @export var pld_por_dash: int = 10
@@ -59,6 +60,8 @@ var velocity_falling := 0.0
 @onready var dialogo: Node2D = %dialogo
 
 signal pld_cambiado(nuevo_pld)
+signal game_over() # Esto lo deberia determinar la logical del LEVEL. Por ahora lo dejo acá
+signal player_died()
 
 # --- Función para gastar PLD ---
 func gastar_pld(cantidad: int):
@@ -83,10 +86,12 @@ func gastar_pld(cantidad: int):
 		print ("Emitir señal 'game_over'")
 		emit_signal("game_over")
 		#return
+		
 # --- Ready ---
 func _ready() -> void:
 	dialogo.visible = false
 	play_anim("idle")
+	pld = GameState.pld
 
 # --- Multiplicador de velocidad / salto según PLD ---
 func get_pld_multiplier() -> float:
@@ -103,18 +108,21 @@ func get_pld_multiplier() -> float:
 # --- Physics Process ---
 func _physics_process(delta: float) -> void:
 	
-	if is_game_over == true:
+	if is_game_over:
 		update_animation(true, 0.0)
 		return
 	
-	if (is_dead or is_dying) and not is_game_over:
-		# Murio o esta muriendo y no es game over, entonces
-		# regenerar
+	if (is_dead or is_dying or is_captured) and not is_game_over:
+		# Murio o está muriendo o está capturada
+		# y no es game over, entonces regenerar
 		update_animation(true, 0.0)
 		tiempo_muerta += delta
 		if tiempo_muerta > TIME_TO_REGENERATE:
 			tiempo_muerta = 0.0
-			is_dead = false
+			emit_signal("player_died")
+			# Este tiempo de espera esta relacionado con la cortina
+			# que demora 0.5 para tapar el escenario
+			await get_tree().create_timer(0.7).timeout
 			regenerar()
 		return
 		
@@ -255,7 +263,7 @@ func update_animation(on_floor : bool, direction : float) -> void:
 	if is_dead:
 		play_anim("morir")
 		return
-	if is_dying:
+	if is_dying or is_captured:
 		play_anim("decaer")
 		return
 	if is_landing:
@@ -290,3 +298,11 @@ func sumar_pld(cantidad: int):
 
 func regenerar():
 	print("Regenerar a Nubis")
+	is_dead = false
+	is_captured = false
+	is_dying = false
+
+func captured():
+	print("Nubis Capturada")
+	gastar_pld(pld_por_morir)
+	is_captured = true # Esto habilita en el _physics_prossed el conteo para regeneracion

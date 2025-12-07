@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://c15pc0op7r80c"]
+[gd_scene load_steps=21 format=4 uid="uid://c15pc0op7r80c"]
 
 [ext_resource type="Script" uid="uid://lhuymv3iuahi" path="res://src/scripts/level_1_the_bar_1.gd" id="1_rgbcl"]
 [ext_resource type="Texture2D" uid="uid://dc8e6v3c2c08v" path="res://_assets/art/tileset/exterior_negro_tileset_01.png" id="2_i2jkm"]
@@ -7,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://wstroalu326b" path="res://src/scenes/entities/npc_decorado_negro.tscn" id="3_u7nq0"]
 [ext_resource type="PackedScene" uid="uid://ufvy0dcwnqjf" path="res://src/scenes/entities/npc_estorbo.tscn" id="3_xcls0"]
 [ext_resource type="PackedScene" uid="uid://q3sb0n0gwdsu" path="res://src/scenes/ui/hud_nivel.tscn" id="4_a6m8b"]
-[ext_resource type="PackedScene" uid="uid://quducok480tl" path="res://src/scenes/entities/npc_bloqueo.tscn" id="4_nmova"]
-[ext_resource type="PackedScene" path="res://src/scenes/entities/item_honguito.tscn" id="5_qlb2b"]
+[ext_resource type="PackedScene" uid="uid://quducok480tl" path="res://src/scenes/entities/npc_patovica.tscn" id="4_nmova"]
+[ext_resource type="PackedScene" uid="uid://4yahvdhbdbtb" path="res://src/scenes/entities/item_honguito.tscn" id="5_qlb2b"]
 [ext_resource type="PackedScene" path="res://src/scenes/entities/item_chupachups.tscn" id="6_3stsn"]
+[ext_resource type="PackedScene" uid="uid://j4wdoon05mmh" path="res://src/scenes/entities/punto_retorno_npc.tscn" id="7_3lsp1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_55oyy"]
 texture = ExtResource("2_i2jkm")
@@ -117,7 +118,7 @@ sources/0 = SubResource("TileSetAtlasSource_ct177")
 [sub_resource type="LabelSettings" id="LabelSettings_rgbcl"]
 font_size = 200
 
-[node name="Level1_bar_a" type="Node2D"]
+[node name="Level_1_bar_1" type="Node2D" groups=["levels"]]
 script = ExtResource("1_rgbcl")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -158,31 +159,22 @@ tile_set = SubResource("TileSet_gxt7v")
 
 [node name="NPCs" type="Node" parent="Parallax2D_medio"]
 
-[node name="npc_estorbo_01" parent="Parallax2D_medio/NPCs" instance=ExtResource("3_xcls0")]
+[node name="npc_estorbo_01" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("3_xcls0")]
 position = Vector2(4032, 1664)
+return_point = NodePath("../punto_retorno_npc_1")
 
-[node name="npc_estorbo_02" parent="Parallax2D_medio/NPCs" instance=ExtResource("3_xcls0")]
+[node name="npc_estorbo_02" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("3_xcls0")]
 position = Vector2(3584, -1920)
+return_point = NodePath("../punto_retorno_npc_2")
 
-[node name="npc_estorbo_03" parent="Parallax2D_medio/NPCs" instance=ExtResource("3_xcls0")]
-position = Vector2(4683, 2432)
+[node name="npc_estorbo_04" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("3_xcls0")]
+position = Vector2(2560, 640)
+target_desired = "honguito"
+return_point = NodePath("../punto_retorno_npc_4")
 
-[node name="npc_estorbo_07" parent="Parallax2D_medio/NPCs" instance=ExtResource("3_xcls0")]
-position = Vector2(4416, 2432)
-scale = Vector2(-1, 1)
-
-[node name="npc_estorbo_04" parent="Parallax2D_medio/NPCs" instance=ExtResource("3_xcls0")]
-position = Vector2(2624, 640)
-
-[node name="npc_estorbo_05" parent="Parallax2D_medio/NPCs" instance=ExtResource("3_xcls0")]
-position = Vector2(2624, 1664)
-
-[node name="npc_estorbo_06" parent="Parallax2D_medio/NPCs" instance=ExtResource("3_xcls0")]
-position = Vector2(2496, 2944)
-
-[node name="npc_estorbo_08" parent="Parallax2D_medio/NPCs" instance=ExtResource("3_xcls0")]
-position = Vector2(2816, 1664)
-scale = Vector2(-1, 1)
+[node name="npc_estorbo_06" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("3_xcls0")]
+position = Vector2(3392, 2944)
+return_point = NodePath("../punto_retorno_npc_6")
 
 [node name="npc_bloqueo_01" parent="Parallax2D_medio/NPCs" instance=ExtResource("4_nmova")]
 position = Vector2(3264, 1664)
@@ -190,6 +182,18 @@ position = Vector2(3264, 1664)
 [node name="npc_bloqueo_02" parent="Parallax2D_medio/NPCs" instance=ExtResource("4_nmova")]
 position = Vector2(3520, 640)
 scale = Vector2(-1, 1)
+
+[node name="punto_retorno_npc_1" parent="Parallax2D_medio/NPCs" instance=ExtResource("7_3lsp1")]
+position = Vector2(4032, 1728)
+
+[node name="punto_retorno_npc_2" parent="Parallax2D_medio/NPCs" instance=ExtResource("7_3lsp1")]
+position = Vector2(3584, -1856)
+
+[node name="punto_retorno_npc_4" parent="Parallax2D_medio/NPCs" instance=ExtResource("7_3lsp1")]
+position = Vector2(2560, 704)
+
+[node name="punto_retorno_npc_6" parent="Parallax2D_medio/NPCs" instance=ExtResource("7_3lsp1")]
+position = Vector2(3392, 3008)
 
 [node name="Player" parent="Parallax2D_medio" instance=ExtResource("2_rgbcl")]
 unique_name_in_owner = true
@@ -252,7 +256,7 @@ position = Vector2(2112, -1920)
 position = Vector2(2816, -1920)
 
 [node name="Item12" parent="Parallax2D_medio/Collectables" instance=ExtResource("5_qlb2b")]
-position = Vector2(3520, 3008)
+position = Vector2(3968, 3008)
 
 [node name="Item13" parent="Parallax2D_medio/Collectables" instance=ExtResource("5_qlb2b")]
 position = Vector2(2048, 3712)
@@ -265,6 +269,9 @@ position = Vector2(4544, 3776)
 
 [node name="Item16" parent="Parallax2D_medio/Collectables" instance=ExtResource("5_qlb2b")]
 position = Vector2(3648, 3712)
+
+[node name="Item17" parent="Parallax2D_medio/Collectables" instance=ExtResource("6_3stsn")]
+position = Vector2(2560, 1664)
 
 [node name="Parallax2D_frente" type="Parallax2D" parent="."]
 modulate = Color(0.5, 0.5, 0.5, 1)

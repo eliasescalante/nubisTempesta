@@ -1,22 +1,25 @@
 extends Node2D
 
 @onready var animacion = $cortina/AnimationPlayer
-
+@onready var cortina = $cortina/curtains
+@onready var player = %Player
 @onready var collectables = $Parallax2D_medio/Collectables
 @onready var hud = get_tree().get_current_scene().get_node("HudNivel")
+@onready var player_respawn_points: Node2D = %player_respawn_points
+
 @export var zona : String = "NIVEL 1 - ZONA A"
 @export var nivel : String = "BAJOS PILARES"
-@export var respawn_time: float = 1.0 # segundos para reaparecer
+
+# @export var respawn_time: float = 1.0 # segundos para reaparecer
+# esto ahora forma parte del item 
 
 @onready var spawn_point_0: Marker2D = %Portal0/Marker2D
 @onready var spawn_point_1: Marker2D = %Portal1/Marker2D
 
 func _ready() -> void:
 	AudioManager.play_nivel_1()
-	var player = %Player
 	var spawn_point = spawn_point_0
 	
-
 	# Conectar señales de todos los ítems iniciales
 	for item in collectables.get_children():
 		if item.has_signal("item_collected"):
@@ -31,18 +34,32 @@ func _ready() -> void:
 		
 	if hud:
 		hud.actualizar_nivel_y_zona(zona, nivel )
-
+	
 	print("Animacion cortina entrada")
 	animacion.play("entrada")
 	animacion.animation_finished.connect(_on_animacion_terminada)
-
+	
+	player.player_died.connect(respawn_player)
+	player.game_over.connect(game_over)
+	
 func _on_animacion_terminada(anim_name: String) -> void:
 	# habilitar movimiento jugador
 	print("Animacion cortina "+anim_name+" finalizada")
 	pass
 	
 func _process(delta: float) -> void:
-	pass
+	if GameState.game_over:
+		if GameState.timer_game_over > 0:
+			GameState.timer_game_over -= 1*delta
+		else:
+			if not GameState.game_over_scene_launched:
+				GameState.game_over_scene_launched = true
+				GameState.text_loader = "GAME OVER"
+				GameState.text_loader_subtitulo = "Los Perpetuos Deseantes siempre ganan."
+				GameState.image_loader_mini = "game_over"
+				AudioManager.get_node("ost/Nivel1").stop()
+				AudioManager.play_game_over()
+				call_deferred("_change_to_loader")
 
 func _on_portal_1_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -52,13 +69,24 @@ func _on_portal_1_body_entered(body: Node2D) -> void:
 		GameState.text_loader_subtitulo = "BAR 'BARRACUDA'"
 		GameState.image_loader_mini = "nivel_1_zona_b"
 		print(GameState.portal)
+		AudioManager.get_node("ost/Nivel1").stop()
 		call_deferred("_change_to_loader")
 
 func _change_to_loader():
 	get_tree().change_scene_to_file("res://src/scenes/levels/loader.tscn")
 
-func _on_item_collected(item_scene_path: String, pos: Vector2) -> void:
+func _on_item_collected(item_scene_path: String, pos: Vector2, item_type: String, item_specimen: String, respawn_time: float) -> void:
+	
 	print("🌀 Item recogido. Se respawneará en:", pos)
+	print(" item type & specimen",item_type, item_specimen)
+	
+	if item_type == "bonus":
+		Sfx.sfx_play('item_bonus')
+	elif item_type == "mision":
+		Sfx.sfx_play('item_mision')
+	else:
+		Sfx.sfx_play('item_puntos')
+		
 	await get_tree().create_timer(respawn_time).timeout
 	
 	# Instanciar de nuevo el ítem desde su escena original
@@ -73,3 +101,34 @@ func _on_item_collected(item_scene_path: String, pos: Vector2) -> void:
 		
 		collectables.add_child(new_item)
 		print("🍄 Item respawneado:", item_scene_path)
+
+func respawn_player() -> void :
+	print("RESPAWN PLAYER")
+	# Paso 1: Cerramos cortina
+	print("Animacion cortina salida")
+	animacion.animation_finished.disconnect(_on_animacion_terminada)
+	animacion.animation_finished.connect(respawn_player_paso_2)
+	animacion.play("salida")
+
+func respawn_player_paso_2(anim_name: String) -> void :
+	# NOTA TECNICA: no quitar el parámetro anima_name aunque no se use
+	# porque falla el connect
+	print("RESPAWN PLAYER - paso 2")
+	cortina.color = Color(0,0,0,1)
+	player.global_position = GameState.get_respawn_point(player, player_respawn_points)
+	await get_tree().create_timer(0.3).timeout
+	print("Animacion cortina entrada")
+	animacion.play("entrada")
+	animacion.animation_finished.disconnect(respawn_player_paso_2)
+	animacion.animation_finished.connect(_on_animacion_terminada)
+
+func player_captured() -> void:
+	# Los NPC llaman a este método para avisar que han capturado al Player
+	# Se pueden hacer algunas cosas, como vaciar en el HUD el inventario de USED
+	# Mientras le pasamos al Player el estado de capturado para animación.
+	hud.agregar_item(null,"used","")
+	player.captured()
+
+func game_over() -> void:
+	print("GAME OVER")
+	GameState.game_over = true

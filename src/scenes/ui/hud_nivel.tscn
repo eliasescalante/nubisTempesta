@@ -224,7 +224,7 @@ size_flags_vertical = 8
 theme_override_constants/separation = 0
 
 [node name="labels_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer"]
-custom_minimum_size = Vector2(324, 40)
+custom_minimum_size = Vector2(324, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -234,6 +234,7 @@ alignment = 1
 [node name="label_Used" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/labels_HBoxContainer"]
 custom_minimum_size = Vector2(108, 0)
 layout_mode = 2
+size_flags_vertical = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("12_1tyqh")
 text = "EN USO"
@@ -242,6 +243,7 @@ horizontal_alignment = 1
 [node name="label_Quest" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/labels_HBoxContainer"]
 custom_minimum_size = Vector2(108, 0)
 layout_mode = 2
+size_flags_vertical = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("12_1tyqh")
 text = "ENCARGO"
@@ -250,13 +252,14 @@ horizontal_alignment = 1
 [node name="label_Pass" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/labels_HBoxContainer"]
 custom_minimum_size = Vector2(108, 0)
 layout_mode = 2
+size_flags_vertical = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("12_1tyqh")
 text = "PASE"
 horizontal_alignment = 1
 
 [node name="objects_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer"]
-custom_minimum_size = Vector2(324, 68)
+custom_minimum_size = Vector2(324, 48)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -289,3 +292,41 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 expand_mode = 3
 stretch_mode = 5
+
+[node name="labels_HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer"]
+custom_minimum_size = Vector2(324, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="specimen_Used" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/labels_HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_1tyqh")
+text = "EN USO"
+horizontal_alignment = 1
+
+[node name="specimen_Quest" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/labels_HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_1tyqh")
+text = "ENCARGO"
+horizontal_alignment = 1
+
+[node name="specimen_Pass" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/labels_HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_1tyqh")
+text = "PASE"
+horizontal_alignment = 1
