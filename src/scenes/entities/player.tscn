@@ -211,7 +211,7 @@ position = Vector2(16, -72)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1hd0g")
-animation = &"aterrizar"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 32)
@@ -231,6 +231,7 @@ stream = ExtResource("4_0mv3c")
 
 [node name="sfx_tomar_objeto" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("6_qh5pu")
+volume_db = -20.0
 
 [node name="sfx_walking" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("5_7ucdj")
@@ -243,6 +244,7 @@ stream = ExtResource("9_ddkw8")
 
 [node name="sfx_falling" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("10_ddkw8")
+volume_db = -20.0
 
 [node name="sfx_gameover" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("11_ddkw8")

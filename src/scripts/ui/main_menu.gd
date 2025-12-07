@@ -18,7 +18,7 @@ func _on_animacion_terminada(anim_name: String) -> void:
 		cortina.visible = false
 	if anim_name == "salida":
 		if ir_a == "juego":
-			AudioManager.get_node("ost/Introduccion").stop()
+			AudioManager.get_node("ost/MainTheme").stop()
 			
 			GameState.portal = 0
 			GameState.loader = 0
@@ -37,7 +37,16 @@ func _on_play_button_pressed() -> void:
 	cortina.visible = true
 	animacion.play("salida")
 	ir_a = "juego"
-	
+
+# DEV -------->
+func _on_play_button_pressed_2() -> void:
+	#LevelManager.load_level(3)
+	print("VAMOS DERECHO AL NIVEL")
+	AudioManager.get_node("ost/MainTheme").stop()
+	get_tree().change_scene_to_file("res://src/scenes/levels/level_1.tscn")
+
+# <------	
+
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 

@@ -1,18 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://b75mm2eok2poj"]
+[gd_scene load_steps=2 format=3 uid="uid://b75mm2eok2poj"]
 
-[ext_resource type="Texture2D" uid="uid://5utjvy6fpocs" path="res://_assets/art/tileset/exterior_tileset_01.png" id="1_ssk1d"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hgwk"]
-size = Vector2(238, 31)
+[ext_resource type="Texture2D" uid="uid://c2twc16wt8yfr" path="res://_resources/platform_compressed_texture_2d.tres" id="1_ssk1d"]
 
 [node name="StaticPlataform" type="StaticBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ssk1d")
 region_enabled = true
-region_rect = Rect2(1547.73, 260.359, 237.938, 248.656)
+region_rect = Rect2(1536, 256, 256, 256)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(1, -108.5)
-shape = SubResource("RectangleShape2D_3hgwk")
-one_way_collision = true
+polygon = PackedVector2Array(-1, -19.5, -129, -19.5, 127, -19.5, -1, 236.5, -129, -19.5, -129, -19.5)

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends AnimatableBody2D
 class_name MovingPlatform
 
 # Velocidad de movimiento (pixeles/seg)
@@ -8,16 +8,18 @@ class_name MovingPlatform
 
 var direction := 1  # 1 = derecha, -1 = izquierda
 var start_position := Vector2.ZERO
-
+var dx
 func _ready():
 	start_position = position
 
 func _physics_process(delta: float) -> void:
 	# Mover la plataforma horizontalmente
-	velocity.x = direction * speed
-	velocity.y = 0  # No se mueve verticalmente
-	move_and_slide()
-	
-	# Cambiar de dirección si se pasa de la distancia
-	if abs(position.x - start_position.x) >= distance:
+	dx = direction * speed * delta
+		# Cambiar de dirección si se pasa de la distancia
+	if abs((position.x + dx) - start_position.x) >= distance:
 		direction *= -1
+		dx = direction * speed * delta
+	position.x += dx
+	#position.y += 0  # No se mueve verticalmente
+	#move_and_slide()
+	

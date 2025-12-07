@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 AudioManager="*res://src/scenes/AudioManager.tscn"
 GameState="*res://src/scripts/GameState.gd"
+Sfx="*res://src/scenes/sfx.tscn"
 
 [display]
 
@@ -28,7 +29,10 @@ window/stretch/mode="canvas_items"
 
 folder_colors={
 "res://_assets/": "red",
-"res://_assets/placeholders/": "yellow"
+"res://_assets/art/video/": "green",
+"res://_assets/musica/": "blue",
+"res://_assets/placeholders/": "yellow",
+"res://_assets/sfx/": "purple"
 }
 
 [global_group]
@@ -37,6 +41,7 @@ player=""
 portals=""
 items=""
 npc_estorbo=""
+levels=""
 
 [input]
 
@@ -65,3 +70,5 @@ morir={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
