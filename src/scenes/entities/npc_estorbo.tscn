@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ufvy0dcwnqjf"]
+[gd_scene load_steps=28 format=3 uid="uid://ufvy0dcwnqjf"]
 
 [ext_resource type="Script" uid="uid://c286qvkygjwu2" path="res://src/scripts/entities/npc_estorbo.gd" id="1_2vnfn"]
 [ext_resource type="Texture2D" uid="uid://bjdeetn7a1o46" path="res://_assets/art/sprites/npc-estorbo-spritesheet.png" id="2_f0bcc"]
@@ -12,8 +12,6 @@
 [ext_resource type="Script" uid="uid://b0m2eyjhuwfqr" path="res://src/scripts/entities/npc_states/npc_quest_waiting.gd" id="10_fvhpi"]
 [ext_resource type="Script" uid="uid://c51cca6grsewu" path="res://src/scripts/entities/npc_states/npc_returning.gd" id="11_fvhpi"]
 [ext_resource type="Script" uid="uid://cet5cek6kybcc" path="res://src/scripts/entities/npc_states/npc_capturing.gd" id="12_ojwnn"]
-[ext_resource type="Script" uid="uid://cl4rno0wgbxg4" path="res://src/scripts/entities/npc_states/npc_chisme_talking.gd" id="13_q1ujk"]
-[ext_resource type="Script" uid="uid://dvoqvb77gewil" path="res://src/scripts/entities/npc_states/npc_chisme_waiting.gd" id="14_da3bb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q1ujk"]
 size = Vector2(13.445377, 26.890753)
@@ -91,6 +89,21 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="Animation" id="Animation_da3bb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_q1ujk"]
 resource_name = "chasing"
 length = 0.5
@@ -105,21 +118,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(3.9999998, 0.17677675, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.1, 0.1, 0.1, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_da3bb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yjy6e"]
@@ -213,15 +211,6 @@ metadata/_custom_type_script = "uid://c51cca6grsewu"
 [node name="NpcCapturing" type="Node" parent="StateMachineNPC"]
 script = ExtResource("12_ojwnn")
 metadata/_custom_type_script = "uid://cet5cek6kybcc"
-
-[node name="NpcChismeTalking" type="Node" parent="StateMachineNPC"]
-script = ExtResource("13_q1ujk")
-metadata/_custom_type_script = "uid://cl4rno0wgbxg4"
-
-[node name="NpcChismeWaiting" type="Node" parent="StateMachineNPC" node_paths=PackedStringArray("npc")]
-script = ExtResource("14_da3bb")
-npc = NodePath("../..")
-metadata/_custom_type_script = "uid://dvoqvb77gewil"
 
 [node name="floor_RayCast2D" type="RayCast2D" parent="."]
 unique_name_in_owner = true

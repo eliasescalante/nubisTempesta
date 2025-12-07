@@ -118,15 +118,16 @@ func _physics_process(_delta: float) -> void:
 	
 	# obtenemos la posicion del floor_RayCast2D para corregir la orientacion
 	# al flipear el player
-	var ray_cast_pos_x = abs(ray_cast_2d.get_position().x)
-	var ray_cast_pos_y = ray_cast_2d.get_position().y
-	if velocity.x > 0:
-		animated_sprite_2d.flip_h = false
-		ray_cast_pos_x = ray_cast_pos_x
-	else:
-		animated_sprite_2d.flip_h = true
-		ray_cast_pos_x = -ray_cast_pos_x
-	ray_cast_2d.set_position(Vector2(ray_cast_pos_x,ray_cast_pos_y))
+	if ray_cast_2d:
+		var ray_cast_pos_x = abs(ray_cast_2d.get_position().x)
+		var ray_cast_pos_y = ray_cast_2d.get_position().y
+		if velocity.x > 0:
+			animated_sprite_2d.flip_h = false
+			ray_cast_pos_x = ray_cast_pos_x
+		else:
+			animated_sprite_2d.flip_h = true
+			ray_cast_pos_x = -ray_cast_pos_x
+		ray_cast_2d.set_position(Vector2(ray_cast_pos_x,ray_cast_pos_y))
 	
 	
 func play_dialog(content : String, content_type: String, balloon_type: String) -> void:
