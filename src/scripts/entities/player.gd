@@ -24,7 +24,7 @@ var is_captured := false
 var velocity_falling := 0.0
 
 # --- Variables PLD ---
-@export var pld: int = GameState.pld
+var pld: int = GameState.pld # Esto no tiene que ser @export
 @export var pld_por_salto: int = 5
 @export var pld_por_doble_salto: int = 7
 @export var pld_por_dash: int = 10
