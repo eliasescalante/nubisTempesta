@@ -1,6 +1,8 @@
 extends Node
 
 # ------------------------------------------------------------------------------
+var tutorial = true # Al comienzo del juego muestra los diálogos de tutorial.
+var tutorial_player_first_move = true
 
 # DATA PARA EL LOADER ENTRE ESCENAS
 var portal = 0 #1 es al nivel inicial, 2 al nivel 2 y el 3
@@ -8,7 +10,7 @@ var loader = 0 # para cargar la escena a donde ir
 var text_loader #para cargar el TITULO del loader
 var text_loader_subtitulo #para los subtitulos
 var image_loader_mini # para cargar la imagen mini
-var pld = 206
+var pld = 203
 # ------------------------------------------------------------------------------
 
 # PERSISTENCIA PARA NPCS
@@ -38,9 +40,9 @@ func register_npc(npc_node: Node) -> void:
 	
 	npcs_data[npc_id] = {
 		'quest': false, # false: quest pendiente | true: quest complete
-		'type': npc_node.type, # estorbo | chisme | patovica | mision
+		'type': npc_node.type, # estorbo | chisme | patovica | historia
 		'target_desired': npc_node.target_desired, # lo que el NPC desea. Depende del type.
-		'dialog_number': npc_node.dialog_number, # cuenta el avance en el dialogo entre el NPC y PLAYER
+		'dialog_number': npc_node.dialog_number, # cuenta el avance en los encuentros de dialogo entre el NPC y PLAYER
 		'state': 'NpcInit' # Estado inicial para la StateMachine
 	}
 

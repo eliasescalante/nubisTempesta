@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 AudioManager="*res://src/scenes/AudioManager.tscn"
 GameState="*res://src/scripts/GameState.gd"
 Sfx="*res://src/scenes/sfx.tscn"
+DialogManager="*res://src/scripts/DialogManager.gd"
 
 [display]
 
