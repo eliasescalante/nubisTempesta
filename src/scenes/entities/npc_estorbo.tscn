@@ -15,8 +15,8 @@
 [ext_resource type="Script" uid="uid://cl4rno0wgbxg4" path="res://src/scripts/entities/npc_states/npc_chisme_talking.gd" id="13_q1ujk"]
 [ext_resource type="Script" uid="uid://dvoqvb77gewil" path="res://src/scripts/entities/npc_states/npc_chisme_waiting.gd" id="14_da3bb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2rp2"]
-size = Vector2(768, 896)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1ujk"]
+size = Vector2(13.445377, 26.890753)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojwnn"]
 size = Vector2(128, 192)
@@ -95,7 +95,7 @@ animations = [{
 size = Vector2(96, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0bcc"]
-size = Vector2(192, 128)
+size = Vector2(256, 8)
 
 [node name="npc_estorbo" type="CharacterBody2D" groups=["npc_estorbo"]]
 script = ExtResource("1_2vnfn")
@@ -103,7 +103,10 @@ script = ExtResource("1_2vnfn")
 [node name="ChaseArea2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea2D"]
-shape = SubResource("RectangleShape2D_r2rp2")
+position = Vector2(-7.6293945e-06, -3.410605e-13)
+rotation = 1.5707964
+scale = Vector2(19.04, 19.04)
+shape = SubResource("RectangleShape2D_q1ujk")
 debug_color = Color(0.8157433, 0.25845847, 0.76289934, 0.105882354)
 
 [node name="CaptureArea2D" type="Area2D" parent="."]
@@ -125,7 +128,7 @@ shape = SubResource("RectangleShape2D_fvhpi")
 [node name="DialogArea2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogArea2D"]
-position = Vector2(0, 64)
+position = Vector2(0, 128)
 shape = SubResource("RectangleShape2D_f0bcc")
 debug_color = Color(0.78039217, 0.40784314, 0.44705883, 0.06666667)
 
@@ -181,6 +184,11 @@ metadata/_custom_type_script = "uid://dvoqvb77gewil"
 unique_name_in_owner = true
 position = Vector2(64, 80)
 target_position = Vector2(0, 64)
+
+[node name="chase_RayCast2D2" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-128, 0)
+target_position = Vector2(256, 0)
 
 [connection signal="body_entered" from="ChaseArea2D" to="." method="_on_chase_area_2d_body_entered"]
 [connection signal="body_exited" from="ChaseArea2D" to="." method="_on_chase_area_2d_body_exited"]
