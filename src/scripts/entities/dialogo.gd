@@ -9,7 +9,6 @@ func update_label(text):
 	icon_sprite.visible = false
 
 func update_icon_sprite(icon):
-	icon = 'honguito'
 	icon_sprite.play(icon)
 	label.visible = false
 	icon_sprite.visible = true
