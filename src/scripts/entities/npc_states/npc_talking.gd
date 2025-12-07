@@ -35,8 +35,10 @@ func enter():
 		npc_dialog_id = 'npc-estorbo'
 	player = get_tree().get_first_node_in_group("player")
 	
-	# El arranque del diálogo lo delegamos a la funcion update
-	# que comprueba el flag 'dialog_started'
+	# Ponemos el flag 'dialog_started = false' para indicar
+	# que se puede iniciar el dialogo en el proximo process update
+	# NOTA: esto es importante para las repeticiones.
+	dialog_started = false
 
 func exit():
 	print("NpcTalking exit")
