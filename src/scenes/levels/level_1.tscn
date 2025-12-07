@@ -142,6 +142,7 @@ position = Vector2(832, -2176)
 type = "chisme"
 target_desired = ""
 return_point = NodePath("../punto_retorno_npc_1")
+dialog_id = "chisme-honguitos"
 
 [node name="npc_estorbo_3" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("5_w1xa4")]
 modulate = Color(0.8, 0.8, 0.8, 1)

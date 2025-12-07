@@ -99,7 +99,55 @@ var dialogos_script = {
 				},
 			],
 		],
-	}
+	},
+	'chisme-honguitos': {
+		'repeat': -1, # -1 infinito
+		'loop': true,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia de diálogo #1
+				{
+					'actor': 'npc',
+					'text': 'Los hongitos \n están buenísimos.',
+					'duration': 2.2,
+					'content_type': 'text'
+				},
+				{
+					'actor': 'player',
+					'text': '¡Vaya, que emoción!',
+					'duration': 1.7,
+					'balloon_type': 'thought' # Estilo pensamiento
+				},
+			],
+			[ # secuencia de diálogo #2
+				{
+					'actor': 'npc',
+					'text': '¡Pero los chupachups...\n son lo más! ',
+					'duration': 2.2,
+					'content_type': 'text'
+				},
+				{
+					'actor': 'player',
+					'text': 'Entiendo, gracias.',
+					'duration': 1.7,
+				},
+			],
+			[ # secuencia de diálogo #3
+				{
+					'actor': 'npc',
+					'text': 'honguito', # esto lo usamos para referencias al objeto
+					'duration': 2.2,
+					'content_type': 'icon'
+				},
+				{
+					'actor': 'player',
+					'text': 'Interesante obseción',
+					'duration': 1.7,
+					'balloon_type': 'thought' # Estilo pensamiento
+				},
+			],
+		] # dialog_sequences
+	},
 }
 
 # Aquí vamos guardando los Diálogos ejecutados
