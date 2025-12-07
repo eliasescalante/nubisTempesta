@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ufvy0dcwnqjf"]
+[gd_scene load_steps=30 format=3 uid="uid://ufvy0dcwnqjf"]
 
 [ext_resource type="Script" uid="uid://c286qvkygjwu2" path="res://src/scripts/entities/npc_estorbo.gd" id="1_2vnfn"]
 [ext_resource type="Texture2D" uid="uid://bjdeetn7a1o46" path="res://_assets/art/sprites/npc-estorbo-spritesheet.png" id="2_f0bcc"]
@@ -91,6 +91,43 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="Animation" id="Animation_q1ujk"]
+resource_name = "chasing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(3.9999998, 0.17677675, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.1, 0.1, 0.1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_da3bb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yjy6e"]
+_data = {
+&"RESET": SubResource("Animation_da3bb"),
+&"chasing": SubResource("Animation_q1ujk")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvhpi"]
 size = Vector2(96, 192)
 
@@ -119,6 +156,12 @@ debug_color = Color(1, 0, 0.016666412, 0.41960785)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f0bcc")
 animation = &"idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatedSprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_yjy6e")
+}
 
 [node name="BodyCollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
