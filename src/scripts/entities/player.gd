@@ -129,13 +129,15 @@ func _physics_process(delta: float) -> void:
 		
 	# Hace la animación de hablar solo si está en un diálogo que ha empezado.
 	if is_talking and is_in_dialog:
-		play_anim("hablar") # <-- idle, no caminar
+		play_anim("hablar")
 	
 	# 🛑 Bloqueo total durante diálogo	
 	if is_in_dialog: 
 		# Separar el is_talking del movimiento permite a futuro 
 		# poder hacer hablar a Nubis mientras se mueve
 		# (aunque luego se sobre escriba la animacion con movimiento)
+		if not is_talking:
+			play_anim("idle")
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
