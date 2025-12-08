@@ -152,7 +152,12 @@ func _physics_process(delta: float) -> void:
 			return
 			
 	var on_floor := is_on_floor()
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction := (
+	Input.get_action_strength("ui_right")
+	- Input.get_action_strength("ui_left")
+	+ Input.get_action_strength("right")
+	- Input.get_action_strength("left")
+	)
 	
 	# --- Calculamos multiplicador ---
 	var multiplier = get_pld_multiplier()
