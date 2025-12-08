@@ -5,13 +5,33 @@ var tutorial = true # Al comienzo del juego muestra los diálogos de tutorial.
 var tutorial_player_first_move = true
 
 # DATA PARA EL LOADER ENTRE ESCENAS
-var portal = 0 #1 es al nivel inicial, 2 al nivel 2 y el 3
-var loader = 0 # para cargar la escena a donde ir
+var portal #1 es al nivel inicial, 2 al nivel 2 y el 3
+var loader # para cargar la escena a donde ir
 var text_loader #para cargar el TITULO del loader
 var text_loader_subtitulo #para los subtitulos
 var image_loader_mini # para cargar la imagen mini
-var pld = 203
 # ------------------------------------------------------------------------------
+var pld
+# ------------------------------------------------------------------------------
+var game_over
+var timer_game_over
+var game_over_scene_launched
+# ------------------------------------------------------------------------------
+
+func reset_game_state():
+	portal = 0 #1 es al nivel inicial, 2 al nivel 2 y el 3
+	loader = 0 # para cargar la escena a donde ir
+	text_loader="" #para cargar el TITULO del loader
+	text_loader_subtitulo="" #para los subtitulos
+	image_loader_mini="" # para cargar la imagen mini
+	pld = 203
+	game_over = false
+	timer_game_over = 3.0 # Lo que dura en pantalla ingame con Nubis muerta hasta que se dispare la cortina.
+	game_over_scene_launched = false
+
+# ------------------------------------------------------------------------------
+ 
+ 
 
 # PERSISTENCIA PARA NPCS
 
