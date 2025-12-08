@@ -18,6 +18,9 @@ extends Node2D
 
 @onready var timer_to_tutorial_first_move:float = 3.0
 
+@onready var musica_nivel_1 = AudioManager.get_node("ost/Nivel1")
+
+
 func _ready() -> void:
 	AudioManager.play_nivel_1()
 	var spawn_point = spawn_point_0
