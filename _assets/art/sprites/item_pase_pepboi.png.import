@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bf78xh4w4ptor"
-path="res://.godot/imported/item_historia_01_pip-boy.png-ed03ad6066ca937bf26af2a349ec4f4d.ctex"
+path="res://.godot/imported/item_pase_pepboi.png-70c99ac3952745c1bcac772dc7778e45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/art/sprites/item_historia_01_pip-boy.png"
-dest_files=["res://.godot/imported/item_historia_01_pip-boy.png-ed03ad6066ca937bf26af2a349ec4f4d.ctex"]
+source_file="res://_assets/art/sprites/item_pase_pepboi.png"
+dest_files=["res://.godot/imported/item_pase_pepboi.png-70c99ac3952745c1bcac772dc7778e45.ctex"]
 
 [params]
 

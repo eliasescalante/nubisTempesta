@@ -16,16 +16,17 @@ extends CanvasLayer
 @onready var specimen_quest: Label = %specimen_Quest
 @onready var specimen_pass: Label = %specimen_Pass
 
-var object_used_specimen # Recibe el dato de la especia de item
+# Recibe el dato de la especie de item
+var object_used_specimen
+var object_quest_specimen
+var object_pass_specimen
 
 @onready var puntos: int = GameState.pld
 
 func _ready() -> void:
 	pld_icon_animated_sprite_2d.play("default")
-	# Estos por ahora no se usan
 	specimen_quest.text = ""
 	specimen_pass.text = ""
-	# Este si
 	specimen_used.text = ""
 	puntos_label.text = str(puntos)
 	
@@ -42,8 +43,12 @@ func agregar_item(item_texture: Texture2D, item_type: String, item_specimen: Str
 			specimen_used.text = item_specimen
 		"quest":
 			object_quest_texture_rect.texture = item_texture
+			object_quest_specimen = item_specimen
+			specimen_quest.text = item_specimen
 		"pass":
 			object_pass_texture_rect.texture = item_texture
+			object_pass_specimen = item_specimen
+			specimen_pass.text = item_specimen	
 		_:
 			print("⚠️ Tipo de item desconocido: ", item_type)
 

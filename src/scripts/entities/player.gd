@@ -66,7 +66,7 @@ signal player_died()
 
 # --- Función para gastar PLD ---
 func gastar_pld(cantidad: int):
-
+	pld = GameState.pld
 	pld = max(pld - cantidad, PLD_GAME_OVER)
 	
 	if hud:
@@ -92,7 +92,7 @@ func gastar_pld(cantidad: int):
 func _ready() -> void:
 	dialogo.visible = false
 	play_anim("idle")
-	GameState.pld = pld
+	pld = GameState.pld
 
 # --- Multiplicador de velocidad / salto según PLD ---
 func get_pld_multiplier() -> float:
@@ -306,6 +306,7 @@ func update_animation(on_floor : bool, direction : float) -> void:
 		play_anim("idle")
 
 func sumar_pld(cantidad: int):
+	pld = GameState.pld
 	pld += cantidad
 	sfx_tomar_objeto.play()
 	if hud:
