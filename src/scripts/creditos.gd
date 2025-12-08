@@ -18,7 +18,7 @@ func _on_animacion_terminada(anim_name: String) -> void:
 		get_tree().change_scene_to_file("res://src/scenes/main.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 

@@ -50,7 +50,7 @@ func _ready() -> void:
 	animacion.animation_finished.connect(_on_animacion_terminada)
 	
 	player.player_died.connect(respawn_player)
-	
+	player.game_over.connect(game_over)
 
 func _on_animacion_terminada(anim_name: String) -> void:
 	# habilitar movimiento jugador
@@ -64,12 +64,25 @@ func _on_animacion_terminada(anim_name: String) -> void:
 
 	
 func _process(_delta: float) -> void:
+	if GameState.game_over:
+		if GameState.timer_game_over > 0:
+			GameState.timer_game_over -= 1*_delta
+		else:
+			if not GameState.game_over_scene_launched:
+				GameState.game_over_scene_launched = true
+				GameState.text_loader = "DEUDA DE PLD EXTREMA"
+				GameState.text_loader_subtitulo = "Liquidación..."
+				GameState.image_loader_mini = "game_over"
+				AudioManager.get_node("ost/Nivel1").stop()
+				Sfx.sfx_play('loader_game_over')
+				call_deferred("_change_to_loader")
+
 	GameState.tutorial = false
 	if GameState.tutorial and GameState.tutorial_player_first_move:
 		timer_to_tutorial_first_move -= 1 * _delta
 		if timer_to_tutorial_first_move < 0:
 			GameState.tutorial_player_first_move = false
-			# DialogManager.
+			# DialogManager.			
 
 func _on_portal_1_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -138,6 +151,10 @@ func player_captured() -> void:
 	# Mientras le pasamos al Player el estado de capturado para animación.
 	hud.agregar_item(null,"used","")
 	player.captured()
+
+func game_over() -> void:
+	print("GAME OVER")
+	GameState.game_over = true
 
 func player_quest_reward(player_quest_reward, player_quest_reward_pld) -> void:
 	# Esto es muy cabeza, pero funciona. Hay que mejorarlo con sonido, etc.

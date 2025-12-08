@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvoccyvfuofgj"]
+[gd_scene load_steps=6 format=3 uid="uid://bvoccyvfuofgj"]
 
 [ext_resource type="Script" uid="uid://byarjnyfoxma5" path="res://src/scripts/sfx.gd" id="1_s0bj8"]
 [ext_resource type="AudioStream" uid="uid://dkkjougvku4ng" path="res://_assets/sfx/items/objeto_puntos.ogg" id="2_lvgsc"]
 [ext_resource type="AudioStream" uid="uid://dxresawfhg0bb" path="res://_assets/sfx/items/objeto_mision.ogg" id="3_glm6l"]
 [ext_resource type="AudioStream" uid="uid://bjpxwxc0v7dw8" path="res://_assets/sfx/items/objeto_bonus.ogg" id="4_witvb"]
+[ext_resource type="AudioStream" uid="uid://barhiao1ut3oq" path="res://_assets/sfx/loader/game_over.ogg" id="5_lvgsc"]
 
 [node name="sfx" type="Node"]
 script = ExtResource("1_s0bj8")
@@ -16,3 +17,6 @@ stream = ExtResource("3_glm6l")
 
 [node name="item_bonus" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_witvb")
+
+[node name="loader_gamer_over" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lvgsc")
