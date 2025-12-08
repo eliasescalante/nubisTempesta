@@ -3,10 +3,10 @@ extends Node2D
 signal item_collected(item_scene_path: String, position: Vector2, item_type: String, item_specimen: String)
 
 @export var pld_bonus: int = 16666
-@export var respawn_time: float = 999999
-@export var item_type : String = "historia" # Esto debería cambiar entre USED | BONUS
+@export var respawn_time: float = 10
+@export var item_type : String = "quest" # Esto debería cambiar entre USED | BONUS
 
-@export var item_specimen: String = "" 
+@export var item_specimen: String = "comcubo" 
 
 var item_specimens: Array = ["comcubo"]
 
@@ -40,12 +40,14 @@ func _on_area_2d_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
 		var hud = get_tree().get_root().find_child("HudNivel", true, false)
 		if hud:
-			hud.agregar_item($Sprite2D.texture, item_type, item_specimen)
-		
-		if body.has_method("sumar_pld"):
-			body.sumar_pld(pld_bonus)
+			hud.agregar_item($Sprite2D.texture, item_type, item_specimen) 
+
+		# El ITEM HISTORIA NO SUMA PUNTOS DE MANERA INMEDIATA
+		##if body.has_method("sumar_pld"):
+		#	body.sumar_pld(pld_bonus)
 		
 		# En lugar de borrarnos, avisamos al nivel
+		# Tampoco respawnea (por ahora)
 		emit_signal("item_collected", get_meta("scene_path"), global_position, item_type, item_specimen, respawn_time)
 		queue_free()
 		print("✅ Se agregó al HUD:", item_type)

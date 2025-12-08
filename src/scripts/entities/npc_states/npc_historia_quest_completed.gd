@@ -1,12 +1,14 @@
 extends StateNPCs
-class_name NpcHistoriaTalking
+class_name NpcHistoriaQuestCompleted
 
 @onready var npc: CharacterBody2D = $"../.."
 @onready var player: CharacterBody2D
 
 var dialog_started = false
 var dialog_finished = false
-
+var reward_quest_completed: String
+var reward_quest_completed_pld: int
+var level_node: Node
 @onready var target_desired
 @onready var npc_dialog_id
 
@@ -21,9 +23,17 @@ func enter():
 	DialogManager.current_dialog_finished.connect(_on_current_dialog_finished)
 
 	target_desired = GameState.get_npc_property( npc, 'target_desired')
+	reward_quest_completed = npc.reward_quest_completed
+	reward_quest_completed_pld = npc.reward_quest_completed_pld
+	
+	# Referenciar al nodo del nivel para disparar la captura del player
+	level_node = get_tree().get_first_node_in_group("levels")
+	
 	npc_dialog_id = npc.dialog_id
 	if npc_dialog_id == "":
 		npc_dialog_id = 'historia-1'
+	npc_dialog_id += "-completed"
+	
 	player = get_tree().get_first_node_in_group("player")
 	
 	# Ponemos el flag 'dialog_started = false' para indicar
@@ -48,11 +58,11 @@ func physics_update(_delta: float):
 
 func _on_dialog_player_lost():
 	print("NpcHistoriaTalking _on_dialog_player_lost")
-	Transitioned.emit(self, "NpcHistoriaQuestWaiting")
+	end_dialog()
 
 func _on_current_dialog_finished():
 	print("NpcHistoriaTalking on_current_dialog_finished")
-	Transitioned.emit(self, "NpcHistoriaQuestWaiting")
+	end_dialog()
 
 # ------------------------------------------------------------------------------
 # AQUI SE TIENE QUE OPTIMIZAR LA SECUENCIA DE DIALOGOS USANDO UN ARRAY Y LISTA
@@ -72,7 +82,9 @@ func start_dialog():
 				'npc': npc
 			},
 			{ # 'replacements'
-				'<%OBJ%>': str(target_desired)
+				'<%OBJ%>': str(target_desired),
+				'<%REW%>': str(reward_quest_completed),
+				'<%PLD%>': str(reward_quest_completed_pld)
 			}
 		)
 	else:
@@ -81,4 +93,7 @@ func start_dialog():
 		end_dialog()
 		
 func end_dialog():
-	Transitioned.emit(self, "NpcHistoriaQuestWaiting") # Esto deberia ser NpcQuestWaiting
+	# Acá ponemos la recompensa por completar el Encargo/Misión de la Historia
+	# El Player obtiene el objeto PASE y PLD.
+	level_node.player_quest_reward(reward_quest_completed, reward_quest_completed_pld)
+	Transitioned.emit(self, "NpcDesactivated") # Esto deberia ser NpcQuestWaiting

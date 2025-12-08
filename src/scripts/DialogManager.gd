@@ -148,6 +148,58 @@ var dialogos_script = {
 			],
 		] # dialog_sequences
 	},
+	'historia-1': {
+		'repeat': -1, # -1 infinito
+		'loop': false,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia de dialogo 1
+				{
+					'actor': 'npc',
+					'text': 'Necesito que consigas \n un <%OBJ%>.',
+				},
+				{
+					'actor': 'player',
+					'text': '¡Una misión!',
+				},
+			],
+			[ # secuencia de dialogo 1
+				{
+					'actor': 'npc',
+					'text': '¿Todavía no tenés \n el <%OBJ%> ? \n Seguí buscando.',
+				},
+			],
+		],
+	},
+	'historia-1-completed': {
+		'repeat': -1,
+		'loop': false,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia de dialogo 1
+				{
+					'actor': 'npc',
+					'text': 'Bien hecho. \n Ten tu Recompensa \n un pase <%REW%> \n y <%PLD%> PLD.',
+				},
+				{
+					'actor': 'player',
+					'text': '¡WOW!',
+				},
+				{
+					'actor': 'player',
+					'text': '¡Tengo que \n dedicarme a esto!',
+					'duration': 3.3,
+					'balloon_type': 'thought', # Estilo pensamiento
+				},
+			],
+			[ # secuencia de dialogo 1
+				{
+					'actor': 'npc',
+					'text': 'Ya no necesito nada. \n Buscá a otro. \n ¡Chau!',
+				},
+			],
+		],
+	},
 }
 
 # Aquí vamos guardando los Diálogos ejecutados

@@ -35,6 +35,10 @@ func enter():
 		init_patovica()
 		return
 	
+	if npc.type=='historia':
+		init_historia()
+		return
+		
 	init_estorbo()
 
 func exit():
@@ -60,3 +64,15 @@ func init_chisme():
 func init_patovica():
 	print("Iniciar NPC-PATOVICA")
 	Transitioned.emit(self, "NpcPatovicaWaiting")
+
+func init_historia():
+	if GameState.npc_has_quest(npc):
+		print("El NPC tiene la quest completa. Desactivar")
+		Transitioned.emit(self, "NpcDesactivated")
+		return
+	
+	if state != "NpcHistoriaQuestWaiting":
+		print("Aunque el estado no era uno de los esperados. Establecemos por defecto 'NpcHistoriaQuestWaiting'")
+		state = "NpcHistoriaQuestWaiting"
+			
+	Transitioned.emit(self, state)

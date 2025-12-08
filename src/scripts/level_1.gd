@@ -67,6 +67,7 @@ func _process(_delta: float) -> void:
 		if timer_to_tutorial_first_move < 0:
 			GameState.tutorial_player_first_move = false
 			# DialogManager.
+
 func _on_portal_1_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		GameState.portal = 2
@@ -134,3 +135,12 @@ func player_captured() -> void:
 	# Mientras le pasamos al Player el estado de capturado para animación.
 	hud.agregar_item(null,"used","")
 	player.captured()
+
+func player_quest_reward(player_quest_reward, player_quest_reward_pld) -> void:
+	# Esto es muy cabeza, pero funciona. Hay que mejorarlo con sonido, etc.
+	# Agregamos el OBJETO-PASE
+	var texture:Texture2D = load("res://_assets/art/sprites/item_pase_"+str(player_quest_reward)+".png")
+	hud.agregar_item(texture, 'pass', player_quest_reward)
+	hud.actualizar_puntos(GameState.pld+int(player_quest_reward_pld))
+	# Quitamos el OBJETO-HISTORIA
+	hud.agregar_item(null,"quest","")

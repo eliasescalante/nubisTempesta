@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://clx0rliac47qw"]
+[gd_scene load_steps=23 format=4 uid="uid://clx0rliac47qw"]
 
 [ext_resource type="Script" uid="uid://de366u52gwitk" path="res://src/scripts/level_1.gd" id="1_nw74m"]
 [ext_resource type="TileSet" uid="uid://84vsloajncpa" path="res://_resources/map_exterior_blanco_tile_set.tres" id="2_cufsb"]
@@ -16,8 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://b1gvurchiu3h4" path="res://src/scenes/entities/player_respawn_point.tscn" id="9_shuiu"]
 [ext_resource type="PackedScene" uid="uid://dtuunre8ai8jr" path="res://src/scenes/entities/npc_chisme.tscn" id="10_lf6bi"]
 [ext_resource type="PackedScene" uid="uid://wstroalu326b" path="res://src/scenes/entities/npc_decorado_negro.tscn" id="10_m1y7t"]
+[ext_resource type="PackedScene" uid="uid://cl7tghv4aae1l" path="res://src/scenes/entities/npc_historia.tscn" id="11_3qvg3"]
 [ext_resource type="TileSet" uid="uid://cv42yxnip6htf" path="res://_resources/map_exterior_negro_tile_set.tres" id="11_cufsb"]
 [ext_resource type="PackedScene" uid="uid://c0qonmpwpmm0v" path="res://src/scenes/entities/cortina.tscn" id="14_cufsb"]
+[ext_resource type="PackedScene" uid="uid://b2j1to5r5vjth" path="res://src/scenes/entities/item_historia_comcubo.tscn" id="16_1egpu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m11n0"]
 size = Vector2(192, 320)
@@ -182,6 +184,10 @@ return_point = NodePath("../punto_retorno_npc_1")
 [node name="npc_chisme_1" parent="Parallax2D_medio/NPCs" instance=ExtResource("10_lf6bi")]
 position = Vector2(832, -2176)
 
+[node name="npc_historia" parent="Parallax2D_medio/NPCs" instance=ExtResource("11_3qvg3")]
+position = Vector2(2752, -2688)
+target_desired = "comcubo"
+
 [node name="player_respawn_points" type="Node2D" parent="Parallax2D_medio"]
 unique_name_in_owner = true
 metadata/_edit_group_ = true
@@ -306,6 +312,9 @@ position = Vector2(-1024, -6272)
 [node name="Item9" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
 position = Vector2(1408, -5248)
 
+[node name="ItemHistoria2" parent="Parallax2D_medio/Collectables" instance=ExtResource("16_1egpu")]
+position = Vector2(1728, -3200)
+
 [node name="Portal0" type="Area2D" parent="Parallax2D_medio"]
 unique_name_in_owner = true
 metadata/_edit_group_ = true
@@ -321,8 +330,9 @@ position = Vector2(1792, -2176)
 [node name="Parallax2D_frente" type="Parallax2D" parent="."]
 z_index = 200
 scroll_scale = Vector2(1.1, 1.1)
-scroll_offset = Vector2(960, -1536)
+scroll_offset = Vector2(1024, -1536)
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Parallax2D_frente"]
 tile_map_data = PackedByteArray("AAD8/wMAAQACAAEAAAD9/wMAAQADAAEAAAD9/wAAAQAEAAEAAAD+/wAAAQAFAAEAAAD//wAAAQACAAEAAAAAAAAAAQADAAEAAAD7//z/AQAAAAIAAAD7//3/AQABAAIAAAD7//7/AQAAAAIAAAD7////AQABAAIAAAD7/wAAAQAAAAIAAAD7/wEAAQABAAIAAAD7/wIAAQAAAAIAAAD7/wMAAQABAAIAAAD7/wQAAQAAAAIAAAD7/wUAAQABAAIAAAD7/wYAAQAAAAIAAAD7/wcAAQABAAIAAAD7//v/AQAAAAEAAAD8//v/AQADAAEAAAD6//v/AQAEAAEAAAD6/wMAAQAFAAEAAAD5/wMAAQAEAAEAAAD1/w0AAQAAAAIAAAD1/w4AAQAAAAIAAAD1/w8AAQAAAAIAAAD1/xAAAQAAAAIAAAD1/xEAAQAAAAIAAAD1/xIAAQAAAAIAAAD2/w8AAQAAAAIAAAD2/xAAAQAAAAIAAAD2/xEAAQAAAAIAAAD2/xIAAQAAAAIAAAD3/w8AAQAAAAIAAAD3/xAAAQAAAAIAAAD3/xEAAQAAAAIAAAD3/xIAAQAAAAIAAAD4/w8AAQAAAAIAAAD4/xAAAQAAAAIAAAD4/xEAAQAAAAIAAAD4/xIAAQAAAAIAAAD5/w0AAQAAAAIAAAD5/w4AAQAAAAIAAAD5/w8AAQAAAAIAAAD5/xAAAQAAAAIAAAD5/xEAAQAAAAIAAAD5/xIAAQAAAAIAAAD1/wwAAQAGAAEAADD5/wwAAQAGAAEAADD2/w4AAQAGAAEAADD3/w4AAQAGAAEAADD4/w4AAQAGAAEAADD4/wsAAQADAAEAAAD3/wsAAQAAAAEAAAD2/wsAAQAEAAEAAAD3/wwAAQAGAAEAAAD5/wkAAQAEAAEAAAD6/wkAAQAFAAEAAAD7/wgAAQAAAAIAAAD7/wkAAQABAAIAAAD7/woAAQAAAAIAAAD7/wsAAQABAAIAAAD7/wwAAQAAAAIAAAD7/w0AAQABAAIAAAD8/wkAAQACAAEAAAD9/wkAAQADAAEAAAD5//b/AQAEAAEAAAD6//b/AQAFAAEAAAD7//X/AQAAAAIAAAD7//b/AQABAAIAAAD7//f/AQAAAAIAAAD7//j/AQABAAIAAAD7//n/AQAAAAIAAAD7//r/AQABAAIAAAD8//b/AQACAAEAAAD9//b/AQADAAEAAAD5//D/AQAEAAEAAAD6//D/AQAFAAEAAAD7/+//AQAAAAIAAAD7//D/AQABAAIAAAD7//H/AQAAAAIAAAD7//L/AQABAAIAAAD7//P/AQAAAAIAAAD7//T/AQABAAIAAAD8//D/AQACAAEAAAD9//D/AQADAAEAAAD5/+r/AQAEAAEAAAD6/+r/AQAFAAEAAAD7/+n/AQABAAIAAAD7/+r/AQAAAAIAAAD7/+v/AQABAAIAAAD7/+z/AQABAAIAAAD7/+3/AQAAAAIAAAD7/+7/AQABAAIAAAD8/+r/AQACAAEAAAD9/+r/AQADAAEAAAD5/+f/AQAEAAEAAAD6/+f/AQAFAAEAAAD7/+b/AQAAAAIAAAD7/+f/AQABAAIAAAD7/+j/AQAAAAIAAAD8/+f/AQACAAEAAAD9/+f/AQADAAEAAAACAAAAAQAEAAEAAAADAAAAAQADAAEAAAD///n/AQAEAAEAAAAAAPn/AQAFAAEAAAABAPn/AQACAAEAAAACAPn/AQADAAEAAAAEAPn/AQAEAAEAAAAFAPn/AQADAAEAAAD///X/AQAEAAEAAAAAAPX/AQAFAAEAAAABAPX/AQACAAEAAAACAPX/AQADAAEAAAAEAPX/AQAEAAEAAAAFAPX/AQADAAEAAADx//v/AQAEAAEAAADy//v/AQAFAAEAAADz//v/AQACAAEAAAD0//v/AQADAAEAAAD2//v/AQAEAAEAAAD3//v/AQADAAEAAAD+//H/AQAEAAEAAAD///H/AQAFAAEAAAAAAPH/AQACAAEAAAABAPH/AQADAAEAAAADAPH/AQAEAAEAAAAEAPH/AQADAAEAAAD//+3/AQAEAAEAAAAAAO3/AQAFAAEAAAABAO3/AQACAAEAAAACAO3/AQADAAEAAAAEAO3/AQAEAAEAAAAFAO3/AQADAAEAAAABAOr/AQAEAAEAAAACAOr/AQAFAAEAAAADAOr/AQACAAEAAAAEAOr/AQADAAEAAAAGAOr/AQAEAAEAAAAHAOr/AQADAAEAAADz/+z/AQAEAAEAAAD0/+z/AQAFAAEAAAD1/+z/AQACAAEAAAD2/+z/AQADAAEAAAD4/+z/AQAEAAEAAAD5/+z/AQADAAEAAAD0/+3/AQAEAAEAAAD1/+3/AQAFAAEAAAD2/+3/AQACAAEAAAD3/+3/AQADAAEAAAD5/+3/AQAEAAEAAAD6/+3/AQADAAEAAAA=")

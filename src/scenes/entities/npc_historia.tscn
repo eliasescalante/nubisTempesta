@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cl7tghv4aae1l"]
+[gd_scene load_steps=14 format=3 uid="uid://cl7tghv4aae1l"]
 
 [ext_resource type="Script" uid="uid://c286qvkygjwu2" path="res://src/scripts/entities/npc_estorbo.gd" id="1_hycv5"]
 [ext_resource type="Texture2D" uid="uid://b8hjwn2rgjpm1" path="res://_assets/art/sprites/npc-relleno-01.png" id="2_68fxv"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://da0kexnc4cfy" path="res://src/scripts/entities/npc_states/npc_init.gd" id="6_5mfyv"]
 [ext_resource type="Script" uid="uid://bo52smwekckfl" path="res://src/scripts/entities/npc_states/npc_historia_talking.gd" id="7_68fxv"]
 [ext_resource type="Script" uid="uid://blug75ilm3ygt" path="res://src/scripts/entities/npc_states/npc_historia_quest_waiting.gd" id="8_68fxv"]
+[ext_resource type="Script" uid="uid://br4j7uly5m5m3" path="res://src/scripts/entities/npc_states/npc_historia_quest_completed.gd" id="8_djj4b"]
 [ext_resource type="Script" uid="uid://cd77letq66pu8" path="res://src/scripts/entities/npc_states/npc_desactivated.gd" id="8_g2cmn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_djj4b"]
@@ -53,7 +54,7 @@ dialog_id = "historia-1"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f0bcc")
-animation = &"caminar"
+animation = &"idle"
 
 [node name="BodyCollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -85,6 +86,10 @@ metadata/_custom_type_script = "uid://cd77letq66pu8"
 [node name="NpcHistoriaTalking" type="Node" parent="StateMachineNPC"]
 script = ExtResource("7_68fxv")
 metadata/_custom_type_script = "uid://bo52smwekckfl"
+
+[node name="NpcHistoriaQuestCompleted" type="Node" parent="StateMachineNPC"]
+script = ExtResource("8_djj4b")
+metadata/_custom_type_script = "uid://br4j7uly5m5m3"
 
 [node name="NpcHistoriaQuestWaiting" type="Node" parent="StateMachineNPC"]
 script = ExtResource("8_68fxv")
