@@ -1,19 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://quducok480tl"]
+[gd_scene load_steps=16 format=3 uid="uid://quducok480tl"]
 
 [ext_resource type="Script" uid="uid://c286qvkygjwu2" path="res://src/scripts/entities/npc_estorbo.gd" id="1_c8oul"]
 [ext_resource type="Texture2D" uid="uid://cvib7p81t01vq" path="res://_assets/art/sprites/npc-historia-01.png" id="1_qntfx"]
 [ext_resource type="PackedScene" uid="uid://b780qmfqgvwqn" path="res://src/scenes/entities/dialogo.tscn" id="3_7a7jm"]
 [ext_resource type="Script" uid="uid://vjkti5djw36g" path="res://src/scripts/state_machine/state_machine_npc.gd" id="4_nd3d6"]
-[ext_resource type="Script" uid="uid://bllbaxxcip63g" path="res://src/scripts/entities/npc_states/npc_blocking.gd" id="5_y0kkx"]
 [ext_resource type="Script" uid="uid://da0kexnc4cfy" path="res://src/scripts/entities/npc_states/npc_init.gd" id="6_jxmmk"]
-[ext_resource type="Script" uid="uid://b1ahgh74nauc1" path="res://src/scripts/entities/npc_states/npc_chasing.gd" id="7_d8lsv"]
 [ext_resource type="Script" uid="uid://cd77letq66pu8" path="res://src/scripts/entities/npc_states/npc_desactivated.gd" id="8_w4cr4"]
-[ext_resource type="Script" uid="uid://cdw61tx5byriu" path="res://src/scripts/entities/npc_states/npc_talking.gd" id="9_gy2dl"]
-[ext_resource type="Script" uid="uid://b0m2eyjhuwfqr" path="res://src/scripts/entities/npc_states/npc_quest_waiting.gd" id="10_rfiht"]
-[ext_resource type="Script" uid="uid://c51cca6grsewu" path="res://src/scripts/entities/npc_states/npc_returning.gd" id="11_2e6a2"]
-[ext_resource type="Script" uid="uid://cet5cek6kybcc" path="res://src/scripts/entities/npc_states/npc_capturing.gd" id="12_xfysv"]
-[ext_resource type="Script" uid="uid://cl4rno0wgbxg4" path="res://src/scripts/entities/npc_states/npc_chisme_talking.gd" id="13_i1rvu"]
-[ext_resource type="Script" uid="uid://dvoqvb77gewil" path="res://src/scripts/entities/npc_states/npc_chisme_waiting.gd" id="14_dvvdg"]
 [ext_resource type="Script" uid="uid://b5jgmymky6me7" path="res://src/scripts/entities/npc_states/npc_patovica_waiting.gd" id="15_3sdq1"]
 [ext_resource type="Script" uid="uid://bsy4yyfafv7on" path="res://src/scripts/entities/npc_states/npc_patovica_talking.gd" id="16_6dlne"]
 [ext_resource type="Script" uid="uid://dgahlly7lex1d" path="res://src/scripts/entities/npc_states/npc_patovica_blocking.gd" id="17_6axe7"]
@@ -104,45 +96,13 @@ position = Vector2(30, -79)
 script = ExtResource("4_nd3d6")
 initial_state = NodePath("NpcInit")
 
-[node name="NpcBlocking" type="Node" parent="StateMachineNPC"]
-script = ExtResource("5_y0kkx")
-metadata/_custom_type_script = "uid://bllbaxxcip63g"
-
 [node name="NpcInit" type="Node" parent="StateMachineNPC"]
 script = ExtResource("6_jxmmk")
 metadata/_custom_type_script = "uid://da0kexnc4cfy"
 
-[node name="NpcChasing" type="Node" parent="StateMachineNPC"]
-script = ExtResource("7_d8lsv")
-metadata/_custom_type_script = "uid://b1ahgh74nauc1"
-
 [node name="NpcDesactivated" type="Node" parent="StateMachineNPC"]
 script = ExtResource("8_w4cr4")
 metadata/_custom_type_script = "uid://cd77letq66pu8"
-
-[node name="NpcTalking" type="Node" parent="StateMachineNPC"]
-script = ExtResource("9_gy2dl")
-metadata/_custom_type_script = "uid://cdw61tx5byriu"
-
-[node name="NpcQuestWaiting" type="Node" parent="StateMachineNPC"]
-script = ExtResource("10_rfiht")
-metadata/_custom_type_script = "uid://b0m2eyjhuwfqr"
-
-[node name="NpcReturning" type="Node" parent="StateMachineNPC"]
-script = ExtResource("11_2e6a2")
-metadata/_custom_type_script = "uid://c51cca6grsewu"
-
-[node name="NpcCapturing" type="Node" parent="StateMachineNPC"]
-script = ExtResource("12_xfysv")
-metadata/_custom_type_script = "uid://cet5cek6kybcc"
-
-[node name="NpcChismeTalking" type="Node" parent="StateMachineNPC"]
-script = ExtResource("13_i1rvu")
-metadata/_custom_type_script = "uid://cl4rno0wgbxg4"
-
-[node name="NpcChismeWaiting" type="Node" parent="StateMachineNPC"]
-script = ExtResource("14_dvvdg")
-metadata/_custom_type_script = "uid://dvoqvb77gewil"
 
 [node name="NpcPatovicaWaiting" type="Node" parent="StateMachineNPC"]
 script = ExtResource("15_3sdq1")
