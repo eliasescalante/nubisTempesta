@@ -199,5 +199,41 @@ var dialogos_script = {
 				},
 			],
 		],
-	},
+	}, # END historia-1-completed
+	'patovica-1': {
+		'repeat': -1,
+		'loop': false,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia de dialogo 1
+				{
+					'actor': 'npc',
+					'text': "Alto, necesitás \n <%OBJ%> PLD \n para pasar. \n Tomátelas",
+					'duration': 3.3,
+				},
+				{
+					'actor': 'player',
+					'text': '¡Eh! ¡¿Qué rompimos?!\n Ya vuelvo.',
+				},
+				{
+					'actor': 'player',
+					'text': 'Parece muy exclusivo. \n Tengo que lograr \n entrar ahí!',
+					'duration': 3.3,
+					'balloon_type': 'thought', # Estilo pensamiento
+				},
+			],
+			[ # secuencia de dialogo 2
+				{
+					'actor': 'npc',
+					'text': '¿Te falta para \n <%OBJ%> PLD ?\n Volvé cuando \n tengas esa cantidad.',
+				},
+				{
+					'actor': 'player',
+					'text': '¡GGGRRRR!',
+					'duration': 1.8,
+					'balloon_type': 'thought', # Estilo pensamiento
+				},
+			],
+		],
+	}, # END patovica-1
 }
