@@ -73,13 +73,14 @@ signal capture_player_lost
 # En el caso de los NPC-Estorbo es la especie de un objeto collectable.
 # En el caso de los NPC-Patovica es un valor numérico de puntos PLD
 # En el caso de los NPC-Historia es el nombre de un objeto collectable único.
-@export var target_desired:String = "chupachups"
+@export var target_desired:String
+@export var target_pld_desired:int
 
 # Esta es la recompensa que entrega el NPC al completar la misión o desafío
 # En el caso de los NPC-Estorbo y el NPC-Patovica es nada
 # En el caso de los NPC-Historia es el nombre de un Objeto-Pase
-@export var reward_quest_completed: String = "pepboi"
-@export var reward_quest_completed_pld: int = 16384
+@export var reward_quest_completed: String
+@export var reward_quest_completed_pld: int
 
 # Vincula el nodo 'Punto_retorno_npc_X' con el NPC
 @export var return_point:Node2D # Deberia renombrarse como PUNTO DE CONTROL para los diferentes NPC
@@ -93,7 +94,7 @@ signal capture_player_lost
 # Hay que establecerlo en el ESCENARIO
 # En el caso de los NPC-Estorbo y NPC-Patovica puede ser el generico para
 # ese tipo de NPC: 'npc-estorbo' | 'npc-patovica'
-@export var dialog_id: String = ""
+@export var dialog_id: String
 
 @onready var is_talking : = false # Esto controla la animacion
 @onready var is_in_dialog : = false # Esto control el _physics_process

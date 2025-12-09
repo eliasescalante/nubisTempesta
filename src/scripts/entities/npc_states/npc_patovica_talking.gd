@@ -7,8 +7,9 @@ class_name NpcPatovicaTalking
 var dialog_started = false
 var dialog_finished = false
 
-@onready var target_desired
-@onready var npc_dialog_id
+var target_desired
+var target_pld_desired
+var npc_dialog_id
 
 var body_activated = false
 
@@ -20,6 +21,9 @@ func enter():
 	DialogManager.current_dialog_finished.connect(_on_current_dialog_finished)
 
 	target_desired = GameState.get_npc_property( npc, 'target_desired')
+	print("target_desired ",target_desired)
+	target_pld_desired = GameState.get_npc_property( npc, 'target_pld_desired')
+	print("target_pld_desired ",target_pld_desired)
 	
 	npc_dialog_id = npc.dialog_id
 	if npc_dialog_id == "":
@@ -33,6 +37,7 @@ func enter():
 func exit():
 	print("NpcPatovicaTalking exit")
 	npc.dialog_player_lost.disconnect(_on_dialog_player_lost)
+	DialogManager.current_dialog_finished.disconnect(_on_current_dialog_finished)
 	npc.is_talking = false
 
 func update(_delta: float):
@@ -58,24 +63,28 @@ func _on_current_dialog_finished():
 	end_dialog()
 
 # ------------------------------------------------------------------------------
-# AQUI SE TIENE QUE OPTIMIZAR LA SECUENCIA DE DIALOGOS USANDO UN ARRAY Y LISTA
-# MEJORAR LOS METODOS PARA ALTERNAR LA VISIBILIDAD DE LOS GLOBOS.
-
 func start_dialog():
 	print("Obtenemos la secuencia de diálogo")
 	var the_dialog_sequence = DialogManager.get_dialog_sequence(npc_dialog_id)
 	print("the_dialog_sequence ",the_dialog_sequence)
 	if not the_dialog_sequence.is_empty():
 		print("Invocamos al método DIALOG_DIRECTOR")
+		var replacements
+		if target_pld_desired:
+			replacements = { # 'replacements'
+				'<%OBJ%>': str(target_pld_desired)
+			}
+		else:
+			replacements = { # 'replacements'
+				'<%OBJ%>': str(target_desired)
+			}
 		DialogManager.dialog_director(
 			the_dialog_sequence,
 			{ # 'actors'
 				'player': player,
 				'npc': npc
 			},
-			{ # 'replacements'
-				'<%OBJ%>': str(target_desired)
-			}
+			replacements
 		)
 	else:
 		print("No hay más secuencias de diálogo disponibles. Finalizar diálogo.")

@@ -63,6 +63,7 @@ func register_npc(npc_node: Node) -> void:
 		'quest': false, # false: quest pendiente | true: quest complete
 		'type': npc_node.type, # estorbo | chisme | patovica | historia
 		'target_desired': npc_node.target_desired, # lo que el NPC desea. Depende del type.
+		'target_pld_desired': npc_node.target_pld_desired, # lo que el NPC desea. Depende del type.
 		'dialog_number': npc_node.dialog_number, # cuenta el avance en los encuentros de dialogo entre el NPC y PLAYER
 		'state': 'NpcInit' # Estado inicial para la StateMachine
 	}

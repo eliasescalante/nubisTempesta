@@ -9,6 +9,8 @@ func update_label(text):
 	icon_sprite.visible = false
 
 func update_icon_sprite(icon):
+	# Esto hay que mejoraro con la forma de cargar las imágenes
+	# Usando la ruta del recurso.
 	icon_sprite.play(icon)
 	label.visible = false
 	icon_sprite.visible = true
