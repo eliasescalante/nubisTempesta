@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cmeplvg6yvaib" path="res://src/scenes/entities/player.tscn" id="5_wxrok"]
 [ext_resource type="PackedScene" uid="uid://q3sb0n0gwdsu" path="res://src/scenes/ui/hud_nivel.tscn" id="6_m1y7t"]
 [ext_resource type="PackedScene" uid="uid://4yahvdhbdbtb" path="res://src/scenes/entities/item_honguito.tscn" id="7_mrfrg"]
-[ext_resource type="PackedScene" path="res://src/scenes/entities/item_chupachups.tscn" id="8_cpsdu"]
+[ext_resource type="PackedScene" uid="uid://c3b1kfryytjab" path="res://src/scenes/entities/item_chupachups.tscn" id="8_cpsdu"]
 [ext_resource type="PackedScene" uid="uid://j4wdoon05mmh" path="res://src/scenes/entities/punto_retorno_npc.tscn" id="8_f7n67"]
 [ext_resource type="PackedScene" uid="uid://quducok480tl" path="res://src/scenes/entities/npc_patovica.tscn" id="9_bwbgn"]
 [ext_resource type="PackedScene" uid="uid://b1gvurchiu3h4" path="res://src/scenes/entities/player_respawn_point.tscn" id="9_shuiu"]
@@ -363,6 +363,7 @@ label_settings = SubResource("LabelSettings_m11n0")
 metadata/_edit_lock_ = true
 
 [node name="HudNivel" parent="." instance=ExtResource("6_m1y7t")]
+process_mode = 3
 
 [node name="cortina" parent="." instance=ExtResource("14_cufsb")]
 layer = 2

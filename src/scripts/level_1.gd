@@ -22,6 +22,7 @@ extends Node2D
 
 
 func _ready() -> void:
+	#PauseMenu.register_pause_menu($PauseMenu)
 	AudioManager.play_nivel_1()
 	var spawn_point = spawn_point_0
 	#
@@ -164,3 +165,10 @@ func player_quest_reward(player_quest_reward, player_quest_reward_pld) -> void:
 	hud.actualizar_puntos(GameState.pld+int(player_quest_reward_pld))
 	# Quitamos el OBJETO-HISTORIA
 	hud.agregar_item(null,"quest","")
+
+func _input(event):
+	if event.is_action_pressed("pause"):
+		if not get_tree().paused:
+			# Si el juego NO está pausado, llamamos a la función show_menu()
+			PauseMenu.show_menu()
+			get_viewport().set_input_as_handled()
