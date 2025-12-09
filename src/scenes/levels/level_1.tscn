@@ -161,6 +161,7 @@ position = Vector2(3073, -2176)
 type = "patovica"
 target_desired = "300"
 return_point = NodePath("../punto_control_npc_1")
+dialog_id = "patovica-1"
 
 [node name="punto_control_npc_1" parent="Parallax2D_medio/NPCs" instance=ExtResource("8_f7n67")]
 modulate = Color(0, 0.6437175, 0.27693516, 1)

@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+DiagloData="*res://src/scripts/DiagloData.gd"
 AudioManager="*res://src/scenes/AudioManager.tscn"
 GameState="*res://src/scripts/GameState.gd"
 Sfx="*res://src/scenes/sfx.tscn"
