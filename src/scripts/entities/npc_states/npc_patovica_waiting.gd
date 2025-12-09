@@ -36,7 +36,9 @@ func _on_control_point_player_detected():
 	# Acá nos avisa el control_point que el Player ha pasado
 	print("Comprobar si cumple los requisitos para pasar o no")
 	var target_desired = GameState.get_npc_property( npc, 'target_desired')
-	print("target_desired ",int(target_desired))
+	print("target_desired ",target_desired," int(",int(target_desired),")")
+	# Si el int(target_desired) == 0 asumimos que es un string
+	# y por lo tanto hay que aplicar la logica de PATOVICA-PASS
 	print("GameState.pld ", int(GameState.pld))
 	# Comprueba PLD (tambien se puede agregar la comprobacion de OBJETO-PASE)
 	if  int(GameState.pld) < int(target_desired):

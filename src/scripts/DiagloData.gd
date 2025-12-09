@@ -236,4 +236,41 @@ var dialogos_script = {
 			],
 		],
 	}, # END patovica-1
+	'patovica-2': {
+		'repeat': -1,
+		'loop': false,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia de dialogo 1
+				{
+					'actor': 'npc',
+					'text': "¡Alto! Para acceder \n necesitás el pase \n <%OBJ%>. \n Suerte con eso, jaja.",
+					'duration': 3.3,
+				},
+				{
+					'actor': 'player',
+					'text': 'Ya vas a ver, \n vuelvo y te paso \n el pase por la cara.',
+					'duration': 3.3,
+				},
+				{
+					'actor': 'npc',
+					'text': 'Jajaja, quisiera verlo, \n insecto. A volar \n de aquí',
+					'duration': 3.3,
+				},
+			],
+			[ # secuencia de dialogo 2
+				{
+					'actor': 'npc',
+					'text': 'Si no tenés el pase \n <%OBJ%>, \n seguí buscando... \n insecto, jajaja.',
+					'duration': 3.3,
+				},
+				{
+					'actor': 'player',
+					'text': '¡GGGRRRR!',
+					'duration': 1.8,
+					'balloon_type': 'thought', # Estilo pensamiento
+				},
+			],
+		],
+	}, # END patovica-1
 }

@@ -138,6 +138,7 @@ unique_name_in_owner = true
 [node name="npc_estorbo_1" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("5_w1xa4")]
 position = Vector2(2432, -2176)
 return_point = NodePath("../punto_retorno_npc_1")
+blocked = true
 
 [node name="npc_estorbo_3" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("5_w1xa4")]
 modulate = Color(0.8, 0.8, 0.8, 1)
@@ -159,9 +160,10 @@ position = Vector2(1920, -576)
 [node name="npc_patovica_1" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("9_bwbgn")]
 position = Vector2(3073, -2176)
 type = "patovica"
-target_desired = "300"
+target_desired = "pepboi"
+reward_quest_completed = ""
 return_point = NodePath("../punto_control_npc_1")
-dialog_id = "patovica-1"
+dialog_id = "patovica-2"
 
 [node name="punto_control_npc_1" parent="Parallax2D_medio/NPCs" instance=ExtResource("8_f7n67")]
 modulate = Color(0, 0.6437175, 0.27693516, 1)
