@@ -33,4 +33,8 @@ func _on_resume_pressed() -> void:
 
 
 func _on_exit_pressed() -> void:
-	get_tree().quit()
+	#get_tree().quit()
+	hide_menu()
+	AudioManager.stop_nivel_1() # Esto es HARDCODEDADO hay que hacer que pause el nivel actual.
+	GameState.reset_game_state()
+	get_tree().change_scene_to_file("res://src/scenes/main.tscn")

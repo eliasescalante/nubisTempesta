@@ -19,6 +19,10 @@ func play_nivel_1():
 	if nivel_1:
 		nivel_1.play()
 
+func stop_nivel_1():
+	if nivel_1:
+		nivel_1.stop()
+		
 func play_bar():
 	if bar:
 		bar.play()
