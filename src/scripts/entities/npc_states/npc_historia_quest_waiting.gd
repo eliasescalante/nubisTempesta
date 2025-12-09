@@ -34,7 +34,6 @@ func _on_dialog_player_detected():
 	object_quest_specimen = hud.object_quest_specimen
 	if object_quest_specimen == target_desired:
 		print("Tienes el OBJETO DE DESEO")
-		print("Transicion a NpcChasing")
 		Transitioned.emit(self, "NpcHistoriaQuestCompleted")
 	else:
 		Transitioned.emit(self, "NpcHistoriaTalking")

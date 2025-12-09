@@ -134,7 +134,7 @@ func respawn_player() -> void :
 	animacion.animation_finished.connect(respawn_player_paso_2)
 	animacion.play("salida")
 
-func respawn_player_paso_2(anim_name: String) -> void :
+func respawn_player_paso_2(_anim_name: String) -> void :
 	# NOTA TECNICA: no quitar el parámetro anima_name aunque no se use
 	# porque falla el connect
 	print("RESPAWN PLAYER - paso 2")
@@ -157,7 +157,7 @@ func game_over() -> void:
 	print("GAME OVER")
 	GameState.game_over = true
 
-func player_quest_reward(player_quest_reward, player_quest_reward_pld) -> void:
+func give_player_quest_reward(player_quest_reward, player_quest_reward_pld) -> void:
 	# Esto es muy cabeza, pero funciona. Hay que mejorarlo con sonido, etc.
 	# Agregamos el OBJETO-PASE
 	var texture:Texture2D = load("res://_assets/art/sprites/item_pase_"+str(player_quest_reward)+".png")

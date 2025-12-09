@@ -13,9 +13,9 @@ var level_node: Node
 @onready var npc_dialog_id
 
 func enter():
-	print("NpcHistoriaTalking enter")
+	print("NpcHistoriaQuestCompleted enter")
 	
-	GameState.update_npc_property( npc, 'state', 'NpcHistoriaTalking' )
+	GameState.update_npc_property( npc, 'state', 'NpcHistoriaQuestCompleted' )
 
 	# Conectamos con la señales que intervienen en
 	# cambios de estado
@@ -42,7 +42,7 @@ func enter():
 	dialog_started = false
 
 func exit():
-	print("NpcHistoriaTalking exit")
+	print("NpcHistoriaQuestCompleted exit")
 	npc.dialog_player_lost.disconnect(_on_dialog_player_lost)
 	DialogManager.current_dialog_finished.disconnect(_on_current_dialog_finished)
 	npc.is_talking = false
@@ -57,11 +57,11 @@ func physics_update(_delta: float):
 	pass
 
 func _on_dialog_player_lost():
-	print("NpcHistoriaTalking _on_dialog_player_lost")
-	end_dialog()
+	print("NpcHistoriaQuestCompleted _on_dialog_player_lost")
+	#end_dialog()
 
 func _on_current_dialog_finished():
-	print("NpcHistoriaTalking on_current_dialog_finished")
+	print("NpcHistoriaQuestCompleted on_current_dialog_finished")
 	end_dialog()
 
 # ------------------------------------------------------------------------------
@@ -95,5 +95,5 @@ func start_dialog():
 func end_dialog():
 	# Acá ponemos la recompensa por completar el Encargo/Misión de la Historia
 	# El Player obtiene el objeto PASE y PLD.
-	level_node.player_quest_reward(reward_quest_completed, reward_quest_completed_pld)
+	level_node.give_player_quest_reward(reward_quest_completed, reward_quest_completed_pld)
 	Transitioned.emit(self, "NpcDesactivated") # Esto deberia ser NpcQuestWaiting

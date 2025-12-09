@@ -236,4 +236,72 @@ var dialogos_script = {
 			],
 		],
 	}, # END patovica-1
+	'patovica-2-pass': {
+		'repeat': -1,
+		'loop': false,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia de dialogo 1
+				{
+					'actor': 'npc',
+					'text': "¡Alto! Para acceder \n necesitás el pase \n <%OBJ%>. \n Suerte con eso, jaja.",
+					'duration': 3.3,
+				},
+				{
+					'actor': 'player',
+					'text': 'Ya vas a ver, \n vuelvo y te paso \n el pase por la cara.',
+					'duration': 3.3,
+				},
+				{
+					'actor': 'npc',
+					'text': 'Jajaja, quisiera verlo, \n insecto. A volar \n de aquí',
+					'duration': 3.3,
+				},
+			],
+			[ # secuencia de dialogo 2
+				{
+					'actor': 'npc',
+					'text': 'Si no tenés el pase \n <%OBJ%>, \n seguí buscando... \n insecto, jajaja.',
+					'duration': 3.3,
+				},
+				{
+					'actor': 'player',
+					'text': '¡GGGRRRR!',
+					'duration': 1.8,
+					'balloon_type': 'thought', # Estilo pensamiento
+				},
+			], # END seciencia 2
+			[ # secuencia de dialogo 3
+				{
+					'actor': 'npc',
+					'text': '<%OBJ%>',
+					'duration': 2.2,
+					'content_type': 'icon'
+				},
+			],
+		],
+	}, # END patovica-2-pass
+	'patovica-2-pass-completed': {
+		'repeat': 0,
+		'loop': false,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia de dialogo 1
+				{
+					'actor': 'npc',
+					'text': "¡Alto! \n ¡¿No aprendés, no?! \n Necesitás ...",
+				},
+				{
+					'actor': 'player',
+					'text': '¡Silencio! ¡Acá tenés \n el pase, gil! \n ¿Te cabió?',
+					'duration': 3.3,
+				},
+				{
+					'actor': 'npc',
+					'text': '¡Oh, bien! Eehh... \n Puede pasar usted... \n (GGRRRR)',
+					'duration': 3.3,
+				},
+			],
+		],
+	}, # END patovica-2-pass-completed
 }

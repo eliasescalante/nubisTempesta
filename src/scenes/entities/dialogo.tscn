@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b780qmfqgvwqn"]
+[gd_scene load_steps=19 format=3 uid="uid://b780qmfqgvwqn"]
 
 [ext_resource type="Script" uid="uid://btq26c1r3lge1" path="res://src/scripts/entities/dialogo.gd" id="1_q1fkg"]
 [ext_resource type="Texture2D" uid="uid://hcpw8u6nh20q" path="res://_assets/art/dialogs/dialogo_globo_regular.png" id="1_va67i"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cfstm46l0b6gk" path="res://_assets/art/dialogs/dialogo_globo_pensamiento.png" id="3_5pk6h"]
 [ext_resource type="Texture2D" uid="uid://bf7vl3mxbgp82" path="res://_assets/art/sprites/item_01_honguito.png" id="3_wnl8t"]
 [ext_resource type="Texture2D" uid="uid://c46o3ooyukr00" path="res://_assets/art/sprites/item_04_chupachups.png" id="4_ue6y8"]
+[ext_resource type="Texture2D" uid="uid://cmd1srjbcucx7" path="res://_assets/art/sprites/item_historia_02_companion-cube.png" id="5_d8kmg"]
+[ext_resource type="Texture2D" uid="uid://bf78xh4w4ptor" path="res://_assets/art/sprites/item_pase_pepboi.png" id="7_g7x0i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pk6h"]
 atlas = ExtResource("1_va67i")
@@ -38,8 +40,16 @@ animations = [{
 atlas = ExtResource("4_ue6y8")
 region = Rect2(0, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f3xl"]
+atlas = ExtResource("5_d8kmg")
+region = Rect2(0, 0, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_4f4oc"]
 atlas = ExtResource("3_wnl8t")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw7g6"]
+atlas = ExtResource("7_g7x0i")
 region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d8kmg"]
@@ -54,10 +64,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_3f3xl")
+}],
+"loop": true,
+"name": &"comcubo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4f4oc")
 }],
 "loop": true,
 "name": &"honguito",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw7g6")
+}],
+"loop": true,
+"name": &"pepboi",
 "speed": 5.0
 }]
 
@@ -82,7 +108,7 @@ animation = &"speak"
 position = Vector2(0, -95)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_d8kmg")
-animation = &"chupachups"
+animation = &"comcubo"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_left = -126.0
