@@ -30,7 +30,7 @@ func _on_animacion_terminada(anim_name: String) -> void:
 			# STOP AUDIO GAME OVER
 			# Esto no debería estar aca pero es lo que hay
 			Sfx.sfx_stop('loader_game_over')
-			get_tree().change_scene_to_file("res://src/scenes/main.tscn")
+			get_tree().change_scene_to_file("res://src/scenes/levels/game_over.tscn")
 			return
 			
 		if GameState.loader == 0:

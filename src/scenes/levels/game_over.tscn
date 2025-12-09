@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dx5tutabdh03v"]
+
+[ext_resource type="Script" uid="uid://g67usy851h5m" path="res://src/scripts/creditos.gd" id="1_ykp6f"]
+[ext_resource type="Texture2D" uid="uid://1jybg56554p6" path="res://_assets/art/game_over/game_over.png" id="2_ykp6f"]
+[ext_resource type="Theme" uid="uid://biqioweq5s1re" path="res://_resources/buttons_styles_main.tres" id="3_qhib6"]
+[ext_resource type="PackedScene" uid="uid://c0qonmpwpmm0v" path="res://src/scenes/entities/cortina.tscn" id="4_f0vm6"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_ykp6f")
+
+[node name="TextureRec" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_ykp6f")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 448.0
+offset_top = 554.0
+offset_right = 733.0
+offset_bottom = 631.0
+theme = ExtResource("3_qhib6")
+text = " MENÚ PRINCIPAL "
+
+[node name="cortina" parent="." instance=ExtResource("4_f0vm6")]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -28,7 +28,8 @@ func reset_game_state():
 	game_over = false
 	timer_game_over = 3.0 # Lo que dura en pantalla ingame con Nubis muerta hasta que se dispare la cortina.
 	game_over_scene_launched = false
-
+	reset_npcs_data()
+	DialogManager.reset_dialogues_performed()
 # ------------------------------------------------------------------------------
  
  

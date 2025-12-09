@@ -196,4 +196,7 @@ func dialog_director (dialog_sequence: Array, actors: Dictionary, replacements: 
 	is_current_dialog_finished = true
 	current_dialog_finished.emit()
 
+func reset_dialogues_performed() -> void:
+	dialogues_performed.clear()
+	print("Estado de DIALOGOS reseteados")
 # ------------------------------------------------------------------------------

@@ -22,6 +22,5 @@ theme = ExtResource("2_iku85")
 text = " MENÚ PRINCIPAL "
 
 [node name="cortina" parent="." instance=ExtResource("3_by7r2")]
-visible = false
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
