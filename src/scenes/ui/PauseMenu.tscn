@@ -1,11 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6uwhbaby4bel"]
+[gd_scene load_steps=6 format=3 uid="uid://b6uwhbaby4bel"]
 
 [ext_resource type="Script" uid="uid://byii0vnquatvh" path="res://src/scripts/ui/PauseMenu.gd" id="1_ko4qe"]
+[ext_resource type="Texture2D" uid="uid://kqpqmv1aov15" path="res://_assets/hud/tile_128x128_trama_vertical_negra_2x_fadeup.png" id="2_8qixx"]
+[ext_resource type="Theme" uid="uid://biqioweq5s1re" path="res://_resources/buttons_styles_main.tres" id="3_yi1bv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_be8hb"]
+texture = ExtResource("2_8qixx")
+axis_stretch_horizontal = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4xijv"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
 layer = 5
 script = ExtResource("1_ko4qe")
+
+[node name="PanelBG" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+pivot_offset = Vector2(576, 324)
+theme_override_styles/panel = SubResource("StyleBoxTexture_be8hb")
 
 [node name="Panel" type="Panel" parent="."]
 process_mode = 3
@@ -14,25 +32,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(576, 324)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4xijv")
 
 [node name="Resume" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 240.0
-offset_top = 351.0
-offset_right = 447.0
-offset_bottom = 428.0
+offset_left = 640.0
+offset_top = 448.0
+offset_right = 1024.0
+offset_bottom = 525.0
+theme = ExtResource("3_yi1bv")
 theme_override_font_sizes/font_size = 50
-text = "RESUME"
+text = "REANUDAR"
 
 [node name="Exit" type="Button" parent="Panel"]
 process_mode = 3
 layout_mode = 0
-offset_left = 665.0
-offset_top = 349.0
-offset_right = 872.0
-offset_bottom = 426.0
+offset_left = 128.0
+offset_top = 448.0
+offset_right = 512.0
+offset_bottom = 525.0
+theme = ExtResource("3_yi1bv")
 theme_override_font_sizes/font_size = 50
-text = "EXIT"
+text = " MENÚ PRINCIPAL "
 
 [connection signal="pressed" from="Panel/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Panel/Exit" to="." method="_on_exit_pressed"]
