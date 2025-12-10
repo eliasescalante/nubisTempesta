@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://q3sb0n0gwdsu"]
+[gd_scene load_steps=31 format=3 uid="uid://q3sb0n0gwdsu"]
 
 [ext_resource type="Script" uid="uid://ca64kl6y55xos" path="res://src/scripts/ui/hud_nivel.gd" id="1_u684c"]
 [ext_resource type="Texture2D" uid="uid://kqpqmv1aov15" path="res://_assets/hud/tile_128x128_trama_vertical_negra_2x_fadeup.png" id="2_ox6fc"]
@@ -92,6 +92,18 @@ texture = ExtResource("10_yuvjw")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oiev5"]
 texture = ExtResource("11_ugbuy")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6p5j8"]
+size = Vector2(2, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yuvjw"]
+size = Vector2(2, 7)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ugbuy"]
+radius = 0.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1tyqh"]
+radius = 0.4
 
 [node name="HudNivel" type="CanvasLayer"]
 script = ExtResource("1_u684c")
@@ -330,3 +342,36 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("12_1tyqh")
 text = "PASE"
 horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="left" type="TouchScreenButton" parent="Control"]
+position = Vector2(71, 463)
+scale = Vector2(61.000008, 33.000015)
+shape = SubResource("RectangleShape2D_6p5j8")
+action = "left"
+
+[node name="right" type="TouchScreenButton" parent="Control"]
+position = Vector2(240, 460)
+scale = Vector2(65, 33.99997)
+shape = SubResource("RectangleShape2D_yuvjw")
+action = "right"
+
+[node name="jump" type="TouchScreenButton" parent="Control"]
+position = Vector2(417, 595)
+scale = Vector2(84, 45)
+shape = SubResource("CircleShape2D_ugbuy")
+action = "ui_accept"
+
+[node name="dash" type="TouchScreenButton" parent="Control"]
+position = Vector2(501, 595)
+rotation = 3.1415927
+scale = Vector2(107.47997, 71.54299)
+shape = SubResource("CircleShape2D_1tyqh")
+action = "dash"
+
+[connection signal="pressed" from="Control/right" to="." method="_on_right_pressed"]

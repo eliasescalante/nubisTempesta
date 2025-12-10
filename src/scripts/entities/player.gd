@@ -157,7 +157,14 @@ func _physics_process(delta: float) -> void:
 	- Input.get_action_strength("ui_left")
 	+ Input.get_action_strength("right")
 	- Input.get_action_strength("left")
-	)
+)
+
+	if GameState.touch_left:
+		direction -= 1.0
+	if GameState.touch_right:
+		direction += 1.0
+
+
 	
 	# --- Calculamos multiplicador ---
 	var multiplier = get_pld_multiplier()
@@ -211,7 +218,7 @@ func _physics_process(delta: float) -> void:
 		velocity_falling = 0.0
 
 	# --- Salto / Doble salto ---
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") or GameState.touch_jump:
 		if on_floor:
 			if pld - pld_por_salto >= PLD_GAME_OVER:
 				velocity.y = JUMP_VELOCITY

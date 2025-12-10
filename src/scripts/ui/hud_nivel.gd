@@ -23,7 +23,25 @@ var object_pass_specimen
 
 @onready var puntos: int = GameState.pld
 
+# para chequear los eventos del touch
+func _input(event):
+	_check_touch(event)
+
 func _ready() -> void:
+	# Funciones para conectar los touch y enviar al gamestate el estado de los mismos
+	$Control/left.pressed.connect(func():
+		GameState.touch_left = true)
+	$Control/left.released.connect(func():
+		GameState.touch_left = false)
+	$Control/jump.pressed.connect(func():
+		GameState.touch_jump = true)
+	$Control/jump.released.connect(func():
+		GameState.touch_jump = false)
+	$Control/dash.pressed.connect(func():
+		GameState.touch_dash = true)
+	$Control/dash.released.connect(func():
+		GameState.touch_dash = true)
+	
 	pld_icon_animated_sprite_2d.play("default")
 	specimen_quest.text = ""
 	specimen_pass.text = ""
@@ -55,3 +73,29 @@ func agregar_item(item_texture: Texture2D, item_type: String, item_specimen: Str
 func actualizar_nivel_y_zona(nivel: String, zona: String) -> void:
 	nivel_label.text = nivel
 	zona_label.text = zona
+
+func _check_touch(event):
+		# TOUCH: dedo toca la pantalla
+		if event is InputEventScreenTouch:
+			if event.pressed:
+				_handle_press(event.position)
+				return
+
+		# MOUSE: clic izquierdo = toque
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				_handle_press(event.position)
+				return
+
+func _handle_press(pos: Vector2):
+	# revisar cada icono si fue tocado
+	if doble_jump_texture_rect.get_global_rect().has_point(pos):
+		print("TOCADO: Doble Jump")
+	if dash_texture_rect.get_global_rect().has_point(pos):
+		print("TOCADO: Dash")
+	if object_used_texture_rect.get_global_rect().has_point(pos):
+		print("TOCADO: Objeto Used")
+	if object_quest_texture_rect.get_global_rect().has_point(pos):
+		print("TOCADO: Objeto Quest")
+	if object_pass_texture_rect.get_global_rect().has_point(pos):
+		print("TOCADO: Objeto Pass")
