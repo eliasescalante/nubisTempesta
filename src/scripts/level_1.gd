@@ -23,6 +23,7 @@ extends Node2D
 
 func _ready() -> void:
 	#PauseMenu.register_pause_menu($PauseMenu)
+	
 	AudioManager.play_nivel_1()
 	var spawn_point = spawn_point_0
 	#

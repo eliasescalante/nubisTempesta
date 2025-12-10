@@ -42,9 +42,9 @@ folder_colors={
 
 player=""
 portals=""
-items=""
 npc_estorbo=""
 levels=""
+items=""
 
 [input]
 

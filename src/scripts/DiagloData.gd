@@ -211,6 +211,128 @@ var dialogos_script = {
 			], # END secuencia de dialogo 3
 		] # END secuencia de dialogos
 	}, # END tutorial-doble-salto
+	'tutorial-estorbos': {
+		'repeat': -1, # -1 infinito
+		'loop': true,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia de dialogo 1
+				{ # npc
+					'actor': 'npc',
+					'text': 'Los HONGUITOS \n son geniales\n'+
+					'pero los CHUPACHUPS \n son mejores.',
+					'duration': 3.8,
+				},
+				{ # player
+					'actor': 'player',
+					'text': 'Cada quien \n con sus gustos\n y deseos.',
+				},
+				{ # npc
+					'actor': 'npc',
+					'text': 
+					'Si, pero ten cuidado.\n'+
+					'Algunos seres no\n'+
+					'controlan sus deseos...',
+					'duration': 4.2,
+				},
+				{ # npc
+					'actor': 'npc',
+					'text': 
+					'...y pueden ser \n'+
+					'peligrosos cuando se \n'+
+					'obsecionan con algo\n específico.',
+					'duration': 3.8,
+				},
+				{ # player
+					'actor': 'player',
+					'text': 'Supongo que mientras\n no molesten o \n estorben...',
+				},
+				{ # npc
+					'actor': 'npc', # 'npc'
+					'text': 
+					'¡Ese es el tema! \n'+
+					'¡Se pueden obsecionar \n'+
+					'con un lugar\n'+
+					'y no moverse!...',
+					'duration': 3.8, # Por defecto cada globo dura 2.8 seg.
+				},
+				{ # npc
+					'actor': 'npc', # 'npc'
+					'text': 
+					'...a menos que \n'+
+					'les ofrezcas algo \n'+
+					'que deseen más.\n'+
+					'Entonces...',
+					'duration': 3.8,
+				},
+				{ # npc ...
+					'actor': 'npc', # 'npc'
+					'text': '...',
+					'duration': 1.2,
+				},
+				{ # player !!!
+					'actor': 'player',
+					'text': '¡¿Entonces...?!',
+					'duration': 2.5,
+				},
+				{ # npc
+					'actor': 'npc', # 'npc'
+					'text': 
+					'¡corre!\n'+
+					'se vuelven más \n'+
+					'salvajes, te arrebatan\n'+
+					'y drean PLD.'
+					,
+					'duration': 3.8, # Por defecto cada globo dura 2.8 seg.
+				},
+				{ # player !!!
+					'actor': 'player',
+					'text': '¡¿Y qué \n puedo hacer?!',
+					'duration': 2.5,
+				},
+				{ # npc
+					'actor': 'npc', # 'npc'
+					'text': 
+					'Esquívalos e intenta\n'+
+					'pararte en el lugar\n'+
+					'que los obsecionaba,\n'+
+					'eso los desanima.'
+					,
+					'duration': 3.8, # Por defecto cada globo dura 2.8 seg.
+				},
+				{ # player finaliza
+					'actor': 'player',
+					'text': '¡Vaya rollo!\n Estaré atenta.\n Gracias por la\n'+
+					'"breve" charla.',
+					'duration': 3.0,
+				},
+				{ # npc
+					'actor': 'npc', # 'npc'
+					'text': 
+					'Cuando gustes.\n'+
+					'Cuida tu PLD,\n'+
+					'ya sabes que ...',
+					'duration': 2.5, # Por defecto cada globo dura 2.8 seg.
+				},
+				{ # npc
+					'actor': 'npc', # 'npc'
+					'text': 
+					'...¡no querrás\n convertirte\n'+
+					'en un PULSOPENITENTE!',
+					'duration': 4.5, # Por defecto cada globo dura 2.8 seg.
+				},
+			], # END secuencia de dialogo 1
+			[ # secuencia de dialogo 2
+				{
+					'actor': 'npc', # 'npc'
+					'text': 'RECUERDA:\n'+
+					'* objeto deseao\n * correr y esquivar \n'+
+					'* cuidar PLD.',
+					'duration': 4.2, # Por defecto cada globo dura 2.8 seg.
+				}
+			], # END secuencia de dialogo 2
+		] # END secuencia de dialogos
+	}, # END tutorial-estorbos
 	'npc-estorbo': {
 		'repeat': -1, # -1 infinito
 		'loop': false,
