@@ -70,6 +70,147 @@ var dialogos_script = {
 			]
 		]
 	},
+	'tutorial-salto': {
+		'repeat': -1, # -1 infinito
+		'loop': true,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia de dialogo 1
+				{
+					'actor': 'npc', # 'npc'
+					'text': '"SALTAR" es fácil. \n Presionar la tecla \n [ESPACIO].',
+					'duration': 3.8, # Por defecto cada globo dura 2.8 seg.
+				},
+				{
+					'actor': 'player',
+					'text': 'Me parecía obvio\n pero es bueno\n confirmarlo.',
+				},
+			], # END secuencia de dialogo 1
+			[ # secuencia de dialogo 2
+				{
+					'actor': 'npc', # 'npc'
+					'text': 'Puedes moverte \n hacia los lados\n mientras estás \n en el aire.',
+					'duration': 3.8, # Por defecto cada globo dura 2.8 seg.
+				},
+				{
+					'actor': 'player',
+					'text': '¡Ah! Eso está mejor.',
+				},
+			], # END secuencia de dialogo 2
+			[ # secuencia de dialogo 3
+				{
+					'actor': 'npc', # 'npc'
+					'text': 'El salto consume PLD. \n Y aterrizar... \n también.',
+					'duration': 3.8, # Por defecto cada globo dura 2.8 seg.
+				},
+				{
+					'actor': 'player',
+					'text': '¿Nada es gratis, no?',
+				},
+			], # END secuencia de dialogo 3
+		] # END secuencia de dialogos
+	}, # END tutorial-salto
+	'tutorial-pld-1': {
+		'repeat': -1, # -1 infinito
+		'loop': true,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia de dialogo 1
+				{
+					'actor': 'npc', # 'npc'
+					'text': 'Todo lo que hagas \n consume tu crédito "PLD". \n ¡Cuidalo!',
+					'duration': 3.8, # Por defecto cada globo dura 2.8 seg.
+				},
+				{
+					'actor': 'player',
+					'text': 'Pfff! \nEso ya lo sé.',
+				},
+				{
+					'actor': 'player',
+					'text': '¡Ejem... \n No está mal\n recordarlo!',
+					'balloon_type': 'thought' # Estilo pensamiento
+				},
+			], # END secuencia de dialogo 1
+		] # END secuencia de dialogos
+	}, # END tutorial-pld-1
+	'tutorial-dash': {
+		'repeat': -1, # -1 infinito
+		'loop': true,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia de dialogo 1
+				{
+					'actor': 'npc', # 'npc'
+					'text': 'Puedes hacer "DASH"\n cuando te mueves \n hacia los lados \n usando [SHIFT].',
+					'duration': 3.8, # Por defecto cada globo dura 2.8 seg.
+				},
+				{
+					'actor': 'player',
+					'text': '¡Puede ser muy útil!',
+				},
+				{
+					'actor': 'npc', # 'npc'
+					'text': 'Si, mucho. Sobre\n todo cuando saltas.\n ¿Ves ese honguito?\n Intenta tomarlo.',
+					'duration': 3.8, # Por defecto cada globo dura 2.8 seg.
+				},
+				{
+					'actor': 'player',
+					'text': 'Es pan comido.',
+				},
+			], # END secuencia de dialogo 1
+			[ # secuencia de dialogo 2
+				{
+					'actor': 'npc', # 'npc'
+					'text': 'Hacer "DASH" \n consume mucho PLD.\n No abuses.',
+					'duration': 3.8, # Por defecto cada globo dura 2.8 seg.
+				},
+				{
+					'actor': 'player',
+					'text': '¡¿Y ahora me lo decís?!',
+				},
+			], # END secuencia de dialogo 2
+		] # END secuencia de dialogos
+	}, # END tutorial-dash
+	'tutorial-doble-salto': {
+		'repeat': -1, # -1 infinito
+		'loop': true,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia de dialogo 1
+				{
+					'actor': 'npc', # 'npc'
+					'text': 'Realiza un "DOBLE SALTO" \n presionando la tecla \n [ESPACIO] otra vez \n al saltar.',
+					'duration': 3.8, # Por defecto cada globo dura 2.8 seg.
+				},
+				{
+					'actor': 'player',
+					'text': 'Gracias.',
+				},
+			], # END secuencia de dialogo 1
+			[ # secuencia de dialogo 2
+				{
+					'actor': 'npc', # 'npc'
+					'text': 'Intenta hacero en lo\n más elevado del primer\n salto para alcanzar\n zonas más altas.',
+					'duration': 3.8, # Por defecto cada globo dura 2.8 seg.
+				},
+				{
+					'actor': 'player',
+					'text': 'Lo tendré en cuenta.',
+				},
+			], # END secuencia de dialogo 2
+			[ # secuencia de dialogo 3
+				{
+					'actor': 'npc', # 'npc'
+					'text': 'Mientras más alto, \n más fuerte la caida. \n El consumo de PLD \n es mayor.',
+					'duration': 3.8, # Por defecto cada globo dura 2.8 seg.
+				},
+				{
+					'actor': 'player',
+					'text': '¡Vaya, tendré cuidado!',
+				},
+			], # END secuencia de dialogo 3
+		] # END secuencia de dialogos
+	}, # END tutorial-doble-salto
 	'npc-estorbo': {
 		'repeat': -1, # -1 infinito
 		'loop': false,

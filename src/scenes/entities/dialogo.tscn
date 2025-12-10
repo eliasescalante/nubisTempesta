@@ -1,13 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://b780qmfqgvwqn"]
+[gd_scene load_steps=20 format=3 uid="uid://b780qmfqgvwqn"]
 
 [ext_resource type="Script" uid="uid://btq26c1r3lge1" path="res://src/scripts/entities/dialogo.gd" id="1_q1fkg"]
 [ext_resource type="Texture2D" uid="uid://hcpw8u6nh20q" path="res://_assets/art/dialogs/dialogo_globo_regular.png" id="1_va67i"]
-[ext_resource type="FontFile" uid="uid://cedcryodspcad" path="res://_assets/fonts/sf_cartoonist_hand/SF_Cartoonist_Hand_SC.ttf" id="2_q1fkg"]
 [ext_resource type="Texture2D" uid="uid://cfstm46l0b6gk" path="res://_assets/art/dialogs/dialogo_globo_pensamiento.png" id="3_5pk6h"]
 [ext_resource type="Texture2D" uid="uid://bf7vl3mxbgp82" path="res://_assets/art/sprites/item_01_honguito.png" id="3_wnl8t"]
 [ext_resource type="Texture2D" uid="uid://c46o3ooyukr00" path="res://_assets/art/sprites/item_04_chupachups.png" id="4_ue6y8"]
 [ext_resource type="Texture2D" uid="uid://cmd1srjbcucx7" path="res://_assets/art/sprites/item_historia_02_companion-cube.png" id="5_d8kmg"]
 [ext_resource type="Texture2D" uid="uid://bf78xh4w4ptor" path="res://_assets/art/sprites/item_pase_pepboi.png" id="7_g7x0i"]
+[ext_resource type="FontFile" uid="uid://da04c0amanjv0" path="res://_assets/fonts/SF_Arch_Rival_Regular.ttf" id="8_d8kmg"]
+[ext_resource type="LabelSettings" uid="uid://cgudd4u3m458b" path="res://_resources/dialogo_label.tres" id="9_g7x0i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pk6h"]
 atlas = ExtResource("1_va67i")
@@ -90,11 +91,18 @@ animations = [{
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7x0i"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="LabelSettings" id="LabelSettings_q1fkg"]
-font_size = 20
-font_color = Color(0.011087579, 0.011087578, 0.01108758, 1)
-outline_size = 2
-outline_color = Color(0.011087579, 0.011087578, 0.01108758, 1)
+[sub_resource type="Theme" id="Theme_g7x0i"]
+Label/colors/font_color = Color(0.1, 0.1, 0.1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 0)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/paragraph_spacing = 0
+Label/constants/shadow_offset_x = 0
+Label/constants/shadow_offset_y = 0
+Label/constants/shadow_outline_size = 0
+Label/font_sizes/font_size = 18
+Label/fonts/font = ExtResource("8_d8kmg")
 
 [node name="dialogo" type="Node2D"]
 script = ExtResource("1_q1fkg")
@@ -123,13 +131,10 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 6
-theme_override_fonts/font = ExtResource("2_q1fkg")
-theme_override_font_sizes/font_size = 18
+theme = SubResource("Theme_g7x0i")
 text = "hola linea 1
 hola linea 2
 hola línea 3
 hola línea 4"
-label_settings = SubResource("LabelSettings_q1fkg")
+label_settings = ExtResource("9_g7x0i")
 horizontal_alignment = 1
