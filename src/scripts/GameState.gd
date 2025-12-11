@@ -1,5 +1,13 @@
 extends Node
 
+# para los touch mobiel
+
+var touch_left := false
+var touch_right := false
+var touch_jump := false
+var touch_dash := false
+
+
 # ------------------------------------------------------------------------------
 var tutorial = true # Al comienzo del juego muestra los diálogos de tutorial.
 var tutorial_player_first_move = true
