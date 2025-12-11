@@ -130,6 +130,7 @@ theme = ExtResource("13_044b3")
 text = "INICIAR"
 
 [node name="PlayButton2" type="Button" parent="."]
+visible = false
 modulate = Color(1, 0, 1, 1)
 custom_minimum_size = Vector2(160, 48)
 layout_mode = 1
