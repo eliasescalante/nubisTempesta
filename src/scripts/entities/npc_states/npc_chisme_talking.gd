@@ -82,7 +82,7 @@ func start_dialog():
 	else:
 		print("No hay más secuencias de diálogo disponibles. Finalizar diálogo.")
 		# Si no hay más diálogo vamos al estado de Waiting
-		end_dialog()
+		Transitioned.emit(self, "NpcDesactivating")
 		
 func end_dialog():
-	Transitioned.emit(self, "NpcChismeWaiting") # Esto deberia ser NpcQuestWaiting
+	Transitioned.emit(self, "NpcChismeWaiting")

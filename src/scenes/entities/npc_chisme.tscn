@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dtuunre8ai8jr"]
+[gd_scene load_steps=14 format=3 uid="uid://dtuunre8ai8jr"]
 
 [ext_resource type="Script" uid="uid://c286qvkygjwu2" path="res://src/scripts/entities/npc_estorbo.gd" id="1_d5hr7"]
 [ext_resource type="Texture2D" uid="uid://ddx5sdai2a8nj" path="res://_assets/art/sprites/npc-chisme-spritesheet.png" id="2_d5hr7"]
 [ext_resource type="PackedScene" uid="uid://b780qmfqgvwqn" path="res://src/scenes/entities/dialogo.tscn" id="3_winhn"]
 [ext_resource type="Script" uid="uid://vjkti5djw36g" path="res://src/scripts/state_machine/state_machine_npc.gd" id="4_r0sly"]
 [ext_resource type="Script" uid="uid://da0kexnc4cfy" path="res://src/scripts/entities/npc_states/npc_init.gd" id="6_spv4a"]
+[ext_resource type="Script" uid="uid://cd77letq66pu8" path="res://src/scripts/entities/npc_states/npc_desactivated.gd" id="8_nr3av"]
 [ext_resource type="Script" uid="uid://cl4rno0wgbxg4" path="res://src/scripts/entities/npc_states/npc_chisme_talking.gd" id="13_dn6vv"]
 [ext_resource type="Script" uid="uid://dvoqvb77gewil" path="res://src/scripts/entities/npc_states/npc_chisme_waiting.gd" id="14_5tyb8"]
 
@@ -98,6 +99,10 @@ metadata/_custom_type_script = "uid://cl4rno0wgbxg4"
 script = ExtResource("14_5tyb8")
 npc = NodePath("../..")
 metadata/_custom_type_script = "uid://dvoqvb77gewil"
+
+[node name="NpcDesactivated" type="Node" parent="StateMachineNPC"]
+script = ExtResource("8_nr3av")
+metadata/_custom_type_script = "uid://cd77letq66pu8"
 
 [connection signal="body_entered" from="DialogArea2D" to="." method="_on_dialog_area_2d_body_entered"]
 [connection signal="body_exited" from="DialogArea2D" to="." method="_on_dialog_area_2d_body_exited"]

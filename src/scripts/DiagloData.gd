@@ -411,6 +411,38 @@ var dialogos_script = {
 			],
 		] # dialog_sequences
 	},
+	'chisme-bar': {
+		'repeat': 0,
+		'loop': false,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia de diálogo #1
+				{
+					'actor': 'npc',
+					'text': 'El BAR "BARRACUDA" \n es muy famoso\n por sus tragos\n exóticos!',
+					'duration': 3.8,
+					'content_type': 'text'
+				},
+				{
+					'actor': 'player',
+					'text': '¡Hey, es \n lo que necesito! \n ¡Excelente!',
+					'duration': 3.2,
+					'balloon_type': 'thought' # Estilo pensamiento
+				},
+				{
+					'actor': 'npc',
+					'text': '¡Pero hay un molesto\n que estorba en\n la entrada! ',
+					'duration': 3.8,
+					'content_type': 'text'
+				},
+				{
+					'actor': 'player',
+					'text': 'Creo que ya sé\n lo que tengo\n que hacer',
+					'duration': 3.2,
+				},
+			], # END secuencia de diálogo #1
+		] # END dialog_sequences
+	}, # END chisme-bar
 	'historia-1': {
 		'repeat': -1, # -1 infinito
 		'loop': false,
