@@ -23,23 +23,23 @@ func _ready() -> void:
 	picture_texture_rect.texture = texture
 	
 	
-	
 func _on_animacion_terminada(anim_name: String) -> void:
 	if anim_name == "transicion":
 		
 		if GameState.game_over:
 			# STOP AUDIO GAME OVER
 			# Esto no debería estar aca pero es lo que hay
-			AudioManager.get_node("ost/GameOver").stop()
-			get_tree().change_scene_to_file("res://src/scenes/main.tscn")
+			Sfx.sfx_stop('loader_game_over')
+			get_tree().change_scene_to_file("res://src/scenes/levels/game_over.tscn")
 			return
 			
 		if GameState.loader == 0:
 			get_tree().change_scene_to_file("res://src/scenes/levels/intro.tscn")
-		elif GameState.loader == 1:
+		elif GameState.loader == 1: # IR AL BAR
 			#DEMO - Termina el juego
 			get_tree().change_scene_to_file("res://src/scenes/levels/game_completed.tscn")
 			#get_tree().change_scene_to_file("res://src/scenes/levels/level_1_the_bar_1.tscn")
+
 		elif GameState.loader == 2:
 			get_tree().change_scene_to_file("res://src/scenes/levels/level_1.tscn")
 		elif GameState.loader == 3:

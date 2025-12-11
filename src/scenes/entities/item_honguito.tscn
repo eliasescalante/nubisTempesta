@@ -4,20 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://bf7vl3mxbgp82" path="res://_assets/art/sprites/item_01_honguito.png" id="2_41rxs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvly1"]
-size = Vector2(65.875, 71.375)
+size = Vector2(96, 96)
 
 [node name="Item" type="Node2D" groups=["items"]]
 script = ExtResource("1_65xvy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 9.536743e-07)
-scale = Vector2(0.68749994, 0.6699218)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_41rxs")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1.0625, 5.3125)
 shape = SubResource("RectangleShape2D_gvly1")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

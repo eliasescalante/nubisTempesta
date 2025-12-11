@@ -1,17 +1,23 @@
-[gd_scene load_steps=27 format=3 uid="uid://q3sb0n0gwdsu"]
+[gd_scene load_steps=36 format=3 uid="uid://q3sb0n0gwdsu"]
 
 [ext_resource type="Script" uid="uid://ca64kl6y55xos" path="res://src/scripts/ui/hud_nivel.gd" id="1_u684c"]
+[ext_resource type="Texture2D" uid="uid://cndsnf4evmm2m" path="res://_assets/hud/hud-control-pause.png" id="2_1tyqh"]
 [ext_resource type="Texture2D" uid="uid://kqpqmv1aov15" path="res://_assets/hud/tile_128x128_trama_vertical_negra_2x_fadeup.png" id="2_ox6fc"]
+[ext_resource type="Texture2D" uid="uid://bvht4xjsbe36h" path="res://_assets/hud/hud-control-left.png" id="2_ugbuy"]
 [ext_resource type="Texture2D" uid="uid://vebbook0p6dh" path="res://_assets/hud/hud-ubicacion.png" id="3_15er3"]
 [ext_resource type="FontFile" uid="uid://ctq6t2qobn1k5" path="res://_assets/fonts/sf_cartoonist_hand/SF_Cartoonist_Hand_Bold.ttf" id="3_akq8j"]
 [ext_resource type="FontFile" uid="uid://b17yuhydnkdrk" path="res://_assets/fonts/sf_cartoonist_hand/SF_Cartoonist_Hand_Italic.ttf" id="4_akq8j"]
-[ext_resource type="Texture2D" uid="uid://bsavn7isdvr1e" path="res://_assets/hud/icon_dobleJump.png" id="5_oubkn"]
-[ext_resource type="Texture2D" uid="uid://b1xgt8y44py5b" path="res://_assets/hud/icon_dash.png" id="6_ox6fc"]
+[ext_resource type="Texture2D" uid="uid://blg5yo24tpgnh" path="res://_assets/hud/hud-control-right.png" id="7_1tyqh"]
 [ext_resource type="Texture2D" uid="uid://bnybymy6sgw8h" path="res://_assets/hud/pldIcon_animation_spritesheet.png" id="7_15er3"]
 [ext_resource type="Texture2D" uid="uid://bgd7sf7bj0fij" path="res://_assets/hud/hud-pldIcon-panel.png" id="8_6p5j8"]
 [ext_resource type="Texture2D" uid="uid://onkdwsqvjdwl" path="res://_assets/hud/hud-pldPoints-panel.png" id="10_yuvjw"]
 [ext_resource type="Texture2D" uid="uid://bkrqgqqrepu6g" path="res://_assets/hud/hud-objectSlots-panel.png" id="11_ugbuy"]
 [ext_resource type="FontFile" uid="uid://ch4wswcikrxeo" path="res://_assets/fonts/sf_cartoonist_hand/SF_Cartoonist_Hand_SC_Bold.ttf" id="12_1tyqh"]
+[ext_resource type="Texture2D" uid="uid://cg0yperoqei74" path="res://_assets/hud/hud-control-jump.png" id="13_sckn7"]
+[ext_resource type="Texture2D" uid="uid://c1isx6e8hqaqa" path="res://_assets/hud/hud-control-dash.png" id="14_rk8vn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiev5"]
+bg_color = Color(0.1, 0.1, 0.1, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e6sgl"]
 texture = ExtResource("3_15er3")
@@ -93,6 +99,21 @@ texture = ExtResource("10_yuvjw")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oiev5"]
 texture = ExtResource("11_ugbuy")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6p5j8"]
+size = Vector2(120, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yuvjw"]
+size = Vector2(120, 256)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ugbuy"]
+radius = 48.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1tyqh"]
+radius = 48.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5yie"]
+size = Vector2(512, 128)
+
 [node name="HudNivel" type="CanvasLayer"]
 script = ExtResource("1_u684c")
 
@@ -116,30 +137,48 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="pause_Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oiev5")
+
+[node name="left_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/pause_Panel"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture = ExtResource("2_1tyqh")
+
+[node name="location_PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(320, 84)
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_e6sgl")
 
-[node name="location_HBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+[node name="location_VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/location_PanelContainer"]
 custom_minimum_size = Vector2(320, 60)
 layout_mode = 2
 size_flags_vertical = 0
 alignment = 2
 
-[node name="level_label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/location_HBoxContainer"]
+[node name="level_label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/location_PanelContainer/location_VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_akq8j")
 theme_override_font_sizes/font_size = 16
 text = "NIVEL 1 - ZONA A"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="zone_label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/location_HBoxContainer"]
+[node name="zone_label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/location_PanelContainer/location_VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -156,28 +195,28 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_rlogt")
 
 [node name="statusBar_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2"]
 layout_mode = 2
-size_flags_vertical = 10
+size_flags_horizontal = 8
 theme_override_constants/separation = 0
 
-[node name="moves_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer"]
-custom_minimum_size = Vector2(512, 108)
+[node name="moves_directional_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer"]
+custom_minimum_size = Vector2(256, 128)
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 6
 alignment = 2
 
-[node name="dobleJump_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/moves_HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
+[node name="left_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/moves_directional_HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+size_flags_horizontal = 6
 size_flags_vertical = 4
-texture = ExtResource("5_oubkn")
+texture = ExtResource("2_ugbuy")
 
-[node name="dash_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/moves_HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(48, 48)
+[node name="right_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/moves_directional_HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
+size_flags_horizontal = 6
 size_flags_vertical = 4
-texture = ExtResource("6_ox6fc")
+texture = ExtResource("7_1tyqh")
 
 [node name="pldIcon_HBoxContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer"]
 custom_minimum_size = Vector2(128, 108)
@@ -214,7 +253,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(324, 96)
 layout_mode = 2
 size_flags_horizontal = 6
-size_flags_vertical = 8
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_oiev5")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel"]
@@ -330,3 +369,59 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("12_1tyqh")
 text = "PASE"
 horizontal_alignment = 1
+
+[node name="moves_actions_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer"]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+size_flags_horizontal = 6
+alignment = 2
+
+[node name="dobleJump_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/moves_actions_HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture = ExtResource("13_sckn7")
+
+[node name="dash_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/moves_actions_HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture = ExtResource("14_rk8vn")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="left" type="TouchScreenButton" parent="Control"]
+position = Vector2(64, 512)
+shape = SubResource("RectangleShape2D_6p5j8")
+action = "left"
+
+[node name="right" type="TouchScreenButton" parent="Control"]
+position = Vector2(192, 512)
+shape = SubResource("RectangleShape2D_yuvjw")
+action = "right"
+
+[node name="jump" type="TouchScreenButton" parent="Control"]
+position = Vector2(959, 592)
+scale = Vector2(1.2, 2)
+shape = SubResource("CircleShape2D_ugbuy")
+action = "ui_accept"
+
+[node name="dash" type="TouchScreenButton" parent="Control"]
+position = Vector2(1089, 594)
+scale = Vector2(1.2, 2)
+shape = SubResource("CircleShape2D_1tyqh")
+action = "dash"
+
+[node name="pause" type="TouchScreenButton" parent="Control"]
+position = Vector2(256, 64)
+shape = SubResource("RectangleShape2D_p5yie")
+action = "pause"
+
+[connection signal="pressed" from="Control/right" to="." method="_on_right_pressed"]

@@ -19,6 +19,10 @@ func play_nivel_1():
 	if nivel_1:
 		nivel_1.play()
 
+func stop_nivel_1():
+	if nivel_1:
+		nivel_1.stop()
+		
 func play_bar():
 	if bar:
 		bar.play()
@@ -26,3 +30,7 @@ func play_bar():
 func play_game_over():
 	if game_over:
 		game_over.play()
+
+func stop_game_over():
+	if game_over:
+		game_over.stop()

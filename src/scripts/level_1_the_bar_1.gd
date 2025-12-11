@@ -47,3 +47,10 @@ func _on_portal_2a_3_body_entered(body: Node2D) -> void:
 		GameState.image_loader_mini = "nivel_1_zona_c"
 		print(GameState.portal)
 		get_tree().change_scene_to_file("res://src/scenes/levels/loader.tscn")
+
+func _input(event):
+	if event.is_action_pressed("pause"):
+		if not get_tree().paused:
+			# Si el juego NO está pausado, llamamos a la función show_menu()
+			PauseMenu.show_menu()
+			get_viewport().set_input_as_handled()

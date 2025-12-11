@@ -13,6 +13,7 @@ var object_used_specimen
 
 var return_point: Node
 var dont_move: bool = false
+var animation_player: AnimationPlayer
 
 # Al entrar, nos suscribimos a la señal de "player_lost"
 # del npc y capturamos el nodo principal del player
@@ -30,10 +31,13 @@ func enter():
 	player = get_tree().get_first_node_in_group("player")
 	
 	ray_cast_2d = npc.ray_cast_2d
+	animation_player = npc.animation_player
 	
 	hud = get_tree().get_root().find_child("HudNivel", true, false)
 	target_desired = GameState.get_npc_property( npc, 'target_desired')
-	
+	animation_player.play('chasing')
+	# Conectamos para hacer looop
+	animation_player.animation_finished.connect(_on_animacion_terminada)
 	dont_move = false
 	
 # Al salir, desconectamos la señal
@@ -41,6 +45,7 @@ func exit():
 	print("NpcChasing exit")
 	npc.chase_player_lost.disconnect(_on_chase_player_lost)
 	npc.capture_player_detected.disconnect(_on_capture_player_detected)
+	animation_player.animation_finished.disconnect(_on_animacion_terminada)
 	
 func physics_update(_delta: float):
 	
@@ -82,3 +87,8 @@ func _on_capture_player_detected():
 	print("Transicion a NpcCapturing")
 	dont_move = true
 	Transitioned.emit(self, "NpcCapturing")
+
+func _on_animacion_terminada(anim_name: String) -> void:
+	# Hacemos loop de la animación
+	if anim_name == "chasing":
+		animation_player.play('chasing')

@@ -16,16 +16,37 @@ extends CanvasLayer
 @onready var specimen_quest: Label = %specimen_Quest
 @onready var specimen_pass: Label = %specimen_Pass
 
-var object_used_specimen # Recibe el dato de la especia de item
+# Recibe el dato de la especie de item
+var object_used_specimen
+var object_quest_specimen
+var object_pass_specimen
 
 @onready var puntos: int = GameState.pld
 
+# para chequear los eventos del touch
+func _input(event):
+	_check_touch(event)
+
 func _ready() -> void:
+	# Funciones para conectar los touch y enviar al gamestate el estado de los mismos
+	$Control/left.pressed.connect(func():
+		GameState.touch_left = true)
+	$Control/left.released.connect(func():
+		GameState.touch_left = false)
+	$Control/jump.pressed.connect(func():
+		GameState.touch_jump = true)
+	$Control/jump.released.connect(func():
+		GameState.touch_jump = false)
+	$Control/dash.pressed.connect(func():
+		GameState.touch_dash = true)
+	$Control/dash.released.connect(func():
+		GameState.touch_dash = true)
+	$Control/pause.released.connect(func():
+		GameState.touch_pause = true)
+		
 	pld_icon_animated_sprite_2d.play("default")
-	# Estos por ahora no se usan
 	specimen_quest.text = ""
 	specimen_pass.text = ""
-	# Este si
 	specimen_used.text = ""
 	puntos_label.text = str(puntos)
 	
@@ -42,11 +63,41 @@ func agregar_item(item_texture: Texture2D, item_type: String, item_specimen: Str
 			specimen_used.text = item_specimen
 		"quest":
 			object_quest_texture_rect.texture = item_texture
+			object_quest_specimen = item_specimen
+			specimen_quest.text = item_specimen
 		"pass":
 			object_pass_texture_rect.texture = item_texture
+			object_pass_specimen = item_specimen
+			specimen_pass.text = item_specimen	
 		_:
 			print("⚠️ Tipo de item desconocido: ", item_type)
 
 func actualizar_nivel_y_zona(nivel: String, zona: String) -> void:
 	nivel_label.text = nivel
 	zona_label.text = zona
+
+func _check_touch(event):
+		# TOUCH: dedo toca la pantalla
+		if event is InputEventScreenTouch:
+			if event.pressed:
+				_handle_press(event.position)
+				return
+
+		# MOUSE: clic izquierdo = toque
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				_handle_press(event.position)
+				return
+
+func _handle_press(pos: Vector2):
+	# revisar cada icono si fue tocado
+	if doble_jump_texture_rect.get_global_rect().has_point(pos):
+		print("TOCADO: Doble Jump")
+	if dash_texture_rect.get_global_rect().has_point(pos):
+		print("TOCADO: Dash")
+	if object_used_texture_rect.get_global_rect().has_point(pos):
+		print("TOCADO: Objeto Used")
+	if object_quest_texture_rect.get_global_rect().has_point(pos):
+		print("TOCADO: Objeto Quest")
+	if object_pass_texture_rect.get_global_rect().has_point(pos):
+		print("TOCADO: Objeto Pass")

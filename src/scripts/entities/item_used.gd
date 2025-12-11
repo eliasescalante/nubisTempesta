@@ -3,7 +3,7 @@ extends Node2D
 signal item_collected(item_scene_path: String, position: Vector2, item_type: String, item_specimen: String)
 
 @export var pld_bonus: int = 50
-@export var respawn_time: float = 15.0
+@export var respawn_time: float = 5
 @export var item_type : String = "used" # Esto debería cambiar entre USED | BONUS
 
 @export var item_specimen: String = "" 

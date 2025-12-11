@@ -16,10 +16,22 @@ extends Node2D
 @onready var spawn_point_0: Marker2D = %Portal0/Marker2D
 @onready var spawn_point_1: Marker2D = %Portal1/Marker2D
 
+@onready var timer_to_tutorial_first_move:float = 3.0
+
+@onready var musica_nivel_1 = AudioManager.get_node("ost/Nivel1")
+
+
 func _ready() -> void:
+	#PauseMenu.register_pause_menu($PauseMenu)
+	
 	AudioManager.play_nivel_1()
 	var spawn_point = spawn_point_0
-	
+	#
+	#print("### TEST DIALOGO ")
+	#for d in range(11):
+	#	print("d ",d," ", DialogManager.get_dialog_sequence('test_dialog'))
+	#	print("d ",d," ", DialogManager.get_dialog_sequence('tutorial_1'))
+	#	
 	# Conectar señales de todos los ítems iniciales
 	for item in collectables.get_children():
 		if item.has_signal("item_collected"):
@@ -41,25 +53,38 @@ func _ready() -> void:
 	
 	player.player_died.connect(respawn_player)
 	player.game_over.connect(game_over)
-	
+
 func _on_animacion_terminada(anim_name: String) -> void:
 	# habilitar movimiento jugador
 	print("Animacion cortina "+anim_name+" finalizada")
-	pass
+	await get_tree().create_timer(0.7).timeout
+	if GameState.tutorial:
+		# Desactivamos el tutorial para la próxima entrada del nivel
+		GameState.tutorial = false
+		print("INICIAR TUTORIAL")
+		#init_tutorial()
+
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if GameState.game_over:
 		if GameState.timer_game_over > 0:
-			GameState.timer_game_over -= 1*delta
+			GameState.timer_game_over -= 1*_delta
 		else:
 			if not GameState.game_over_scene_launched:
 				GameState.game_over_scene_launched = true
-				GameState.text_loader = "GAME OVER"
-				GameState.text_loader_subtitulo = "Los Perpetuos Deseantes siempre ganan."
+				GameState.text_loader = "DEUDA DE PLD EXTREMA"
+				GameState.text_loader_subtitulo = "Liquidación..."
 				GameState.image_loader_mini = "game_over"
 				AudioManager.get_node("ost/Nivel1").stop()
-				AudioManager.play_game_over()
+				Sfx.sfx_play('loader_game_over')
 				call_deferred("_change_to_loader")
+
+	GameState.tutorial = false
+	if GameState.tutorial and GameState.tutorial_player_first_move:
+		timer_to_tutorial_first_move -= 1 * _delta
+		if timer_to_tutorial_first_move < 0:
+			GameState.tutorial_player_first_move = false
+			# DialogManager.			
 
 func _on_portal_1_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -110,7 +135,7 @@ func respawn_player() -> void :
 	animacion.animation_finished.connect(respawn_player_paso_2)
 	animacion.play("salida")
 
-func respawn_player_paso_2(anim_name: String) -> void :
+func respawn_player_paso_2(_anim_name: String) -> void :
 	# NOTA TECNICA: no quitar el parámetro anima_name aunque no se use
 	# porque falla el connect
 	print("RESPAWN PLAYER - paso 2")
@@ -132,3 +157,19 @@ func player_captured() -> void:
 func game_over() -> void:
 	print("GAME OVER")
 	GameState.game_over = true
+
+func give_player_quest_reward(player_quest_reward, player_quest_reward_pld) -> void:
+	# Esto es muy cabeza, pero funciona. Hay que mejorarlo con sonido, etc.
+	# Agregamos el OBJETO-PASE
+	var texture:Texture2D = load("res://_assets/art/sprites/item_pase_"+str(player_quest_reward)+".png")
+	hud.agregar_item(texture, 'pass', player_quest_reward)
+	hud.actualizar_puntos(GameState.pld+int(player_quest_reward_pld))
+	# Quitamos el OBJETO-HISTORIA
+	hud.agregar_item(null,"quest","")
+
+func _input(event):
+	if event.is_action_pressed("pause"):
+		if not get_tree().paused:
+			# Si el juego NO está pausado, llamamos a la función show_menu()
+			PauseMenu.show_menu()
+			get_viewport().set_input_as_handled()
