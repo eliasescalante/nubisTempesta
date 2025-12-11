@@ -36,7 +36,7 @@ script = ExtResource("1_nw74m")
 metadata/_edit_vertical_guides_ = [-2816.0, 3072.0]
 metadata/_edit_horizontal_guides_ = [768.0, -2048.0]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 offset_left = -4608.0
 offset_top = -8704.0
 offset_right = 4864.0
@@ -69,7 +69,6 @@ collision_enabled = false
 metadata/_edit_lock_ = true
 
 [node name="npcs_decorados" type="Node2D" parent="Parallax2D_fondo"]
-visible = false
 modulate = Color(1, 0.53999996, 0.53999996, 1)
 
 [node name="npc_decorado_2" parent="Parallax2D_fondo/npcs_decorados" instance=ExtResource("2_wxrok")]
@@ -144,64 +143,64 @@ label_settings = ExtResource("7_mrw6c")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="static_platforms" type="Node2D" parent="Parallax2D_medio"]
+[node name="StaticPlatforms" type="Node2D" parent="Parallax2D_medio"]
 
-[node name="StaticPlataform" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(-128, -384)
 
-[node name="StaticPlataform12" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform12" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(-1408, -6784)
 
-[node name="StaticPlataform14" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform14" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(1408, -4992)
 
-[node name="StaticPlataform2" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform2" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(896, -384)
 
-[node name="StaticPlataform4" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform4" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(0, -1600)
 
-[node name="StaticPlataform5" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform5" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(-320, -2176)
 
-[node name="StaticPlataform3" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform3" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(384, -1152)
 
-[node name="StaticPlataform6" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform6" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(128, -3712)
 
-[node name="StaticPlataform7" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform7" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(128, -4480)
 
-[node name="StaticPlataform9" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform9" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(1408, -5504)
 
-[node name="moving platforms" type="Node2D" parent="Parallax2D_medio"]
+[node name="MovingPlatforms" type="Node2D" parent="Parallax2D_medio"]
 modulate = Color(0.8992584, 0.8992584, 0.8992584, 1)
 position = Vector2(1857, -7)
 metadata/_edit_lock_ = true
 
-[node name="Plataformas" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
+[node name="Plataformas" parent="Parallax2D_medio/MovingPlatforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-1473, -57)
 speed = 400.0
 distance = 1024.0
 
-[node name="Plataformas6" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
+[node name="Plataformas6" parent="Parallax2D_medio/MovingPlatforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-961, -4217)
 speed = 600.0
 distance = 2048.0
 
-[node name="Plataformas4" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
+[node name="Plataformas4" parent="Parallax2D_medio/MovingPlatforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-4033, -2681)
 
-[node name="Plataformas5" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
+[node name="Plataformas5" parent="Parallax2D_medio/MovingPlatforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(63, -3193)
 
-[node name="Plataformas2" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
+[node name="Plataformas2" parent="Parallax2D_medio/MovingPlatforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-1473, -633)
 distance = 768.0
 
-[node name="Plataformas3" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
+[node name="Plataformas3" parent="Parallax2D_medio/MovingPlatforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-1473, -2425)
 speed = 500.0
 
@@ -372,6 +371,18 @@ shape = SubResource("RectangleShape2D_m11n0")
 [node name="Marker2D" type="Marker2D" parent="Parallax2D_medio/Portal1"]
 position = Vector2(3136, -2176)
 
+[node name="Portal0" type="Area2D" parent="Parallax2D_medio"]
+unique_name_in_owner = true
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D_medio/Portal0"]
+position = Vector2(1664, -2208)
+shape = SubResource("RectangleShape2D_m11n0")
+
+[node name="Marker2D" type="Marker2D" parent="Parallax2D_medio/Portal0"]
+position = Vector2(1792, -2176)
+
 [node name="Collectables" type="Node2D" parent="Parallax2D_medio"]
 
 [node name="Item21" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
@@ -512,19 +523,8 @@ item_specimen = "morphball"
 [node name="ItemHistoria2" parent="Parallax2D_medio/Collectables" instance=ExtResource("16_1egpu")]
 position = Vector2(-2176, -4480)
 
-[node name="Portal0" type="Area2D" parent="Parallax2D_medio"]
-unique_name_in_owner = true
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D_medio/Portal0"]
-position = Vector2(1664, -2208)
-shape = SubResource("RectangleShape2D_m11n0")
-
-[node name="Marker2D" type="Marker2D" parent="Parallax2D_medio/Portal0"]
-position = Vector2(1792, -2176)
-
 [node name="Parallax2D_frente" type="Parallax2D" parent="."]
+visible = false
 z_index = 200
 scroll_scale = Vector2(1.1, 1.1)
 
