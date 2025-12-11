@@ -18,25 +18,29 @@ extends Node2D
 
 @onready var timer_to_tutorial_first_move:float = 3.0
 
+# MUSICA NIVEL
+# ESTO NO VEO QUE SE USE DESPUES - DEBERIS SER UN EXPORT
 @onready var musica_nivel_1 = AudioManager.get_node("ost/Nivel1")
 
 
 func _ready() -> void:
 	#PauseMenu.register_pause_menu($PauseMenu)
 	
+	# MUSICA NIVEL
+	# AQUI HAY QUE PONERLO GENERICO
 	AudioManager.play_nivel_1()
+	
+	# ESTO TAMBIEN HAY QUE GENERALIZARLO
 	var spawn_point = spawn_point_0
 	#
-	#print("### TEST DIALOGO ")
-	#for d in range(11):
-	#	print("d ",d," ", DialogManager.get_dialog_sequence('test_dialog'))
-	#	print("d ",d," ", DialogManager.get_dialog_sequence('tutorial_1'))
-	#	
+
 	# Conectar señales de todos los ítems iniciales
 	for item in collectables.get_children():
 		if item.has_signal("item_collected"):
 			item.connect("item_collected", Callable(self, "_on_item_collected"))
 	
+	# ESTO DEBERMINA EN DONDE APARECE EL PLAYER
+	# AL CARGAR LA ESCENA - TIENE QUE SER GENERICO
 	if GameState.portal == 1:
 		spawn_point = spawn_point_1
 		player.global_position = spawn_point.global_position
@@ -51,6 +55,7 @@ func _ready() -> void:
 	animacion.play("entrada")
 	animacion.animation_finished.connect(_on_animacion_terminada)
 	
+	# Conectamos la señales para cuando el player muere
 	player.player_died.connect(respawn_player)
 	player.game_over.connect(game_over)
 
@@ -58,18 +63,26 @@ func _on_animacion_terminada(anim_name: String) -> void:
 	# habilitar movimiento jugador
 	print("Animacion cortina "+anim_name+" finalizada")
 	await get_tree().create_timer(0.7).timeout
-	if GameState.tutorial:
-		# Desactivamos el tutorial para la próxima entrada del nivel
-		GameState.tutorial = false
-		print("INICIAR TUTORIAL")
-		#init_tutorial()
+	
+	# ESTO SE PUEDE DESACTIVAR POR AHORA
+	#if GameState.tutorial:
+	#	# Desactivamos el tutorial para la próxima entrada del nivel
+	#	GameState.tutorial = false
+	#	print("INICIAR TUTORIAL")
+	#	#init_tutorial()
 
 	
 func _process(_delta: float) -> void:
 	if GameState.game_over:
+		# Actualizamos el contador del TIMER para disparar
+		# la secuencia de GAME OVER. Esto permite una pausa
+		# desde el PLAYER MUERE para que no sea inmediato.
 		if GameState.timer_game_over > 0:
 			GameState.timer_game_over -= 1*_delta
 		else:
+			# Una vez alcanzado el TIMER verificamos 
+			# si no se ha lanzado ya la secuencia para
+			# no cortar el _process y que quede todo congelado.
 			if not GameState.game_over_scene_launched:
 				GameState.game_over_scene_launched = true
 				GameState.text_loader = "DEUDA DE PLD EXTREMA"
@@ -78,14 +91,19 @@ func _process(_delta: float) -> void:
 				AudioManager.get_node("ost/Nivel1").stop()
 				Sfx.sfx_play('loader_game_over')
 				call_deferred("_change_to_loader")
+	
+	# ESTO SE PUEDE DESACTIVAR
+	#GameState.tutorial = false	
+	#if GameState.tutorial and GameState.tutorial_player_first_move:	
+	#	timer_to_tutorial_first_move -= 1 * _delta	
+	#	if timer_to_tutorial_first_move < 0:	
+	#		GameState.tutorial_player_first_move = false	
+	#		# DialogManager.			
 
-	GameState.tutorial = false
-	if GameState.tutorial and GameState.tutorial_player_first_move:
-		timer_to_tutorial_first_move -= 1 * _delta
-		if timer_to_tutorial_first_move < 0:
-			GameState.tutorial_player_first_move = false
-			# DialogManager.			
-
+# ESTE EVENTO DEBERIA SER INTERNO A CADA PORTAL
+# PARA HACERLO GENERICO  y CONFIGURABLE EN EXPORTS PARA CADA INSTANCIA
+# Y ACA DEBERIA HABER UNA FUNCION GENERICA PARA RECIBIR LA COMANDA
+# DESDE CADA PORTAL.
 func _on_portal_1_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		GameState.portal = 2
@@ -100,7 +118,13 @@ func _on_portal_1_body_entered(body: Node2D) -> void:
 func _change_to_loader():
 	get_tree().change_scene_to_file("res://src/scenes/levels/loader.tscn")
 
-func _on_item_collected(item_scene_path: String, pos: Vector2, item_type: String, item_specimen: String, respawn_time: float) -> void:
+# MANERO DE ITEMS COLECTADOS Y RESPAWN
+func _on_item_collected(
+	item_scene_path: String, 
+	pos: Vector2, 
+	item_type: String, 
+	item_specimen: String, 
+	respawn_time: float) -> void:
 	
 	print("🌀 Item recogido. Se respawneará en:", pos)
 	print(" item type & specimen",item_type, item_specimen)
