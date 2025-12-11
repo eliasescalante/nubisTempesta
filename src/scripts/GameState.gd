@@ -6,7 +6,7 @@ var touch_left := false
 var touch_right := false
 var touch_jump := false
 var touch_dash := false
-
+var touch_pause := false
 
 # ------------------------------------------------------------------------------
 var tutorial = true # Al comienzo del juego muestra los diálogos de tutorial.

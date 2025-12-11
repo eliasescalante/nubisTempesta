@@ -41,7 +41,9 @@ func _ready() -> void:
 		GameState.touch_dash = true)
 	$Control/dash.released.connect(func():
 		GameState.touch_dash = true)
-	
+	$Control/pause.released.connect(func():
+		GameState.touch_pause = true)
+		
 	pld_icon_animated_sprite_2d.play("default")
 	specimen_quest.text = ""
 	specimen_pass.text = ""
