@@ -96,15 +96,14 @@ func _ready() -> void:
 
 # --- Multiplicador de velocidad / salto según PLD ---
 func get_pld_multiplier() -> float:
-	
-	# para esta etapa inicial de desarrollo lo dejamos sin efecto.
-	return 1.0
-	# ------------------------
-	if pld >= 337 / 2:
+	pld = GameState.pld
+	if pld > 0:
 		return 1.0
 	else:
 		# Lineal: PLD=0 → velocidad 50%
-		return 0.5 + 0.5 * (pld / (337 / 2))
+		#return 0.5 + 0.5 * (pld / (337 / 2))
+		#return 0.5 + 0.5 * (pld / PLD_GAME_OVER / 2)
+		return 0.8
 
 # --- Physics Process ---
 func _physics_process(delta: float) -> void:
