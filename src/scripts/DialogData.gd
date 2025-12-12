@@ -485,7 +485,30 @@ var dialogos_script = {
 				},
 			], # END secuencia 4
 		] # END dialog_sequences
-	}, # END chisme-bar
+	}, # END item-no-disponible
+	'item-buscado': {
+		'repeat': 0,
+		'loop': false,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia 1
+				{
+					'actor': 'player',
+					'text': '¡Hola perdido!\n Alquien está \n interesado en vos.',
+					'duration': 3.7,
+					'content_type': 'text',
+					'balloon_type': 'thought' # Estilo pensamiento
+				},
+				{
+					'actor': 'player',
+					'text': 'Aunque no sé\n qué puede tener\n de valioso un\n "<%OBJ%>"',
+					'duration': 3.7,
+					'content_type': 'text',
+					'balloon_type': 'thought' # Estilo pensamiento
+				},
+			], #END secuencia 1 
+		] # END dialog_sequences
+	}, # END item-buscado
 	'historia-1': {
 		'repeat': -1, # -1 infinito
 		'loop': false,
