@@ -45,7 +45,7 @@ animations = [{
 size = Vector2(96, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0bcc"]
-size = Vector2(192, 128)
+size = Vector2(192, 16)
 
 [node name="npc_historia" type="CharacterBody2D" groups=["npc_estorbo"]]
 script = ExtResource("1_hycv5")
@@ -64,7 +64,7 @@ shape = SubResource("RectangleShape2D_fvhpi")
 [node name="DialogArea2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogArea2D"]
-position = Vector2(0, 64)
+position = Vector2(0, 128)
 shape = SubResource("RectangleShape2D_f0bcc")
 debug_color = Color(0.78039217, 0.40784314, 0.44705883, 0.06666667)
 

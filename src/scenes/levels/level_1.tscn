@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://clx0rliac47qw"]
+[gd_scene load_steps=26 format=4 uid="uid://clx0rliac47qw"]
 
 [ext_resource type="Script" uid="uid://de366u52gwitk" path="res://src/scripts/level_1.gd" id="1_nw74m"]
 [ext_resource type="TileSet" uid="uid://84vsloajncpa" path="res://_resources/map_exterior_blanco_tile_set.tres" id="2_cufsb"]
@@ -19,14 +19,13 @@
 [ext_resource type="PackedScene" uid="uid://b1gvurchiu3h4" path="res://src/scenes/entities/player_respawn_point.tscn" id="9_shuiu"]
 [ext_resource type="PackedScene" uid="uid://dtuunre8ai8jr" path="res://src/scenes/entities/npc_chisme.tscn" id="10_lf6bi"]
 [ext_resource type="PackedScene" uid="uid://wstroalu326b" path="res://src/scenes/entities/npc_decorado_negro.tscn" id="10_m1y7t"]
-[ext_resource type="PackedScene" uid="uid://cl7tghv4aae1l" path="res://src/scenes/entities/npc_historia.tscn" id="11_3qvg3"]
 [ext_resource type="TileSet" uid="uid://cv42yxnip6htf" path="res://_resources/map_exterior_negro_tile_set.tres" id="11_cufsb"]
 [ext_resource type="PackedScene" uid="uid://c0qonmpwpmm0v" path="res://src/scenes/entities/cortina.tscn" id="14_cufsb"]
 [ext_resource type="PackedScene" uid="uid://b2j1to5r5vjth" path="res://src/scenes/entities/item_historia_comcubo.tscn" id="16_1egpu"]
 [ext_resource type="PackedScene" uid="uid://dp654w2t7irlm" path="res://src/scenes/entities/item_morphball.tscn" id="24_fq4vf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m11n0"]
-size = Vector2(192, 320)
+size = Vector2(192, 512)
 
 [sub_resource type="LabelSettings" id="LabelSettings_m11n0"]
 font_size = 200
@@ -36,7 +35,7 @@ script = ExtResource("1_nw74m")
 metadata/_edit_vertical_guides_ = [-2816.0, 3072.0]
 metadata/_edit_horizontal_guides_ = [768.0, -2048.0]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 offset_left = -4608.0
 offset_top = -8704.0
 offset_right = 4864.0
@@ -69,8 +68,6 @@ collision_enabled = false
 metadata/_edit_lock_ = true
 
 [node name="npcs_decorados" type="Node2D" parent="Parallax2D_fondo"]
-visible = false
-modulate = Color(1, 0.53999996, 0.53999996, 1)
 
 [node name="npc_decorado_2" parent="Parallax2D_fondo/npcs_decorados" instance=ExtResource("2_wxrok")]
 position = Vector2(-1408, -128)
@@ -86,7 +83,7 @@ metadata/_edit_lock_ = true
 
 [node name="Nivel" type="TileMapLayer" parent="Parallax2D_medio"]
 position = Vector2(-1, 0)
-tile_map_data = PackedByteArray("AAAGAAMAAAACAAEAAAAHAAMAAAAAAAEAAAD0/wMAAAAAAAEAAAD1/wMAAAAFAAEAAAD2/wMAAAABAAEAAAAHAAQAAAAAAAIAAAAHAAUAAAABAAIAAAAHAAYAAAAAAAIAAAD0/wQAAAAAAAIAAAD0/wUAAAABAAIAAAD0/wYAAAAAAAIAAAD0//3/AAAAAAIAAAD0//7/AAABAAIAAAD0////AAAAAAIAAAD0/wEAAAACAAEAAAD0//P/AAAAAAIAAAD0//T/AAABAAIAAAD0//X/AAAAAAIAAAD0//b/AAABAAIAAAD0//f/AAAAAAIAAAD0//j/AAABAAIAAAD0//n/AAAAAAIAAAD0//r/AAABAAIAAAD0//v/AAAAAAIAAAD0//z/AAABAAIAAAD0/+r/AAABAAIAAAD0/+v/AAAAAAIAAAD0/+z/AAABAAIAAAD0/+3/AAAAAAIAAAD0/+7/AAABAAIAAAD0/+//AAAAAAIAAAD0//D/AAABAAIAAAD0//H/AAAAAAIAAAD0//L/AAABAAIAAAD0/+T/AAAAAAIAAAD0/+X/AAABAAIAAAD0/+b/AAAAAAIAAAD0/+f/AAABAAIAAAD0/+j/AAAAAAIAAAD0/+n/AAABAAIAAAAIAAMAAAAAAAEAAAAIAAQAAAAAAAIAAAAIAAUAAAABAAIAAAAIAAYAAAAAAAIAAAAJAAMAAAAFAAEAAAAKAAMAAAABAAEAAAALAAMAAAACAAEAAAAMAAMAAAAAAAIAAAAMAAQAAAAAAAIAAAAMAAUAAAABAAIAAAAMAAYAAAAAAAIAAAAMAAIAAAABAAIAAAAMAAEAAAAAAAIAAAAMAAAAAAABAAIAAAAMAP//AAAAAAIAAAAMAP7/AAABAAIAAAAMAP3/AAAAAAIAAAAMAPz/AAABAAIAAAAMAPv/AAAAAAIAAAAMAPr/AAABAAIAAAAMAPn/AAAAAAIAAAAMAPX/AAAAAAIAAAAMAPT/AAABAAIAAAAMAPP/AAAAAAIAAAAMAPL/AAABAAIAAAAMAPH/AAAAAAIAAAAMAPD/AAABAAIAAAAMAO//AAAAAAIAAAAMAO7/AAABAAIAAAAMAO3/AAAAAAIAAAAMAOz/AAABAAIAAAAMAOv/AAABAAIAAAAMAOr/AAAAAAIAAAAMAOn/AAABAAIAAAAMAOT/AAAAAAIAAAAMAOX/AAABAAIAAAD6/wEAAAABAAEAAAD5/wEAAAABAAEAAAD4/wEAAAAFAAEAAAAKAAEAAAAFAAEAAAALAAEAAAABAAEAAAAGAP7/AAAFAAEAAAAFAP7/AAAEAAEAAAAHAP7/AAABAAEAAAAIAP7/AAABAAEAAAD1////AAADAAEAAAD1//3/AAADAAEAAAD1//v/AAADAAEAAAD3//7/AAAEAAEAAAD3//z/AAAEAAEAAAD3//r/AAAEAAEAAAD4////AAAAAAIAAAD4//7/AAABAAIAAAD4//3/AAAAAAIAAAD4//z/AAABAAIAAAD4//v/AAAAAAIAAAD4//r/AAABAAIAAAD4//n/AAAAAAIAAAD5//7/AAABAAEAAAD6//7/AAABAAEAAAD7//7/AAABAAEAAAD5//r/AAABAAEAAAD6//r/AAABAAEAAAD7//r/AAABAAEAAAD8//7/AAACAAEAAAD9//7/AAADAAEAAAD3////AAADAAEAADD5////AAAEAAEAADAFAPj/AAACAAEAAAAGAPb/AAAEAAEAAAAGAPj/AAAFAAEAAAAHAPb/AAADAAEAAAAHAPj/AAABAAEAAAAIAPj/AAABAAEAAAAJAPb/AAAEAAEAAAAJAPj/AAABAAEAAAAKAPb/AAAAAAEAAAAKAPj/AAABAAEAAAALAPb/AAAFAAEAAAALAPj/AAACAAEAAAAMAPb/AAABAAEAAADz/wMAAAAAAAEAAAD3//P/AAAFAAEAAAD4//P/AAABAAEAAAD5//P/AAABAAEAAAD6//P/AAABAAEAAAD7//P/AAABAAEAAAACAPT/AAAEAAEAAAACAPH/AAAEAAEAAAD9//b/AAADAAEAAAD7//b/AAAEAAEAAAAFAPH/AAAEAAEAAAAIAPH/AAAEAAEAAAAFAPT/AAAEAAEAAAAIAPT/AAAEAAEAAAAHAO7/AAAEAAEAAAAEAO7/AAAEAAEAAAAKAO7/AAAEAAEAAAALAPL/AAADAAEAAAAKAOr/AAADAAEAAAAMAOb/AAAAAAIAAAAMAOf/AAABAAIAAAAMAOj/AAAAAAIAAAAIAOj/AAADAAEAAAAGAOb/AAADAAEAAAAEAOT/AAADAAEAAAADAOj/AAADAAEAAAABAOf/AAADAAEAAAD//+b/AAADAAEAAAD9/+T/AAADAAEAAAD7/+n/AAAEAAEAAAD2/+X/AAAAAAEAAAD1/+r/AAAGAAEAAAD2/+b/AAAAAAIAAAD2/+f/AAABAAIAAAD2/+j/AAAGAAEAAAD4/+v/AAAAAAIAAAD4/+z/AAABAAIAAAD4/+3/AAAGAAEAAAD2/+z/AAAGAAEAADD2/+3/AAAAAAIAAAD6/+v/AAAAAAIAAAD6/+z/AAABAAIAAAD6/+3/AAAAAAIAAAD2/+7/AAABAAIAAAD2/+//AAAAAAIAAAD2//D/AAABAAIAAAD2//H/AAAAAAIAAAD2//L/AAABAAIAAAD2//P/AAAEAAEAAAD6/+7/AAABAAIAAAD6/+//AAAAAAIAAAD6//D/AAABAAIAAAD6//H/AAAAAAIAAAD3/+//AAADAAEAAAD5/+//AAAEAAEAAAADAPv/AAAEAAEAAAAEAPv/AAADAAEAAAD8//r/AAACAAEAAAD9//r/AAADAAEAAAD4//j/AAABAAIAAAD4//f/AAAAAAIAAAD8//b/AAAAAAEAAAD8//f/AAAGAAEAAAD8//P/AAACAAEAAAD9//P/AAADAAEAAAAOAPj/AAAAAAEAAAAPAPj/AAAAAAEAAAAQAPj/AAAAAAEAAAARAPj/AAAAAAEAAADv/wEAAAABAAEAAADw/wEAAAABAAEAAADx/wEAAAACAAEAAADy/wMAAAAAAAEAAADx/wMAAAAAAAEAAADw/wMAAAAAAAEAAADv/wMAAAAAAAEAAAAFAO7/AAADAAEAAAAIAO7/AAADAAEAAAALAO7/AAADAAEAAAAJAOr/AAAEAAEAAAADAPH/AAADAAEAAAAGAPH/AAADAAEAAAAJAPH/AAADAAEAAAAKAPL/AAAEAAEAAAAJAPT/AAADAAEAAAAGAPT/AAADAAEAAAADAPT/AAADAAEAAAAHAOj/AAAEAAEAAAAFAOb/AAAEAAEAAAADAOT/AAAEAAEAAAACAOj/AAAEAAEAAAAAAOf/AAAEAAEAAAD+/+b/AAAEAAEAAAD8/+T/AAAEAAEAAAD8/+n/AAADAAEAAAD3/+X/AAADAAEAAAD4/+r/AAAGAAEAADD6/+r/AAAGAAEAADANAPb/AAABAAEAAAAOAPb/AAABAAEAAAAPAPb/AAABAAEAAAAQAPb/AAABAAEAAAARAPb/AAABAAEAAAD0/wAAAAABAAIAAAANAPj/AAAAAAEAAAAMAPj/AAAAAAEAAAANAPf/AAAFAAMAAADy/wIAAAAFAAMAAADz/wEAAAABAAEAAAD9/wEAAAACAAEAAAD+/wEAAAADAAEAAAD7/wEAAAABAAEAAAD8/wEAAAABAAEAAAD0/wcAAAABAAIAAAD0/wgAAAAAAAIAAAD0/wkAAAABAAIAAAD0/woAAAAAAAIAAAD0/wsAAAABAAIAAAD0/wwAAAAAAAIAAAAHAAcAAAABAAIAAAAHAAgAAAAAAAIAAAAHAAkAAAABAAIAAAAHAAoAAAAAAAIAAAAHAAsAAAABAAIAAAAHAAwAAAAAAAIAAAAHAA0AAAABAAIAAAAHAA4AAAAAAAIAAAAHAA8AAAABAAIAAAAIAAcAAAABAAIAAAAIAAgAAAAAAAIAAAAIAAkAAAABAAIAAAAIAAoAAAAAAAIAAAAIAAsAAAABAAIAAAAIAAwAAAAAAAIAAAAIAA0AAAABAAIAAAAIAA4AAAAAAAIAAAAIAA8AAAABAAIAAAAMAAcAAAABAAIAAAAMAAgAAAAAAAIAAAAMAAkAAAABAAIAAAAMAAoAAAAAAAIAAAAMAAsAAAABAAIAAAAMAAwAAAAAAAIAAAAMAA0AAAABAAIAAAAMAA4AAAAAAAIAAAAMAA8AAAABAAIAAAD0/w0AAAABAAIAAAD0/w4AAAAAAAIAAAD0/w8AAAABAAIAAADu/wEAAAABAAEAAADu/wMAAAAAAAEAAADy/wEAAAAFAAEAAAD0/+D/AAAAAAIAAAD0/+H/AAABAAIAAAD0/+L/AAAAAAIAAAD0/+P/AAABAAIAAAD0/9z/AAAAAAIAAAD0/93/AAABAAIAAAD0/97/AAAAAAIAAAD0/9//AAABAAIAAAAMAOD/AAAAAAIAAAAMAOH/AAABAAIAAAAMAOL/AAAAAAIAAAAMAOP/AAABAAIAAAAMANz/AAAAAAIAAAAMAN3/AAABAAIAAAAMAN7/AAAAAAIAAAAMAN//AAABAAIAAAD1/wEAAAADAAEAAAD3/wEAAAAEAAEAAAD9/wMAAAACAAEAAAD+/wMAAAAAAAEAAAD+/wQAAAAAAAIAAAD+/wUAAAABAAIAAAD+/wYAAAAAAAIAAAD+/wcAAAABAAIAAAD+/wgAAAAAAAIAAAD+/wkAAAABAAIAAAD+/woAAAAAAAIAAAD+/wsAAAABAAIAAAD+/wwAAAAAAAIAAAD+/w0AAAABAAIAAAD+/w4AAAAAAAIAAAD+/w8AAAABAAIAAAD//wMAAAADAAEAAAD//wgAAAAFAAEAAAAAAAgAAAABAAEAAAABAAgAAAABAAEAAAACAAUAAAAGAAEAAAACAAgAAAABAAEAAAADAAMAAAADAAEAABADAAgAAAAFAAEAABAEAAMAAAAAAAEAAAAEAAQAAAAAAAIAAAAEAAUAAAABAAIAAAAEAAYAAAAAAAIAAAAEAAcAAAABAAIAAAAEAAgAAAAAAAIAAAAEAAkAAAABAAIAAAAEAAoAAAAAAAIAAAAEAAsAAAABAAIAAAAEAAwAAAAAAAIAAAAEAA0AAAABAAIAAAAEAA4AAAAAAAIAAAAEAA8AAAABAAIAAAAFAAMAAAAFAAEAAAD3/wMAAAABAAEAAAD4/wMAAAAFAAEAABD5/wMAAAAEAAEAABD8/wMAAAAFAAEAAAD7/wMAAAAEAAEAAAD7/wQAAAADAAEAAAD5/wQAAAADAAEAABD6/wQAAAAAAAEAAAD6/wUAAAABAAIAAAD6/wYAAAAAAAIAAAD6/wcAAAABAAIAAAD6/wgAAAAAAAIAAAD6/wkAAAABAAIAAAD6/woAAAAAAAIAAAD6/wsAAAABAAIAAAD6/wwAAAAAAAIAAAD6/w0AAAABAAIAAAD6/w4AAAAAAAIAAAD6/w8AAAABAAIAAAAGAAEAAAAEAAEAAAAHAAEAAAAEAAEAABAJAAEAAAAEAAEAAAD4//b/AAAGAAEAADAGAPr/AAAEAAEAAAAHAPr/AAAAAAEAAAAIAPr/AAADAAEAAAAHAPv/AAAAAAIAAAAHAPz/AAABAAIAAAAHAP3/AAAAAAIAAAAJAP7/AAACAAEAAAAKAP7/AAADAAEAAAAEAPj/AAACAAEAABADAPj/AAADAAEAABA=")
+tile_map_data = PackedByteArray("AAAGAAMAAAACAAEAAAAHAAMAAAAAAAEAAAD0/wMAAAAAAAEAAAD1/wMAAAAFAAEAAAD2/wMAAAABAAEAAAAHAAQAAAAAAAIAAAAHAAUAAAABAAIAAAAHAAYAAAAAAAIAAAD0/wQAAAAAAAIAAAD0/wUAAAABAAIAAAD0/wYAAAAAAAIAAAD0//3/AAAAAAIAAAD0//7/AAABAAIAAAD0////AAAAAAIAAAD0/wEAAAACAAEAAAD0//P/AAAAAAIAAAD0//T/AAABAAIAAAD0//X/AAAAAAIAAAD0//b/AAABAAIAAAD0//f/AAAAAAIAAAD0//j/AAABAAIAAAD0//n/AAAAAAIAAAD0//r/AAABAAIAAAD0//v/AAAAAAIAAAD0//z/AAABAAIAAAD0/+r/AAABAAIAAAD0/+v/AAAAAAIAAAD0/+z/AAABAAIAAAD0/+3/AAAAAAIAAAD0/+7/AAABAAIAAAD0/+//AAAAAAIAAAD0//D/AAABAAIAAAD0//H/AAAAAAIAAAD0//L/AAABAAIAAAD0/+T/AAAAAAIAAAD0/+X/AAABAAIAAAD0/+b/AAAAAAIAAAD0/+f/AAABAAIAAAD0/+j/AAAAAAIAAAD0/+n/AAABAAIAAAAIAAMAAAAAAAEAAAAIAAQAAAAAAAIAAAAIAAUAAAABAAIAAAAIAAYAAAAAAAIAAAAJAAMAAAAFAAEAAAAKAAMAAAABAAEAAAALAAMAAAACAAEAAAAMAAMAAAAAAAIAAAAMAAQAAAAAAAIAAAAMAAUAAAABAAIAAAAMAAYAAAAAAAIAAAAMAAIAAAABAAIAAAAMAAEAAAAAAAIAAAAMAAAAAAABAAIAAAAMAP//AAAAAAIAAAAMAP7/AAABAAIAAAAMAP3/AAAAAAIAAAAMAPz/AAABAAIAAAAMAPv/AAAAAAIAAAAMAPr/AAABAAIAAAAMAPn/AAAAAAIAAAAMAPX/AAAAAAIAAAAMAPT/AAABAAIAAAAMAPP/AAAAAAIAAAAMAPL/AAABAAIAAAAMAPH/AAAAAAIAAAAMAPD/AAABAAIAAAAMAO//AAAAAAIAAAAMAO7/AAABAAIAAAAMAO3/AAAAAAIAAAAMAOz/AAABAAIAAAAMAOv/AAABAAIAAAAMAOr/AAAAAAIAAAAMAOn/AAABAAIAAAAMAOT/AAAAAAIAAAAMAOX/AAABAAIAAAD6/wEAAAABAAEAAAD5/wEAAAABAAEAAAD4/wEAAAAFAAEAAAAKAAEAAAAFAAEAAAALAAEAAAABAAEAAAAGAP7/AAAFAAEAAAAFAP7/AAAEAAEAAAAHAP7/AAABAAEAAAAIAP7/AAABAAEAAAD1////AAADAAEAAAD1//3/AAADAAEAAAD1//v/AAADAAEAAAD3//7/AAAEAAEAAAD3//z/AAAEAAEAAAD3//r/AAAEAAEAAAD4////AAAAAAIAAAD4//7/AAABAAIAAAD4//3/AAAAAAIAAAD4//z/AAABAAIAAAD4//v/AAAAAAIAAAD4//r/AAABAAIAAAD4//n/AAAAAAIAAAD5//7/AAABAAEAAAD6//7/AAABAAEAAAD7//7/AAABAAEAAAD5//r/AAABAAEAAAD6//r/AAABAAEAAAD7//r/AAABAAEAAAD8//7/AAACAAEAAAD9//7/AAADAAEAAAD3////AAADAAEAADD5////AAAEAAEAADAFAPj/AAACAAEAAAAGAPb/AAAEAAEAAAAGAPj/AAAFAAEAAAAHAPb/AAADAAEAAAAHAPj/AAABAAEAAAAIAPj/AAABAAEAAAAJAPb/AAAEAAEAAAAJAPj/AAABAAEAAAAKAPb/AAAFAAEAAAAKAPj/AAABAAEAAAALAPb/AAACAAEAAAALAPj/AAACAAEAAAAMAPb/AAADAAEAAADz/wMAAAAAAAEAAAD3//P/AAAFAAEAAAD4//P/AAABAAEAAAD5//P/AAABAAEAAAD6//P/AAABAAEAAAD7//P/AAABAAEAAAACAPT/AAAEAAEAAAACAPH/AAAEAAEAAAD9//b/AAADAAEAAAD7//b/AAAEAAEAAAAFAPH/AAAEAAEAAAAIAPH/AAAEAAEAAAAFAPT/AAAEAAEAAAAIAPT/AAAEAAEAAAAHAO7/AAAEAAEAAAAEAO7/AAAEAAEAAAAKAO7/AAAEAAEAAAALAPL/AAADAAEAAAAKAOr/AAADAAEAAAAMAOb/AAAAAAIAAAAMAOf/AAABAAIAAAAMAOj/AAAAAAIAAAAIAOj/AAADAAEAAAAGAOb/AAADAAEAAAAEAOT/AAADAAEAAAADAOj/AAADAAEAAAABAOf/AAADAAEAAAD//+b/AAADAAEAAAD9/+T/AAADAAEAAAD7/+n/AAAEAAEAAAD2/+X/AAAAAAEAAAD2/+b/AAAAAAIAAAD2/+f/AAABAAIAAAD2/+j/AAAGAAEAAAD4/+v/AAAAAAIAAAD4/+z/AAABAAIAAAD4/+3/AAAGAAEAAAD2/+z/AAAGAAEAADD2/+3/AAAAAAIAAAD6/+v/AAAAAAIAAAD6/+z/AAABAAIAAAD6/+3/AAAAAAIAAAD2/+7/AAABAAIAAAD2/+//AAAAAAIAAAD2//D/AAABAAIAAAD2//H/AAAAAAIAAAD2//L/AAABAAIAAAD2//P/AAAEAAEAAAD6/+7/AAABAAIAAAD6/+//AAAAAAIAAAD6//D/AAABAAIAAAD6//H/AAAGAAEAAAD3/+//AAADAAEAAAD5/+//AAAEAAEAAAADAPv/AAAEAAEAAAAEAPv/AAADAAEAAAD8//r/AAACAAEAAAD9//r/AAADAAEAAAD4//j/AAABAAIAAAD4//f/AAAAAAIAAAD8//b/AAAAAAEAAAD8//f/AAAGAAEAAAD8//P/AAACAAEAAAD9//P/AAADAAEAAAAOAPj/AAAAAAEAAAAPAPj/AAAAAAEAAAAQAPj/AAAAAAEAAAARAPj/AAAAAAEAAADv/wEAAAACAAEAAADw/wEAAAADAAEAAADx/wEAAAAGAAIAAADy/wMAAAAAAAEAAADx/wMAAAAAAAEAAADw/wMAAAAAAAEAAADv/wMAAAAAAAEAAAAFAO7/AAADAAEAAAAIAO7/AAADAAEAAAALAO7/AAADAAEAAAAJAOr/AAAEAAEAAAADAPH/AAADAAEAAAAGAPH/AAADAAEAAAAJAPH/AAADAAEAAAAKAPL/AAAEAAEAAAAJAPT/AAADAAEAAAAGAPT/AAADAAEAAAADAPT/AAADAAEAAAAHAOj/AAAEAAEAAAAFAOb/AAAEAAEAAAADAOT/AAAEAAEAAAACAOj/AAAEAAEAAAAAAOf/AAAEAAEAAAD+/+b/AAAEAAEAAAD8/+T/AAAEAAEAAAD8/+n/AAADAAEAAAD3/+X/AAADAAEAAAD4/+r/AAAGAAEAADD6/+r/AAAGAAEAADANAPb/AAAGAAIAAAAOAPb/AAAEAAEAAAAPAPb/AAAFAAEAAAAQAPb/AAABAAEAAAARAPb/AAABAAEAAAD0/wAAAAABAAIAAAANAPj/AAAAAAEAAAAMAPj/AAAAAAEAAAANAPf/AAAGAAMAAADz/wEAAAAFAAEAAAD9/wEAAAACAAEAAAD+/wEAAAADAAEAAAD7/wEAAAABAAEAAAD8/wEAAAABAAEAAAD0/wcAAAABAAIAAAD0/wgAAAAAAAIAAAD0/wkAAAABAAIAAAD0/woAAAAAAAIAAAD0/wsAAAABAAIAAAD0/wwAAAAAAAIAAAAHAAcAAAABAAIAAAAHAAgAAAAAAAIAAAAHAAkAAAABAAIAAAAHAAoAAAAAAAIAAAAHAAsAAAABAAIAAAAHAAwAAAAAAAIAAAAHAA0AAAABAAIAAAAHAA4AAAAAAAIAAAAHAA8AAAABAAIAAAAIAAcAAAABAAIAAAAIAAgAAAAAAAIAAAAIAAkAAAABAAIAAAAIAAoAAAAAAAIAAAAIAAsAAAABAAIAAAAIAAwAAAAAAAIAAAAIAA0AAAABAAIAAAAIAA4AAAAAAAIAAAAIAA8AAAABAAIAAAAMAAcAAAABAAIAAAAMAAgAAAAAAAIAAAAMAAkAAAABAAIAAAAMAAoAAAAAAAIAAAAMAAsAAAABAAIAAAAMAAwAAAAAAAIAAAAMAA0AAAABAAIAAAAMAA4AAAAAAAIAAAAMAA8AAAABAAIAAAD0/w0AAAABAAIAAAD0/w4AAAAAAAIAAAD0/w8AAAABAAIAAADu/wEAAAABAAEAAADu/wMAAAAAAAEAAADy/wEAAAAEAAEAAAD0/+D/AAAAAAIAAAD0/+H/AAABAAIAAAD0/+L/AAAAAAIAAAD0/+P/AAABAAIAAAD0/9z/AAAAAAIAAAD0/93/AAABAAIAAAD0/97/AAAAAAIAAAD0/9//AAABAAIAAAAMAOD/AAAAAAIAAAAMAOH/AAABAAIAAAAMAOL/AAAAAAIAAAAMAOP/AAABAAIAAAAMANz/AAAAAAIAAAAMAN3/AAABAAIAAAAMAN7/AAAAAAIAAAAMAN//AAABAAIAAAD1/wEAAAADAAEAAAD3/wEAAAAEAAEAAAD9/wMAAAACAAEAAAD+/wMAAAAAAAEAAAD+/wQAAAAAAAIAAAD+/wUAAAABAAIAAAD+/wYAAAAAAAIAAAD+/wcAAAABAAIAAAD+/wgAAAAAAAIAAAD+/wkAAAABAAIAAAD+/woAAAAAAAIAAAD+/wsAAAABAAIAAAD+/wwAAAAAAAIAAAD+/w0AAAABAAIAAAD+/w4AAAAAAAIAAAD+/w8AAAABAAIAAAD//wMAAAADAAEAAAD//wgAAAAFAAEAAAAAAAgAAAABAAEAAAABAAgAAAABAAEAAAACAAUAAAAGAAEAAAACAAgAAAABAAEAAAADAAMAAAADAAEAABADAAgAAAAFAAEAABAEAAMAAAAAAAEAAAAEAAQAAAAAAAIAAAAEAAUAAAABAAIAAAAEAAYAAAAAAAIAAAAEAAcAAAABAAIAAAAEAAgAAAAAAAIAAAAEAAkAAAABAAIAAAAEAAoAAAAAAAIAAAAEAAsAAAABAAIAAAAEAAwAAAAAAAIAAAAEAA0AAAABAAIAAAAEAA4AAAAAAAIAAAAEAA8AAAABAAIAAAAFAAMAAAAFAAEAAAD3/wMAAAABAAEAAAD4/wMAAAAFAAEAABD5/wMAAAAEAAEAABD8/wMAAAAFAAEAAAD7/wMAAAAEAAEAAAD7/wQAAAADAAEAAAD5/wQAAAADAAEAABD6/wQAAAAAAAEAAAD6/wUAAAABAAIAAAD6/wYAAAAAAAIAAAD6/wcAAAABAAIAAAD6/wgAAAAAAAIAAAD6/wkAAAABAAIAAAD6/woAAAAAAAIAAAD6/wsAAAABAAIAAAD6/wwAAAAAAAIAAAD6/w0AAAABAAIAAAD6/w4AAAAAAAIAAAD6/w8AAAABAAIAAAAGAAEAAAAEAAEAAAAHAAEAAAAEAAEAABAJAAEAAAAEAAEAAAD4//b/AAAGAAEAADAGAPr/AAAEAAEAAAAHAPr/AAAAAAEAAAAIAPr/AAADAAEAAAAHAPv/AAAAAAIAAAAHAPz/AAABAAIAAAAHAP3/AAAAAAIAAAAJAP7/AAACAAEAAAAKAP7/AAADAAEAAAAEAPj/AAACAAEAABADAPj/AAADAAEAABDx/wIAAAAGAAMAAADx/wAAAAAGAAEAAAANAPX/AAAGAAEAAAA=")
 tile_set = ExtResource("4_cufsb")
 occlusion_enabled = false
 metadata/_edit_lock_ = true
@@ -95,26 +92,26 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="Parallax2D_medio/CartelesTutorial"]
-offset_left = -2543.0
-offset_top = 281.0
-offset_right = -2319.0
-offset_bottom = 394.0
+offset_left = -2560.0
+offset_top = 320.0
+offset_right = -2294.0
+offset_bottom = 433.0
 theme_override_styles/panel = ExtResource("5_yr1t2")
 
 [node name="Label" type="Label" parent="Parallax2D_medio/CartelesTutorial/PanelContainer"]
 layout_mode = 2
 theme = ExtResource("6_fq4vf")
-text = "Si la tenés clara
-y te la querés jugar
+text = "Si la tenés clara y 
+te la querés jugar
 seguí por acá."
 label_settings = ExtResource("7_mrw6c")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="Parallax2D_medio/CartelesTutorial"]
-offset_left = -2368.0
+offset_left = -2304.0
 offset_top = 576.0
-offset_right = -2112.0
+offset_right = -1997.0
 offset_bottom = 661.0
 theme_override_styles/panel = ExtResource("5_yr1t2")
 
@@ -129,79 +126,91 @@ vertical_alignment = 1
 
 [node name="PanelContainer3" type="PanelContainer" parent="Parallax2D_medio/CartelesTutorial"]
 offset_left = -3264.0
-offset_top = 576.0
-offset_right = -2967.0
-offset_bottom = 689.0
+offset_top = 320.0
+offset_right = -2895.0
+offset_bottom = 488.0
 theme_override_styles/panel = ExtResource("5_yr1t2")
 
 [node name="Label" type="Label" parent="Parallax2D_medio/CartelesTutorial/PanelContainer3"]
 layout_mode = 2
 theme = ExtResource("6_fq4vf")
-text = "Nubis aprende a moverse
-usando las teclas <- A / D ->
-o las flechas direccionales"
+text = "Moverse usando 
+las teclas A y D 
+o las flechas direccionales
+También hay 
+controles TOUCH en pantalla"
 label_settings = ExtResource("7_mrw6c")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="static_platforms" type="Node2D" parent="Parallax2D_medio"]
+[node name="StaticPlatforms" type="Node2D" parent="Parallax2D_medio"]
 
-[node name="StaticPlataform" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
-position = Vector2(-128, -384)
+[node name="StaticPlataform" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
+position = Vector2(-128, -576)
 
-[node name="StaticPlataform12" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform12" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(-1408, -6784)
 
-[node name="StaticPlataform14" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
-position = Vector2(1408, -4992)
+[node name="StaticPlataform2" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
+position = Vector2(896, -512)
 
-[node name="StaticPlataform2" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
-position = Vector2(896, -384)
+[node name="StaticPlataform4" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
+position = Vector2(-128, -1280)
 
-[node name="StaticPlataform4" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
-position = Vector2(0, -1600)
+[node name="StaticPlataform8" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
+position = Vector2(384, -1600)
 
-[node name="StaticPlataform5" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
-position = Vector2(-320, -2176)
+[node name="StaticPlataform11" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
+position = Vector2(-2496, -2432)
 
-[node name="StaticPlataform3" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
-position = Vector2(384, -1152)
+[node name="StaticPlataform3" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
+position = Vector2(384, -896)
 
-[node name="StaticPlataform6" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
-position = Vector2(128, -3712)
+[node name="StaticPlataform6" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
+position = Vector2(-320, -3712)
 
-[node name="StaticPlataform7" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
-position = Vector2(128, -4480)
+[node name="StaticPlataform10" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
+position = Vector2(192, -3712)
 
-[node name="StaticPlataform9" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform9" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(1408, -5504)
 
-[node name="moving platforms" type="Node2D" parent="Parallax2D_medio"]
+[node name="StaticPlataform13" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
+position = Vector2(896, -5504)
+
+[node name="StaticPlataform14" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
+position = Vector2(448, -5504)
+
+[node name="StaticPlataform15" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
+position = Vector2(0, -5504)
+
+[node name="StaticPlataform16" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
+position = Vector2(-448, -5504)
+
+[node name="MovingPlatforms" type="Node2D" parent="Parallax2D_medio"]
 modulate = Color(0.8992584, 0.8992584, 0.8992584, 1)
 position = Vector2(1857, -7)
 metadata/_edit_lock_ = true
 
-[node name="Plataformas" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
+[node name="Plataformas" parent="Parallax2D_medio/MovingPlatforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-1473, -57)
 speed = 400.0
 distance = 1024.0
 
-[node name="Plataformas6" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
-position = Vector2(-961, -4217)
+[node name="Plataformas6" parent="Parallax2D_medio/MovingPlatforms" instance=ExtResource("4_w1xa4")]
+position = Vector2(-961, -4985)
 speed = 600.0
 distance = 2048.0
 
-[node name="Plataformas4" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
-position = Vector2(-4033, -2681)
+[node name="Plataformas2" parent="Parallax2D_medio/MovingPlatforms" instance=ExtResource("4_w1xa4")]
+position = Vector2(-3777, -2681)
+distance = 256.0
 
-[node name="Plataformas5" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
-position = Vector2(63, -3193)
+[node name="Plataformas4" parent="Parallax2D_medio/MovingPlatforms" instance=ExtResource("4_w1xa4")]
+position = Vector2(-4289, -5497)
+distance = 256.0
 
-[node name="Plataformas2" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
-position = Vector2(-1473, -633)
-distance = 768.0
-
-[node name="Plataformas3" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
+[node name="Plataformas3" parent="Parallax2D_medio/MovingPlatforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-1473, -2425)
 speed = 500.0
 
@@ -255,27 +264,15 @@ position = Vector2(2496, -2112)
 position = Vector2(2432, 704)
 
 [node name="npc_patovica_1" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("9_bwbgn")]
-position = Vector2(3136, -2176)
+position = Vector2(3008, -2176)
 type = "patovica"
 target_pld_desired = 250
 return_point = NodePath("../punto_control_npc_1")
 dialog_id = "patovica-1"
 
-[node name="npc_patovica_2" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("9_bwbgn")]
-position = Vector2(4544, -2176)
-type = "patovica"
-target_desired = "pepboi"
-return_point = NodePath("../punto_control_npc_2")
-dialog_id = "patovica-2-pass"
-
 [node name="punto_control_npc_1" parent="Parallax2D_medio/NPCs" instance=ExtResource("8_f7n67")]
 modulate = Color(0, 0.6437175, 0.27693516, 1)
-position = Vector2(3008, -2176)
-scale = Vector2(2, 2)
-
-[node name="punto_control_npc_2" parent="Parallax2D_medio/NPCs" instance=ExtResource("8_f7n67")]
-modulate = Color(0, 0.6437175, 0.27693516, 1)
-position = Vector2(4416, -2176)
+position = Vector2(2880, -2176)
 scale = Vector2(2, 2)
 
 [node name="npc_chisme_1" parent="Parallax2D_medio/NPCs" instance=ExtResource("10_lf6bi")]
@@ -298,18 +295,21 @@ dialog_id = "tutorial-dash"
 position = Vector2(-128, 1920)
 dialog_id = "tutorial-doble-salto"
 
-[node name="npc_historia" parent="Parallax2D_medio/NPCs" instance=ExtResource("11_3qvg3")]
-position = Vector2(4480, -2688)
-target_desired = "comcubo"
-reward_quest_completed = "pepboi"
-reward_quest_completed_pld = 16384
-
 [node name="player_respawn_points" type="Node2D" parent="Parallax2D_medio"]
 unique_name_in_owner = true
 scale = Vector2(1, 1.0046809)
+metadata/_edit_lock_ = true
 
 [node name="player_respawn_point_1" parent="Parallax2D_medio/player_respawn_points" instance=ExtResource("9_shuiu")]
 position = Vector2(-2304, 640)
+scale = Vector2(0.99467725, 1)
+
+[node name="player_respawn_point_13" parent="Parallax2D_medio/player_respawn_points" instance=ExtResource("9_shuiu")]
+position = Vector2(-2688.0002, -1401.4402)
+scale = Vector2(0.99467725, 1)
+
+[node name="player_respawn_point_12" parent="Parallax2D_medio/player_respawn_points" instance=ExtResource("9_shuiu")]
+position = Vector2(-320.00012, 637.01825)
 scale = Vector2(0.99467725, 1)
 
 [node name="player_respawn_point_2" parent="Parallax2D_medio/player_respawn_points" instance=ExtResource("9_shuiu")]
@@ -328,13 +328,10 @@ position = Vector2(-1024, -5987.9707)
 position = Vector2(-768, -3439.8984)
 
 [node name="player_respawn_point_11" parent="Parallax2D_medio/player_respawn_points" instance=ExtResource("9_shuiu")]
-position = Vector2(128, -4713.9346)
+position = Vector2(448, -5669.462)
 
 [node name="player_respawn_point_10" parent="Parallax2D_medio/player_respawn_points" instance=ExtResource("9_shuiu")]
-position = Vector2(-2688, -5733.164)
-
-[node name="player_respawn_point_7" parent="Parallax2D_medio/player_respawn_points" instance=ExtResource("9_shuiu")]
-position = Vector2(-2368, -7007.2)
+position = Vector2(-2688, -5924.269)
 
 [node name="player_respawn_point_5" parent="Parallax2D_medio/player_respawn_points" instance=ExtResource("9_shuiu")]
 position = Vector2(1024, -7296)
@@ -344,7 +341,7 @@ position = Vector2(1024, -1401.4401)
 
 [node name="Player" parent="Parallax2D_medio" instance=ExtResource("5_wxrok")]
 unique_name_in_owner = true
-position = Vector2(-3328, 640)
+position = Vector2(-3456, 640)
 
 [node name="NPCs_decorado_frente" type="Parallax2D" parent="Parallax2D_medio"]
 scroll_scale = Vector2(1.1, 1)
@@ -362,15 +359,24 @@ scale = Vector2(1, -1)
 
 [node name="Portal1" type="Area2D" parent="Parallax2D_medio"]
 unique_name_in_owner = true
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
+position = Vector2(-33, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D_medio/Portal1"]
-position = Vector2(3413, -2208)
+position = Vector2(3488, -2240)
 shape = SubResource("RectangleShape2D_m11n0")
 
 [node name="Marker2D" type="Marker2D" parent="Parallax2D_medio/Portal1"]
-position = Vector2(3136, -2176)
+position = Vector2(3233, -2176)
+
+[node name="Portal0" type="Area2D" parent="Parallax2D_medio"]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D_medio/Portal0"]
+position = Vector2(-3712, 576)
+shape = SubResource("RectangleShape2D_m11n0")
+
+[node name="Marker2D" type="Marker2D" parent="Parallax2D_medio/Portal0"]
+position = Vector2(-3520, 640)
 
 [node name="Collectables" type="Node2D" parent="Parallax2D_medio"]
 
@@ -389,23 +395,29 @@ position = Vector2(256, 640)
 [node name="Item16" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
 position = Vector2(1792, 128)
 
-[node name="Item23" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
-position = Vector2(1408, -704)
-
-[node name="Item27" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
-position = Vector2(0, -1856)
-
 [node name="Item29" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
-position = Vector2(-320, -2432)
+position = Vector2(-768, -1664)
 
-[node name="Item10" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
-position = Vector2(2816, -3712)
+[node name="Item38" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
+position = Vector2(-768, -640)
+
+[node name="Item44" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
+position = Vector2(-128, -832)
+
+[node name="Item45" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
+position = Vector2(896, -832)
+
+[node name="Item46" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
+position = Vector2(384, -320)
 
 [node name="Item19" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
 position = Vector2(2304, -3968)
 
 [node name="Item20" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
 position = Vector2(1536, -3200)
+
+[node name="Item41" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
+position = Vector2(2304, -3200)
 
 [node name="Item24" parent="Parallax2D_medio/Collectables" instance=ExtResource("7_mrfrg")]
 position = Vector2(768, -3200)
@@ -435,7 +447,7 @@ pld_bonus = 75
 respawn_time = 7.5
 
 [node name="Item6" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
-position = Vector2(384, -1408)
+position = Vector2(-128, -1536)
 
 [node name="Item25" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
 position = Vector2(1536, -3968)
@@ -447,7 +459,16 @@ position = Vector2(768, -3968)
 position = Vector2(2048, -4736)
 
 [node name="Item8" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
-position = Vector2(-960, -2688)
+position = Vector2(-1088, -2688)
+
+[node name="Item42" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(-896, -2688)
+
+[node name="Item43" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(-704, -2688)
+
+[node name="Item39" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(-768, -3456)
 
 [node name="Item11" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
 position = Vector2(-1152, -6016)
@@ -459,13 +480,46 @@ position = Vector2(-896, -6016)
 pld_bonus = 75
 respawn_time = 11.0
 
+[node name="Item31" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(-256, -6784)
+pld_bonus = 75
+respawn_time = 11.0
+
+[node name="Item32" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(768, -6272)
+pld_bonus = 75
+respawn_time = 11.0
+
+[node name="Item33" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(256, -6528)
+pld_bonus = 75
+respawn_time = 11.0
+
+[node name="Item34" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(1536, -6784)
+pld_bonus = 75
+respawn_time = 11.0
+
+[node name="Item35" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(2048, -6272)
+pld_bonus = 75
+respawn_time = 11.0
+
+[node name="Item36" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(2560, -5760)
+pld_bonus = 75
+respawn_time = 11.0
+
 [node name="Item13" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
 position = Vector2(-1024, -6272)
 pld_bonus = 75
 respawn_time = 17.0
 
 [node name="Item9" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
-position = Vector2(1408, -5248)
+position = Vector2(1280, -4736)
+
+[node name="Item40" parent="Parallax2D_medio/Collectables" instance=ExtResource("8_cpsdu")]
+position = Vector2(2816, -4736)
 
 [node name="Item_bonus_1" parent="Parallax2D_medio/Collectables" groups=["items"] instance=ExtResource("24_fq4vf")]
 position = Vector2(2816, 640)
@@ -476,6 +530,69 @@ item_specimen = "morphball"
 
 [node name="Item_bonus_2" parent="Parallax2D_medio/Collectables" groups=["items"] instance=ExtResource("24_fq4vf")]
 position = Vector2(-2624, -2240)
+pld_bonus = 500
+respawn_time = 30.0
+item_type = "bonus"
+item_specimen = "morphball"
+
+[node name="Item_bonus_7" parent="Parallax2D_medio/Collectables" groups=["items"] instance=ExtResource("24_fq4vf")]
+position = Vector2(-1920, -4416)
+pld_bonus = 500
+respawn_time = 30.0
+item_type = "bonus"
+item_specimen = "morphball"
+
+[node name="Item_bonus_8" parent="Parallax2D_medio/Collectables" groups=["items"] instance=ExtResource("24_fq4vf")]
+position = Vector2(-2176, -4864)
+pld_bonus = 500
+respawn_time = 30.0
+item_type = "bonus"
+item_specimen = "morphball"
+
+[node name="Item_bonus_9" parent="Parallax2D_medio/Collectables" groups=["items"] instance=ExtResource("24_fq4vf")]
+position = Vector2(-1664, -4864)
+pld_bonus = 500
+respawn_time = 30.0
+item_type = "bonus"
+item_specimen = "morphball"
+
+[node name="Item_bonus_10" parent="Parallax2D_medio/Collectables" groups=["items"] instance=ExtResource("24_fq4vf")]
+position = Vector2(-1664, -5120)
+pld_bonus = 500
+respawn_time = 30.0
+item_type = "bonus"
+item_specimen = "morphball"
+
+[node name="Item_bonus_12" parent="Parallax2D_medio/Collectables" groups=["items"] instance=ExtResource("24_fq4vf")]
+position = Vector2(-1664, -5376)
+pld_bonus = 500
+respawn_time = 30.0
+item_type = "bonus"
+item_specimen = "morphball"
+
+[node name="Item_bonus_15" parent="Parallax2D_medio/Collectables" groups=["items"] instance=ExtResource("24_fq4vf")]
+position = Vector2(2816, -3712)
+pld_bonus = 500
+respawn_time = 30.0
+item_type = "bonus"
+item_specimen = "morphball"
+
+[node name="Item_bonus_11" parent="Parallax2D_medio/Collectables" groups=["items"] instance=ExtResource("24_fq4vf")]
+position = Vector2(-2176, -5120)
+pld_bonus = 500
+respawn_time = 30.0
+item_type = "bonus"
+item_specimen = "morphball"
+
+[node name="Item_bonus_13" parent="Parallax2D_medio/Collectables" groups=["items"] instance=ExtResource("24_fq4vf")]
+position = Vector2(-2176, -5376)
+pld_bonus = 500
+respawn_time = 30.0
+item_type = "bonus"
+item_specimen = "morphball"
+
+[node name="Item_bonus_14" parent="Parallax2D_medio/Collectables" groups=["items"] instance=ExtResource("24_fq4vf")]
+position = Vector2(-2688, -6592)
 pld_bonus = 500
 respawn_time = 30.0
 item_type = "bonus"
@@ -509,22 +626,12 @@ respawn_time = 30.0
 item_type = "bonus"
 item_specimen = "morphball"
 
-[node name="ItemHistoria2" parent="Parallax2D_medio/Collectables" instance=ExtResource("16_1egpu")]
-position = Vector2(-2176, -4480)
-
-[node name="Portal0" type="Area2D" parent="Parallax2D_medio"]
-unique_name_in_owner = true
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D_medio/Portal0"]
-position = Vector2(1664, -2208)
-shape = SubResource("RectangleShape2D_m11n0")
-
-[node name="Marker2D" type="Marker2D" parent="Parallax2D_medio/Portal0"]
-position = Vector2(1792, -2176)
+[node name="ItemHistoria2" parent="Parallax2D_medio/Collectables" groups=["items"] instance=ExtResource("16_1egpu")]
+position = Vector2(2944, -2688)
+quest_id = "historia-1"
 
 [node name="Parallax2D_frente" type="Parallax2D" parent="."]
+visible = false
 z_index = 200
 scroll_scale = Vector2(1.1, 1.1)
 

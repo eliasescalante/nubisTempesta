@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf78xh4w4ptor"
-path="res://.godot/imported/item_pase_pepboi.png-70c99ac3952745c1bcac772dc7778e45.ctex"
+uid="uid://c6qihejspbtgk"
+path="res://.godot/imported/item_megafera.png-248a396c08b7c9e0f89a0df38dc4937c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/art/sprites/item_pase_pepboi.png"
-dest_files=["res://.godot/imported/item_pase_pepboi.png-70c99ac3952745c1bcac772dc7778e45.ctex"]
+source_file="res://_assets/art/sprites/item_megafera.png"
+dest_files=["res://.godot/imported/item_megafera.png-248a396c08b7c9e0f89a0df38dc4937c.ctex"]
 
 [params]
 

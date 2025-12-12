@@ -96,4 +96,6 @@ func end_dialog():
 	# Acá ponemos la recompensa por completar el Encargo/Misión de la Historia
 	# El Player obtiene el objeto PASE y PLD.
 	level_node.give_player_quest_reward(reward_quest_completed, reward_quest_completed_pld)
+	# Marcamos la mision como cumplida
+	GameState.update_npc_property(npc, 'quest', true)
 	Transitioned.emit(self, "NpcDesactivated") # Esto deberia ser NpcQuestWaiting

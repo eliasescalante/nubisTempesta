@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c46o3ooyukr00"
-path="res://.godot/imported/item_04_chupachups.png-9372bfdbb8ebae9d012acf1a56016d0d.ctex"
+uid="uid://dvu264o50kelf"
+path="res://.godot/imported/item_soul.png-7e2777806c0f4cddb6a9e9de7d915cab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/art/sprites/item_04_chupachups.png"
-dest_files=["res://.godot/imported/item_04_chupachups.png-9372bfdbb8ebae9d012acf1a56016d0d.ctex"]
+source_file="res://_assets/art/sprites/item_soul.png"
+dest_files=["res://.godot/imported/item_soul.png-7e2777806c0f4cddb6a9e9de7d915cab.ctex"]
 
 [params]
 
