@@ -509,58 +509,6 @@ var dialogos_script = {
 			], #END secuencia 1 
 		] # END dialog_sequences
 	}, # END item-buscado
-	'historia-1': {
-		'repeat': -1, # -1 infinito
-		'loop': false,
-		'mode': 'sequential', # 'random'. Cualquier de las secuencias
-		'dialogue_sequences': [ # secuencia de dialogos
-			[ # secuencia de dialogo 1
-				{
-					'actor': 'npc',
-					'text': 'Necesito que consigas \n un <%OBJ%>.',
-				},
-				{
-					'actor': 'player',
-					'text': '¡Una misión!',
-				},
-			],
-			[ # secuencia de dialogo 1
-				{
-					'actor': 'npc',
-					'text': '¿Todavía no tenés \n el <%OBJ%> ? \n Seguí buscando.',
-				},
-			],
-		],
-	},
-	'historia-1-completed': {
-		'repeat': -1,
-		'loop': false,
-		'mode': 'sequential', # 'random'. Cualquier de las secuencias
-		'dialogue_sequences': [ # secuencia de dialogos
-			[ # secuencia de dialogo 1
-				{
-					'actor': 'npc',
-					'text': 'Bien hecho. \n Ten tu Recompensa \n un pase <%REW%> \n y <%PLD%> PLD.',
-				},
-				{
-					'actor': 'player',
-					'text': '¡WOW!',
-				},
-				{
-					'actor': 'player',
-					'text': '¡Tengo que \n dedicarme a esto!',
-					'duration': 3.3,
-					'balloon_type': 'thought', # Estilo pensamiento
-				},
-			],
-			[ # secuencia de dialogo 1
-				{
-					'actor': 'npc',
-					'text': 'Ya no necesito nada. \n Buscá a otro. \n ¡Chau!',
-				},
-			],
-		],
-	}, # END historia-1-completed
 	'patovica-1': {
 		'repeat': -1,
 		'loop': false,
@@ -597,33 +545,173 @@ var dialogos_script = {
 			],
 		],
 	}, # END patovica-1
-	'patovica-2-pass': {
-		'repeat': -1,
+	#
+	# ------------------------ DIALOGOS BAR ------------------------------------
+	#
+	'historia-1': {
+		'repeat': -1, # -1 infinito
+		'loop': false,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia de dialogo 1
+				{
+					'actor': 'player',
+					'text': 'Tengo entendido que\n ofrece un pase\n "PEPBOI"\n ¿Es así?',
+				},
+				{
+					'actor': 'npc',
+					'text': 'Si, es así.\n Pero necesito algo\n a cambio. \n Un "<%OBJ%>"s.',
+				},
+				{
+					'actor': 'npc',
+					'text': 'No tengo suficiente\n destreza para \n encontrarlo.',
+				},
+				{
+					'actor': 'player',
+					'text': 'Yo realizo encargos.\n Soy una buscadora\n profesional.',
+				},
+				{
+					'actor': 'npc',
+					'text': 'Bien, espero \n que puedas\n encontrarlo.\n Te espero.',
+				},
+
+			],
+			[ # secuencia de dialogo 1
+				{
+					'actor': 'npc',
+					'text': '¿Todavía no tenés \n el "<%OBJ%>" ? \n Seguí buscando\n y no molestes.',
+				},
+			],
+		],
+	},
+	'historia-1-completed': {
+		'repeat': 0,
 		'loop': false,
 		'mode': 'sequential', # 'random'. Cualquier de las secuencias
 		'dialogue_sequences': [ # secuencia de dialogos
 			[ # secuencia de dialogo 1
 				{
 					'actor': 'npc',
-					'text': "¡Alto! Para acceder \n necesitás el pase \n <%OBJ%>. \n Suerte con eso, jaja.",
-					'duration': 3.3,
+					'text': 'Bien hecho. \n Ten tu Recompensa: \n el pase "<%REW%>" \n y <%PLD%> PLD.',
+				},
+				{
+					'actor': 'player',
+					'text': '¡WOW!',
+					'balloon_type': 'thought', # Estilo pensamiento
+				},
+				{
+					'actor': 'player',
+					'text': '¿Eso es todo? \n Bueno, ya conoce\n mis servicios.\n Hasta luego.',
+					'duration': 3.8,
+				},
+				{
+					'actor': 'npc',
+					'text': 'Te tendré en \n cuenta.\n Hasta luego...',
+					'duration': 3.8,
+				},
+				{
+					'actor': 'player',
+					'text': '¡Tengo que \n dedicarme a esto!',
+					'duration': 3.8,
+					'balloon_type': 'thought', # Estilo pensamiento
+				},
+			],
+			[ # secuencia de dialogo 1
+				{
+					'actor': 'npc',
+					'text': 'Ya no necesito nada. \n Buscá a otro. \n ¡Chau!',
+				},
+			],
+		],
+	}, # END historia-1-completed
+	'chisme-historia-1': {
+		'repeat': -1,
+		'loop': true,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia de diálogo #1
+				{
+					'actor': 'npc',
+					'text': 'Escuché que hay \n alguien que está \n ofreciendo un \n pase "PEPBOI".',
+					'duration': 3.8,
+					'content_type': 'text'
+				},
+				{
+					'actor': 'player',
+					'text': '¡Hey, es \n lo que necesito! \n ¡Excelente!',
+					'duration': 3.2,
+					'balloon_type': 'thought' # Estilo pensamiento
+				},
+				{
+					'actor': 'player',
+					'text': '¿ah, si? ¡Mirá!\n ¿Y...\n sabés dónde\n encontrarlo?',
+					'duration': 3.8,
+					'content_type': 'text'
+				},
+				{
+					'actor': 'npc',
+					'text': 'Creo que está\n en la parte alta\n del BAR.',
+					'duration': 3.2,
+				},
+			], # END secuencia de diálogo #1
+		] # END dialog_sequences
+	}, # END chisme-historia-1
+	'chisme-salida': {
+		'repeat': -1,
+		'loop': true,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia de diálogo #1
+				{
+					'actor': 'npc',
+					'text': 'El BAR "BARRACUDA" \n está muy bien,\n ¡pero hay lugares\n mejores!',
+					'duration': 3.8,
+				},
+				{
+					'actor': 'player',
+					'text': '¡Que interesante! \n ¿Y sabes como\n llegar a ellos?',
+					'duration': 3.2,
+				},
+				{
+					'actor': 'npc',
+					'text': '¡Si, pero hay que\n tener un pase\n para ingresar a\n otras zonas.',
+					'duration': 3.8,
+				},
+				{
+					'actor': 'player',
+					'text': 'Creo que ya sé\n lo que tengo\n que hacer',
+					'duration': 3.2,
+				},
+			], # END secuencia de diálogo #1
+		] # END dialog_sequences
+	}, # END chisme-salida
+	'patovica-2-pass': {
+		'repeat': -1,
+		'loop': true,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia de dialogo 1
+				{
+					'actor': 'npc',
+					'text': '¡Alto! Para acceder \n necesitás el pase \n "<%OBJ%>". \n Suerte con eso, jaja.',
+					'duration': 4.3,
 				},
 				{
 					'actor': 'player',
 					'text': 'Ya vas a ver, \n vuelvo y te paso \n el pase por la cara.',
-					'duration': 3.3,
+					'duration': 4.3,
 				},
 				{
 					'actor': 'npc',
 					'text': 'Jajaja, quisiera verlo, \n insecto. A volar \n de aquí',
-					'duration': 3.3,
+					'duration': 4.3,
 				},
 			],
 			[ # secuencia de dialogo 2
 				{
 					'actor': 'npc',
 					'text': 'Si no tenés el pase \n <%OBJ%>, \n seguí buscando... \n insecto, jajaja.',
-					'duration': 3.3,
+					'duration': 4.3,
 				},
 				{
 					'actor': 'player',
@@ -654,7 +742,7 @@ var dialogos_script = {
 				},
 				{
 					'actor': 'player',
-					'text': '¡Silencio! ¡Acá tenés \n el pase, gil! \n ¿Te cabió?',
+					'text': '¡Silencio!\n ¡Acá tenés \n el pase, gil! \n ¿Te cabió?',
 					'duration': 3.3,
 				},
 				{
