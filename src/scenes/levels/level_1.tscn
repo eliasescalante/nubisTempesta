@@ -502,8 +502,9 @@ respawn_time = 30.0
 item_type = "bonus"
 item_specimen = "morphball"
 
-[node name="ItemHistoria2" parent="Parallax2D_medio/Collectables" instance=ExtResource("16_1egpu")]
-position = Vector2(-2176, -4480)
+[node name="ItemHistoria2" parent="Parallax2D_medio/Collectables" groups=["items"] instance=ExtResource("16_1egpu")]
+position = Vector2(2944, -2688)
+quest_id = "historia-1"
 
 [node name="Parallax2D_frente" type="Parallax2D" parent="."]
 visible = false

@@ -443,6 +443,49 @@ var dialogos_script = {
 			], # END secuencia de diálogo #1
 		] # END dialog_sequences
 	}, # END chisme-bar
+	'item-no-disponible': {
+		'repeat': -1,
+		'loop': true,
+		'mode': 'sequential', # 'random'. Cualquier de las secuencias
+		'dialogue_sequences': [ # secuencia de dialogos
+			[ # secuencia 1
+				{
+					'actor': 'player',
+					'text': '¿Un "<%OBJ%>?"\n No me interesa,\n no vale nada.',
+					'duration': 3.7,
+					'content_type': 'text',
+					'balloon_type': 'thought' # Estilo pensamiento
+				},
+			], #END secuencia 1 
+			[ # secuencia 2
+				{
+					'actor': 'player',
+					'text': 'No lo voy a tomar.',
+					'duration': 2.3,
+					'content_type': 'text',
+					'balloon_type': 'thought' # Estilo pensamiento
+				},
+			], # END secuencia 2
+			[ # secuencia 3
+				{
+					'actor': 'player',
+					'text': '¿No estás entendiendo, no?.',
+					'duration': 2.3,
+					'content_type': 'text',
+					'balloon_type': 'thought' # Estilo pensamiento
+				},
+			], # END secuencia 3
+			[ # secuencia 4
+				{
+					'actor': 'player',
+					'text': '¡Cortala!',
+					'duration': 2.3,
+					'content_type': 'text',
+					'balloon_type': 'thought' # Estilo pensamiento
+				},
+			], # END secuencia 4
+		] # END dialog_sequences
+	}, # END chisme-bar
 	'historia-1': {
 		'repeat': -1, # -1 infinito
 		'loop': false,

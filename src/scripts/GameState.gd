@@ -1,7 +1,6 @@
 extends Node
 
 # para los touch mobiel
-
 var touch_left := false
 var touch_right := false
 var touch_jump := false
@@ -11,7 +10,7 @@ var touch_pause := false
 # ------------------------------------------------------------------------------
 var tutorial = true # Al comienzo del juego muestra los diálogos de tutorial.
 var tutorial_player_first_move = true
-
+# ------------------------------------------------------------------------------
 # DATA PARA EL LOADER ENTRE ESCENAS
 var portal #1 es al nivel inicial, 2 al nivel 2 y el 3
 var loader # para cargar la escena a donde ir
@@ -21,9 +20,14 @@ var image_loader_mini # para cargar la imagen mini
 # ------------------------------------------------------------------------------
 # DATA DEL PLAYER
 var pld: int
+# Slots del inventario en el HUD
 var item_used: String
 var item_quest: String
 var item_pass: String
+# Encargo/Quest activada
+var quest_id: String
+# ------------------------------------------------------------------------------
+
 # ------------------------------------------------------------------------------
 var game_over
 var timer_game_over
@@ -40,6 +44,7 @@ func reset_game_state():
 	item_used = ""
 	item_quest = ""
 	item_pass = ""
+	quest_id = ""
 	game_over = false
 	timer_game_over = 3.0 # Lo que dura en pantalla ingame con Nubis muerta hasta que se dispare la cortina.
 	game_over_scene_launched = false
@@ -111,7 +116,11 @@ func reset_npcs_data() -> void:
 	npcs_data.clear()
 	print("Datos de NPCs reseteados")
 
-# Función para verificar si un NPC tiene quest
+# Función para verificar si un NPC tiene quest completa.
+# Devuelve TRUE si ya se completó. Esto se consulta en el INIT de cada NPC
+# y si ya está completa lo desactiva.
+# Devuele FALSE en el caso de que todavía no esté completa o no se haya identificado el NPC.
+# Se podría renombrar como 'npc_has_quest_completed' para hacerla más semánticamente correcta
 func npc_has_quest(npc_node: Node) -> bool:
 	var npc_id = get_npc_id(npc_node)
 	if npcs_data.has(npc_id):

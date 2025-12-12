@@ -171,7 +171,7 @@ position = Vector2(5888, 640)
 scale = Vector2(2, 2)
 
 [node name="npc_historia" parent="Parallax2D_medio/NPCs" instance=ExtResource("8_xyt1d")]
-position = Vector2(4480, 128)
+position = Vector2(2624, 640)
 target_desired = "comcubo"
 reward_quest_completed = "pepboi"
 reward_quest_completed_pld = 16384
