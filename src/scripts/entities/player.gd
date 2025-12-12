@@ -72,7 +72,7 @@ func gastar_pld(cantidad: int):
 	if hud:
 		hud.actualizar_puntos(pld)
 	emit_signal("pld_cambiado", pld)
-	print("PLD restante:", pld)
+	#print("PLD restante:", pld)
 	
 	if pld <= PLD_GAME_OVER:
 		# Esto es para diferencias entre morir por caida abrupta o por agotamiento.
@@ -84,7 +84,7 @@ func gastar_pld(cantidad: int):
 			is_dead = true
 		is_game_over = true
 		sfx_gameover.play()
-		print ("Emitir señal 'game_over'")
+		#print ("Emitir señal 'game_over'")
 		emit_signal("game_over")
 		#return
 		
@@ -199,18 +199,18 @@ func _physics_process(delta: float) -> void:
 			sfx_falling.play()
 	# --- Aterrizar
 	if velocity_falling > 0.0 and on_floor:
-		print("velociad de caida",str(velocity_falling))
+		#print("velociad de caida",str(velocity_falling))
 		# Determinar si se MUERE o no
 		if velocity_falling >= MORTAL_VELOCITY_FALL:
-			print('morir')
+			#print('morir')
 			is_landing = false
 			is_dead = true
 			sfx_dying.play()
 			gastar_pld(pld_por_morir)
 		else:
-			print("Aterrizar")
+			#print("Aterrizar")
 			pld_por_caida = int ( velocity_falling / pld_por_caida_factor )
-			print('pld_por_caida', str(pld_por_caida))
+			#print('pld_por_caida', str(pld_por_caida))
 			gastar_pld(pld_por_caida)
 			sfx_landing.play()
 			is_landing = true
@@ -247,7 +247,7 @@ func _physics_process(delta: float) -> void:
 	if direction == 0 and on_floor:
 		tiempo_sin_mover += delta
 		if tiempo_sin_mover >= tiempo_quieto:
-			print("Tiempo sin mover gasta PLD")
+			#print("Tiempo sin mover gasta PLD")
 			gastar_pld(pld_por_tiempo_quieto)
 			tiempo_sin_mover = 0
 			is_landing = false
@@ -323,15 +323,15 @@ func sumar_pld(cantidad: int):
 	if hud:
 		hud.actualizar_puntos(pld)
 	emit_signal("pld_cambiado", pld)
-	print("PLD actual tras sumar:", pld)
+	#print("PLD actual tras sumar:", pld)
 
 func regenerar():
-	print("Regenerar a Nubis")
+	#print("Regenerar a Nubis")
 	is_dead = false
 	is_captured = false
 	is_dying = false
 
 func captured():
-	print("Nubis Capturada")
+	#print("Nubis Capturada")
 	gastar_pld(pld_por_morir)
 	is_captured = true # Esto habilita en el _physics_prossed el conteo para regeneracion
