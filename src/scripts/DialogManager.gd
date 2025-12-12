@@ -183,12 +183,19 @@ func _process(_delta:float)	->void:
 	# En este punto damos por supuesto que el 
 	# dialogo empezó y no terminó. Hay que procesar las partes.
 	
-	# AQUI VER SI PONER EL TIMER
-	
+	if Input.is_action_just_pressed("dialogo_saltar_parte") or GameState.touch_dialogo_saltar_parte:
+		GameState.touch_dialogo_saltar_parte = false
+		the_duration = 0.0
+
+	if Input.is_action_just_pressed("dialogo_saltar_todo") or GameState.touch_dialogo_saltar_todo:
+		GameState.touch_dialogo_saltar_todo = false
+		print("SALTA TODO")
+		next_dialog_part = the_secuence.size()
+		
 	# 1 - Comprobamos si hay que avanzar o actualizar el TIMER
 	if current_dialog_part == next_dialog_part:
 		the_duration -= 1 * _delta
-		if the_duration < 0:
+		if the_duration <= 0.0:
 			# Si llegamos al final del timer avanzamos a la marca
 			# a la siguiente parte.
 			next_dialog_part += 1
@@ -196,6 +203,8 @@ func _process(_delta:float)	->void:
 		
 	# 2 - Actualizamos la parte
 	current_dialog_part = next_dialog_part
+
+
 	
 	# 3 - Comprobamos si no llegamos al final del diálogo
 	if not current_dialog_part < the_secuence.size():
