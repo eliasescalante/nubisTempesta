@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://clx0rliac47qw"]
+[gd_scene load_steps=26 format=4 uid="uid://clx0rliac47qw"]
 
 [ext_resource type="Script" uid="uid://de366u52gwitk" path="res://src/scripts/level_1.gd" id="1_nw74m"]
 [ext_resource type="TileSet" uid="uid://84vsloajncpa" path="res://_resources/map_exterior_blanco_tile_set.tres" id="2_cufsb"]
@@ -19,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://b1gvurchiu3h4" path="res://src/scenes/entities/player_respawn_point.tscn" id="9_shuiu"]
 [ext_resource type="PackedScene" uid="uid://dtuunre8ai8jr" path="res://src/scenes/entities/npc_chisme.tscn" id="10_lf6bi"]
 [ext_resource type="PackedScene" uid="uid://wstroalu326b" path="res://src/scenes/entities/npc_decorado_negro.tscn" id="10_m1y7t"]
-[ext_resource type="PackedScene" uid="uid://cl7tghv4aae1l" path="res://src/scenes/entities/npc_historia.tscn" id="11_3qvg3"]
 [ext_resource type="TileSet" uid="uid://cv42yxnip6htf" path="res://_resources/map_exterior_negro_tile_set.tres" id="11_cufsb"]
 [ext_resource type="PackedScene" uid="uid://c0qonmpwpmm0v" path="res://src/scenes/entities/cortina.tscn" id="14_cufsb"]
 [ext_resource type="PackedScene" uid="uid://b2j1to5r5vjth" path="res://src/scenes/entities/item_historia_comcubo.tscn" id="16_1egpu"]
@@ -36,7 +35,7 @@ script = ExtResource("1_nw74m")
 metadata/_edit_vertical_guides_ = [-2816.0, 3072.0]
 metadata/_edit_horizontal_guides_ = [768.0, -2048.0]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 offset_left = -4608.0
 offset_top = -8704.0
 offset_right = 4864.0
@@ -69,8 +68,6 @@ collision_enabled = false
 metadata/_edit_lock_ = true
 
 [node name="npcs_decorados" type="Node2D" parent="Parallax2D_fondo"]
-visible = false
-modulate = Color(1, 0.53999996, 0.53999996, 1)
 
 [node name="npc_decorado_2" parent="Parallax2D_fondo/npcs_decorados" instance=ExtResource("2_wxrok")]
 position = Vector2(-1408, -128)
@@ -144,64 +141,64 @@ label_settings = ExtResource("7_mrw6c")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="static_platforms" type="Node2D" parent="Parallax2D_medio"]
+[node name="StaticPlatforms" type="Node2D" parent="Parallax2D_medio"]
 
-[node name="StaticPlataform" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(-128, -384)
 
-[node name="StaticPlataform12" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform12" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(-1408, -6784)
 
-[node name="StaticPlataform14" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform14" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(1408, -4992)
 
-[node name="StaticPlataform2" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform2" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(896, -384)
 
-[node name="StaticPlataform4" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform4" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(0, -1600)
 
-[node name="StaticPlataform5" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform5" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(-320, -2176)
 
-[node name="StaticPlataform3" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform3" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(384, -1152)
 
-[node name="StaticPlataform6" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform6" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(128, -3712)
 
-[node name="StaticPlataform7" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform7" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(128, -4480)
 
-[node name="StaticPlataform9" parent="Parallax2D_medio/static_platforms" instance=ExtResource("3_cpsdu")]
+[node name="StaticPlataform9" parent="Parallax2D_medio/StaticPlatforms" instance=ExtResource("3_cpsdu")]
 position = Vector2(1408, -5504)
 
-[node name="moving platforms" type="Node2D" parent="Parallax2D_medio"]
+[node name="MovingPlatforms" type="Node2D" parent="Parallax2D_medio"]
 modulate = Color(0.8992584, 0.8992584, 0.8992584, 1)
 position = Vector2(1857, -7)
 metadata/_edit_lock_ = true
 
-[node name="Plataformas" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
+[node name="Plataformas" parent="Parallax2D_medio/MovingPlatforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-1473, -57)
 speed = 400.0
 distance = 1024.0
 
-[node name="Plataformas6" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
+[node name="Plataformas6" parent="Parallax2D_medio/MovingPlatforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-961, -4217)
 speed = 600.0
 distance = 2048.0
 
-[node name="Plataformas4" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
+[node name="Plataformas4" parent="Parallax2D_medio/MovingPlatforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-4033, -2681)
 
-[node name="Plataformas5" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
+[node name="Plataformas5" parent="Parallax2D_medio/MovingPlatforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(63, -3193)
 
-[node name="Plataformas2" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
+[node name="Plataformas2" parent="Parallax2D_medio/MovingPlatforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-1473, -633)
 distance = 768.0
 
-[node name="Plataformas3" parent="Parallax2D_medio/moving platforms" instance=ExtResource("4_w1xa4")]
+[node name="Plataformas3" parent="Parallax2D_medio/MovingPlatforms" instance=ExtResource("4_w1xa4")]
 position = Vector2(-1473, -2425)
 speed = 500.0
 
@@ -240,6 +237,7 @@ dialog_id = "chisme-bar"
 position = Vector2(2496, -2176)
 target_desired = "chupachups"
 return_point = NodePath("../punto_retorno_npc_1")
+blocked = true
 dialog_id = "npc-estorbo"
 
 [node name="npc_estorbo_2" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("5_w1xa4")]
@@ -259,23 +257,12 @@ position = Vector2(3136, -2176)
 type = "patovica"
 target_pld_desired = 250
 return_point = NodePath("../punto_control_npc_1")
+blocked = true
 dialog_id = "patovica-1"
-
-[node name="npc_patovica_2" parent="Parallax2D_medio/NPCs" node_paths=PackedStringArray("return_point") instance=ExtResource("9_bwbgn")]
-position = Vector2(4544, -2176)
-type = "patovica"
-target_desired = "pepboi"
-return_point = NodePath("../punto_control_npc_2")
-dialog_id = "patovica-2-pass"
 
 [node name="punto_control_npc_1" parent="Parallax2D_medio/NPCs" instance=ExtResource("8_f7n67")]
 modulate = Color(0, 0.6437175, 0.27693516, 1)
 position = Vector2(3008, -2176)
-scale = Vector2(2, 2)
-
-[node name="punto_control_npc_2" parent="Parallax2D_medio/NPCs" instance=ExtResource("8_f7n67")]
-modulate = Color(0, 0.6437175, 0.27693516, 1)
-position = Vector2(4416, -2176)
 scale = Vector2(2, 2)
 
 [node name="npc_chisme_1" parent="Parallax2D_medio/NPCs" instance=ExtResource("10_lf6bi")]
@@ -297,12 +284,6 @@ dialog_id = "tutorial-dash"
 [node name="npc_chisme_2" parent="Parallax2D_medio/NPCs" instance=ExtResource("10_lf6bi")]
 position = Vector2(-128, 1920)
 dialog_id = "tutorial-doble-salto"
-
-[node name="npc_historia" parent="Parallax2D_medio/NPCs" instance=ExtResource("11_3qvg3")]
-position = Vector2(4480, -2688)
-target_desired = "comcubo"
-reward_quest_completed = "pepboi"
-reward_quest_completed_pld = 16384
 
 [node name="player_respawn_points" type="Node2D" parent="Parallax2D_medio"]
 unique_name_in_owner = true
@@ -344,7 +325,7 @@ position = Vector2(1024, -1401.4401)
 
 [node name="Player" parent="Parallax2D_medio" instance=ExtResource("5_wxrok")]
 unique_name_in_owner = true
-position = Vector2(-3328, 640)
+position = Vector2(2048, -2176)
 
 [node name="NPCs_decorado_frente" type="Parallax2D" parent="Parallax2D_medio"]
 scroll_scale = Vector2(1.1, 1)
@@ -371,6 +352,18 @@ shape = SubResource("RectangleShape2D_m11n0")
 
 [node name="Marker2D" type="Marker2D" parent="Parallax2D_medio/Portal1"]
 position = Vector2(3136, -2176)
+
+[node name="Portal0" type="Area2D" parent="Parallax2D_medio"]
+unique_name_in_owner = true
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D_medio/Portal0"]
+position = Vector2(1664, -2208)
+shape = SubResource("RectangleShape2D_m11n0")
+
+[node name="Marker2D" type="Marker2D" parent="Parallax2D_medio/Portal0"]
+position = Vector2(1792, -2176)
 
 [node name="Collectables" type="Node2D" parent="Parallax2D_medio"]
 
@@ -509,22 +502,12 @@ respawn_time = 30.0
 item_type = "bonus"
 item_specimen = "morphball"
 
-[node name="ItemHistoria2" parent="Parallax2D_medio/Collectables" instance=ExtResource("16_1egpu")]
-position = Vector2(-2176, -4480)
-
-[node name="Portal0" type="Area2D" parent="Parallax2D_medio"]
-unique_name_in_owner = true
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax2D_medio/Portal0"]
-position = Vector2(1664, -2208)
-shape = SubResource("RectangleShape2D_m11n0")
-
-[node name="Marker2D" type="Marker2D" parent="Parallax2D_medio/Portal0"]
-position = Vector2(1792, -2176)
+[node name="ItemHistoria2" parent="Parallax2D_medio/Collectables" groups=["items"] instance=ExtResource("16_1egpu")]
+position = Vector2(2944, -2688)
+quest_id = "historia-1"
 
 [node name="Parallax2D_frente" type="Parallax2D" parent="."]
+visible = false
 z_index = 200
 scroll_scale = Vector2(1.1, 1.1)
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyy2vse46n0yj"
-path="res://.godot/imported/item_05_plasmido.png-7120f4c96e6a983c1d69d1b28789817b.ctex"
+uid="uid://bf7vl3mxbgp82"
+path="res://.godot/imported/item_honguito.png-649e89f929660d7fbc88fdabae062bdb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/art/sprites/item_05_plasmido.png"
-dest_files=["res://.godot/imported/item_05_plasmido.png-7120f4c96e6a983c1d69d1b28789817b.ctex"]
+source_file="res://_assets/art/sprites/item_honguito.png"
+dest_files=["res://.godot/imported/item_honguito.png-649e89f929660d7fbc88fdabae062bdb.ctex"]
 
 [params]
 

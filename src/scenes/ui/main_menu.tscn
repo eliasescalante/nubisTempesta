@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://8xww1yixtk6s" path="res://_assets/art/main/main_plano_02_pilares.png" id="8_pkenp"]
 [ext_resource type="Texture2D" uid="uid://bregk4t7a1gsf" path="res://_assets/art/main/main_plano_01_nubis.png" id="9_fshqk"]
 [ext_resource type="Script" uid="uid://bkujlu2it2iu7" path="res://src/scripts/ui/mouse_follower.gd" id="10_bpdy7"]
-[ext_resource type="Texture2D" uid="uid://bcl3w5ue30jad" path="res://_assets/art/sprites/item-06-godot.png" id="11_s2t38"]
+[ext_resource type="Texture2D" uid="uid://bcl3w5ue30jad" path="res://_assets/art/sprites/item_godotito.png" id="11_s2t38"]
 [ext_resource type="Texture2D" uid="uid://cg2jt04aod3qr" path="res://_assets/art/main/main_titulo.png" id="11_tgi66"]
 [ext_resource type="Theme" uid="uid://biqioweq5s1re" path="res://_resources/buttons_styles_main.tres" id="13_044b3"]
 [ext_resource type="Texture2D" uid="uid://oah1wloa86mf" path="res://_assets/art/main/main_creditos_regular.png" id="14_pkenp"]
@@ -130,7 +130,6 @@ theme = ExtResource("13_044b3")
 text = "INICIAR"
 
 [node name="PlayButton2" type="Button" parent="."]
-visible = false
 modulate = Color(1, 0, 1, 1)
 custom_minimum_size = Vector2(160, 48)
 layout_mode = 1
