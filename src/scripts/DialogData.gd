@@ -469,7 +469,7 @@ var dialogos_script = {
 			[ # secuencia 3
 				{
 					'actor': 'player',
-					'text': '¿No estás entendiendo, no?.',
+					'text': '¿No estás \n entendiendo, no?.',
 					'duration': 2.3,
 					'content_type': 'text',
 					'balloon_type': 'thought' # Estilo pensamiento
