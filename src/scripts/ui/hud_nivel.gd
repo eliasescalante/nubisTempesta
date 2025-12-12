@@ -96,6 +96,12 @@ func actualizar_nivel_y_zona(nivel: String, zona: String) -> void:
 	nivel_label.text = nivel
 	zona_label.text = zona
 
+func show_dialog_controls():
+	dialog_h_box_container.visible = true
+
+func hide_dialog_controls():
+	dialog_h_box_container.visible = false
+	
 func _check_touch(event):
 		# TOUCH: dedo toca la pantalla
 		if event is InputEventScreenTouch:

@@ -191,6 +191,7 @@ size_flags_vertical = 10
 
 [node name="dialog_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -205,12 +206,14 @@ theme_override_styles/panel = ExtResource("7_oiev5")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/dialog_HBoxContainer/Panel"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 text = "SALTAR PARTE
 [ENTER]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Panel2" type="PanelContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/dialog_HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("6_rk8vn")
@@ -461,11 +464,11 @@ shape = SubResource("RectangleShape2D_p5yie")
 action = "pause"
 
 [node name="dialogo_saltar_parte" type="TouchScreenButton" parent="Control"]
-position = Vector2(512, 470)
+position = Vector2(576, 470)
 shape = SubResource("RectangleShape2D_rk8vn")
 
 [node name="dialogo_saltar_todo" type="TouchScreenButton" parent="Control"]
-position = Vector2(644, 470)
+position = Vector2(644, 768)
 shape = SubResource("RectangleShape2D_oiev5")
 
 [connection signal="pressed" from="Control/right" to="." method="_on_right_pressed"]

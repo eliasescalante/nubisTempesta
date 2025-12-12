@@ -134,6 +134,8 @@ var current_dialog_actor: String
 var current_dialog_part: int
 var next_dialog_part: int
 
+var hud
+
 func dialog_director (dialog_sequence: Array, actors: Dictionary, replacements: Dictionary) -> void:
 	
 	if dialog_sequence==[]:
@@ -157,6 +159,8 @@ func dialog_director (dialog_sequence: Array, actors: Dictionary, replacements: 
 	current_dialog_part = -1
 	next_dialog_part = 0
 	is_current_dialog_started = true
+	hud = get_tree().get_current_scene().get_node("HudNivel")
+	hud.show_dialog_controls()
 	print("Iniciamos la secuencia de diálogo...")
 
 func _process(_delta:float)	->void:
@@ -177,6 +181,8 @@ func _process(_delta:float)	->void:
 			npc.mute_dialog()
 		is_current_dialog_started = false
 		is_current_dialog_finished = false
+		hud = get_tree().get_current_scene().get_node("HudNivel")
+		hud.hide_dialog_controls()
 		current_dialog_finished.emit()
 		return
 	
@@ -190,7 +196,7 @@ func _process(_delta:float)	->void:
 	if Input.is_action_just_pressed("dialogo_saltar_todo") or GameState.touch_dialogo_saltar_todo:
 		GameState.touch_dialogo_saltar_todo = false
 		print("SALTA TODO")
-		next_dialog_part = the_secuence.size()
+		#next_dialog_part = the_secuence.size()
 		
 	# 1 - Comprobamos si hay que avanzar o actualizar el TIMER
 	if current_dialog_part == next_dialog_part:
