@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://q3sb0n0gwdsu"]
+[gd_scene load_steps=40 format=3 uid="uid://q3sb0n0gwdsu"]
 
 [ext_resource type="Script" uid="uid://ca64kl6y55xos" path="res://src/scripts/ui/hud_nivel.gd" id="1_u684c"]
 [ext_resource type="Texture2D" uid="uid://cndsnf4evmm2m" path="res://_assets/hud/hud-control-pause.png" id="2_1tyqh"]
@@ -7,8 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://vebbook0p6dh" path="res://_assets/hud/hud-ubicacion.png" id="3_15er3"]
 [ext_resource type="FontFile" uid="uid://ctq6t2qobn1k5" path="res://_assets/fonts/sf_cartoonist_hand/SF_Cartoonist_Hand_Bold.ttf" id="3_akq8j"]
 [ext_resource type="FontFile" uid="uid://b17yuhydnkdrk" path="res://_assets/fonts/sf_cartoonist_hand/SF_Cartoonist_Hand_Italic.ttf" id="4_akq8j"]
+[ext_resource type="Theme" uid="uid://c3gngqx1nygss" path="res://_resources/carteles_dialogo.tres" id="6_rk8vn"]
 [ext_resource type="Texture2D" uid="uid://blg5yo24tpgnh" path="res://_assets/hud/hud-control-right.png" id="7_1tyqh"]
 [ext_resource type="Texture2D" uid="uid://bnybymy6sgw8h" path="res://_assets/hud/pldIcon_animation_spritesheet.png" id="7_15er3"]
+[ext_resource type="StyleBox" uid="uid://drj0svb67llpc" path="res://_resources/cajas_dialogos_panel_container_styles.tres" id="7_oiev5"]
 [ext_resource type="Texture2D" uid="uid://bgd7sf7bj0fij" path="res://_assets/hud/hud-pldIcon-panel.png" id="8_6p5j8"]
 [ext_resource type="Texture2D" uid="uid://onkdwsqvjdwl" path="res://_assets/hud/hud-pldPoints-panel.png" id="10_yuvjw"]
 [ext_resource type="Texture2D" uid="uid://bkrqgqqrepu6g" path="res://_assets/hud/hud-objectSlots-panel.png" id="11_ugbuy"]
@@ -114,18 +116,14 @@ radius = 48.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p5yie"]
 size = Vector2(512, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rk8vn"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oiev5"]
+size = Vector2(128, 128)
+
 [node name="HudNivel" type="CanvasLayer"]
 script = ExtResource("1_u684c")
-
-[node name="MarginContainer2" type="MarginContainer" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
-layout_mode = 2
-size_flags_vertical = 8
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -187,59 +185,97 @@ text = "BAJOS SOÑADORES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="dialog_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 16
+
+[node name="Panel" type="PanelContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/dialog_HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("6_rk8vn")
+theme_override_styles/panel = ExtResource("7_oiev5")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/dialog_HBoxContainer/Panel"]
+layout_mode = 2
+text = "SALTAR PARTE
+[ENTER]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="PanelContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/dialog_HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("6_rk8vn")
+theme_override_styles/panel = ExtResource("7_oiev5")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/dialog_HBoxContainer/Panel2"]
+layout_mode = 2
+text = "SALTAR TODO
+[X]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 size_flags_vertical = 10
 theme_override_styles/panel = SubResource("StyleBoxTexture_rlogt")
 
-[node name="statusBar_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2"]
+[node name="statusBar_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 0
 
-[node name="moves_directional_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer"]
+[node name="moves_directional_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer"]
 custom_minimum_size = Vector2(256, 128)
 layout_mode = 2
 size_flags_horizontal = 6
 alignment = 2
 
-[node name="left_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/moves_directional_HBoxContainer"]
+[node name="left_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/moves_directional_HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 texture = ExtResource("2_ugbuy")
 
-[node name="right_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/moves_directional_HBoxContainer"]
+[node name="right_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/moves_directional_HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 texture = ExtResource("7_1tyqh")
 
-[node name="pldIcon_HBoxContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer"]
+[node name="pldIcon_HBoxContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer"]
 custom_minimum_size = Vector2(128, 108)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_sckn7")
 
-[node name="pldIcon_AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/pldIcon_HBoxContainer"]
+[node name="pldIcon_AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/pldIcon_HBoxContainer"]
 unique_name_in_owner = true
 position = Vector2(64, 54)
 sprite_frames = SubResource("SpriteFrames_oiev5")
 frame = 2
 frame_progress = 0.65459114
 
-[node name="pldPoints_panel" type="PanelContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer"]
+[node name="pldPoints_panel" type="PanelContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer"]
 custom_minimum_size = Vector2(188, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_rk8vn")
 
-[node name="pldPoints_label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/pldPoints_panel"]
+[node name="pldPoints_label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/pldPoints_panel"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 108)
 layout_mode = 2
@@ -249,20 +285,20 @@ theme_override_font_sizes/font_size = 22
 text = "000000000000"
 vertical_alignment = 1
 
-[node name="objects_slots_panel" type="PanelContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer"]
+[node name="objects_slots_panel" type="PanelContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer"]
 custom_minimum_size = Vector2(324, 96)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_oiev5")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_constants/separation = 0
 
-[node name="labels_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer"]
+[node name="labels_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer"]
 custom_minimum_size = Vector2(324, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -270,7 +306,7 @@ size_flags_vertical = 8
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="label_Used" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/labels_HBoxContainer"]
+[node name="label_Used" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/labels_HBoxContainer"]
 custom_minimum_size = Vector2(108, 0)
 layout_mode = 2
 size_flags_vertical = 8
@@ -279,7 +315,7 @@ theme_override_fonts/font = ExtResource("12_1tyqh")
 text = "EN USO"
 horizontal_alignment = 1
 
-[node name="label_Quest" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/labels_HBoxContainer"]
+[node name="label_Quest" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/labels_HBoxContainer"]
 custom_minimum_size = Vector2(108, 0)
 layout_mode = 2
 size_flags_vertical = 8
@@ -288,7 +324,7 @@ theme_override_fonts/font = ExtResource("12_1tyqh")
 text = "ENCARGO"
 horizontal_alignment = 1
 
-[node name="label_Pass" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/labels_HBoxContainer"]
+[node name="label_Pass" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/labels_HBoxContainer"]
 custom_minimum_size = Vector2(108, 0)
 layout_mode = 2
 size_flags_vertical = 8
@@ -297,7 +333,7 @@ theme_override_fonts/font = ExtResource("12_1tyqh")
 text = "PASE"
 horizontal_alignment = 1
 
-[node name="objects_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer"]
+[node name="objects_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer"]
 custom_minimum_size = Vector2(324, 48)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -305,7 +341,7 @@ size_flags_vertical = 0
 theme_override_constants/separation = 56
 alignment = 1
 
-[node name="objectUsed_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/objects_HBoxContainer"]
+[node name="objectUsed_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/objects_HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -314,7 +350,7 @@ size_flags_vertical = 0
 expand_mode = 3
 stretch_mode = 5
 
-[node name="objectQuest_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/objects_HBoxContainer"]
+[node name="objectQuest_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/objects_HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -323,7 +359,7 @@ size_flags_vertical = 0
 expand_mode = 3
 stretch_mode = 5
 
-[node name="objectPass_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/objects_HBoxContainer"]
+[node name="objectPass_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/objects_HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
@@ -332,7 +368,7 @@ size_flags_vertical = 0
 expand_mode = 3
 stretch_mode = 5
 
-[node name="labels_HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer"]
+[node name="labels_HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer"]
 custom_minimum_size = Vector2(324, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -340,7 +376,7 @@ size_flags_vertical = 8
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="specimen_Used" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/labels_HBoxContainer2"]
+[node name="specimen_Used" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/labels_HBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(108, 0)
 layout_mode = 2
@@ -350,7 +386,7 @@ theme_override_fonts/font = ExtResource("12_1tyqh")
 text = "EN USO"
 horizontal_alignment = 1
 
-[node name="specimen_Quest" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/labels_HBoxContainer2"]
+[node name="specimen_Quest" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/labels_HBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(108, 0)
 layout_mode = 2
@@ -360,7 +396,7 @@ theme_override_fonts/font = ExtResource("12_1tyqh")
 text = "ENCARGO"
 horizontal_alignment = 1
 
-[node name="specimen_Pass" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/labels_HBoxContainer2"]
+[node name="specimen_Pass" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/objects_slots_panel/VBoxContainer/labels_HBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(108, 0)
 layout_mode = 2
@@ -370,20 +406,20 @@ theme_override_fonts/font = ExtResource("12_1tyqh")
 text = "PASE"
 horizontal_alignment = 1
 
-[node name="moves_actions_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer"]
+[node name="moves_actions_HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer"]
 custom_minimum_size = Vector2(256, 128)
 layout_mode = 2
 size_flags_horizontal = 6
 alignment = 2
 
-[node name="dobleJump_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/moves_actions_HBoxContainer"]
+[node name="dobleJump_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/moves_actions_HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 texture = ExtResource("13_sckn7")
 
-[node name="dash_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/moves_actions_HBoxContainer"]
+[node name="dash_TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer2/statusBar_HBoxContainer/moves_actions_HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
@@ -423,5 +459,13 @@ action = "dash"
 position = Vector2(256, 64)
 shape = SubResource("RectangleShape2D_p5yie")
 action = "pause"
+
+[node name="dialogo_saltar_parte" type="TouchScreenButton" parent="Control"]
+position = Vector2(512, 470)
+shape = SubResource("RectangleShape2D_rk8vn")
+
+[node name="dialogo_saltar_todo" type="TouchScreenButton" parent="Control"]
+position = Vector2(644, 470)
+shape = SubResource("RectangleShape2D_oiev5")
 
 [connection signal="pressed" from="Control/right" to="." method="_on_right_pressed"]

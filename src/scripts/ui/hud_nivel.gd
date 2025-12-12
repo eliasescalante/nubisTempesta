@@ -16,6 +16,9 @@ extends CanvasLayer
 @onready var specimen_quest: Label = %specimen_Quest
 @onready var specimen_pass: Label = %specimen_Pass
 
+@onready var dialog_h_box_container: HBoxContainer = %dialog_HBoxContainer
+
+
 # Recibe el dato de la especie de item
 var object_used_specimen
 var object_quest_specimen
@@ -43,7 +46,11 @@ func _ready() -> void:
 		GameState.touch_dash = true)
 	$Control/pause.released.connect(func():
 		GameState.touch_pause = true)
-		
+	$Control/dialogo_saltar_parte.released.connect(func():
+		GameState.touch_dialogo_saltar_parte = true)
+	$Control/dialogo_saltar_todo.released.connect(func():
+		GameState.touch_dialogo_saltar_todo = true)
+	
 	pld_icon_animated_sprite_2d.play("default")
 	specimen_quest.text = ""
 	specimen_pass.text = ""
