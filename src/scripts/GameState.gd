@@ -19,7 +19,11 @@ var text_loader #para cargar el TITULO del loader
 var text_loader_subtitulo #para los subtitulos
 var image_loader_mini # para cargar la imagen mini
 # ------------------------------------------------------------------------------
-var pld
+# DATA DEL PLAYER
+var pld: int
+var item_used: String
+var item_quest: String
+var item_pass: String
 # ------------------------------------------------------------------------------
 var game_over
 var timer_game_over
@@ -33,6 +37,9 @@ func reset_game_state():
 	text_loader_subtitulo="" #para los subtitulos
 	image_loader_mini="" # para cargar la imagen mini
 	pld = 203
+	item_used = ""
+	item_quest = ""
+	item_pass = ""
 	game_over = false
 	timer_game_over = 3.0 # Lo que dura en pantalla ingame con Nubis muerta hasta que se dispare la cortina.
 	game_over_scene_launched = false

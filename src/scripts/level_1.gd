@@ -28,6 +28,7 @@ extends Node2D
 func _ready() -> void:
 	#PauseMenu.register_pause_menu($PauseMenu)
 	GameState.clear_respawn_points()
+	hud.update_items_slots_from_game_state()
 	# MUSICA NIVEL
 	# AQUI HAY QUE PONERLO GENERICO
 	AudioManager.play_nivel_1()
@@ -187,7 +188,7 @@ func game_over() -> void:
 func give_player_quest_reward(player_quest_reward, player_quest_reward_pld) -> void:
 	# Esto es muy cabeza, pero funciona. Hay que mejorarlo con sonido, etc.
 	# Agregamos el OBJETO-PASE
-	var texture:Texture2D = load("res://_assets/art/sprites/item_pase_"+str(player_quest_reward)+".png")
+	var texture:Texture2D = load("res://_assets/art/sprites/item_"+str(player_quest_reward)+".png")
 	hud.agregar_item(texture, 'pass', player_quest_reward)
 	hud.actualizar_puntos(GameState.pld+int(player_quest_reward_pld))
 	# Quitamos el OBJETO-HISTORIA

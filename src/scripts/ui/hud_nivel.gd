@@ -61,16 +61,29 @@ func agregar_item(item_texture: Texture2D, item_type: String, item_specimen: Str
 			object_used_texture_rect.texture = item_texture
 			object_used_specimen = item_specimen
 			specimen_used.text = item_specimen
+			GameState.item_used = item_specimen
 		"quest":
 			object_quest_texture_rect.texture = item_texture
 			object_quest_specimen = item_specimen
 			specimen_quest.text = item_specimen
+			GameState.item_quest = item_specimen
 		"pass":
 			object_pass_texture_rect.texture = item_texture
 			object_pass_specimen = item_specimen
-			specimen_pass.text = item_specimen	
+			specimen_pass.text = item_specimen
+			GameState.item_pass = item_specimen
 		_:
 			print("⚠️ Tipo de item desconocido: ", item_type)
+
+func update_items_slots_from_game_state():
+	pass
+	var texture:Texture2D
+	texture = load("res://_assets/art/sprites/item_"+GameState.item_used+".png")
+	agregar_item(texture, 'used', GameState.item_used)
+	texture = load("res://_assets/art/sprites/item_"+GameState.item_quest+".png")
+	agregar_item(texture, 'quest', GameState.item_quest)
+	texture = load("res://_assets/art/sprites/item_"+GameState.item_pass+".png")
+	agregar_item(texture, 'pass', GameState.item_pass)
 
 func actualizar_nivel_y_zona(nivel: String, zona: String) -> void:
 	nivel_label.text = nivel
