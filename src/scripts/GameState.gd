@@ -122,6 +122,9 @@ func get_npc_state(npc_node: Node) -> String:
 #-------------------------------------------------------------------------------
 var respawn_point: Vector2
 
+func clear_respawn_points() ->void:
+	respawn_point = Vector2.ZERO
+
 func set_respawn_point(player_respawn_point: Node) -> void:
 	print("Registra punto de regeneración ", player_respawn_point)
 	respawn_point = player_respawn_point.get_global_position()
@@ -129,7 +132,7 @@ func set_respawn_point(player_respawn_point: Node) -> void:
 func get_respawn_point(player: Node, player_respawn_points: Node2D) -> Vector2:
 	print("Ultimo punto de regeneración ",respawn_point)
 	# Si no hay registrado un punto de retorno buscamos el más cercano.
-	if not respawn_point:
+	if not respawn_point or respawn_point == Vector2.ZERO:
 		var lowest_distance = INF
 		var distance_tmp 
 		for respawn_point_child in  player_respawn_points.get_children():
