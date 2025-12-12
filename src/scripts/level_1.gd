@@ -1,17 +1,18 @@
 extends Node2D
 
+# GENERICO --->
 @onready var animacion = $cortina/AnimationPlayer
 @onready var cortina = $cortina/curtains
 @onready var player = %Player
 @onready var collectables = $Parallax2D_medio/Collectables
 @onready var hud = get_tree().get_current_scene().get_node("HudNivel")
 @onready var player_respawn_points: Node2D = %player_respawn_points
+# <--- GENERICO
 
+# SPEUDO GENERICO
+# Los valores deberían dejarse en la instancia
 @export var zona : String = "NIVEL 1 - ZONA A"
 @export var nivel : String = "BAJOS PILARES"
-
-# @export var respawn_time: float = 1.0 # segundos para reaparecer
-# esto ahora forma parte del item 
 
 @onready var spawn_point_0: Marker2D = %Portal0/Marker2D
 @onready var spawn_point_1: Marker2D = %Portal1/Marker2D
@@ -19,13 +20,14 @@ extends Node2D
 @onready var timer_to_tutorial_first_move:float = 3.0
 
 # MUSICA NIVEL
-# ESTO NO VEO QUE SE USE DESPUES - DEBERIS SER UN EXPORT
+# ESTO NO VEO QUE SE USE DESPUES - DEBERIA SER UN EXPORT
+# Tampoco veo que se esté usando.
 @onready var musica_nivel_1 = AudioManager.get_node("ost/Nivel1")
 
 
 func _ready() -> void:
 	#PauseMenu.register_pause_menu($PauseMenu)
-	
+	GameState.clear_respawn_points()
 	# MUSICA NIVEL
 	# AQUI HAY QUE PONERLO GENERICO
 	AudioManager.play_nivel_1()
