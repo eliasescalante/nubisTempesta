@@ -36,17 +36,16 @@ func _on_animacion_terminada(anim_name: String) -> void:
 		if GameState.loader == 0:
 			get_tree().change_scene_to_file("res://src/scenes/levels/intro.tscn")
 		elif GameState.loader == 1: # IR AL BAR
-			#DEMO - Termina el juego
-			get_tree().change_scene_to_file("res://src/scenes/levels/game_completed.tscn")
-			#get_tree().change_scene_to_file("res://src/scenes/levels/level_1_the_bar_1.tscn")
-
+			get_tree().change_scene_to_file("res://src/scenes/levels/level_1_the_bar_1.tscn")
 		elif GameState.loader == 2:
 			get_tree().change_scene_to_file("res://src/scenes/levels/level_1.tscn")
 		elif GameState.loader == 3:
-			get_tree().change_scene_to_file("res://src/scenes/levels/level_1_seccion_b.tscn")
-		elif GameState.loader == 4:
-			get_tree().change_scene_to_file("res://src/scenes/levels/level_1_the_bar_2.tscn")
-		elif GameState.loader == 5:
-			get_tree().change_scene_to_file("res://src/scenes/levels/level_1_the_bar_3.tscn")
-		elif GameState.loader == 6:
-			get_tree().change_scene_to_file("res://src/scenes/levels/level_1_the_bar_4.tscn")
+			#DEMO - Termina el juego
+			get_tree().change_scene_to_file("res://src/scenes/levels/game_completed.tscn")
+			#get_tree().change_scene_to_file("res://src/scenes/levels/level_1_seccion_b.tscn")
+		#elif GameState.loader == 4:
+		#	get_tree().change_scene_to_file("res://src/scenes/levels/level_1_the_bar_2.tscn")
+		#elif GameState.loader == 5:
+		#	get_tree().change_scene_to_file("res://src/scenes/levels/level_1_the_bar_3.tscn")
+		#elif GameState.loader == 6:
+		#	get_tree().change_scene_to_file("res://src/scenes/levels/level_1_the_bar_4.tscn")
