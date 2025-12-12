@@ -196,7 +196,7 @@ func _process(_delta:float)	->void:
 	if Input.is_action_just_pressed("dialogo_saltar_todo") or GameState.touch_dialogo_saltar_todo:
 		GameState.touch_dialogo_saltar_todo = false
 		print("SALTA TODO")
-		#next_dialog_part = the_secuence.size()
+		next_dialog_part = the_secuence.size()
 		
 	# 1 - Comprobamos si hay que avanzar o actualizar el TIMER
 	if current_dialog_part == next_dialog_part:
