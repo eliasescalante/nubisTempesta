@@ -58,9 +58,9 @@ func _on_area_2d_body_entered(body: Node) -> void:
 	# Aquí hay que VERIFICAR si se debe recolectar o no
 	# según se haya habilitado o no la quest para el player
 	# en el caso de no estar habilitado dispara un diálogo.
-	
+	var the_dialog_sequence
 	if quest_id != GameState.quest_id:
-		var the_dialog_sequence = DialogManager.get_dialog_sequence('item-no-disponible')
+		the_dialog_sequence = DialogManager.get_dialog_sequence('item-no-disponible')
 		print("Invocamos al método DIALOG_DIRECTOR")
 		DialogManager.dialog_director(
 			the_dialog_sequence,
@@ -74,6 +74,23 @@ func _on_area_2d_body_entered(body: Node) -> void:
 		)
 		return
 
+	the_dialog_sequence = DialogManager.get_dialog_sequence('item-buscado')
+	print("Invocamos al método DIALOG_DIRECTOR")
+	DialogManager.dialog_director(
+		the_dialog_sequence,
+		{ # 'actors'
+			'player': player,
+			#'npc': npc
+		},
+		{ # 'replacements'
+			'<%OBJ%>': item_specimen
+		}
+	)
+	DialogManager.current_dialog_finished.connect(item_taken)
+	
+func item_taken():
+	DialogManager.current_dialog_finished.disconnect(item_taken)
+	
 	var hud = get_tree().get_root().find_child("HudNivel", true, false)
 	if hud:
 		hud.agregar_item($Sprite2D.texture, item_type, item_specimen) 
