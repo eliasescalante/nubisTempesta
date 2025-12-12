@@ -97,7 +97,9 @@ func _ready() -> void:
 # --- Multiplicador de velocidad / salto según PLD ---
 func get_pld_multiplier() -> float:
 	pld = GameState.pld
-	if pld > 0:
+	if pld > 333:
+		return 1.2 # con esto incentivamos el consumismo!
+	elif pld > 0:
 		return 1.0
 	else:
 		# Lineal: PLD=0 → velocidad 50%
@@ -159,9 +161,9 @@ func _physics_process(delta: float) -> void:
 )
 
 	if GameState.touch_left:
-		direction -= 1.0
+		direction = -1.0
 	if GameState.touch_right:
-		direction += 1.0
+		direction = 1.0
 
 
 	
@@ -172,7 +174,7 @@ func _physics_process(delta: float) -> void:
 	
 	# --- Dash ---
 	# El dash reduce a la mitad la velocidad de caida
-	if Input.is_action_just_pressed("dash") and not is_dashing:
+	if Input.is_action_just_pressed("dash") and not is_dashing and direction!= 0.0:
 		if pld - pld_por_dash >= PLD_GAME_OVER:
 			velocity_falling = velocity_falling / 2
 			start_dash(direction)
@@ -217,7 +219,8 @@ func _physics_process(delta: float) -> void:
 		velocity_falling = 0.0
 
 	# --- Salto / Doble salto ---
-	if Input.is_action_just_pressed("ui_accept") or GameState.touch_jump:
+	if Input.is_action_just_pressed("jump") or GameState.touch_jump:
+		GameState.touch_jump = false # Reseteamos para habilitar el doble salto
 		if on_floor:
 			if pld - pld_por_salto >= PLD_GAME_OVER:
 				velocity.y = JUMP_VELOCITY
