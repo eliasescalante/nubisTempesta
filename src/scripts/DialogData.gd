@@ -560,11 +560,15 @@ var dialogos_script = {
 				},
 				{
 					'actor': 'npc',
-					'text': 'Si, es así.\n Pero necesito algo\n a cambio. \n Un "<%OBJ%>"s.',
+					'text': 'Si, es así.\n Pero necesito algo\n a cambio. \n Un "<%OBJ%>".',
 				},
 				{
 					'actor': 'npc',
 					'text': 'No tengo suficiente\n destreza para \n encontrarlo.',
+				},
+								{
+					'actor': 'npc',
+					'text': 'Escuché que está,\n en el exterior\n cerca de la\n entrada.',
 				},
 				{
 					'actor': 'player',
@@ -579,7 +583,11 @@ var dialogos_script = {
 			[ # secuencia de dialogo 1
 				{
 					'actor': 'npc',
-					'text': '¿Todavía no tenés \n el "<%OBJ%>" ? \n Seguí buscando\n y no molestes.',
+					'text': '¿Todavía no tenés \n el "<%OBJ%>" ? \n Seguí buscando.',
+				},
+				{
+					'actor': 'npc',
+					'text': 'Escuché que\n puede estar afuera\n cerca de la entrada\n del bar',
 				},
 			],
 		],
