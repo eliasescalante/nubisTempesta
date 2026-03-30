@@ -108,22 +108,22 @@ Label/fonts/font = ExtResource("8_d8kmg")
 script = ExtResource("1_q1fkg")
 
 [node name="balloon_type" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -128)
-scale = Vector2(1.2, 1.2)
+position = Vector2(0, -136)
+scale = Vector2(1.6, 1.4)
 sprite_frames = SubResource("SpriteFrames_ue6y8")
 animation = &"speak"
 
 [node name="icon_sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -128)
+position = Vector2(0, -135)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_d8kmg")
 animation = &"comcubo"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-offset_left = -128.0
-offset_top = -192.0
-offset_right = 128.0
-offset_bottom = -64.0
+offset_left = -192.0
+offset_top = -201.0
+offset_right = 192.0
+offset_bottom = -73.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_g7x0i")
 metadata/_edit_group_ = true
 
