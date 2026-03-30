@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dp654w2t7irlm"]
 
-[ext_resource type="Texture2D" uid="uid://cdcuwoqoolrfk" path="res://_assets/art/sprites/item_03_morphball.png" id="1_4oyno"]
+[ext_resource type="Texture2D" uid="uid://cdcuwoqoolrfk" path="res://_assets/art/sprites/item_morphball.png" id="1_4oyno"]
 [ext_resource type="Script" uid="uid://soljjaaeo7jp" path="res://src/scripts/entities/item_used.gd" id="1_5jwft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jwft"]

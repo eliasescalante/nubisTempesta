@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cp618pcw8bvrc"]
 
 [ext_resource type="Script" uid="uid://soljjaaeo7jp" path="res://src/scripts/entities/item_used.gd" id="1_25dq4"]
-[ext_resource type="Texture2D" uid="uid://c46o3ooyukr00" path="res://_assets/art/sprites/item_04_chupachups.png" id="1_m71a4"]
+[ext_resource type="Texture2D" uid="uid://c46o3ooyukr00" path="res://_assets/art/sprites/item_chupachups.png" id="1_m71a4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_25dq4"]
 size = Vector2(96, 96)

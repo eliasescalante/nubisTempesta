@@ -2,6 +2,7 @@ extends StateNPCs
 class_name NpcPatovicaWaiting
 
 @onready var npc: CharacterBody2D = $"../.."
+@onready var state
 
 var player: CharacterBody2D
 var body_desactivated = false
@@ -14,6 +15,7 @@ var object_pass_specimen
 func enter():
 	print("NpcPatovicaWaiting enter")
 	hud = get_tree().get_root().find_child("HudNivel", true, false)
+	state = GameState.get_npc_state(npc)
 	control_point = npc.return_point
 	control_point.player_detected.connect(_on_control_point_player_detected)
 	# NO CONECTAR ACA EL DIALOGO
@@ -61,7 +63,7 @@ func _on_control_point_player_detected():
 			Transitioned.emit(self, "NpcPatovicaTalking")
 		else:
 			# forzamos a que se vuelva a desactivar por las dudas
-				body_desactivated = false
+			body_desactivated = false
 		return
 	if target_desired:
 		print("Es STRING, la especia de OBJETO DE DESEO específico,")
@@ -125,4 +127,6 @@ func pass_completed_end_dialog():
 	# Quitamos el OBJETO-HISTORIA
 	hud.agregar_item(null,"pass","")
 	print("# 3. Desactivar al NPC")
+	# Marcamos la mision como cumplida
+	GameState.update_npc_property(npc, 'quest', true)
 	Transitioned.emit(self, "NpcDesactivated")

@@ -2,6 +2,7 @@ extends StateNPCs
 class_name NpcPatovicaBlocking
 
 @onready var npc: CharacterBody2D = $"../.."
+@onready var state
 
 var player: CharacterBody2D
 var body_activated = false
@@ -14,6 +15,7 @@ var object_pass_specimen
 func enter():
 	print("NpcPatovicaBlocking enter")
 	hud = get_tree().get_root().find_child("HudNivel", true, false)
+	state = GameState.get_npc_state(npc)
 	control_point = npc.return_point
 	control_point.player_detected.connect(_on_control_point_player_detected)
 	# NO CONECTAR ACA PORQUE SE SOLAPA CON OTRO NPC. HACERLO AL MOMENTO DE LA VERIFICACION
@@ -128,4 +130,6 @@ func pass_completed_end_dialog():
 	# Quitamos el OBJETO-HISTORIA
 	hud.agregar_item(null,"pass","")
 	print("# 3. Desactivar al NPC")
+	# Marcamos la mision como cumplida
+	GameState.update_npc_property(npc, 'quest', true)
 	Transitioned.emit(self, "NpcDesactivated")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdcuwoqoolrfk"
-path="res://.godot/imported/item_03_morphball.png-7c19cbaa5e322fb462961eb41ea99e74.ctex"
+uid="uid://ca44w3q7h7da"
+path="res://.godot/imported/interior_tileset_negro.png-4a388ccfd5ccb9a65ee14c736908e6ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_assets/art/sprites/item_03_morphball.png"
-dest_files=["res://.godot/imported/item_03_morphball.png-7c19cbaa5e322fb462961eb41ea99e74.ctex"]
+source_file="res://_assets/art/tileset/interior_tileset_negro.png"
+dest_files=["res://.godot/imported/interior_tileset_negro.png-4a388ccfd5ccb9a65ee14c736908e6ad.ctex"]
 
 [params]
 

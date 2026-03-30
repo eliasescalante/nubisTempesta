@@ -17,6 +17,11 @@ func enter():
 	npc.dialog_player_detected.connect(_on_dialog_player_detected)
 	
 	GameState.update_npc_property( npc, 'state', 'NpcHistoriaQuestWaiting' )
+
+	# Indicamos al GameState cual es la mision actual
+	# NOTA: esto se podría mejorar con un ARRAY para tener múltiples misiones activas.
+	GameState.quest_id = npc.dialog_id
+
 	dont_move = true
 
 func exit():

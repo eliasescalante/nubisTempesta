@@ -1,42 +1,49 @@
 extends Node2D
 
+# GENERICO --->
 @onready var animacion = $cortina/AnimationPlayer
 @onready var cortina = $cortina/curtains
 @onready var player = %Player
 @onready var collectables = $Parallax2D_medio/Collectables
 @onready var hud = get_tree().get_current_scene().get_node("HudNivel")
 @onready var player_respawn_points: Node2D = %player_respawn_points
+# <--- GENERICO
 
+# SPEUDO GENERICO
+# Los valores deberían dejarse en la instancia
 @export var zona : String = "NIVEL 1 - ZONA A"
 @export var nivel : String = "BAJOS PILARES"
-
-# @export var respawn_time: float = 1.0 # segundos para reaparecer
-# esto ahora forma parte del item 
 
 @onready var spawn_point_0: Marker2D = %Portal0/Marker2D
 @onready var spawn_point_1: Marker2D = %Portal1/Marker2D
 
 @onready var timer_to_tutorial_first_move:float = 3.0
 
+# MUSICA NIVEL
+# ESTO NO VEO QUE SE USE DESPUES - DEBERIA SER UN EXPORT
+# Tampoco veo que se esté usando.
 @onready var musica_nivel_1 = AudioManager.get_node("ost/Nivel1")
 
 
 func _ready() -> void:
 	#PauseMenu.register_pause_menu($PauseMenu)
-	
+	GameState.clear_respawn_points()
+	hud.update_items_slots_from_game_state()
+	# MUSICA NIVEL
+	# AQUI HAY QUE PONERLO GENERICO
 	AudioManager.play_nivel_1()
+	
+	# ESTO TAMBIEN HAY QUE GENERALIZARLO
 	var spawn_point = spawn_point_0
 	#
-	#print("### TEST DIALOGO ")
-	#for d in range(11):
-	#	print("d ",d," ", DialogManager.get_dialog_sequence('test_dialog'))
-	#	print("d ",d," ", DialogManager.get_dialog_sequence('tutorial_1'))
-	#	
+
 	# Conectar señales de todos los ítems iniciales
 	for item in collectables.get_children():
 		if item.has_signal("item_collected"):
 			item.connect("item_collected", Callable(self, "_on_item_collected"))
 	
+	# ESTO DEBERMINA EN DONDE APARECE EL PLAYER
+	# AL CARGAR LA ESCENA - TIENE QUE SER GENERICO
 	if GameState.portal == 1:
 		spawn_point = spawn_point_1
 		player.global_position = spawn_point.global_position
@@ -51,6 +58,7 @@ func _ready() -> void:
 	animacion.play("entrada")
 	animacion.animation_finished.connect(_on_animacion_terminada)
 	
+	# Conectamos la señales para cuando el player muere
 	player.player_died.connect(respawn_player)
 	player.game_over.connect(game_over)
 
@@ -58,18 +66,26 @@ func _on_animacion_terminada(anim_name: String) -> void:
 	# habilitar movimiento jugador
 	print("Animacion cortina "+anim_name+" finalizada")
 	await get_tree().create_timer(0.7).timeout
-	if GameState.tutorial:
-		# Desactivamos el tutorial para la próxima entrada del nivel
-		GameState.tutorial = false
-		print("INICIAR TUTORIAL")
-		#init_tutorial()
+	
+	# ESTO SE PUEDE DESACTIVAR POR AHORA
+	#if GameState.tutorial:
+	#	# Desactivamos el tutorial para la próxima entrada del nivel
+	#	GameState.tutorial = false
+	#	print("INICIAR TUTORIAL")
+	#	#init_tutorial()
 
 	
 func _process(_delta: float) -> void:
 	if GameState.game_over:
+		# Actualizamos el contador del TIMER para disparar
+		# la secuencia de GAME OVER. Esto permite una pausa
+		# desde el PLAYER MUERE para que no sea inmediato.
 		if GameState.timer_game_over > 0:
 			GameState.timer_game_over -= 1*_delta
 		else:
+			# Una vez alcanzado el TIMER verificamos 
+			# si no se ha lanzado ya la secuencia para
+			# no cortar el _process y que quede todo congelado.
 			if not GameState.game_over_scene_launched:
 				GameState.game_over_scene_launched = true
 				GameState.text_loader = "DEUDA DE PLD EXTREMA"
@@ -78,14 +94,19 @@ func _process(_delta: float) -> void:
 				AudioManager.get_node("ost/Nivel1").stop()
 				Sfx.sfx_play('loader_game_over')
 				call_deferred("_change_to_loader")
+	
+	# ESTO SE PUEDE DESACTIVAR
+	#GameState.tutorial = false	
+	#if GameState.tutorial and GameState.tutorial_player_first_move:	
+	#	timer_to_tutorial_first_move -= 1 * _delta	
+	#	if timer_to_tutorial_first_move < 0:	
+	#		GameState.tutorial_player_first_move = false	
+	#		# DialogManager.			
 
-	GameState.tutorial = false
-	if GameState.tutorial and GameState.tutorial_player_first_move:
-		timer_to_tutorial_first_move -= 1 * _delta
-		if timer_to_tutorial_first_move < 0:
-			GameState.tutorial_player_first_move = false
-			# DialogManager.			
-
+# ESTE EVENTO DEBERIA SER INTERNO A CADA PORTAL
+# PARA HACERLO GENERICO  y CONFIGURABLE EN EXPORTS PARA CADA INSTANCIA
+# Y ACA DEBERIA HABER UNA FUNCION GENERICA PARA RECIBIR LA COMANDA
+# DESDE CADA PORTAL.
 func _on_portal_1_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		GameState.portal = 2
@@ -100,7 +121,13 @@ func _on_portal_1_body_entered(body: Node2D) -> void:
 func _change_to_loader():
 	get_tree().change_scene_to_file("res://src/scenes/levels/loader.tscn")
 
-func _on_item_collected(item_scene_path: String, pos: Vector2, item_type: String, item_specimen: String, respawn_time: float) -> void:
+# MANERO DE ITEMS COLECTADOS Y RESPAWN
+func _on_item_collected(
+	item_scene_path: String, 
+	pos: Vector2, 
+	item_type: String, 
+	item_specimen: String, 
+	respawn_time: float) -> void:
 	
 	print("🌀 Item recogido. Se respawneará en:", pos)
 	print(" item type & specimen",item_type, item_specimen)
@@ -161,7 +188,7 @@ func game_over() -> void:
 func give_player_quest_reward(player_quest_reward, player_quest_reward_pld) -> void:
 	# Esto es muy cabeza, pero funciona. Hay que mejorarlo con sonido, etc.
 	# Agregamos el OBJETO-PASE
-	var texture:Texture2D = load("res://_assets/art/sprites/item_pase_"+str(player_quest_reward)+".png")
+	var texture:Texture2D = load("res://_assets/art/sprites/item_"+str(player_quest_reward)+".png")
 	hud.agregar_item(texture, 'pass', player_quest_reward)
 	hud.actualizar_puntos(GameState.pld+int(player_quest_reward_pld))
 	# Quitamos el OBJETO-HISTORIA
