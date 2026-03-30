@@ -118,7 +118,7 @@ var dialogos_script = {
 			[ # secuencia de dialogo 1
 				{
 					'actor': 'npc', # 'npc'
-					'text': 'Todo lo que hagas \n consume tu crédito "PLD". \n ¡Cuidalo!',
+					'text': 'Todo lo que hagas \n consume tu \n crédito "PLD". \n ¡Cuidalo!',
 					'duration': 3.8, # Por defecto cada globo dura 2.8 seg.
 				},
 				{
@@ -166,7 +166,7 @@ var dialogos_script = {
 				},
 				{
 					'actor': 'player',
-					'text': '¡¿Y ahora me lo decís?!',
+					'text': '¡¿Y ahora\n me lo decís?!',
 				},
 			], # END secuencia de dialogo 2
 		] # END secuencia de dialogos
